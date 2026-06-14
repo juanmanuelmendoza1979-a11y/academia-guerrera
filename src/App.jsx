@@ -23,6 +23,7 @@ import LoginJefe from './pages/LoginJefe'
 import OnboardingJefe from './pages/OnboardingJefe'
 import JefeDashboard from './pages/JefeDashboard'
 import RoleSelector from './pages/RoleSelector'
+import Avatar from './components/Avatar'
 import { sumarPuntos } from './lib/db'
 
 const STORAGE_KEY = 'guerrera_progress'
@@ -331,7 +332,10 @@ export default function App() {
         <div className="p-4 border-t border-white/5 space-y-2">
           {activeSession && (
             <div className={`rounded-xl p-2 flex items-center gap-2 ${isJefe ? 'bg-yellow-500/10 border border-yellow-500/20' : isSupervisor ? 'bg-purple-500/10 border border-purple-500/20' : 'bg-brand-medium'}`}>
-              <span className="text-lg flex-shrink-0">{isJefe ? '🏆' : isSupervisor ? '📊' : (activeSession.avatar || '🦁')}</span>
+              {isJefe || isSupervisor
+                ? <span className="text-lg flex-shrink-0">{isJefe ? '🏆' : '📊'}</span>
+                : <Avatar seed={activeSession.avatar} size="sm" />
+              }
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-bold text-white truncate">{activeSession.nombre?.split(' ')[0]}</p>
                 <p className="text-[10px] truncate" style={{color: isJefe ? '#facc15' : isSupervisor ? '#c084fc' : '#6b7280'}}>

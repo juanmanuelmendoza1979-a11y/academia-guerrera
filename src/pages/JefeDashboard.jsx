@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { obtenerDatosRegion } from '../lib/db'
+import Avatar from '../components/Avatar'
 
 const SUPERVISORES_POR_JEFE = {
   'Victor Lazo':     ['Sara Salazar', 'Diana Paz', 'Candy Odar'],
@@ -167,7 +168,7 @@ export default function JefeDashboard({ session }) {
                       <span className={`text-sm font-black w-5 text-center flex-shrink-0 ${i===0?'text-yellow-400':i===1?'text-gray-300':i===2?'text-amber-600':'text-gray-600'}`}>
                         {i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`}
                       </span>
-                      <span className="text-lg flex-shrink-0">{p.avatar || '🦁'}</span>
+                      <Avatar seed={p.avatar} size="sm" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold text-white truncate">{p.nombre}</p>
                         <p className="text-xs text-gray-500 truncate">Sup: {p.supervisor}</p>
@@ -315,7 +316,7 @@ export default function JefeDashboard({ session }) {
                                 <span className={`text-xs font-black w-6 text-center flex-shrink-0 ${i===0?'text-yellow-400':i===1?'text-gray-300':i===2?'text-amber-600':'text-gray-600'}`}>
                                   {i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`}
                                 </span>
-                                <span className="text-base flex-shrink-0">{p.avatar || '🦁'}</span>
+                                <Avatar seed={p.avatar} size="sm" />
                                 <div className="flex-1 min-w-0">
                                   <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
                                   <p className="text-[10px] text-gray-500 truncate">{p.pos} · 🔥 {p.racha||0}d</p>

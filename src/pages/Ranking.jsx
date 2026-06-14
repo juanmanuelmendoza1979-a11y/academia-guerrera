@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { obtenerRanking } from '../lib/db'
+import Avatar from '../components/Avatar'
 
 const MEDAL = ['🥇', '🥈', '🥉']
 
@@ -70,8 +71,8 @@ export default function Ranking({ session, localPoints }) {
             {/* 2do */}
             {top3[1] && (
               <div className="text-center">
-                <div className={`w-12 h-12 rounded-2xl bg-gray-400/20 border-2 ${top3[1].id === session?.id ? 'border-brand-orange' : 'border-gray-400/40'} flex items-center justify-center text-2xl mx-auto mb-1`}>
-                  {top3[1].avatar}
+                <div className={`w-12 h-12 rounded-full overflow-hidden border-2 ${top3[1].id === session?.id ? 'border-brand-orange' : 'border-gray-400/40'} mx-auto mb-1`}>
+                  <Avatar seed={top3[1].avatar} size="lg" className="w-full h-full rounded-full" />
                 </div>
                 <p className="text-xs font-bold text-gray-400">2°</p>
                 <p className="text-xs text-gray-500 max-w-[60px] truncate mx-auto">{top3[1].nombre?.split(' ')[0]}</p>
@@ -83,8 +84,8 @@ export default function Ranking({ session, localPoints }) {
             {top3[0] && (
               <div className="text-center -mb-1">
                 <div className="text-2xl mb-0.5">👑</div>
-                <div className={`w-14 h-14 rounded-2xl bg-yellow-400/20 border-2 ${top3[0].id === session?.id ? 'border-brand-orange' : 'border-yellow-400'} flex items-center justify-center text-3xl mx-auto mb-1`}>
-                  {top3[0].avatar}
+                <div className={`w-14 h-14 rounded-full overflow-hidden border-2 ${top3[0].id === session?.id ? 'border-brand-orange' : 'border-yellow-400'} mx-auto mb-1`}>
+                  <Avatar seed={top3[0].avatar} size="xl" className="w-full h-full rounded-full" />
                 </div>
                 <p className="text-xs font-bold text-yellow-400">1°</p>
                 <p className="text-xs text-white max-w-[70px] truncate font-bold mx-auto">{top3[0].nombre?.split(' ')[0]}</p>
@@ -95,8 +96,8 @@ export default function Ranking({ session, localPoints }) {
             {/* 3ro */}
             {top3[2] && (
               <div className="text-center">
-                <div className={`w-12 h-12 rounded-2xl bg-orange-700/20 border-2 ${top3[2].id === session?.id ? 'border-brand-orange' : 'border-orange-700/40'} flex items-center justify-center text-2xl mx-auto mb-1`}>
-                  {top3[2].avatar}
+                <div className={`w-12 h-12 rounded-full overflow-hidden border-2 ${top3[2].id === session?.id ? 'border-brand-orange' : 'border-orange-700/40'} mx-auto mb-1`}>
+                  <Avatar seed={top3[2].avatar} size="lg" className="w-full h-full rounded-full" />
                 </div>
                 <p className="text-xs font-bold text-orange-600">3°</p>
                 <p className="text-xs text-gray-500 max-w-[60px] truncate mx-auto">{top3[2].nombre?.split(' ')[0]}</p>
@@ -111,7 +112,7 @@ export default function Ranking({ session, localPoints }) {
         {session && miPosicion > 0 && (
           <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-xl px-4 py-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-lg">{session.avatar}</span>
+              <Avatar seed={session.avatar} size="sm" />
               <div>
                 <p className="text-xs font-bold text-white">{session.nombre?.split(' ')[0]} · Tú</p>
                 <p className="text-xs text-gray-500">{session.pos}</p>
@@ -180,7 +181,7 @@ export default function Ranking({ session, localPoints }) {
                 }`}>
                   {i < 3 ? MEDAL[i] : g.rank}
                 </div>
-                <span className="text-2xl flex-shrink-0">{g.avatar}</span>
+                <Avatar seed={g.avatar} size="md" />
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-white text-sm truncate">
                     {g.nombre}
@@ -215,8 +216,8 @@ export default function Ranking({ session, localPoints }) {
             {/* Tarjeta de perfil */}
             <div className="bg-gradient-to-br from-brand-orange/20 to-brand-dark rounded-2xl p-5 border border-brand-orange/30">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-2xl bg-brand-orange/20 border-2 border-brand-orange/50 flex items-center justify-center text-4xl">
-                  {session.avatar}
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-brand-orange/50 flex-shrink-0">
+                  <Avatar seed={session.avatar} size="2xl" className="w-full h-full rounded-full" />
                 </div>
                 <div>
                   <p className="text-lg font-black text-white">{session.nombre}</p>

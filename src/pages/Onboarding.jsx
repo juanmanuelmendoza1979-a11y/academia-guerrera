@@ -1,15 +1,36 @@
 import { useState } from 'react'
 import { crearGuerrera } from '../lib/db'
+import { avatarUrl } from '../components/Avatar'
 
 const AVATARS = [
   // Fuerza e identidad
-  '🦁','🐅','🐺','🦈','🐉','🦅',
+  { seed: 'Leona',      label: 'Leona' },
+  { seed: 'Guerrera',   label: 'Guerrera' },
+  { seed: 'Invicta',    label: 'Invicta' },
+  { seed: 'Titan',      label: 'Titán' },
+  { seed: 'Fenix',      label: 'Fénix' },
+  { seed: 'Valiente',   label: 'Valiente' },
   // Deporte y acción
-  '⚽','🥊','🏋️','🤸','🏊','🎽',
+  { seed: 'Goleadora',  label: 'Goleadora' },
+  { seed: 'Capitana',   label: 'Capitana' },
+  { seed: 'Luchadora',  label: 'Luchadora' },
+  { seed: 'Delantera',  label: 'Delantera' },
+  { seed: 'Defensora',  label: 'Defensora' },
+  { seed: 'Velocidad',  label: 'Velocidad' },
   // Logro y reconocimiento
-  '🏆','🥇','🎖️','👑','💎','🌟',
+  { seed: 'Campeon',    label: 'Campeón' },
+  { seed: 'Victoria',   label: 'Victoria' },
+  { seed: 'Gloria',     label: 'Gloria' },
+  { seed: 'Triunfo',    label: 'Triunfo' },
+  { seed: 'Medallista', label: 'Medallista' },
+  { seed: 'Crack',      label: 'Crack' },
   // Energía y poder
-  '⚡','🔥','💪','🌊','💫','🚀',
+  { seed: 'Estrella',   label: 'Estrella' },
+  { seed: 'Fuego',      label: 'Fuego' },
+  { seed: 'Rayo',       label: 'Rayo' },
+  { seed: 'Fuerza',     label: 'Fuerza' },
+  { seed: 'Aguilar',    label: 'Águila' },
+  { seed: 'Diamante',   label: 'Diamante' },
 ]
 
 const SUPERVISORES_POR_JEFE = [
@@ -29,7 +50,7 @@ export default function Onboarding({ onComplete }) {
   const [supervisor, setSupervisor] = useState('')
   const [pin, setPin]             = useState('')
   const [pinConf, setPinConf]     = useState('')
-  const [avatar, setAvatar]       = useState('🦁')
+  const [avatar, setAvatar]       = useState('Leona')
   const [loading, setLoading]     = useState(false)
   const [error, setError]         = useState('')
 
@@ -256,23 +277,29 @@ export default function Onboarding({ onComplete }) {
             <div className="grid grid-cols-4 gap-3">
               {AVATARS.map(av => (
                 <button
-                  key={av}
-                  onClick={() => setAvatar(av)}
-                  className={`w-full aspect-square rounded-2xl text-3xl flex items-center justify-center transition-all border-2 ${
-                    avatar === av
-                      ? 'bg-brand-orange/20 border-brand-orange scale-110'
-                      : 'bg-brand-dark border-white/5 hover:border-white/20'
+                  key={av.seed}
+                  onClick={() => setAvatar(av.seed)}
+                  className={`w-full aspect-square rounded-2xl overflow-hidden transition-all border-2 relative ${
+                    avatar === av.seed
+                      ? 'border-brand-orange scale-110 shadow-lg shadow-brand-orange/30'
+                      : 'border-white/5 hover:border-white/30'
                   }`}
                 >
-                  {av}
+                  <img src={avatarUrl(av.seed)} alt={av.label} className="w-full h-full object-cover" />
+                  {avatar === av.seed && (
+                    <span className="absolute bottom-0.5 right-0.5 text-[8px] font-black bg-brand-orange text-white px-1 rounded-full leading-tight">✓</span>
+                  )}
                 </button>
               ))}
             </div>
+            <p className="text-xs text-center text-gray-600">
+              {AVATARS.find(a => a.seed === avatar)?.label || avatar}
+            </p>
 
             {/* Preview */}
             <div className="bg-brand-dark rounded-2xl p-4 border border-white/5 flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-brand-orange/20 border border-brand-orange/40 flex items-center justify-center text-2xl">
-                {avatar}
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-brand-orange/40">
+                <img src={avatarUrl(avatar)} alt={avatar} className="w-full h-full object-cover" />
               </div>
               <div>
                 <p className="font-bold text-white text-sm">{nombre}</p>
@@ -313,7 +340,9 @@ export default function Onboarding({ onComplete }) {
             <div className="bg-brand-dark rounded-2xl p-4 border border-brand-orange/20 text-left space-y-2">
               <p className="text-xs font-bold text-brand-orange uppercase tracking-wide">Tu perfil</p>
               <div className="flex items-center gap-3">
-                <span className="text-3xl">{avatar}</span>
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-brand-orange/40 flex-shrink-0">
+                  <img src={avatarUrl(avatar)} alt={avatar} className="w-full h-full object-cover" />
+                </div>
                 <div>
                   <p className="font-bold text-white">{nombre}</p>
                   <p className="text-xs text-gray-500">{pos} · Sup: {supervisor}</p>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { obtenerPromotorasDeSupervisor } from '../lib/db'
+import Avatar from '../components/Avatar'
 
 const NIVELES = {
   'Inicial':    { color: 'text-gray-400',   bg: 'bg-gray-500/20' },
@@ -193,8 +194,8 @@ export default function Supervisor({ session }) {
                         {/* Ranking # */}
                         <span className="text-xs font-black text-gray-600 w-5 flex-shrink-0 text-center">#{i+1}</span>
                         {/* Avatar */}
-                        <div className="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-xl flex-shrink-0">
-                          {p.avatar || '🦁'}
+                        <div className="w-10 h-10 rounded-full overflow-hidden border border-brand-orange/20 flex-shrink-0">
+                          <Avatar seed={p.avatar} size="md" className="w-full h-full rounded-full" />
                         </div>
                         {/* Info */}
                         <div className="flex-1 min-w-0">
@@ -251,8 +252,8 @@ function PromotoraRow({ p }) {
   const activa = p.ultimoAccesoFecha === hoy
   return (
     <div className="px-4 py-3 flex items-center gap-3">
-      <div className="w-9 h-9 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-lg flex-shrink-0">
-        {p.avatar || '🦁'}
+      <div className="w-9 h-9 rounded-full overflow-hidden border border-brand-orange/20 flex-shrink-0">
+        <Avatar seed={p.avatar} size="sm" className="w-full h-full rounded-full" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-sm font-bold text-white truncate">{p.nombre}</p>
