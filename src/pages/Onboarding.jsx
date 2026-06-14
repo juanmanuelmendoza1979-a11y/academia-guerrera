@@ -1,7 +1,16 @@
 import { useState } from 'react'
 import { crearGuerrera } from '../lib/db'
 
-const AVATARS = ['🦁','⚡','🔥','💪','🌟','🎯','🏆','💎','🦅','🌺','🐆','🚀']
+const AVATARS = [
+  // Fuerza e identidad
+  '🦁','🐅','🐺','🦈','🐉','🦅',
+  // Deporte y acción
+  '⚽','🥊','🏋️','🤸','🏊','🎽',
+  // Logro y reconocimiento
+  '🏆','🥇','🎖️','👑','💎','🌟',
+  // Energía y poder
+  '⚡','🔥','💪','🌊','💫','🚀',
+]
 
 const SUPERVISORES_POR_JEFE = [
   { jefe: 'Victor Lazo',      supervisores: ['Sara Salazar', 'Diana Paz', 'Candy Odar'] },
