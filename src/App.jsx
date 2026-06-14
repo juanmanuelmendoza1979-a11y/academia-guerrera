@@ -73,7 +73,7 @@ function computeLevel(points) {
 }
 
 // Bottom nav: páginas prioritarias para móvil
-const NAV_MAIN = ['home', 'puntoventa', 'calendario', 'learn', 'games', 'more']
+const NAV_MAIN = ['home', 'calendario', 'worldcup2026', 'puntoventa', 'more']
 
 // Sidebar agrupado en bloques lógicos
 const SIDEBAR_BLOCKS = [

@@ -1,10 +1,9 @@
 const navItems = [
-  { id: 'home',       label: 'Mi POS',    icon: '🏠' },
-  { id: 'puntoventa', label: 'Ofrecer',   icon: '🛒' },
-  { id: 'calendario', label: 'Calendario', icon: '📅' },
-  { id: 'learn',      label: 'Aprende',   icon: '📚' },
-  { id: 'games',      label: 'Practica',  icon: '🎮' },
-  { id: 'more',       label: 'Más',       icon: '⋯'  },
+  { id: 'home',         label: 'Mi POS',      icon: '🏠' },
+  { id: 'calendario',   label: 'Calendario',  icon: '📅' },
+  { id: 'worldcup2026', label: 'Mundial 2026', icon: '🌍' },
+  { id: 'puntoventa',   label: 'Cómo Ofrecer', icon: '🛒' },
+  { id: 'more',         label: 'Más',          icon: '⋯'  },
 ]
 
 export default function BottomNavigation({ current, onNavigate }) {
