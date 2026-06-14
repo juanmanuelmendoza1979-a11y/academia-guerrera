@@ -136,6 +136,255 @@ const MINI_RETO = {
   ],
 }
 
+/* ─── GUÍA COMERCIAL DATA ─── */
+const HERR_COLORS = {
+  orange:  { bg: 'bg-orange-700/20',  border: 'border-orange-500/30',  text: 'text-orange-300',  badge: 'bg-orange-800/40' },
+  blue:    { bg: 'bg-blue-700/20',    border: 'border-blue-500/30',    text: 'text-blue-300',    badge: 'bg-blue-800/40' },
+  yellow:  { bg: 'bg-yellow-700/20',  border: 'border-yellow-500/30',  text: 'text-yellow-300',  badge: 'bg-yellow-800/40' },
+  green:   { bg: 'bg-green-700/20',   border: 'border-green-500/30',   text: 'text-green-300',   badge: 'bg-green-800/40' },
+  purple:  { bg: 'bg-purple-700/20',  border: 'border-purple-500/30',  text: 'text-purple-300',  badge: 'bg-purple-800/40' },
+  pink:    { bg: 'bg-pink-700/20',    border: 'border-pink-500/30',    text: 'text-pink-300',    badge: 'bg-pink-800/40' },
+  cyan:    { bg: 'bg-cyan-700/20',    border: 'border-cyan-500/30',    text: 'text-cyan-300',    badge: 'bg-cyan-800/40' },
+  emerald: { bg: 'bg-emerald-700/20', border: 'border-emerald-500/30', text: 'text-emerald-300', badge: 'bg-emerald-800/40' },
+  indigo:  { bg: 'bg-indigo-700/20',  border: 'border-indigo-500/30',  text: 'text-indigo-300',  badge: 'bg-indigo-800/40' },
+  amber:   { bg: 'bg-amber-700/20',   border: 'border-amber-500/30',   text: 'text-amber-300',   badge: 'bg-amber-800/40' },
+  rose:    { bg: 'bg-rose-700/20',    border: 'border-rose-500/30',    text: 'text-rose-300',    badge: 'bg-rose-800/40' },
+  teal:    { bg: 'bg-teal-700/20',    border: 'border-teal-500/30',    text: 'text-teal-300',    badge: 'bg-teal-800/40' },
+  sky:     { bg: 'bg-sky-700/20',     border: 'border-sky-500/30',     text: 'text-sky-300',     badge: 'bg-sky-800/40' },
+}
+
+const HERRAMIENTAS_COMERCIALES = [
+  {
+    id: 'partidos-dia', num: '01', icon: '📅', color: 'orange',
+    name: 'Partidos del Día',
+    tag: 'Inicio de atención',
+    objetivo: 'Abrir conversación y convertir el calendario deportivo en oportunidad comercial.',
+    teoria: 'Los partidos del día son la base de la conversación. Permiten pasar de una atención pasiva a una activa, porque la promotora tiene un tema concreto para iniciar: quién juega, a qué hora y qué torneo es.',
+    porQueVende: 'Conecta la venta con la emoción del momento. Cuando el cliente ve un partido relevante, aumenta su interés por revisar cuotas, armar un ticket o consultar una promo.',
+    pasos: [
+      'Revisar al inicio del turno los partidos más importantes del día.',
+      'Identificar horarios fuertes: antes del partido, medio tiempo y nocturnos.',
+      'Usar el partido como entrada para ofrecer simple, combinada, Yapa o BetBuilder.',
+      'Seleccionar 2 o 3 partidos más atractivos, sin saturar al cliente.',
+    ],
+    speech: '¡Hoy hay partidazo del Mundial, causa! 🔥 Revisa las cuotas antes de que empiece y arma tu jugada, ¿la revisamos?',
+    kpi: 'Clientes abordados por partido clave · Tickets antes del inicio · Ventas en horarios de mayor demanda.',
+    cuidado: 'No presentar un partido como apuesta segura. El partido es el gancho de conversación, no una promesa de resultado.',
+  },
+  {
+    id: 'tipos-apuesta', num: '02', icon: '🎰', color: 'blue',
+    name: 'Tipos de Apuesta',
+    tag: 'Exploración',
+    objetivo: 'Transformar el interés del cliente en una opción concreta de juego.',
+    teoria: 'Los tipos de apuesta son las formas en que el cliente puede participar en un evento: resultado final, más/menos goles, ambos anotan, apuestas por jugador, combinadas y más según disponibilidad.',
+    porQueVende: 'Muchos clientes quieren apostar, pero no saben por dónde empezar. Cuando la promotora explica opciones simples, reduce la confusión y facilita el cierre de venta.',
+    pasos: [
+      'Preguntar primero qué equipo o partido le interesa al cliente.',
+      'Ofrecer opción fácil si es nuevo: resultado final o más/menos goles.',
+      'Ofrecer combinadas o BetBuilder si el cliente ya tiene experiencia.',
+      'Confirmar que el cliente entendió antes de emitir el ticket.',
+    ],
+    speech: 'Puede jugar algo simple como quién gana, o algo más sabroso como más de 1.5 goles 😄. Si quiere juntar varios partidos, armamos una múltiple.',
+    kpi: 'Tickets por tipo · Participación de apuestas múltiples · Clientes nuevos con primera apuesta asistida.',
+    cuidado: 'No usar términos técnicos sin explicar. La promotora debe traducir la apuesta a lenguaje cotidiano.',
+  },
+  {
+    id: 'la-yapa', num: '03', icon: '🎁', color: 'yellow',
+    name: 'La Yapa',
+    tag: 'Cierre de ticket',
+    objetivo: 'Impulsar apuestas múltiples y aumentar el valor percibido del ticket.',
+    teoria: 'La Yapa es una ganancia adicional asociada a apuestas múltiples que cumplen condiciones específicas. En la promo del Mundial, más partidos en el ticket = mayor Yapa potencial, según condiciones vigentes.',
+    porQueVende: 'Da un argumento comercial poderoso: no solo se venden partidos, se vende la posibilidad de activar un beneficio adicional. Aumenta el ticket promedio y promueve combinadas.',
+    pasos: [
+      'Explicar que aplica desde una múltiple con la cantidad mínima de partidos establecida.',
+      'Mencionar la cuota mínima y condiciones vigentes antes de cerrar el ticket.',
+      'Usar ejemplos simples: 5 partidos activa una Yapa; más partidos, mayor puede ser el beneficio.',
+      'Reforzar que suma valor, no garantiza ganar.',
+    ],
+    speech: 'Si armas tu múltiple desde 5 partidos activamos la Yapa 🎁. Mientras más partidos, mayor puede ser el beneficio adicional según la tabla vigente.',
+    kpi: 'Tickets múltiples · Promedio de selecciones por ticket · Clientes que activan Yapa · Crecimiento del ticket promedio.',
+    cuidado: 'Validar bases, cuota mínima y vigencia. Nunca decir "vas a ganar más"; decir "puedes recibir ganancia adicional si cumple las condiciones".',
+  },
+  {
+    id: 'racha-mundialista', num: '04', icon: '🔥', color: 'rose',
+    name: 'Racha Mundialista',
+    tag: 'Recompra',
+    objetivo: 'Generar continuidad, recompra y visitas repetidas durante el Mundial.',
+    teoria: 'La Racha Mundialista premia la continuidad: el cliente participa varios días y puede acceder a beneficios o apuestas gratis según la mecánica vigente. Al ser temporal (hasta el 20 de julio), genera urgencia.',
+    porQueVende: 'Convierte una venta aislada en un hábito de visita. El cliente entiende que debe volver y mantener su participación para aprovechar la promo. Es una excusa válida para recordar al cliente.',
+    pasos: [
+      'Comunicarla como promo especial y temporal del Mundial.',
+      'Reforzar la fecha límite: vigente hasta el 20 de julio según bases comunicadas.',
+      'Invitar al cliente a mantener su racha y volver al punto de venta.',
+      'Combinarla con el Club TE APUESTO para recordar partidos y promos.',
+    ],
+    speech: '¡Aprovecha la Racha Mundialista, pata! 🔥 Solo es por el Mundial, hasta el 20 de julio. Juega hoy, mantén tu racha y gana beneficios.',
+    kpi: 'Clientes recurrentes por semana · Activaciones de la promo · Clientes contactados via Club · Recompra durante vigencia.',
+    cuidado: 'No comunicarla como permanente. Resaltar la temporalidad y validar vigencia real en las bases.',
+  },
+  {
+    id: 'cashout', num: '05', icon: '💸', color: 'purple',
+    name: 'Cashout',
+    tag: 'Durante el partido',
+    objetivo: 'Dar control al cliente durante el desarrollo del evento.',
+    teoria: 'El Cashout permite cerrar una apuesta antes de que termine el partido cuando la opción está disponible. El cliente no siempre tiene que esperar el final; puede decidir según cómo va el partido.',
+    porQueVende: 'Aumenta la percepción de control y confianza. Algunos clientes valoran asegurar parte de su resultado o reducir exposición. Hace que el cliente siga pendiente del partido y la plataforma.',
+    pasos: [
+      'Explicar que no siempre está disponible; depende del evento y condiciones del mercado.',
+      'Mencionarlo antes del partido como herramienta de seguimiento.',
+      'Usarlo con clientes que preguntan qué pasa si el partido cambia de rumbo.',
+      'Recordar que el valor del Cashout puede cambiar durante el evento.',
+    ],
+    speech: 'En algunos partidos aparece el Cashout 💸. Eso te permite cerrar la apuesta antes del final si la opción está disponible y decides tomarla.',
+    kpi: 'Consultas sobre Cashout · Uso en eventos disponibles · Satisfacción del cliente durante partidos en vivo.',
+    cuidado: 'No asegurar disponibilidad. Siempre decir "si está disponible" y explicar que el monto puede variar.',
+  },
+  {
+    id: 'betbuilder-herr', num: '06', icon: '🏗️', color: 'amber',
+    name: 'BetBuilder',
+    tag: 'Cliente experto/curioso',
+    objetivo: 'Personalizar la apuesta dentro de un mismo partido y elevar la experiencia del cliente.',
+    teoria: 'BetBuilder permite combinar varios mercados dentro de un mismo partido cuando está disponible: resultado, cantidad de goles, condición adicional. Es para clientes que quieren sentir que arman su propia jugada.',
+    porQueVende: 'Convierte la apuesta en una experiencia más participativa. Diferencia TE APUESTO, aumenta el interés del cliente futbolero y puede elevar el valor del ticket.',
+    pasos: [
+      'Usarlo con clientes que ya tienen una idea del partido o quieren algo más personalizado.',
+      'Armar combinaciones simples y fáciles de entender.',
+      'Confirmar disponibilidad del mercado antes de ofrecerlo.',
+      'Evitar combinaciones demasiado complejas para clientes nuevos.',
+    ],
+    speech: '¡Armemos tu propia jugada del partido, crack! 🏗️ Por ejemplo, equipo ganador más cantidad de goles, siempre que el mercado esté disponible.',
+    kpi: 'Tickets BetBuilder · Ticket promedio en eventos disponibles · Clientes recurrentes que usan la herramienta.',
+    cuidado: 'No confundir al cliente con demasiadas condiciones. La claridad vale más que la complejidad.',
+  },
+  {
+    id: 'pago-anticipado', num: '07', icon: '⚡', color: 'cyan',
+    name: 'Pago Anticipado',
+    tag: 'Durante el evento',
+    objetivo: 'Generar emoción y reforzar la percepción de beneficio durante el evento.',
+    teoria: 'El pago anticipado puede liquidar una apuesta antes de que finalice el evento si se cumplen ciertas condiciones. El cliente percibe dinamismo y rapidez en la experiencia de juego.',
+    porQueVende: 'Eleva la emoción del cliente y puede convertirse en argumento de preferencia. Fortalece la idea de que TE APUESTO ofrece herramientas modernas vinculadas al desarrollo del partido.',
+    pasos: [
+      'Explicar con ejemplos generales y sin prometer activación.',
+      'Usarla cuando el cliente pregunta por beneficios durante el partido.',
+      'Reforzar que depende de condiciones específicas del mercado o promo.',
+      'Integrarla con el seguimiento del partido y la recompra.',
+    ],
+    speech: 'En algunos casos, si se cumplen las condiciones, tu apuesta puede pagarse antes de que termine el partido ⚡. Hay que revisar si aplica para ese evento.',
+    kpi: 'Consultas sobre pago anticipado · Tickets en mercados donde aplica · Satisfacción de clientes que reciben el beneficio.',
+    cuidado: 'No decir "se paga antes" como regla general. Comunicar siempre como posibilidad condicionada.',
+  },
+  {
+    id: 'bonos-bienvenida', num: '08', icon: '🎉', color: 'pink',
+    name: 'Bonos de Bienvenida',
+    tag: 'Primer contacto',
+    objetivo: 'Captar clientes nuevos y reducir la barrera para el primer juego.',
+    teoria: 'Los bonos de bienvenida son beneficios de entrada para clientes que inician su experiencia con TE APUESTO, según condiciones vigentes. Funcionan como incentivo inicial que facilita el registro.',
+    porQueVende: 'Convierte curiosos en clientes activos. El cliente nuevo suele tener dudas; un bono o beneficio inicial permite abrir la conversación, explicar el producto y motivar la primera acción.',
+    pasos: [
+      'Usarlo con clientes que todavía no están registrados o no han jugado.',
+      'Explicar de forma simple qué debe hacer el cliente para acceder al beneficio.',
+      'Validar requisitos, DNI y condiciones vigentes.',
+      'Cerrar con un CTA de registro o primera apuesta.',
+    ],
+    speech: '¡Si es tu primera vez en TE APUESTO, podemos revisar si tienes bono disponible! 🎉 Regístrate y aprovecha el beneficio vigente.',
+    kpi: 'Nuevos registros · Clientes que usan bono · Conversión de registro a primera apuesta · Clientes nuevos en el Club.',
+    cuidado: 'No ofrecer bonos sin validar disponibilidad. Usar siempre las condiciones vigentes.',
+  },
+  {
+    id: 'club-herr', num: '09', icon: '🤝', color: 'teal',
+    name: 'Club TE APUESTO',
+    tag: 'Postventa',
+    objetivo: 'Fidelizar clientes y mantener comunicación activa para generar recompra.',
+    teoria: 'El Club TE APUESTO permite mantener contacto, compartir partidos del día, promociones, tips y recordatorios. La venta no termina cuando se emite el ticket; continúa con la recompra.',
+    porQueVende: 'Convierte clientes ocasionales en recurrentes. Ayuda a la promotora a tener una base activa y a segmentar mensajes: clientes nuevos, mundialistas, de múltiples o de deportes virtuales.',
+    pasos: [
+      'Invitar al cliente a unirse después de una buena atención o al pagar un premio.',
+      'Enviar mensajes cortos, útiles y con CTA claro.',
+      'Compartir 2 o 3 partidos fuertes, no saturar con demasiada información.',
+      'Usarlo para recordar promos temporales como Racha Mundialista o Yapa.',
+    ],
+    speech: '¡Únete al Club TE APUESTO, causa! 🤝 Te compartimos los partidazos del día, promos y opciones para que no te pierdas nada.',
+    kpi: 'Clientes inscritos · Clientes activos por semana · Mensajes con respuesta · Redenciones de promos · Recompra por cliente contactado.',
+    cuidado: 'No enviar mensajes excesivos o confusos. El Club debe aportar valor, no parecer spam.',
+  },
+  {
+    id: 'deportes-virtuales', num: '10', icon: '🎮', color: 'indigo',
+    name: 'Deportes Virtuales',
+    tag: 'Tiempos muertos',
+    objetivo: 'Generar venta continua cuando no hay partidos en vivo o el cliente busca rapidez.',
+    teoria: 'Los Deportes Virtuales son eventos simulados de corta duración: fútbol virtual, caballos, galgos, motos, MMA y más. Su característica principal es la rapidez y frecuencia.',
+    porQueVende: 'Evita tiempos muertos de venta. Mientras no hay partidos reales importantes, la promotora puede ofrecer una experiencia rápida y entretenida. Ideal para clientes que no quieren esperar.',
+    pasos: [
+      'Ofrecerlo en horarios sin partidos fuertes o mientras el cliente espera.',
+      'Explicar que son eventos rápidos y fáciles de jugar.',
+      'No reemplazar totalmente el fútbol real; usarlo como complemento.',
+      'Combinarlo con Autoatención para agilizar la experiencia.',
+    ],
+    speech: '¿Quieres jugar algo rápido mientras esperamos los partidos de la noche? 🎮 Tenemos Deportes Virtuales con eventos cada pocos minutos.',
+    kpi: 'Ventas en horarios valle · Tickets de Deportes Virtuales · Clientes nuevos que prueban el producto · Recompra en tiempos muertos.',
+    cuidado: 'Explicar claramente que son eventos virtuales. No presentarlos como partidos reales.',
+  },
+  {
+    id: 'cta-herr', num: '11', icon: '🎯', color: 'yellow',
+    name: 'CTA / Call To Action',
+    tag: 'Todo momento',
+    objetivo: 'Convertir la información en una acción concreta del cliente.',
+    teoria: 'El CTA es el llamado a la acción: la frase que guía al cliente a hacer algo. Sin CTA, la comunicación informa. Con CTA, la comunicación vende.',
+    porQueVende: 'Ayuda a cerrar la atención. Muchas veces el cliente escucha la promo, pero necesita una indicación simple para actuar. Un buen CTA reduce la indecisión y pasa de explicar a vender.',
+    pasos: [
+      'Usar verbos directos: arma, activa, aprovecha, juega, regístrate, vuelve.',
+      'Conectar el CTA con una urgencia real: hoy, antes del partido, solo por el Mundial.',
+      'Usar un CTA por comunicación para no confundir.',
+      'Cerrar cada speech con una acción concreta.',
+    ],
+    speech: '¡Arma tu múltiple HOY y activa la Yapa antes de que empiece el partido! 🎯',
+    kpi: 'Clientes que toman acción · Registros · Tickets emitidos · Clientes unidos al Club · Redenciones de promos.',
+    cuidado: 'Un CTA debe ser claro y honesto. Evitar frases agresivas o que presionen al cliente.',
+  },
+  {
+    id: 'pago-premios', num: '12', icon: '🏅', color: 'emerald',
+    name: 'Pago de Premios',
+    tag: 'Postventa / cobro',
+    objetivo: 'Generar confianza, reforzar seguridad y promover recompra.',
+    teoria: 'El pago de premios es una herramienta comercial porque demuestra que TE APUESTO cumple. Para el cliente, cobrar de forma clara y segura refuerza la confianza en el punto de venta y la marca.',
+    porQueVende: 'Un cliente que cobra bien tiene más probabilidad de volver a jugar. El momento del pago es ideal para felicitar, fidelizar, invitar al Club y proponer una nueva jugada de forma responsable.',
+    pasos: [
+      'Atender el pago con rapidez, amabilidad y claridad.',
+      'Felicitar al cliente y reforzar la confianza: aquí juega, gana y cobra.',
+      'Invitarlo a revisar partidos del día o unirse al Club TE APUESTO.',
+      'No presionar al cliente a reinvertir todo el premio; comunicar con responsabilidad.',
+    ],
+    speech: '¡Felicitaciones por tu premio, crack! 🏅 Recuerda que aquí puedes jugar, ganar y cobrar de forma segura. ¿Revisamos los partidos de hoy?',
+    kpi: 'Pagos atendidos correctamente · Tiempo de atención · Clientes que vuelven tras cobrar · Ganadores inscritos al Club.',
+    cuidado: 'El pago de premios exige precisión y transparencia. Nunca debe usarse para presionar al cliente.',
+  },
+  {
+    id: 'autoatencion', num: '13', icon: '🤖', color: 'sky',
+    name: 'Autoatención',
+    tag: 'Alta demanda',
+    objetivo: 'Agilizar la atención, educar al cliente y liberar tiempo comercial para captar más.',
+    teoria: 'La Autoatención permite que el cliente revise opciones, consulte o realice acciones de manera más autónoma. No reemplaza a la promotora; la ayuda a atender mejor en momentos de alta demanda.',
+    porQueVende: 'Reduce colas, mejora la experiencia y libera tiempo para que la promotora se enfoque en vender, captar nuevos clientes y explicar promos. Educa al cliente para que vuelva con mayor facilidad.',
+    pasos: [
+      'Presentarla como ayuda para jugar más rápido y revisar opciones.',
+      'Usarla en horarios de alta demanda o cuando hay varios clientes esperando.',
+      'Acompañar al cliente la primera vez para que aprenda el proceso.',
+      'Después de explicar, cerrar con CTA para que el cliente complete la acción.',
+    ],
+    speech: 'También puedes usar la Autoatención para revisar tus opciones y avanzar más rápido 🤖. Yo te ayudo la primera vez para que lo hagas fácil.',
+    kpi: 'Uso de Autoatención · Reducción de colas · Clientes guiados por primera vez · Tiempo liberado para captación.',
+    cuidado: 'No abandonar al cliente. La Autoatención debe sentirse como apoyo, no como falta de servicio.',
+  },
+]
+
+const CHECKLIST_DIARIA = [
+  { momento: '🌅 Antes de abrir', accion: 'Revisar partidos del día, promos vigentes, Yapa, Racha y herramientas disponibles.' },
+  { momento: '👥 Durante la atención', accion: 'Escuchar al cliente, elegir una herramienta, explicar simple y cerrar con CTA.' },
+  { momento: '⚡ Alta demanda', accion: 'Usar Autoatención, priorizar partidos clave y mantener el speech corto.' },
+  { momento: '🏅 Al pagar premios', accion: 'Felicitar, reforzar confianza, invitar al Club y ofrecer opciones sin presión.' },
+  { momento: '🌙 Al cierre del día', accion: 'Revisar qué herramientas generaron más ventas y qué clientes se pueden fidelizar.' },
+]
+
 /* ─── MAIN COMPONENT ─── */
 export default function BetTools({ onUpdatePoints }) {
   const [activeSection, setActiveSection] = useState('betbuilder')
@@ -152,18 +401,24 @@ export default function BetTools({ onUpdatePoints }) {
 
       {/* Section tabs */}
       <div className="sticky top-[57px] z-30 bg-brand-black/95 backdrop-blur-sm px-4 py-2 border-b border-white/5">
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-0.5">
           <button
             onClick={() => setActiveSection('betbuilder')}
-            className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${activeSection === 'betbuilder' ? 'bg-brand-orange text-white' : 'bg-brand-medium text-gray-400'}`}
+            className={`flex-shrink-0 flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${activeSection === 'betbuilder' ? 'bg-brand-orange text-white' : 'bg-brand-medium text-gray-400'}`}
           >
             🔄 BetBuilder vs Combinada
           </button>
           <button
             onClick={() => setActiveSection('types')}
-            className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${activeSection === 'types' ? 'bg-brand-orange text-white' : 'bg-brand-medium text-gray-400'}`}
+            className={`flex-shrink-0 flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${activeSection === 'types' ? 'bg-brand-orange text-white' : 'bg-brand-medium text-gray-400'}`}
           >
             🎰 10 Tipos de Apuestas
+          </button>
+          <button
+            onClick={() => setActiveSection('guia')}
+            className={`flex-shrink-0 flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${activeSection === 'guia' ? 'bg-brand-orange text-white' : 'bg-brand-medium text-gray-400'}`}
+          >
+            📚 Guía Comercial
           </button>
         </div>
       </div>
@@ -171,6 +426,7 @@ export default function BetTools({ onUpdatePoints }) {
       <div className="px-4 py-4 max-w-4xl mx-auto">
         {activeSection === 'betbuilder' && <BetBuilderSection onPoints={onUpdatePoints} />}
         {activeSection === 'types' && <BetTypesSection onPoints={onUpdatePoints} />}
+        {activeSection === 'guia' && <GuiaComercialSection />}
       </div>
     </div>
   )
@@ -453,6 +709,202 @@ const catColors = {
   'Goles': { bg: 'bg-green-700/20', border: 'border-green-600/30', text: 'text-green-300', dot: 'bg-green-500' },
   'Especiales': { bg: 'bg-purple-700/20', border: 'border-purple-600/30', text: 'text-purple-300', dot: 'bg-purple-500' },
   'Jugador': { bg: 'bg-brand-orange/10', border: 'border-brand-orange/30', text: 'text-brand-orange', dot: 'bg-brand-orange' },
+}
+
+/* ─── SECTION 3: Guía Comercial ─── */
+function GuiaComercialSection() {
+  const [expanded, setExpanded] = useState(null)
+  const [showChecklist, setShowChecklist] = useState(false)
+
+  function toggle(id) { setExpanded(prev => prev === id ? null : id) }
+
+  return (
+    <div className="space-y-4 animate-fade-in">
+      <div>
+        <h2 className="text-lg font-black text-white">Guía Comercial TE APUESTO</h2>
+        <p className="text-sm text-gray-500">13 herramientas para vender mejor, explicadas para promotoras</p>
+      </div>
+
+      {/* Intro banner */}
+      <div className="bg-brand-dark rounded-2xl border border-brand-orange/30 p-4">
+        <p className="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">💡 Idea central</p>
+        <p className="text-sm text-gray-300 leading-relaxed">
+          Una herramienta no vende sola. Vende cuando la promotora la explica con claridad, la conecta con el partido o promoción del día y <span className="text-white font-semibold">cierra con un CTA.</span>
+        </p>
+      </div>
+
+      {/* Quick map */}
+      <div className="bg-brand-dark rounded-2xl border border-white/10 overflow-hidden">
+        <div className="px-4 py-3 border-b border-white/5">
+          <p className="text-sm font-black text-white">🗺️ Mapa de herramientas</p>
+          <p className="text-xs text-gray-500 mt-0.5">Por perfil de cliente</p>
+        </div>
+        <div className="divide-y divide-white/5">
+          {[
+            { perfil: '🆕 Cliente nuevo', herramientas: 'Bonos de bienvenida + Speech simple + CTA registro' },
+            { perfil: '⚽ Cliente futbolero', herramientas: 'Partidos del día + Tipos de apuesta + Yapa o BetBuilder' },
+            { perfil: '⚡ Busca rapidez', herramientas: 'Deportes Virtuales + Autoatención' },
+            { perfil: '🎫 Ya apostó', herramientas: 'Cashout + Pago anticipado + Pago de premios + Club' },
+            { perfil: '🔄 Cliente recurrente', herramientas: 'Club TE APUESTO + Racha Mundialista + Promos vigentes' },
+          ].map((row, i) => (
+            <div key={i} className="px-4 py-3">
+              <p className="text-xs font-bold text-white mb-0.5">{row.perfil}</p>
+              <p className="text-xs text-gray-400 leading-relaxed">{row.herramientas}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Herramienta cards */}
+      <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Las 13 herramientas</p>
+      <div className="space-y-3">
+        {HERRAMIENTAS_COMERCIALES.map(h => (
+          <HerramientaCard key={h.id} h={h} expanded={expanded === h.id} onToggle={() => toggle(h.id)} />
+        ))}
+      </div>
+
+      {/* Fórmula de speech */}
+      <div className="bg-brand-dark rounded-2xl border border-brand-yellow/30 p-4">
+        <p className="text-xs font-bold text-brand-yellow uppercase tracking-wider mb-3">⚡ Fórmula de speech recomendada</p>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 mb-3">
+          {[
+            { step: '1', label: 'Gancho', desc: 'Partido, promo o necesidad del cliente' },
+            { step: '2', label: 'Herramienta', desc: 'Yapa, Club, bono, Autoatención...' },
+            { step: '3', label: 'Beneficio', desc: 'Para qué le sirve al cliente' },
+            { step: '4', label: 'CTA', desc: 'Registra, arma, activa, revisa, vuelve' },
+          ].map(s => (
+            <div key={s.step} className="bg-brand-medium rounded-xl p-3 text-center">
+              <div className="w-7 h-7 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-black flex items-center justify-center mx-auto mb-1.5">{s.step}</div>
+              <p className="text-xs font-bold text-white mb-1">{s.label}</p>
+              <p className="text-xs text-gray-400 leading-snug">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-brand-orange/10 border border-brand-orange/20 rounded-xl p-3">
+          <p className="text-xs font-bold text-brand-orange mb-1">💬 Speech modelo</p>
+          <p className="text-sm text-gray-300 italic leading-relaxed">
+            "Hoy tenemos partido fuerte. Puedes armar una múltiple desde 5 partidos, activar la Yapa si cumple condiciones y aprovechar la promo del Mundial por tiempo limitado. ¿La revisamos juntos?"
+          </p>
+        </div>
+      </div>
+
+      {/* Checklist diaria toggle */}
+      <button
+        onClick={() => setShowChecklist(!showChecklist)}
+        className="w-full py-3 bg-brand-medium rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2"
+      >
+        <span>{showChecklist ? '▲' : '▼'}</span>
+        {showChecklist ? 'Ocultar checklist diaria' : '✅ Ver checklist diaria de promotora'}
+      </button>
+
+      {showChecklist && (
+        <div className="bg-brand-dark rounded-2xl border border-white/10 overflow-hidden animate-fade-in">
+          <div className="px-4 py-3 border-b border-white/5">
+            <p className="text-sm font-black text-white">✅ Checklist diaria para promotoras</p>
+          </div>
+          <div className="divide-y divide-white/5">
+            {CHECKLIST_DIARIA.map((item, i) => (
+              <div key={i} className="px-4 py-3 flex gap-3 items-start">
+                <span className="text-lg flex-shrink-0">{item.momento.split(' ')[0]}</span>
+                <div>
+                  <p className="text-xs font-bold text-white mb-0.5">{item.momento.slice(item.momento.indexOf(' ') + 1)}</p>
+                  <p className="text-xs text-gray-400 leading-relaxed">{item.accion}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Cierre */}
+      <div className="bg-brand-dark rounded-2xl border border-white/10 p-4">
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">💬 Mensaje para el equipo</p>
+        <p className="text-sm text-gray-300 leading-relaxed italic">
+          "No vendemos solo apuestas: vendemos <span className="text-white font-semibold">experiencia, información, confianza y oportunidad.</span> Cada herramienta bien usada ayuda a crecer ventas, clientes y fidelización."
+        </p>
+      </div>
+
+      <ResponsibleBanner compact />
+    </div>
+  )
+}
+
+/* ─── Herramienta Card ─── */
+function HerramientaCard({ h, expanded, onToggle }) {
+  const c = HERR_COLORS[h.color] || HERR_COLORS.orange
+
+  return (
+    <div className={`bg-brand-dark rounded-2xl border transition-all duration-200 ${expanded ? `${c.border}` : 'border-white/5'}`}>
+      <button onClick={onToggle} className="w-full text-left p-4 flex items-center gap-3">
+        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0 ${c.bg} border ${c.border}`}>
+          {h.icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-black text-gray-600">{h.num}</span>
+            <p className="font-bold text-white text-sm">{h.name}</p>
+          </div>
+          <span className={`text-xs font-bold px-2 py-0.5 rounded-full mt-1 inline-block ${c.badge} ${c.text}`}>
+            {h.tag}
+          </span>
+        </div>
+        <span className={`text-gray-500 text-sm transition-transform duration-200 flex-shrink-0 ${expanded ? 'rotate-180' : ''}`}>▼</span>
+      </button>
+
+      {expanded && (
+        <div className="px-4 pb-4 space-y-3 animate-fade-in">
+          {/* Objetivo */}
+          <div className={`${c.bg} border ${c.border} rounded-xl p-3`}>
+            <p className={`text-xs font-bold mb-1 ${c.text}`}>🎯 Objetivo</p>
+            <p className="text-sm text-gray-300 leading-relaxed">{h.objetivo}</p>
+          </div>
+
+          {/* Teoría */}
+          <div className="bg-brand-medium rounded-xl p-3">
+            <p className="text-xs font-bold text-gray-400 mb-1">📖 ¿Qué es?</p>
+            <p className="text-sm text-gray-300 leading-relaxed">{h.teoria}</p>
+          </div>
+
+          {/* Por qué vende */}
+          <div className="bg-brand-green/10 border border-brand-green/20 rounded-xl p-3">
+            <p className="text-xs font-bold text-brand-green mb-1">💰 ¿Por qué sirve en la venta?</p>
+            <p className="text-sm text-gray-300 leading-relaxed">{h.porQueVende}</p>
+          </div>
+
+          {/* Pasos */}
+          <div className="bg-brand-medium rounded-xl p-3">
+            <p className="text-xs font-bold text-gray-400 mb-2">📋 Cómo aplicarla</p>
+            <div className="space-y-1.5">
+              {h.pasos.map((paso, i) => (
+                <div key={i} className="flex gap-2 items-start">
+                  <span className={`text-xs font-black mt-0.5 flex-shrink-0 ${c.text}`}>{i + 1}.</span>
+                  <p className="text-xs text-gray-300 leading-relaxed">{paso}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Speech */}
+          <div className={`${c.bg} border ${c.border} rounded-xl p-3`}>
+            <p className={`text-xs font-bold mb-1 ${c.text}`}>💬 Speech de ejemplo</p>
+            <p className="text-sm text-gray-300 italic leading-relaxed">"{h.speech}"</p>
+          </div>
+
+          {/* KPI */}
+          <div className="bg-brand-medium rounded-xl p-3">
+            <p className="text-xs font-bold text-gray-400 mb-1">📊 KPIs sugeridos</p>
+            <p className="text-xs text-gray-400 leading-relaxed">{h.kpi}</p>
+          </div>
+
+          {/* Cuidado */}
+          <div className="bg-red-950/30 border border-red-500/20 rounded-xl p-3">
+            <p className="text-xs font-bold text-red-400 mb-1">⚠️ Cuidado comercial</p>
+            <p className="text-sm text-gray-300 leading-relaxed">{h.cuidado}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 function BetTypeCard({ bet, number, expanded, onToggle }) {
