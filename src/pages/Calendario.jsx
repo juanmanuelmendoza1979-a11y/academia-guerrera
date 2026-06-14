@@ -2,6 +2,53 @@ import { useState, useEffect, useCallback } from 'react'
 
 const API_KEY = '3929240369'
 
+// ─── Traducción de selecciones nacionales (API en inglés → español) ──────────
+const NOMBRES_ES = {
+  // Mundial 2026
+  'Mexico': 'México', 'South Korea': 'Corea del Sur', 'Czech Republic': 'Rep. Checa',
+  'South Africa': 'Sudáfrica', 'Switzerland': 'Suiza', 'Canada': 'Canadá',
+  'Qatar': 'Catar', 'Bosnia-Herzegovina': 'Bosnia-Herzegovina',
+  'Scotland': 'Escocia', 'Morocco': 'Marruecos', 'Brazil': 'Brasil', 'Haiti': 'Haití',
+  'USA': 'Estados Unidos', 'Australia': 'Australia', 'Turkey': 'Turquía',
+  'Paraguay': 'Paraguay', 'Germany': 'Alemania', 'Curaçao': 'Curazao',
+  'Ivory Coast': "Costa de Marfil", 'Ecuador': 'Ecuador',
+  'Netherlands': 'Países Bajos', 'Japan': 'Japón', 'Sweden': 'Suecia',
+  'Tunisia': 'Túnez', 'Belgium': 'Bélgica', 'Egypt': 'Egipto', 'Iran': 'Irán',
+  'New Zealand': 'Nueva Zelanda', 'Spain': 'España', 'Cape Verde': 'Cabo Verde',
+  'Saudi Arabia': 'Arabia Saudita', 'Uruguay': 'Uruguay', 'France': 'Francia',
+  'Senegal': 'Senegal', 'Iraq': 'Irak', 'Norway': 'Noruega', 'Argentina': 'Argentina',
+  'Algeria': 'Argelia', 'Austria': 'Austria', 'Jordan': 'Jordania',
+  'Portugal': 'Portugal', 'DR Congo': 'Rep. Dem. Congo', 'Uzbekistan': 'Uzbekistán',
+  'Colombia': 'Colombia', 'England': 'Inglaterra', 'Croatia': 'Croacia',
+  'Ghana': 'Ghana', 'Panama': 'Panamá',
+  // Selecciones frecuentes en amistosos / clasificatorias
+  'Italy': 'Italia', 'Netherlands': 'Países Bajos', 'Poland': 'Polonia',
+  'Serbia': 'Serbia', 'Romania': 'Rumanía', 'Ukraine': 'Ucrania',
+  'Greece': 'Grecia', 'Hungary': 'Hungría', 'Denmark': 'Dinamarca',
+  'Finland': 'Finlandia', 'Slovakia': 'Eslovaquia', 'Slovenia': 'Eslovenia',
+  'Albania': 'Albania', 'Iceland': 'Islandia', 'Wales': 'Gales',
+  'Northern Ireland': 'Irlanda del Norte', 'Ireland': 'Irlanda',
+  'Russia': 'Rusia', 'Belarus': 'Bielorrusia', 'Kosovo': 'Kosovo',
+  'Chile': 'Chile', 'Bolivia': 'Bolivia', 'Venezuela': 'Venezuela',
+  'Peru': 'Perú', 'Costa Rica': 'Costa Rica', 'Honduras': 'Honduras',
+  'El Salvador': 'El Salvador', 'Guatemala': 'Guatemala', 'Jamaica': 'Jamaica',
+  'Trinidad and Tobago': 'Trinidad y Tobago', 'Cuba': 'Cuba',
+  'Nigeria': 'Nigeria', 'Cameroon': 'Camerún', 'Ivory Coast': 'Costa de Marfil',
+  'Mali': 'Malí', 'Burkina Faso': 'Burkina Faso', 'Guinea': 'Guinea',
+  'Tanzania': 'Tanzania', 'Uganda': 'Uganda', 'Kenya': 'Kenia',
+  'Ethiopia': 'Etiopía', 'Angola': 'Angola', 'Zambia': 'Zambia',
+  'Zimbabwe': 'Zimbabue', 'Mozambique': 'Mozambique',
+  'China': 'China', 'India': 'India', 'Indonesia': 'Indonesia',
+  'Thailand': 'Tailandia', 'Vietnam': 'Vietnam', 'Malaysia': 'Malasia',
+  'Philippines': 'Filipinas', 'Singapore': 'Singapur', 'Myanmar': 'Myanmar',
+  'Bahrain': 'Baréin', 'Kuwait': 'Kuwait', 'Oman': 'Omán', 'UAE': 'Emiratos Árabes',
+  'United Arab Emirates': 'Emiratos Árabes', 'Lebanon': 'Líbano', 'Syria': 'Siria',
+  'Palestine': 'Palestina', 'Yemen': 'Yemen',
+  'New Caledonia': 'Nueva Caledonia', 'Fiji': 'Fiyi', 'Tahiti': 'Tahití',
+}
+// Devuelve el nombre en español si existe, si no el original
+const tn = name => NOMBRES_ES[name] || name
+
 // ─── Ligas autorizadas — nombres exactos del API + variantes conocidas ────────
 // El API puede devolver distintos nombres según la temporada o la fuente.
 // Incluimos TODAS las variantes confirmadas para no perder ninguna liga.
@@ -432,8 +479,8 @@ const PITCHES_CLUB = [
 
 // ─── Generador de Speech completo con voz TE APUESTO ─────────────────────────
 function generarSpeechCompleto(partido, hora, formaLocal, formaVisita) {
-  const local    = partido.strHomeTeam
-  const visita   = partido.strAwayTeam
+  const local    = tn(partido.strHomeTeam)
+  const visita   = tn(partido.strAwayTeam)
   const liga     = partido.strLeague
   const [a1, a2] = generarApuestas(formaLocal, formaVisita, partido)
   const idx      = parseInt(partido.idEvent || 0) % PITCHES_SPEECH.length
@@ -472,8 +519,8 @@ ${pitch}
 
 // ─── Generador de Mensaje Club con voz TE APUESTO ────────────────────────────
 function generarMensajeClubCompleto(partido, hora, formaLocal, formaVisita) {
-  const local    = partido.strHomeTeam
-  const visita   = partido.strAwayTeam
+  const local    = tn(partido.strHomeTeam)
+  const visita   = tn(partido.strAwayTeam)
   const liga     = partido.strLeague
   const [a1, a2] = generarApuestas(formaLocal, formaVisita, partido)
   const id       = parseInt(partido.idEvent || 0)
@@ -538,8 +585,8 @@ function ModalTexto({ partido, tipo, onClose }) {
     }).catch(() => {})
   }
 
-  const local  = partido.strHomeTeam
-  const visita = partido.strAwayTeam
+  const local  = tn(partido.strHomeTeam)
+  const visita = tn(partido.strAwayTeam)
 
   // For speech: all 4 options using match data
   const speeches = !loading && esSpeech
@@ -573,7 +620,7 @@ function ModalTexto({ partido, tipo, onClose }) {
                 {esSpeech ? '4 SPEECHES DE VENTA' : 'MENSAJE CLUB TE APUESTO'}
               </p>
               <p className="text-[10px] text-gray-500 truncate">
-                {partido.strHomeTeam} vs {partido.strAwayTeam}
+                {tn(partido.strHomeTeam)} vs {tn(partido.strAwayTeam)}
               </p>
             </div>
           </div>
@@ -740,7 +787,7 @@ function TendenciasModal({ partido, onClose, onOpenModal }) {
         {/* Equipos + forma */}
         <div className="flex gap-3 px-4 py-4">
           <FilaEquipo
-            nombre={partido.strHomeTeam}
+            nombre={tn(partido.strHomeTeam)}
             badge={partido.strHomeTeamBadge}
             forma={formaLocal}
             loading={loading}
@@ -749,7 +796,7 @@ function TendenciasModal({ partido, onClose, onOpenModal }) {
             <span className="text-gray-600 font-black text-lg">VS</span>
           </div>
           <FilaEquipo
-            nombre={partido.strAwayTeam}
+            nombre={tn(partido.strAwayTeam)}
             badge={partido.strAwayTeamBadge}
             forma={formaVisita}
             loading={loading}
@@ -862,7 +909,7 @@ function PartidoCard({ partido, diaOffset, onVerTendencias, onOpenModal }) {
             <div className="w-10 h-10 rounded-xl bg-brand-medium flex items-center justify-center text-lg">⚽</div>
           )}
           <p className="text-xs font-bold text-white text-center leading-tight line-clamp-2">
-            {partido.strHomeTeam}
+            {tn(partido.strHomeTeam)}
           </p>
         </div>
 
@@ -896,7 +943,7 @@ function PartidoCard({ partido, diaOffset, onVerTendencias, onOpenModal }) {
             <div className="w-10 h-10 rounded-xl bg-brand-medium flex items-center justify-center text-lg">⚽</div>
           )}
           <p className="text-xs font-bold text-white text-center leading-tight line-clamp-2">
-            {partido.strAwayTeam}
+            {tn(partido.strAwayTeam)}
           </p>
         </div>
       </div>
