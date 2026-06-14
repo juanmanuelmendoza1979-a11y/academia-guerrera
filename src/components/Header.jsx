@@ -1,4 +1,4 @@
-export default function Header({ currentPage, userPoints, userLevel, isSupervisor, isJefe }) {
+export default function Header({ currentPage, userPoints, userLevel, isSupervisor, isJefe, onLogout, session }) {
   const titles = {
     home: null,                              // hero propio en Home
     puntoventa: 'Cómo ofrecer en el POS',
@@ -47,7 +47,7 @@ export default function Header({ currentPage, userPoints, userLevel, isSuperviso
           </div>
         )}
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5 bg-brand-medium rounded-full px-3 py-1.5">
             <span className="text-brand-yellow text-sm">⭐</span>
             <span className="text-sm font-bold text-white">{userPoints?.toLocaleString()}</span>
@@ -55,6 +55,15 @@ export default function Header({ currentPage, userPoints, userLevel, isSuperviso
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-yellow-500 flex items-center justify-center text-sm font-bold">
             {userLevel}
           </div>
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              title="Cerrar sesión"
+              className="w-8 h-8 rounded-full bg-brand-medium flex items-center justify-center text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all active:scale-95"
+            >
+              <span className="text-base leading-none">⏏</span>
+            </button>
+          )}
         </div>
       </div>
     </header>

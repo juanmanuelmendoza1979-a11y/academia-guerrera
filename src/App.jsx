@@ -349,7 +349,7 @@ export default function App() {
 
       {/* Main content */}
       <div className="flex-1 lg:ml-56 flex flex-col min-h-screen min-w-0 overflow-x-hidden">
-        <Header currentPage={currentPage} userPoints={userState.points} userLevel={userState.level} isSupervisor={isSupervisor} isJefe={isJefe} />
+        <Header currentPage={currentPage} userPoints={userState.points} userLevel={userState.level} isSupervisor={isSupervisor} isJefe={isJefe} onLogout={handleActiveLogout} session={activeSession} />
 
         <main className="flex-1">
           {currentPage === 'home' && (
