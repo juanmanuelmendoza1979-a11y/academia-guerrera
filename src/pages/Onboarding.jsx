@@ -44,15 +44,19 @@ const SUPERVISORES_POR_JEFE = [
 const PASOS = ['bienvenida', 'perfil', 'pin', 'avatar', 'listo']
 
 export default function Onboarding({ onComplete }) {
-  const [paso, setPaso]           = useState('bienvenida')
-  const [nombre, setNombre]       = useState('')
-  const [pos, setPos]             = useState('')
-  const [supervisor, setSupervisor] = useState('')
-  const [pin, setPin]             = useState('')
-  const [pinConf, setPinConf]     = useState('')
-  const [avatar, setAvatar]       = useState('Leona')
-  const [loading, setLoading]     = useState(false)
-  const [error, setError]         = useState('')
+  const [paso, setPaso]               = useState('bienvenida')
+  const [primerNombre, setPrimerNombre] = useState('')
+  const [primerApellido, setPrimerApellido] = useState('')
+  const [inicialApellido, setInicialApellido] = useState('')
+  const [supervisor, setSupervisor]   = useState('')
+  const [pin, setPin]                 = useState('')
+  const [pinConf, setPinConf]         = useState('')
+  const [avatar, setAvatar]           = useState('Leona')
+  const [loading, setLoading]         = useState(false)
+  const [error, setError]             = useState('')
+
+  const nombre = [primerNombre.trim(), primerApellido.trim(), inicialApellido.trim().slice(0,1).toUpperCase()]
+    .filter(Boolean).join(' ') + (inicialApellido.trim() ? '.' : '')
 
   const idx = PASOS.indexOf(paso)
   const progreso = Math.round((idx / (PASOS.length - 1)) * 100)
@@ -63,12 +67,12 @@ export default function Onboarding({ onComplete }) {
     if (pin !== pinConf)  { setError('Los PIN no coinciden'); return }
     setLoading(true)
     try {
-      const guerrera = await crearGuerrera({ nombre, pos, avatar, pin, supervisor })
+      const guerrera = await crearGuerrera({ nombre, avatar, pin, supervisor })
       localStorage.setItem('guerrera_session', JSON.stringify(guerrera))
       setPaso('listo')
     } catch (e) {
       if (e.message === 'YA_EXISTE') {
-        setError('Ya existe una guerrera con ese nombre y punto de venta. ¿Ya tienes cuenta? Inicia sesión.')
+        setError('Ya existe una guerrera con ese nombre. ¿Ya tienes cuenta? Inicia sesión.')
       } else {
         setError('Error al crear tu cuenta. Verifica tu conexión e intenta de nuevo.')
       }
@@ -144,25 +148,42 @@ export default function Onboarding({ onComplete }) {
 
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Tu nombre completo</label>
+                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Primer Nombre Completo</label>
                 <input
                   type="text"
-                  value={nombre}
-                  onChange={e => setNombre(e.target.value)}
-                  placeholder="Ej: María García"
+                  value={primerNombre}
+                  onChange={e => setPrimerNombre(e.target.value)}
+                  placeholder="Ej: María"
                   className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-brand-orange outline-none text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Código de tu punto de venta</label>
+                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Primer Apellido Completo</label>
                 <input
                   type="text"
-                  value={pos}
-                  onChange={e => setPos(e.target.value.toUpperCase())}
-                  placeholder="Ej: POS-001 o nombre del local"
+                  value={primerApellido}
+                  onChange={e => setPrimerApellido(e.target.value)}
+                  placeholder="Ej: García"
                   className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-brand-orange outline-none text-sm"
                 />
               </div>
+              <div>
+                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Inicial de tu Segundo Apellido</label>
+                <input
+                  type="text"
+                  value={inicialApellido}
+                  onChange={e => setInicialApellido(e.target.value.replace(/[^a-zA-ZáéíóúñÁÉÍÓÚÑ]/g, '').slice(0,1).toUpperCase())}
+                  placeholder="Ej: R"
+                  maxLength={1}
+                  className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-brand-orange outline-none text-sm uppercase"
+                />
+              </div>
+              {nombre && (
+                <div className="bg-brand-orange/10 border border-brand-orange/20 rounded-xl px-3 py-2">
+                  <p className="text-xs text-gray-500">Tu nombre en el ranking:</p>
+                  <p className="text-sm font-black text-white">{nombre}</p>
+                </div>
+              )}
               <div>
                 <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Tu supervisor</label>
                 <p className="text-xs text-gray-600 mb-2">Selecciona el nombre de la persona que te supervisa directamente</p>
@@ -201,7 +222,7 @@ export default function Onboarding({ onComplete }) {
             </div>
 
             <button
-              disabled={!nombre.trim() || !pos.trim() || !supervisor}
+              disabled={!primerNombre.trim() || !primerApellido.trim() || !inicialApellido.trim() || !supervisor}
               onClick={() => setPaso('pin')}
               className="w-full bg-brand-orange text-white font-black py-4 rounded-2xl text-base hover:bg-orange-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
@@ -303,7 +324,7 @@ export default function Onboarding({ onComplete }) {
               </div>
               <div>
                 <p className="font-bold text-white text-sm">{nombre}</p>
-                <p className="text-xs text-gray-500">{pos} · Sup: {supervisor}</p>
+                <p className="text-xs text-gray-500">Sup: {supervisor}</p>
               </div>
             </div>
 
@@ -345,7 +366,7 @@ export default function Onboarding({ onComplete }) {
                 </div>
                 <div>
                   <p className="font-bold text-white">{nombre}</p>
-                  <p className="text-xs text-gray-500">{pos} · Sup: {supervisor}</p>
+                  <p className="text-xs text-gray-500">Sup: {supervisor}</p>
                 </div>
               </div>
             </div>

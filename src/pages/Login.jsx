@@ -3,24 +3,23 @@ import { loginGuerrera } from '../lib/db'
 
 export default function Login({ onLogin, onNuevaCuenta, onVolver }) {
   const [nombre, setNombre] = useState('')
-  const [pos, setPos]       = useState('')
   const [pin, setPin]       = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError]   = useState('')
 
   async function handleLogin() {
     setError('')
-    if (!nombre.trim() || !pos.trim()) { setError('Ingresa tu nombre y punto de venta'); return }
+    if (!nombre.trim()) { setError('Ingresa tu nombre completo'); return }
     if (pin.length !== 4) { setError('El PIN debe tener 4 dígitos'); return }
 
     setLoading(true)
     try {
-      const guerrera = await loginGuerrera({ nombre, pos, pin })
+      const guerrera = await loginGuerrera({ nombre, pin })
       localStorage.setItem('guerrera_session', JSON.stringify(guerrera))
       onLogin(guerrera)
     } catch (e) {
       if (e.message === 'NO_ENCONTRADA') {
-        setError('No encontramos tu cuenta. Verifica tu nombre y punto de venta.')
+        setError('No encontramos tu cuenta. Verifica tu nombre tal como lo registraste.')
       } else if (e.message === 'PIN_INCORRECTO') {
         setError('PIN incorrecto. Inténtalo de nuevo.')
       } else {
@@ -55,19 +54,10 @@ export default function Login({ onLogin, onNuevaCuenta, onVolver }) {
               type="text"
               value={nombre}
               onChange={e => setNombre(e.target.value)}
-              placeholder="Ej: María García"
+              placeholder="Ej: María García R."
               className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-brand-orange outline-none text-sm"
             />
-          </div>
-          <div>
-            <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Código de tu punto de venta</label>
-            <input
-              type="text"
-              value={pos}
-              onChange={e => setPos(e.target.value.toUpperCase())}
-              placeholder="Ej: POS-001"
-              className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-brand-orange outline-none text-sm"
-            />
+            <p className="text-xs text-gray-600 mt-1">Tal como lo ingresaste al registrarte</p>
           </div>
           <div>
             <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">PIN (4 dígitos)</label>
@@ -91,7 +81,7 @@ export default function Login({ onLogin, onNuevaCuenta, onVolver }) {
 
         <button
           onClick={handleLogin}
-          disabled={loading || !nombre.trim() || !pos.trim() || pin.length !== 4}
+          disabled={loading || !nombre.trim() || pin.length !== 4}
           className="w-full bg-brand-orange text-white font-black py-4 rounded-2xl text-base hover:bg-orange-500 transition-all disabled:opacity-40 flex items-center justify-center gap-2"
         >
           {loading ? (
