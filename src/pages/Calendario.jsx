@@ -1,53 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
+import { tn } from '../utils/translations'
 
 const API_KEY = '3929240369'
-
-// ─── Traducción de selecciones nacionales (API en inglés → español) ──────────
-const NOMBRES_ES = {
-  // Mundial 2026
-  'Mexico': 'México', 'South Korea': 'Corea del Sur', 'Czech Republic': 'Rep. Checa',
-  'South Africa': 'Sudáfrica', 'Switzerland': 'Suiza', 'Canada': 'Canadá',
-  'Qatar': 'Catar', 'Bosnia-Herzegovina': 'Bosnia-Herzegovina',
-  'Scotland': 'Escocia', 'Morocco': 'Marruecos', 'Brazil': 'Brasil', 'Haiti': 'Haití',
-  'USA': 'Estados Unidos', 'Australia': 'Australia', 'Turkey': 'Turquía',
-  'Paraguay': 'Paraguay', 'Germany': 'Alemania', 'Curaçao': 'Curazao',
-  'Ivory Coast': "Costa de Marfil", 'Ecuador': 'Ecuador',
-  'Netherlands': 'Países Bajos', 'Japan': 'Japón', 'Sweden': 'Suecia',
-  'Tunisia': 'Túnez', 'Belgium': 'Bélgica', 'Egypt': 'Egipto', 'Iran': 'Irán',
-  'New Zealand': 'Nueva Zelanda', 'Spain': 'España', 'Cape Verde': 'Cabo Verde',
-  'Saudi Arabia': 'Arabia Saudita', 'Uruguay': 'Uruguay', 'France': 'Francia',
-  'Senegal': 'Senegal', 'Iraq': 'Irak', 'Norway': 'Noruega', 'Argentina': 'Argentina',
-  'Algeria': 'Argelia', 'Austria': 'Austria', 'Jordan': 'Jordania',
-  'Portugal': 'Portugal', 'DR Congo': 'Rep. Dem. Congo', 'Uzbekistan': 'Uzbekistán',
-  'Colombia': 'Colombia', 'England': 'Inglaterra', 'Croatia': 'Croacia',
-  'Ghana': 'Ghana', 'Panama': 'Panamá',
-  // Selecciones frecuentes en amistosos / clasificatorias
-  'Italy': 'Italia', 'Netherlands': 'Países Bajos', 'Poland': 'Polonia',
-  'Serbia': 'Serbia', 'Romania': 'Rumanía', 'Ukraine': 'Ucrania',
-  'Greece': 'Grecia', 'Hungary': 'Hungría', 'Denmark': 'Dinamarca',
-  'Finland': 'Finlandia', 'Slovakia': 'Eslovaquia', 'Slovenia': 'Eslovenia',
-  'Albania': 'Albania', 'Iceland': 'Islandia', 'Wales': 'Gales',
-  'Northern Ireland': 'Irlanda del Norte', 'Ireland': 'Irlanda',
-  'Russia': 'Rusia', 'Belarus': 'Bielorrusia', 'Kosovo': 'Kosovo',
-  'Chile': 'Chile', 'Bolivia': 'Bolivia', 'Venezuela': 'Venezuela',
-  'Peru': 'Perú', 'Costa Rica': 'Costa Rica', 'Honduras': 'Honduras',
-  'El Salvador': 'El Salvador', 'Guatemala': 'Guatemala', 'Jamaica': 'Jamaica',
-  'Trinidad and Tobago': 'Trinidad y Tobago', 'Cuba': 'Cuba',
-  'Nigeria': 'Nigeria', 'Cameroon': 'Camerún', 'Ivory Coast': 'Costa de Marfil',
-  'Mali': 'Malí', 'Burkina Faso': 'Burkina Faso', 'Guinea': 'Guinea',
-  'Tanzania': 'Tanzania', 'Uganda': 'Uganda', 'Kenya': 'Kenia',
-  'Ethiopia': 'Etiopía', 'Angola': 'Angola', 'Zambia': 'Zambia',
-  'Zimbabwe': 'Zimbabue', 'Mozambique': 'Mozambique',
-  'China': 'China', 'India': 'India', 'Indonesia': 'Indonesia',
-  'Thailand': 'Tailandia', 'Vietnam': 'Vietnam', 'Malaysia': 'Malasia',
-  'Philippines': 'Filipinas', 'Singapore': 'Singapur', 'Myanmar': 'Myanmar',
-  'Bahrain': 'Baréin', 'Kuwait': 'Kuwait', 'Oman': 'Omán', 'UAE': 'Emiratos Árabes',
-  'United Arab Emirates': 'Emiratos Árabes', 'Lebanon': 'Líbano', 'Syria': 'Siria',
-  'Palestine': 'Palestina', 'Yemen': 'Yemen',
-  'New Caledonia': 'Nueva Caledonia', 'Fiji': 'Fiyi', 'Tahiti': 'Tahití',
-}
-// Devuelve el nombre en español si existe, si no el original
-const tn = name => NOMBRES_ES[name] || name
 
 // ─── Ligas autorizadas — nombres exactos del API + variantes conocidas ────────
 // El API puede devolver distintos nombres según la temporada o la fuente.

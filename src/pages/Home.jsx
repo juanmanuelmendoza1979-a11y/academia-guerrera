@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import ProgressBar from '../components/ProgressBar'
 import ResponsibleBanner from '../components/ResponsibleBanner'
+import { tn } from '../utils/translations'
 
 // ─── API y utilidades de fútbol (para el widget del día) ─────────────────────
 const FUT_API = '3929240369'
@@ -123,7 +124,7 @@ function getPrioridad(strLeague) {
 
 // ─── Generadores con voz TE APUESTO (Crack) ───────────────────────────────────
 function generarApuestasFut(formaLocal, formaVisita, partido) {
-  const local = partido.strHomeTeam, visita = partido.strAwayTeam
+  const local = tn(partido.strHomeTeam), visita = tn(partido.strAwayTeam)
   const wL = formaLocal.filter(r=>r==='G').length, wV = formaVisita.filter(r=>r==='G').length
   const dL = formaLocal.filter(r=>r==='E').length, dV = formaVisita.filter(r=>r==='E').length
   let a1, a2
@@ -153,7 +154,7 @@ const PITCHES_C = [
 ]
 
 function speechFut(partido, hora, fL, fV) {
-  const lo=partido.strHomeTeam, vi=partido.strAwayTeam
+  const lo=tn(partido.strHomeTeam), vi=tn(partido.strAwayTeam)
   const [a1,a2] = generarApuestasFut(fL,fV,partido)
   const idx = parseInt(partido.idEvent||0) % PITCHES_H.length
   const fStrL = fL.join(' ')||'Sin datos', fStrV = fV.join(' ')||'Sin datos'
@@ -162,7 +163,7 @@ function speechFut(partido, hora, fL, fV) {
 }
 
 function mensajeClubFut(partido, hora, fL, fV) {
-  const lo=partido.strHomeTeam, vi=partido.strAwayTeam
+  const lo=tn(partido.strHomeTeam), vi=tn(partido.strAwayTeam)
   const [a1,a2] = generarApuestasFut(fL,fV,partido)
   const idx = parseInt(partido.idEvent||0) % PITCHES_C.length
   const rL=rachaLabelFut(fL), rV=rachaLabelFut(fV)
@@ -216,11 +217,11 @@ function TendenciasModalHome({ partido, onClose, onOpenModal }) {
   const wL=formaLocal.filter(r=>r==='G').length, wV=formaVisita.filter(r=>r==='G').length
   const dL=formaLocal.filter(r=>r==='E').length
   const consejo = !loading ? (
-    wL>=4 ? `${partido.strHomeTeam} llega arrollador con ${wL} victorias en sus últimos 5. Favorito claro en casa.` :
-    wV>=4 ? `${partido.strAwayTeam} viene en racha imparable: ${wV} victorias seguidas. Visitante muy peligroso.` :
-    wL>=3&&wV<=1 ? `${partido.strHomeTeam} tiene ventaja clara en forma. Buen momento para apostar por el local.` :
-    wV>=3&&wL<=1 ? `${partido.strAwayTeam} llega con más confianza. El visitante puede sorprender hoy.` :
-    dL>=3 ? `${partido.strHomeTeam} viene empatando mucho. El empate es una opción interesante.` :
+    wL>=4 ? `${tn(partido.strHomeTeam)} llega arrollador con ${wL} victorias en sus últimos 5. Favorito claro en casa.` :
+    wV>=4 ? `${tn(partido.strAwayTeam)} viene en racha imparable: ${wV} victorias seguidas. Visitante muy peligroso.` :
+    wL>=3&&wV<=1 ? `${tn(partido.strHomeTeam)} tiene ventaja clara en forma. Buen momento para apostar por el local.` :
+    wV>=3&&wL<=1 ? `${tn(partido.strAwayTeam)} llega con más confianza. El visitante puede sorprender hoy.` :
+    dL>=3 ? `${tn(partido.strHomeTeam)} viene empatando mucho. El empate es una opción interesante.` :
     `Partido equilibrado. Ideal para apuesta combinada.`
   ) : ''
 
@@ -236,9 +237,9 @@ function TendenciasModalHome({ partido, onClose, onOpenModal }) {
         </div>
         <div className="flex-1 overflow-y-auto">
           <div className="flex gap-2 px-3 py-3">
-            <FilaEquipoFut nombre={partido.strHomeTeam} badge={partido.strHomeTeamBadge} forma={formaLocal} loading={loading}/>
+            <FilaEquipoFut nombre={tn(partido.strHomeTeam)} badge={partido.strHomeTeamBadge} forma={formaLocal} loading={loading}/>
             <div className="flex flex-col items-center justify-center flex-shrink-0 pt-2"><span className="text-gray-600 font-black text-base">VS</span></div>
-            <FilaEquipoFut nombre={partido.strAwayTeam} badge={partido.strAwayTeamBadge} forma={formaVisita} loading={loading}/>
+            <FilaEquipoFut nombre={tn(partido.strAwayTeam)} badge={partido.strAwayTeamBadge} forma={formaVisita} loading={loading}/>
           </div>
           {loading
             ? <div className="mx-3 mb-3 h-14 rounded-2xl animate-pulse" style={{backgroundColor:'#2a2a3e'}}/>
@@ -283,10 +284,10 @@ function ModalTextoHome({ partido, tipo, onClose }) {
   function tendenciasFut(p, h, fL, fV) {
     const rL = rachaLabelFut(fL), rV = rachaLabelFut(fV)
     const wL = fL.filter(r=>r==='G').length, wV = fV.filter(r=>r==='G').length
-    const consejo = wL>=3&&wV<=1 ? `${p.strHomeTeam} llega con ventaja clara. Favorito local.`
-      : wV>=3&&wL<=1 ? `${p.strAwayTeam} viene en racha. Visitante peligroso.`
+    const consejo = wL>=3&&wV<=1 ? `${tn(p.strHomeTeam)} llega con ventaja clara. Favorito local.`
+      : wV>=3&&wL<=1 ? `${tn(p.strAwayTeam)} viene en racha. Visitante peligroso.`
       : `Partido equilibrado. Ideal para combinada.`
-    return `📊 TENDENCIAS · ${p.strLeague}\n🏠 ${p.strHomeTeam} vs ${p.strAwayTeam} ✈️\n🕐 ${h} Lima\n\n🔵 ${p.strHomeTeam}\nÚltimos 5: ${fL.join(' ')||'—'}${rL?' · '+rL.text:''}\n\n🔴 ${p.strAwayTeam}\nÚltimos 5: ${fV.join(' ')||'—'}${rV?' · '+rV.text:''}\n\n💡 ${consejo}\n\n🔑 Juega responsable · Solo mayores de edad`
+    return `📊 TENDENCIAS · ${p.strLeague}\n🏠 ${tn(p.strHomeTeam)} vs ${tn(p.strAwayTeam)} ✈️\n🕐 ${h} Lima\n\n🔵 ${tn(p.strHomeTeam)}\nÚltimos 5: ${fL.join(' ')||'—'}${rL?' · '+rL.text:''}\n\n🔴 ${tn(p.strAwayTeam)}\nÚltimos 5: ${fV.join(' ')||'—'}${rV?' · '+rV.text:''}\n\n💡 ${consejo}\n\n🔑 Juega responsable · Solo mayores de edad`
   }
   const texto = !loading ? (esSpeech ? speechFut(partido,hora,formaLocal,formaVisita) : esTendencias ? tendenciasFut(partido,hora,formaLocal,formaVisita) : mensajeClubFut(partido,hora,formaLocal,formaVisita)) : ''
 
@@ -302,7 +303,7 @@ function ModalTextoHome({ partido, tipo, onClose }) {
             <span className="text-xl">{esSpeech?'📢':esTendencias?'📊':'📋'}</span>
             <div>
               <p className={`text-xs font-black ${esSpeech?'text-brand-orange':esTendencias?'text-green-400':'text-blue-400'}`}>{esSpeech?'SPEECH DE VENTA':esTendencias?'ANÁLISIS DE TENDENCIAS':'MENSAJE CTA'}</p>
-              <p className="text-[10px] text-gray-500 truncate">{partido.strHomeTeam} vs {partido.strAwayTeam}</p>
+              <p className="text-[10px] text-gray-500 truncate">{tn(partido.strHomeTeam)} vs {tn(partido.strAwayTeam)}</p>
             </div>
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-white font-bold" style={{backgroundColor:'#2a2a3e'}}>✕</button>
@@ -433,11 +434,11 @@ function PartidosDelDia({ onNavigate }) {
                     }
                   </div>
                   {/* Nombre local */}
-                  <p className="text-[11px] font-bold text-white truncate overflow-hidden">{p.strHomeTeam}</p>
+                  <p className="text-[11px] font-bold text-white truncate overflow-hidden">{tn(p.strHomeTeam)}</p>
                   {/* VS */}
                   <p className="text-[9px] text-gray-600 font-black text-center">vs</p>
                   {/* Nombre visitante */}
-                  <p className="text-[11px] font-bold text-gray-300 truncate overflow-hidden text-right">{p.strAwayTeam}</p>
+                  <p className="text-[11px] font-bold text-gray-300 truncate overflow-hidden text-right">{tn(p.strAwayTeam)}</p>
                   {/* Escudo visitante */}
                   <div className="flex items-center justify-center">
                     {p.strAwayTeamBadge
@@ -495,7 +496,7 @@ function PartidosDelDia({ onNavigate }) {
                       }
                       {/* Info */}
                       <div className="flex-1 min-w-0">
-                        <p className="text-[11px] font-bold text-white truncate leading-none">{p.strHomeTeam}</p>
+                        <p className="text-[11px] font-bold text-white truncate leading-none">{tn(p.strHomeTeam)}</p>
                         <div className="flex gap-0.5 mt-1">
                           {forma.length
                             ? forma.map((r,j) => <CirculoFut key={j} r={r}/>)
@@ -634,7 +635,7 @@ function generarDatoClave(fL, fV, local, visita) {
 }
 
 function generarPreguntaGancho(partido, fL, fV) {
-  const lo=partido.strHomeTeam, vi=partido.strAwayTeam
+  const lo=tn(partido.strHomeTeam), vi=tn(partido.strAwayTeam)
   const wL=fL.filter(r=>r==='G').length, wV=fV.filter(r=>r==='G').length
   const liga=(partido.strLeague||'').toLowerCase()
   if (liga.includes('world cup')||liga.includes('mundial')) return `"¿Ya viste que hoy juega el Mundial? ¡Hay cuotas increíbles en TE APUESTO, crack!"`
@@ -653,7 +654,7 @@ function MatchCardNoticias({ card, tipAbierto, onToggleTip, onSelect }) {
   const rachaV  = rachaLabelFut(formaV||[])
   const isOpen  = tipAbierto === card.id
   const liga    = contextoLiga(partido.strLeague)
-  const dato    = generarDatoClave(formaL||[], formaV||[], partido.strHomeTeam, partido.strAwayTeam)
+  const dato    = generarDatoClave(formaL||[], formaV||[], tn(partido.strHomeTeam), tn(partido.strAwayTeam))
   const gancho  = generarPreguntaGancho(partido, formaL||[], formaV||[])
 
   return (
@@ -684,7 +685,7 @@ function MatchCardNoticias({ card, tipAbierto, onToggleTip, onSelect }) {
             {partido.strHomeTeamBadge
               ? <img src={partido.strHomeTeamBadge+'/tiny'} className="w-9 h-9 object-contain" onError={e=>{e.target.style.display='none'}}/>
               : <span className="text-2xl">⚽</span>}
-            <p className="text-[9px] font-bold text-white text-center line-clamp-2 leading-tight">{partido.strHomeTeam}</p>
+            <p className="text-[9px] font-bold text-white text-center line-clamp-2 leading-tight">{tn(partido.strHomeTeam)}</p>
             <div className="flex gap-0.5 flex-wrap justify-center">
               {(formaL||[]).length
                 ? (formaL||[]).map((r,i)=><CirculoFut key={i} r={r}/>)
@@ -700,7 +701,7 @@ function MatchCardNoticias({ card, tipAbierto, onToggleTip, onSelect }) {
             {partido.strAwayTeamBadge
               ? <img src={partido.strAwayTeamBadge+'/tiny'} className="w-9 h-9 object-contain" onError={e=>{e.target.style.display='none'}}/>
               : <span className="text-2xl">⚽</span>}
-            <p className="text-[9px] font-bold text-white text-center line-clamp-2 leading-tight">{partido.strAwayTeam}</p>
+            <p className="text-[9px] font-bold text-white text-center line-clamp-2 leading-tight">{tn(partido.strAwayTeam)}</p>
             <div className="flex gap-0.5 flex-wrap justify-center">
               {(formaV||[]).length
                 ? (formaV||[]).map((r,i)=><CirculoFut key={i} r={r}/>)
