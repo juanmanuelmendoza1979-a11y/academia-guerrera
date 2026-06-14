@@ -1,0 +1,176 @@
+{
+  "sports": [
+    {
+      "id": "futbol",
+      "name": "Fútbol",
+      "icon": "⚽",
+      "color": "#FF6100",
+      "tagline": "El deporte rey del mundo",
+      "howToPlay": "Dos equipos de 11 jugadores intentan meter el balón en la portería rival. Gana quien marque más goles en 90 minutos.",
+      "promoterKeys": [
+        "Local = equipo que juega en su estadio",
+        "Visitante = equipo que juega fuera de casa",
+        "Empate = cuando terminan con el mismo marcador",
+        "Gol = punto que se anota al meter el balón en portería",
+        "Tiempo suplementario = 30 min extra en eliminatorias si hay empate",
+        "Penales = serie de tiros para desempatar"
+      ],
+      "keywords": ["Local", "Visitante", "Empate", "Gol", "Fase de grupos", "Eliminación directa", "Penales", "Tiempo extra"],
+      "commonMistakes": [
+        "Confundir 'local' con el favorito (no siempre coincide)",
+        "Pensar que el empate siempre va a penales (solo en eliminación directa)",
+        "Creer que más cuota = más probable ganar"
+      ],
+      "clientTip": "Cuando el cliente pregunte por un partido, menciona quién es local, si hay historia entre los equipos y en qué fase están. Eso genera confianza sin prometer resultados.",
+      "quiz": [
+        {
+          "question": "¿Qué significa que un equipo es 'local'?",
+          "options": ["Que es el favorito", "Que juega en su propio estadio", "Que tiene más jugadores"],
+          "correct": 1,
+          "explanation": "Local significa que el equipo juega en su propio estadio, con su afición."
+        },
+        {
+          "question": "¿Cuándo se van a penales en un partido?",
+          "options": ["Cuando hay empate en fase de grupos", "Cuando hay empate en eliminación directa", "Siempre que hay empate"],
+          "correct": 1,
+          "explanation": "Los penales solo se usan en eliminación directa cuando sigue el empate tras el tiempo extra."
+        }
+      ]
+    },
+    {
+      "id": "basquet",
+      "name": "Básquet",
+      "icon": "🏀",
+      "color": "#FF6100",
+      "tagline": "Velocidad, anotación y estrategia",
+      "howToPlay": "Dos equipos de 5 jugadores anotan encestando el balón en el aro rival. El partido tiene cuartos o mitades según la competición. Gana quien tenga más puntos al final.",
+      "promoterKeys": [
+        "Canasta = 2 puntos desde dentro del área",
+        "Triple = 3 puntos desde fuera del arco de 3",
+        "Tiro libre = 1 punto desde la línea de penales",
+        "NBA = la liga profesional más importante del mundo",
+        "Cuartos = 4 periodos de juego",
+        "Prórroga = tiempo extra si hay empate al final"
+      ],
+      "keywords": ["Canasta", "Triple", "Tiro libre", "NBA", "Cuartos", "Prórroga", "Diferencial"],
+      "commonMistakes": [
+        "Pensar que el básquet no tiene opciones como el fútbol",
+        "No saber que hay apuestas por cuartos o mitades",
+        "Confundir cuartos con tiempos"
+      ],
+      "clientTip": "Si un cliente quiere apostar en básquet pero no lo conoce, explícale que funciona por cuartos y que hay muchas opciones más allá del ganador del partido.",
+      "quiz": [
+        {
+          "question": "¿Cuántos puntos vale un triple en básquet?",
+          "options": ["1 punto", "2 puntos", "3 puntos"],
+          "correct": 2,
+          "explanation": "El triple vale 3 puntos y se lanza desde fuera del arco de 3."
+        },
+        {
+          "question": "¿Cómo se llama la liga más importante de básquet del mundo?",
+          "options": ["FIFA", "NBA", "UEFA"],
+          "correct": 1,
+          "explanation": "La NBA (National Basketball Association) es la liga de básquet más importante y popular del mundo."
+        }
+      ]
+    },
+    {
+      "id": "tenis",
+      "name": "Tenis",
+      "icon": "🎾",
+      "color": "#19C37D",
+      "tagline": "Habilidad, resistencia y precisión",
+      "howToPlay": "Dos jugadores (singles) o dos parejas (dobles) se enfrentan golpeando una pelota sobre una red. Se juega al mejor de 3 o 5 sets. Quien gane los sets necesarios, gana el partido.",
+      "promoterKeys": [
+        "Set = unidad de juego, gana quien llegue a 6 juegos primero",
+        "Game = unidad dentro del set",
+        "15, 30, 40 = puntuación dentro de cada game",
+        "Break = ganar un juego cuando el rival saca",
+        "Grand Slams = los 4 torneos más importantes: Australia, Roland Garros, Wimbledon, US Open",
+        "Tie-break = desempate si el set va 6-6"
+      ],
+      "keywords": ["Set", "Game", "Break", "Grand Slam", "Tie-break", "Saque", "Ace"],
+      "commonMistakes": [
+        "Pensar que el que va ganando en sets ya ganó el partido",
+        "Confundir la puntuación (15, 30, 40) con los sets",
+        "No saber que el tenis se puede apostar por sets"
+      ],
+      "clientTip": "Al explicar el tenis, di que es como una serie de mini-partidos (sets). Quien gane más sets, gana el partido. Es fácil de entender con esa analogía.",
+      "quiz": [
+        {
+          "question": "¿Cuántos sets debe ganar un jugador en un Grand Slam masculino?",
+          "options": ["2 sets", "3 sets", "4 sets"],
+          "correct": 1,
+          "explanation": "En los Grand Slams masculinos se juega al mejor de 5 sets, por lo que hay que ganar 3 sets."
+        },
+        {
+          "question": "¿Qué es un 'break' en tenis?",
+          "options": ["Un descanso entre sets", "Ganar un juego cuando el rival saca", "Empatar un set"],
+          "correct": 1,
+          "explanation": "Un break es cuando el jugador gana un game en el saque del rival. Es un momento clave en el partido."
+        }
+      ]
+    },
+    {
+      "id": "voley",
+      "name": "Vóley",
+      "icon": "🏐",
+      "color": "#FFD166",
+      "tagline": "Trabajo en equipo y explosividad",
+      "howToPlay": "Dos equipos de 6 jugadores se pasan el balón sobre una red, sin dejarlo caer. Cada equipo tiene 3 toques. Se juega al mejor de 5 sets. El primero en llegar a 25 puntos (con ventaja de 2) gana el set.",
+      "promoterKeys": [
+        "Set = cada período de juego (hasta 25 puntos)",
+        "Ace = punto directo al sacar",
+        "Bloqueo = detener el remate rival en la red",
+        "Remate = golpe fuerte para anotar punto",
+        "Líbero = jugador especializado en defensa",
+        "Rally = intercambio de golpes entre equipos"
+      ],
+      "keywords": ["Set", "Ace", "Remate", "Bloqueo", "Líbero", "Rally"],
+      "commonMistakes": [
+        "Pensar que el vóley no es popular para apuestas",
+        "No conocer que se juega al mejor de 5 sets",
+        "Confundir los puntos (25) con los goles del fútbol"
+      ],
+      "clientTip": "El vóley es popular en torneos como la Liga de Naciones. Si el cliente lo menciona, explica que funciona por sets y que hay opciones de mercado similares al fútbol.",
+      "quiz": [
+        {
+          "question": "¿Cuántos toques puede dar un equipo antes de pasar el balón?",
+          "options": ["2 toques", "3 toques", "4 toques"],
+          "correct": 1,
+          "explanation": "Cada equipo tiene un máximo de 3 toques antes de pasar el balón al lado contrario."
+        }
+      ]
+    },
+    {
+      "id": "virtuales",
+      "name": "Deportes Virtuales",
+      "icon": "🎮",
+      "color": "#A78BFA",
+      "tagline": "Simulaciones rápidas y dinámicas",
+      "howToPlay": "Son simulaciones por computadora de deportes reales (fútbol, carreras, etc.). Los resultados son generados por algoritmos. Los partidos duran pocos minutos y hay partidos disponibles todo el día.",
+      "promoterKeys": [
+        "Resultado algorítmico = no depende de jugadores reales",
+        "Disponibles 24/7 = siempre hay partidos",
+        "Duración corta = partidos de 3-5 minutos",
+        "Sin lesiones = no hay factor humano",
+        "Alta frecuencia = muchos partidos al día"
+      ],
+      "keywords": ["Virtual", "Algoritmo", "Simulación", "Frecuencia alta", "Sin estadísticas reales"],
+      "commonMistakes": [
+        "Decir que los virtuales son predecibles (no lo son)",
+        "Comparar con estadísticas reales de equipos",
+        "Prometer resultados basados en 'racha'"
+      ],
+      "clientTip": "Con los virtuales, es importante aclarar siempre que los resultados son generados por computadora y que no hay estadísticas reales que predigan el resultado. La información es parte clave del juego responsable.",
+      "quiz": [
+        {
+          "question": "¿Qué determina el resultado de un deporte virtual?",
+          "options": ["Las estadísticas reales del equipo", "Un algoritmo de computadora", "El historial de enfrentamientos"],
+          "correct": 1,
+          "explanation": "Los deportes virtuales usan algoritmos, no estadísticas reales. Por eso no se pueden predecir con datos históricos."
+        }
+      ]
+    }
+  ]
+}

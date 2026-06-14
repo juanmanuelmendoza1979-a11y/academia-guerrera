@@ -1,0 +1,833 @@
+{
+  "guessTheConcept": [
+    {
+      "id": "gc1", "difficulty": "facil",
+      "description": "Es el número que indica cuánto podría multiplicarse tu dinero si el resultado es correcto.",
+      "options": ["Cuota", "Handicap", "Cashout"], "correct": 0,
+      "explanation": "La Cuota es el multiplicador que determina el posible retorno de una apuesta."
+    },
+    {
+      "id": "gc2", "difficulty": "facil",
+      "description": "Es el equipo que juega en su propio estadio, con su propia afición.",
+      "options": ["Visitante", "Local", "Favorito"], "correct": 1,
+      "explanation": "Local es el equipo que juega en su estadio. No siempre es el favorito."
+    },
+    {
+      "id": "gc3", "difficulty": "facil",
+      "description": "Es una opción donde se cubren dos de los tres resultados posibles en un partido.",
+      "options": ["Doble Oportunidad", "Handicap", "Cashout"], "correct": 0,
+      "explanation": "La Doble Oportunidad cubre dos resultados (ejemplo: gana local O empate)."
+    },
+    {
+      "id": "gc4", "difficulty": "facil",
+      "description": "Función que permite cobrar una apuesta antes de que termine el partido.",
+      "options": ["BetBuilder", "Cashout", "In-Play"], "correct": 1,
+      "explanation": "El Cashout permite cerrar una apuesta activa antes del final del evento."
+    },
+    {
+      "id": "gc5", "difficulty": "facil",
+      "description": "Cuando apuestas a que los dos equipos van a marcar al menos un gol cada uno.",
+      "options": ["Más de Goles", "Ambos Anotan", "Combinada"], "correct": 1,
+      "explanation": "Ambos Anotan (BTTS) se gana si los dos equipos marcan mínimo un gol."
+    },
+    {
+      "id": "gc6", "difficulty": "facil",
+      "description": "El equipo que viaja para jugar fuera de su ciudad.",
+      "options": ["Local", "Favorito", "Visitante"], "correct": 2,
+      "explanation": "Visitante es el equipo que juega fuera de casa, en el estadio del rival."
+    },
+    {
+      "id": "gc7", "difficulty": "facil",
+      "description": "Cuando el partido termina con el mismo marcador para ambos equipos.",
+      "options": ["Empate", "Handicap", "Resultado exacto"], "correct": 0,
+      "explanation": "El empate ocurre cuando ambos equipos terminan con el mismo marcador."
+    },
+    {
+      "id": "gc8", "difficulty": "facil",
+      "description": "Es la primera fase del Mundial donde los equipos juegan entre sí dentro de un grupo.",
+      "options": ["Eliminación directa", "Fase de grupos", "Semifinal"], "correct": 1,
+      "explanation": "En la fase de grupos los equipos acumulan puntos. Los mejores avanzan."
+    },
+    {
+      "id": "gc9", "difficulty": "facil",
+      "description": "Apuesta a que el total de goles del partido será mayor al número indicado.",
+      "options": ["Menos de Goles", "Más de Goles", "Resultado exacto"], "correct": 1,
+      "explanation": "Más de Goles significa que el total de goles debe superar la línea (1.5, 2.5, 3.5)."
+    },
+    {
+      "id": "gc10", "difficulty": "facil",
+      "description": "El equipo que según el mercado tiene más probabilidad de ganar.",
+      "options": ["Local", "Favorito", "Visitante"], "correct": 1,
+      "explanation": "El favorito tiene la cuota más baja porque se le asigna mayor probabilidad de ganar."
+    },
+    {
+      "id": "gc11", "difficulty": "facil",
+      "description": "Apuesta a que el total de goles del partido será menor al número indicado.",
+      "options": ["Menos de Goles", "Más de Goles", "Ambos Anotan"], "correct": 0,
+      "explanation": "Menos de Goles gana si el total de goles está por debajo de la línea establecida."
+    },
+    {
+      "id": "gc12", "difficulty": "facil",
+      "description": "Son los 30 minutos adicionales que se juegan en eliminación directa si hay empate.",
+      "options": ["Penales", "Tiempo Suplementario", "Prórroga de grupos"], "correct": 1,
+      "explanation": "El tiempo suplementario son 2 periodos de 15 min. Si sigue el empate, van a penales."
+    },
+    {
+      "id": "gc13", "difficulty": "medio",
+      "description": "Herramienta para combinar varios mercados del mismo partido en una sola apuesta.",
+      "options": ["Cashout", "Combinada", "BetBuilder"], "correct": 2,
+      "explanation": "El BetBuilder arma una apuesta personalizada con múltiples mercados del mismo partido."
+    },
+    {
+      "id": "gc14", "difficulty": "medio",
+      "description": "Ventaja o desventaja en goles que se asigna a un equipo para equilibrar la apuesta.",
+      "options": ["Cuota", "Handicap", "Favorito"], "correct": 1,
+      "explanation": "El Handicap ajusta el marcador virtual para equiparar a equipos de diferente nivel."
+    },
+    {
+      "id": "gc15", "difficulty": "medio",
+      "description": "Tipo de apuesta donde todas las selecciones de distintos partidos deben ser correctas para ganar.",
+      "options": ["Doble Oportunidad", "In-Play", "Combinada"], "correct": 2,
+      "explanation": "En una Combinada, todas las selecciones elegidas deben resultar ganadoras."
+    },
+    {
+      "id": "gc16", "difficulty": "medio",
+      "description": "Son las apuestas que se realizan mientras el partido está en curso.",
+      "options": ["In-Play", "Cashout", "BetBuilder"], "correct": 0,
+      "explanation": "In-Play son las apuestas en vivo, con cuotas que cambian en tiempo real."
+    },
+    {
+      "id": "gc17", "difficulty": "medio",
+      "description": "Promoción que paga la apuesta como ganadora antes de que termine el evento, bajo ciertas condiciones.",
+      "options": ["Cashout", "Pago Anticipado", "BetBuilder"], "correct": 1,
+      "explanation": "El Pago Anticipado es una promoción especial con condiciones específicas del operador."
+    },
+    {
+      "id": "gc18", "difficulty": "medio",
+      "description": "Apuesta a que un jugador específico marcará un gol en el partido.",
+      "options": ["Anotador", "Resultado exacto", "Corners"], "correct": 0,
+      "explanation": "El mercado Anotador permite apostar por el jugador que marcará gol."
+    },
+    {
+      "id": "gc19", "difficulty": "medio",
+      "description": "Apuesta a la cantidad total de tiros de esquina en el partido.",
+      "options": ["Tarjetas", "Corners", "Anotador"], "correct": 1,
+      "explanation": "Corners es el mercado de tiros de esquina, no depende del marcador."
+    },
+    {
+      "id": "gc20", "difficulty": "medio",
+      "description": "Cuando un jugador anota 3 goles en el mismo partido.",
+      "options": ["Doblete", "Hat-trick", "Goleador"], "correct": 1,
+      "explanation": "El Hat-trick es cuando un jugador marca exactamente 3 goles en un mismo partido."
+    },
+    {
+      "id": "gc21", "difficulty": "medio",
+      "description": "Criterio que separa equipos con los mismos puntos en la tabla de posiciones.",
+      "options": ["Diferencia de Goles", "Cuota", "Handicap"], "correct": 0,
+      "explanation": "La Diferencia de Goles se calcula restando goles en contra a goles a favor."
+    },
+    {
+      "id": "gc22", "difficulty": "medio",
+      "description": "Apuesta a la cantidad de tarjetas amarillas o rojas que se mostrarán en el partido.",
+      "options": ["Corners", "Tarjetas", "Anotador"], "correct": 1,
+      "explanation": "El mercado de Tarjetas apuesta al total de cartulinas, no al resultado del partido."
+    },
+    {
+      "id": "gc23", "difficulty": "medio",
+      "description": "El marcador final exacto al que apuesta el cliente.",
+      "options": ["Resultado exacto", "Doble oportunidad", "Más de goles"], "correct": 0,
+      "explanation": "El Resultado exacto es muy difícil de acertar pero puede tener cuota muy alta."
+    },
+    {
+      "id": "gc24", "difficulty": "dificil",
+      "description": "Si el Handicap de un equipo es -1.5 y gana por 2 goles, ¿cuál es el resultado virtual?",
+      "options": ["Gana el favorito en el handicap", "Empate en el handicap", "Pierde en el handicap"], "correct": 0,
+      "explanation": "Con -1.5 y ganando 2-0, el marcador virtual sería 0.5 a favor. Gana en el handicap."
+    },
+    {
+      "id": "gc25", "difficulty": "dificil",
+      "description": "En una Combinada de 3 selecciones con cuotas 1.5, 2.0 y 1.8, ¿cómo se calcula la cuota total?",
+      "options": ["Se suman las cuotas", "Se multiplican las cuotas", "Se promedia"], "correct": 1,
+      "explanation": "En combinada las cuotas se multiplican: 1.5 × 2.0 × 1.8 = 5.4 cuota total."
+    },
+    {
+      "id": "gc26", "difficulty": "dificil",
+      "description": "Si el partido va 2-0 y el cliente hace Cashout, ¿qué ocurre con su apuesta original?",
+      "options": ["Se cancela y pierde todo", "Se cobra el monto ofrecido y termina la apuesta", "Sigue activa"], "correct": 1,
+      "explanation": "El Cashout cierra la apuesta al monto ofrecido en ese momento, sin importar el resultado final."
+    },
+    {
+      "id": "gc27", "difficulty": "dificil",
+      "description": "¿Qué diferencia al BetBuilder de una Combinada normal?",
+      "options": ["BetBuilder usa partidos distintos", "BetBuilder combina mercados del mismo partido", "No hay diferencia"], "correct": 1,
+      "explanation": "BetBuilder es para un solo partido. Combinada puede unir selecciones de partidos distintos."
+    },
+    {
+      "id": "gc28", "difficulty": "dificil",
+      "description": "Un cliente apuesta 'Más de 2.5 goles' y el partido termina 1-2. ¿Ganó o perdió?",
+      "options": ["Ganó, hay 3 goles en total", "Perdió, solo hay 2 goles del equipo ganador", "Empate"], "correct": 0,
+      "explanation": "Más de 2.5 goles cuenta el total: 1+2=3 goles. Como 3 > 2.5, la apuesta gana."
+    },
+    {
+      "id": "gc29", "difficulty": "dificil",
+      "description": "¿Cuándo es más útil la Doble Oportunidad '12' (gana cualquiera de los dos)?",
+      "options": ["Cuando queremos cubrir empate y victoria de uno", "Cuando queremos apostar a que no haya empate", "Cuando no sabemos quién juega"], "correct": 1,
+      "explanation": "La opción '12' cubre que gane cualquiera de los dos. Pierdes solo si hay empate."
+    },
+    {
+      "id": "gc30", "difficulty": "dificil",
+      "description": "Si un equipo tiene Handicap +2 y pierde 0-3, ¿cómo queda en el marcador virtual?",
+      "options": ["Pierde 1-3 en el handicap", "Empata 2-2 en el handicap (no, pierde 2-3)", "Pierde aun con la ventaja"], "correct": 2,
+      "explanation": "Con +2, el marcador virtual sería 2-3. El equipo sigue perdiendo, la apuesta no gana."
+    }
+  ],
+
+  "trueFalse": [
+    {
+      "id": "tf1", "difficulty": "facil",
+      "statement": "El Mundial 2026 se jugará con 48 selecciones por primera vez en la historia.",
+      "answer": true,
+      "explanation": "Correcto. El Mundial 2026 amplió el formato de 32 a 48 equipos participantes."
+    },
+    {
+      "id": "tf2", "difficulty": "facil",
+      "statement": "El favorito de un partido siempre tiene la cuota más alta.",
+      "answer": false,
+      "explanation": "Falso. El favorito tiene la cuota MÁS BAJA porque tiene mayor probabilidad de ganar."
+    },
+    {
+      "id": "tf3", "difficulty": "facil",
+      "statement": "En la fase de grupos del Mundial, si pierdes un partido quedas eliminado.",
+      "answer": false,
+      "explanation": "Falso. En fase de grupos se juegan todos los partidos del grupo y se clasifica por puntos."
+    },
+    {
+      "id": "tf4", "difficulty": "facil",
+      "statement": "El Cashout permite cobrar una apuesta antes de que termine el evento.",
+      "answer": true,
+      "explanation": "Correcto. El Cashout es exactamente eso: cobrar antes del final con un monto variable."
+    },
+    {
+      "id": "tf5", "difficulty": "facil",
+      "statement": "Local significa que ese equipo es siempre el favorito del partido.",
+      "answer": false,
+      "explanation": "Falso. Local solo significa que juega en su estadio. No siempre es el favorito."
+    },
+    {
+      "id": "tf6", "difficulty": "facil",
+      "statement": "El empate es uno de los tres posibles resultados en un partido de fútbol.",
+      "answer": true,
+      "explanation": "Correcto. Los tres resultados posibles son: gana local (1), empate (X), gana visitante (2)."
+    },
+    {
+      "id": "tf7", "difficulty": "facil",
+      "statement": "Brasil ha ganado el Mundial 5 veces, más que ningún otro país.",
+      "answer": true,
+      "explanation": "Correcto. Brasil tiene 5 títulos mundiales: 1958, 1962, 1970, 1994 y 2002."
+    },
+    {
+      "id": "tf8", "difficulty": "facil",
+      "statement": "Los deportes virtuales usan las estadísticas reales de los equipos para sus resultados.",
+      "answer": false,
+      "explanation": "Falso. Los resultados de deportes virtuales son generados por algoritmos, no por estadísticas reales."
+    },
+    {
+      "id": "tf9", "difficulty": "facil",
+      "statement": "En tenis, un partido de Grand Slam masculino se gana con 3 sets.",
+      "answer": true,
+      "explanation": "Correcto. En Grand Slams masculinos es al mejor de 5 sets, por lo que hay que ganar 3."
+    },
+    {
+      "id": "tf10", "difficulty": "facil",
+      "statement": "Decirle al cliente que una jugada es 'segura' es parte de la atención correcta.",
+      "answer": false,
+      "explanation": "Falso. Nunca se puede garantizar un resultado. La frase correcta es orientar con información."
+    },
+    {
+      "id": "tf11", "difficulty": "facil",
+      "statement": "El fútbol tiene 90 minutos regulares divididos en dos tiempos de 45 minutos.",
+      "answer": true,
+      "explanation": "Correcto. Los 90 minutos regulares se dividen en dos tiempos de 45 minutos cada uno."
+    },
+    {
+      "id": "tf12", "difficulty": "facil",
+      "statement": "En básquet, un triple vale 2 puntos.",
+      "answer": false,
+      "explanation": "Falso. El triple vale 3 puntos. Se lanza desde fuera del arco de 3 puntos."
+    },
+    {
+      "id": "tf13", "difficulty": "medio",
+      "statement": "En el BetBuilder puedes combinar mercados de diferentes partidos.",
+      "answer": false,
+      "explanation": "Falso. El BetBuilder combina mercados del MISMO partido en una sola apuesta."
+    },
+    {
+      "id": "tf14", "difficulty": "medio",
+      "statement": "La Doble Oportunidad '1X' cubre que gane el local o que haya empate.",
+      "answer": true,
+      "explanation": "Correcto. 1X significa gana local (1) o empate (X). Solo pierde si gana el visitante."
+    },
+    {
+      "id": "tf15", "difficulty": "medio",
+      "statement": "El Handicap -1 significa que el equipo comienza con 1 gol de ventaja en la apuesta.",
+      "answer": false,
+      "explanation": "Falso. El Handicap -1 significa que el equipo empieza con 1 gol de DESVENTAJA. Necesita ganar por 2 o más."
+    },
+    {
+      "id": "tf16", "difficulty": "medio",
+      "statement": "El mercado 'Ambos Anotan' se gana solo si el equipo local marca primero.",
+      "answer": false,
+      "explanation": "Falso. Ambos Anotan solo requiere que cada equipo marque al menos un gol. No importa quién anote primero."
+    },
+    {
+      "id": "tf17", "difficulty": "medio",
+      "statement": "Una Combinada de 3 selecciones tiene la cuota total más alta que cada cuota individual.",
+      "answer": true,
+      "explanation": "Correcto. Las cuotas se multiplican en una combinada, lo que genera una cuota total mayor."
+    },
+    {
+      "id": "tf18", "difficulty": "medio",
+      "statement": "En la fase de eliminación directa, si hay empate al final de los 90 min, se van directo a penales.",
+      "answer": false,
+      "explanation": "Falso. Primero hay tiempo suplementario (30 min). Si persiste el empate, ahí sí van a penales."
+    },
+    {
+      "id": "tf19", "difficulty": "medio",
+      "statement": "El mercado de Corners depende de cuántos goles se anoten en el partido.",
+      "answer": false,
+      "explanation": "Falso. Corners depende de los tiros de esquina, no del marcador. Son mercados independientes."
+    },
+    {
+      "id": "tf20", "difficulty": "medio",
+      "statement": "En el Mundial 2026, los tres países sede son Estados Unidos, Canadá y México.",
+      "answer": true,
+      "explanation": "Correcto. El Mundial 2026 es coorganizado por Estados Unidos, Canadá y México."
+    },
+    {
+      "id": "tf21", "difficulty": "medio",
+      "statement": "La cuota alta siempre significa que ese resultado es el más probable de ocurrir.",
+      "answer": false,
+      "explanation": "Falso. La cuota alta indica que ese resultado es MENOS probable según el mercado."
+    },
+    {
+      "id": "tf22", "difficulty": "medio",
+      "statement": "En vóley, cada equipo puede dar hasta 3 toques antes de pasar el balón.",
+      "answer": true,
+      "explanation": "Correcto. Cada equipo tiene un máximo de 3 toques antes de enviar el balón al lado contrario."
+    },
+    {
+      "id": "tf23", "difficulty": "medio",
+      "statement": "El Pago Anticipado es una función disponible en todos los partidos siempre.",
+      "answer": false,
+      "explanation": "Falso. El Pago Anticipado es una promoción especial que puede no estar disponible siempre."
+    },
+    {
+      "id": "tf24", "difficulty": "dificil",
+      "statement": "Si apuesto 'Más de 2.5 goles' y el partido termina 2-1, gano porque hay 3 goles en total.",
+      "answer": true,
+      "explanation": "Correcto. 2+1=3 goles en total. Como 3 es mayor que 2.5, la apuesta gana."
+    },
+    {
+      "id": "tf25", "difficulty": "dificil",
+      "statement": "Con Handicap -2 para Argentina y el partido termina 2-0, Argentina gana en el handicap.",
+      "answer": false,
+      "explanation": "Falso. Con -2, el marcador virtual quedaría 0-0, que sería un empate. No gana en el handicap."
+    },
+    {
+      "id": "tf26", "difficulty": "dificil",
+      "statement": "En una Combinada, si una selección es empate pero el partido acaba en prórroga, la combinada puede perder.",
+      "answer": true,
+      "explanation": "Correcto. Las condiciones de la apuesta se aplican al tiempo reglamentario en muchos mercados."
+    },
+    {
+      "id": "tf27", "difficulty": "dificil",
+      "statement": "El BetBuilder siempre tiene una cuota más alta que una apuesta simple al ganador.",
+      "answer": true,
+      "explanation": "Correcto. Al combinar múltiples mercados del mismo partido, la cuota resultante es mayor."
+    },
+    {
+      "id": "tf28", "difficulty": "dificil",
+      "statement": "Si el Cashout no está disponible en un partido, el cliente puede exigirlo al operador.",
+      "answer": false,
+      "explanation": "Falso. El Cashout es una función que depende del sistema. No es un derecho exigible siempre."
+    },
+    {
+      "id": "tf29", "difficulty": "dificil",
+      "statement": "En el mercado de tarjetas, la tarjeta roja directa puede contar como 2 tarjetas.",
+      "answer": true,
+      "explanation": "Correcto. Según las condiciones del operador, una roja directa puede equivaler a 2 cartulinas."
+    },
+    {
+      "id": "tf30", "difficulty": "dificil",
+      "statement": "La Diferencia de Goles se usa para desempatar equipos con los mismos puntos en la fase de grupos.",
+      "answer": true,
+      "explanation": "Correcto. Si dos equipos tienen los mismos puntos, se compara la diferencia de goles (GF - GC)."
+    },
+    {
+      "id": "tf31", "difficulty": "dificil",
+      "statement": "En básquet, la NBA usa tiempo suplementario (overtime) si hay empate al final del partido.",
+      "answer": true,
+      "explanation": "Correcto. En la NBA se juegan períodos extra de 5 minutos hasta que haya un ganador."
+    },
+    {
+      "id": "tf32", "difficulty": "dificil",
+      "statement": "Un cliente puede apostar en un mercado In-Play antes de que empiece el partido.",
+      "answer": false,
+      "explanation": "Falso. El In-Play o En Vivo solo está disponible una vez que el partido ha comenzado."
+    },
+    {
+      "id": "tf33", "difficulty": "dificil",
+      "statement": "La Doble Oportunidad '12' cubre que gane cualquiera de los dos equipos, sin importar el empate.",
+      "answer": true,
+      "explanation": "Correcto. '12' significa gana local (1) o gana visitante (2). Solo pierde si hay empate."
+    },
+    {
+      "id": "tf34", "difficulty": "medio",
+      "statement": "El resultado exacto es el mercado más fácil de acertar en una apuesta deportiva.",
+      "answer": false,
+      "explanation": "Falso. El resultado exacto es uno de los mercados más difíciles porque hay muchas combinaciones posibles."
+    },
+    {
+      "id": "tf35", "difficulty": "facil",
+      "statement": "Las apuestas deportivas son un producto dirigido a mayores de edad.",
+      "answer": true,
+      "explanation": "Correcto. Las apuestas deportivas son exclusivas para personas mayores de edad. Es responsabilidad del equipo verificarlo."
+    }
+  ],
+
+  "clientSituations": [
+    {
+      "id": "cs1", "difficulty": "facil",
+      "situation": "Un cliente pregunta: '¿Esta jugada es fija?'",
+      "options": [
+        "Sí, Argentina siempre gana cuando juega en casa.",
+        "Ninguna jugada se puede asegurar. Puedo darle información del partido para que decida con responsabilidad.",
+        "Es casi seguro, tiene cuota baja."
+      ],
+      "correct": 1,
+      "explanation": "La respuesta correcta nunca promete un resultado. Orienta con información."
+    },
+    {
+      "id": "cs2", "difficulty": "facil",
+      "situation": "Cliente nuevo pregunta: '¿Cómo funciona apostar en fútbol?'",
+      "options": [
+        "Es muy fácil, siempre ganas con el favorito.",
+        "Le explico. Elige un partido, revisa las opciones y decide qué resultado le parece más interesante. Le muestro paso a paso.",
+        "Es complicado, mejor empieza con algo muy pequeño."
+      ],
+      "correct": 1,
+      "explanation": "La mejor respuesta es informativa, clara y sin promesas. Ofrece orientación sin presionar."
+    },
+    {
+      "id": "cs3", "difficulty": "facil",
+      "situation": "Cliente dice: 'Quiero algo seguro para hoy.'",
+      "options": [
+        "Le muestro al favorito, casi siempre gana.",
+        "Ningún resultado deportivo puede garantizarse. Lo que sí puedo hacer es darle información del partido para que decida mejor.",
+        "Con la Doble Oportunidad es casi seguro ganar."
+      ],
+      "correct": 1,
+      "explanation": "Nunca uses palabras como 'seguro'. La honestidad genera confianza a largo plazo."
+    },
+    {
+      "id": "cs4", "difficulty": "facil",
+      "situation": "Cliente que viene de la lotería pregunta qué es diferente aquí.",
+      "options": [
+        "Aquí ganas más que en la lotería.",
+        "Aquí eliges un resultado deportivo específico de un partido real, no números al azar. Le explico con un ejemplo.",
+        "Es básicamente lo mismo pero con deportes."
+      ],
+      "correct": 1,
+      "explanation": "Explica la diferencia clara sin comparar ganancias. La información es clave."
+    },
+    {
+      "id": "cs5", "difficulty": "facil",
+      "situation": "Cliente pregunta: '¿Cuál es el partido más importante de hoy?'",
+      "options": [
+        "Todos son importantes, apueste en el que quiera.",
+        "Le comento el partido destacado del día, le explico la fase, el horario y algunos datos clave para que lo entienda mejor.",
+        "El que tenga la cuota más alta es el más importante."
+      ],
+      "correct": 1,
+      "explanation": "Orientar con datos del partido (fase, horario, contexto) genera conversación y confianza."
+    },
+    {
+      "id": "cs6", "difficulty": "facil",
+      "situation": "Cliente tiene poco tiempo y quiere decidir rápido.",
+      "options": [
+        "Entonces apueste al favorito sin pensarlo mucho.",
+        "Sin problema. En un minuto le muestro el partido más próximo y las opciones más simples para que decida con información clara.",
+        "Si no tiene tiempo, vuelva después."
+      ],
+      "correct": 1,
+      "explanation": "Adapta la atención al tiempo del cliente sin saltarte la información básica."
+    },
+    {
+      "id": "cs7", "difficulty": "facil",
+      "situation": "Cliente pregunta: '¿Qué significa cuota 2.50?'",
+      "options": [
+        "Significa que ese equipo tiene el 50% de probabilidad de ganar.",
+        "Es que hay 2 goles y medio esperados en el partido.",
+        "Significa que por cada unidad apostada podrías recibir 2.50 si el resultado es correcto."
+      ],
+      "correct": 2,
+      "explanation": "La cuota es el multiplicador del monto apostado si el resultado elegido es correcto."
+    },
+    {
+      "id": "cs8", "difficulty": "facil",
+      "situation": "Un cliente pregunta por el Mundial y quiere saber qué selección es favorita.",
+      "options": [
+        "Le digo que Francia va a ganar seguro.",
+        "Le comparto qué selecciones tienen cuotas más bajas según el mercado y algunos datos históricos, sin garantizar ningún resultado.",
+        "No le digo nada porque podría equivocarse."
+      ],
+      "correct": 1,
+      "explanation": "Compartir datos de mercado e históricos sin garantizar resultados es la respuesta correcta."
+    },
+    {
+      "id": "cs9", "difficulty": "medio",
+      "situation": "Cliente pregunta: '¿Qué es el handicap? No lo entiendo.'",
+      "options": [
+        "Es algo complicado, mejor elige otra opción.",
+        "Es la cuota más alta disponible.",
+        "Es una ventaja virtual en goles. Por ejemplo, si Argentina tiene -1, necesita ganar por 2 o más para que ganes."
+      ],
+      "correct": 2,
+      "explanation": "Siempre explica el handicap con un ejemplo concreto para que el cliente entienda antes de decidir."
+    },
+    {
+      "id": "cs10", "difficulty": "medio",
+      "situation": "Cliente insiste: 'Pero dime cuál va a ganar, tú sabes.'",
+      "options": [
+        "Está bien, Brasil va a ganar.",
+        "Entiendo que quiere una orientación, pero nadie puede predecir con certeza. Lo que sí puedo hacer es darle toda la información disponible.",
+        "Si insiste, le digo al favorito para que no se vaya."
+      ],
+      "correct": 1,
+      "explanation": "Mantén siempre el mensaje responsable aunque el cliente insista. La honestidad es lo correcto."
+    },
+    {
+      "id": "cs11", "difficulty": "medio",
+      "situation": "Cliente quiere hacer una Combinada de 5 partidos y dice que 'no puede fallar'.",
+      "options": [
+        "Sí, con 5 partidos hay más posibilidades de ganar.",
+        "Le explico que en una combinada todas deben acertar. Más selecciones significa más riesgo, no más seguridad.",
+        "Perfecto, 5 partidos combinados paga muy bien."
+      ],
+      "correct": 1,
+      "explanation": "Más selecciones en combinada = mayor riesgo. El cliente debe entenderlo antes de confirmar."
+    },
+    {
+      "id": "cs12", "difficulty": "medio",
+      "situation": "Cliente pregunta: '¿Puedo apostar durante el partido?'",
+      "options": [
+        "No, solo se puede antes.",
+        "Sí, existe el In-Play o En Vivo. Las cuotas cambian en tiempo real según el desarrollo del partido. Le explico cómo funciona.",
+        "Sí, pero es más caro."
+      ],
+      "correct": 1,
+      "explanation": "El In-Play permite apostar durante el partido. Siempre explica que las cuotas cambian constantemente."
+    },
+    {
+      "id": "cs13", "difficulty": "medio",
+      "situation": "Cliente pregunta: '¿Qué es la Doble Oportunidad y cuándo me sirve?'",
+      "options": [
+        "Es para cuando quieres cubrir que ninguno de los dos equipos gane.",
+        "Es para cubrir dos resultados posibles. Por ejemplo '1X' sirve si crees que el local gana o empata. Solo pierde si gana el visitante.",
+        "Es para apostar dos veces al mismo resultado."
+      ],
+      "correct": 1,
+      "explanation": "La Doble Oportunidad cubre dos de los tres posibles resultados. Muy útil explicarla con ejemplo."
+    },
+    {
+      "id": "cs14", "difficulty": "medio",
+      "situation": "Cliente quiere saber cómo funciona la fase de grupos del Mundial.",
+      "options": [
+        "Es como eliminación directa, el que pierde queda fuera.",
+        "Cada selección juega contra todas las del grupo. Los dos mejores avanzan. Perder un partido no te elimina.",
+        "Solo el primero del grupo clasifica."
+      ],
+      "correct": 1,
+      "explanation": "Explicar la fase de grupos correctamente ayuda al cliente a entender el contexto de cada partido."
+    },
+    {
+      "id": "cs15", "difficulty": "medio",
+      "situation": "Cliente está apostando en un partido en vivo y pide que le digas qué va a pasar.",
+      "options": [
+        "Le doy mi opinión personal del partido.",
+        "Le comparto el marcador actual y algunas opciones disponibles en el momento, pero le recuerdo que ningún resultado es predecible.",
+        "Le digo que el equipo que va ganando seguro gana."
+      ],
+      "correct": 1,
+      "explanation": "En In-Play también aplica el mensaje responsable. Nunca predecir resultados."
+    },
+    {
+      "id": "cs16", "difficulty": "medio",
+      "situation": "Cliente pregunta: '¿Qué es el BetBuilder?'",
+      "options": [
+        "Es lo mismo que la Combinada normal.",
+        "Es una herramienta para combinar varias opciones del mismo partido. Por ejemplo: que gane el equipo local, más de 2 goles y ambos anotan.",
+        "Es una apuesta especial solo para el Mundial."
+      ],
+      "correct": 1,
+      "explanation": "BetBuilder combina mercados del mismo partido. Diferente a la combinada que usa partidos distintos."
+    },
+    {
+      "id": "cs17", "difficulty": "medio",
+      "situation": "Cliente dice: 'Quiero apostar al resultado exacto 2-0.'",
+      "options": [
+        "Perfecto, esa es una opción fácil de ganar.",
+        "Le explico que el resultado exacto puede tener cuota atractiva pero es uno de los mercados más difíciles de acertar. ¿Le interesa conocer otras opciones?",
+        "Le confirmo sin explicar nada más."
+      ],
+      "correct": 1,
+      "explanation": "El resultado exacto es muy difícil. El cliente debe saber el riesgo antes de confirmar."
+    },
+    {
+      "id": "cs18", "difficulty": "dificil",
+      "situation": "Cliente quiere apostar 'todo' a un partido porque 'lo ve muy claro'.",
+      "options": [
+        "Si él lo ve claro, le ayudo a confirmar rápido.",
+        "Le entiendo, pero le recomiendo revisar las opciones disponibles y apostar solo lo que esté dispuesto a manejar. Ningún resultado es seguro.",
+        "Le pregunto cuánto quiere apostar y confirmo."
+      ],
+      "correct": 1,
+      "explanation": "Siempre orienta hacia el juego responsable. No estimules apuestas de alto riesgo por impulso."
+    },
+    {
+      "id": "cs19", "difficulty": "dificil",
+      "situation": "Cliente visiblemente molesto porque perdió y quiere recuperar apostando más.",
+      "options": [
+        "Le ayudo a apostar más para que recupere.",
+        "Con mucho respeto, le digo que entiendo cómo se siente, pero apostar para recuperar pérdidas puede aumentar el riesgo. Le recuerdo que las apuestas son entretenimiento.",
+        "Le muestro el partido con la cuota más alta para que recupere rápido."
+      ],
+      "correct": 1,
+      "explanation": "Perseguir pérdidas es una señal de riesgo. La respuesta responsable es orientar con claridad y empatía."
+    },
+    {
+      "id": "cs20", "difficulty": "dificil",
+      "situation": "Cliente pregunta: '¿Si apuesto a Más de 1.5 goles y el partido va 1-0 al descanso, ya gané?'",
+      "options": [
+        "Sí, ya hay suficientes goles.",
+        "Depende si hace Cashout o no. La apuesta solo se resuelve al final del partido a menos que use el Cashout antes.",
+        "Sí, 1-0 ya supera 1.5."
+      ],
+      "correct": 1,
+      "explanation": "1-0 son solo 1 gol. Necesita 2 o más. Y la apuesta se resuelve al final, no al descanso."
+    },
+    {
+      "id": "cs21", "difficulty": "dificil",
+      "situation": "Cliente pide que le recomiende la apuesta 'más rentable' del día.",
+      "options": [
+        "Le recomiendo la cuota más alta disponible.",
+        "No existe una apuesta garantizada como 'la más rentable'. Lo que sí puedo hacer es mostrarle los partidos disponibles y explicarle las opciones para que decida.",
+        "Le armo una combinada de 5 partidos."
+      ],
+      "correct": 1,
+      "explanation": "No existe la apuesta 'más rentable' sin riesgo. Orienta con información, no con promesas."
+    },
+    {
+      "id": "cs22", "difficulty": "dificil",
+      "situation": "Cliente quiere saber si el Pago Anticipado está disponible para un partido específico.",
+      "options": [
+        "Sí, siempre está disponible para todos los partidos.",
+        "Reviso si esa promoción está disponible para ese partido específico y le explico exactamente las condiciones.",
+        "Sí, pero solo funciona si el equipo va ganando."
+      ],
+      "correct": 1,
+      "explanation": "El Pago Anticipado puede o no estar disponible. Siempre verificar y explicar condiciones exactas."
+    },
+    {
+      "id": "cs23", "difficulty": "dificil",
+      "situation": "Menor de edad intenta apostar acompañado de un adulto.",
+      "options": [
+        "Si el adulto autoriza, se puede proceder.",
+        "Las apuestas deportivas son exclusivamente para personas mayores de edad. No es posible proceder. Le explico con respeto.",
+        "Le pregunto la edad y si dice que tiene 18, confío en su palabra."
+      ],
+      "correct": 1,
+      "explanation": "La verificación de mayoría de edad es obligatoria. No importa si viene acompañado por un adulto."
+    },
+    {
+      "id": "cs24", "difficulty": "dificil",
+      "situation": "Cliente pide que le expliques el Handicap Asiático.",
+      "options": [
+        "Es lo mismo que el Handicap normal.",
+        "El Handicap Asiático elimina la posibilidad de empate dividiendo la apuesta entre dos líneas. Le explico con un ejemplo concreto para que lo entienda bien antes de decidir.",
+        "Es muy complicado, mejor elige otra opción."
+      ],
+      "correct": 1,
+      "explanation": "Explicar con ejemplo concreto siempre es la mejor estrategia, especialmente para mercados complejos."
+    },
+    {
+      "id": "cs25", "difficulty": "dificil",
+      "situation": "Cliente pregunta si puede hacer BetBuilder con partidos de diferentes deportes.",
+      "options": [
+        "Sí, BetBuilder funciona con cualquier combinación.",
+        "No, BetBuilder combina mercados del mismo partido. Para distintos partidos o deportes se usa la Combinada.",
+        "Depende del operador, a veces sí."
+      ],
+      "correct": 1,
+      "explanation": "BetBuilder es para un solo partido. La Combinada es para varios partidos o deportes."
+    }
+  ],
+
+  "quickChallenge": [
+    {
+      "id": "qc1", "difficulty": "facil",
+      "question": "¿Qué significa que un equipo es 'local'?",
+      "options": ["Que es el favorito", "Que juega en su estadio", "Que tiene más aficionados"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc2", "difficulty": "facil",
+      "question": "¿Cuántos equipos participan en el Mundial 2026?",
+      "options": ["32 equipos", "40 equipos", "48 equipos"],
+      "correct": 2, "points": 10
+    },
+    {
+      "id": "qc3", "difficulty": "facil",
+      "question": "¿Qué es una cuota en apuestas deportivas?",
+      "options": ["El costo de entrar al estadio", "El multiplicador del posible retorno", "El número de goles esperados"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc4", "difficulty": "facil",
+      "question": "¿En qué fase del Mundial los equipos son eliminados si pierden?",
+      "options": ["Fase de grupos", "Eliminación directa", "Desde el primer partido"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc5", "difficulty": "facil",
+      "question": "¿Qué dices si un cliente pide una jugada 'segura'?",
+      "options": ["Le recomiendo al favorito", "Ningún resultado se puede garantizar, te oriento con información", "Esta cuota baja casi seguro gana"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc6", "difficulty": "facil",
+      "question": "¿Qué es el Cashout?",
+      "options": ["Una apuesta de múltiples partidos", "Cobrar la apuesta antes de que termine", "Una función para cancelar antes de apostar"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc7", "difficulty": "facil",
+      "question": "¿Cuántos goles mínimo necesitas para ganar 'Más de 1.5 goles'?",
+      "options": ["1 gol", "2 goles", "3 goles"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc8", "difficulty": "facil",
+      "question": "¿Cuántas copas del mundo tiene Brasil?",
+      "options": ["3 copas", "4 copas", "5 copas"],
+      "correct": 2, "points": 10
+    },
+    {
+      "id": "qc9", "difficulty": "facil",
+      "question": "¿Cuántos puntos vale un tiro libre en básquet?",
+      "options": ["1 punto", "2 puntos", "3 puntos"],
+      "correct": 0, "points": 10
+    },
+    {
+      "id": "qc10", "difficulty": "facil",
+      "question": "¿Cuál de estas frases NO debes usar con un cliente?",
+      "options": ["'Le explico las opciones disponibles'", "'Esta jugada es fija'", "'¿Le interesa conocer el partido de hoy?'"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc11", "difficulty": "medio",
+      "question": "¿Qué diferencia a un BetBuilder de una Combinada?",
+      "options": ["El BetBuilder usa varios partidos", "El BetBuilder combina mercados del mismo partido", "Son exactamente igual"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc12", "difficulty": "medio",
+      "question": "'Ambos equipos anotan: Sí' se gana cuando...",
+      "options": ["El local marca primero", "Los dos equipos marcan al menos un gol", "Hay más de 2 goles en total"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc13", "difficulty": "medio",
+      "question": "¿Qué significa Handicap -1 para el favorito?",
+      "options": ["Empieza con 1 gol de ventaja", "Necesita ganar por 2 o más goles", "Solo puede ganar o empatar"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc14", "difficulty": "medio",
+      "question": "La Doble Oportunidad '1X' cubre:",
+      "options": ["Gana visitante o empate", "Gana local o empate", "Gana cualquiera de los dos"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc15", "difficulty": "medio",
+      "question": "¿Qué es el In-Play?",
+      "options": ["Apuestas antes del partido", "Apuestas durante el partido en tiempo real", "Apuestas al resultado final"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc16", "difficulty": "medio",
+      "question": "Si el partido va 1-0 al descanso, ¿ya ganó la apuesta 'Más de 1.5 goles'?",
+      "options": ["Sí, hay suficientes goles", "No, falta al menos 1 gol más y terminar el partido", "Depende del equipo que va ganando"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc17", "difficulty": "medio",
+      "question": "¿Cuántos conjuntos hay en el Mundial 2026?",
+      "options": ["8 grupos de 6", "12 grupos de 4", "8 grupos de 4"],
+      "correct": 0, "points": 15
+    },
+    {
+      "id": "qc18", "difficulty": "medio",
+      "question": "¿Qué pasa si el cliente apuesta en combinada y una selección es empate?",
+      "options": ["Gana la combinada igual", "La combinada pierde porque no acertó esa selección", "Se cancela solo esa selección"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc19", "difficulty": "medio",
+      "question": "¿Cuántos toques puede dar un equipo en vóley antes de pasar?",
+      "options": ["2 toques", "3 toques", "4 toques"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc20", "difficulty": "medio",
+      "question": "¿Qué significa 'Menos de 3.5 goles'?",
+      "options": ["Deben haber máximo 4 goles", "Deben haber 3 goles o menos", "Deben haber entre 2 y 3 goles"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc21", "difficulty": "dificil",
+      "question": "En una combinada de 3 cuotas: 1.8 × 2.1 × 1.6, ¿cuál es la cuota total aproximada?",
+      "options": ["5.4", "6.0", "5.0"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc22", "difficulty": "dificil",
+      "question": "Con Handicap +1.5, el equipo débil pierde 0-2. ¿Gana la apuesta?",
+      "options": ["No, perdió el partido", "Sí, con +1.5 el marcador virtual es 1.5-2 y gana el handicap", "No, la ventaja no alcanza"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc23", "difficulty": "dificil",
+      "question": "¿Cuándo se va directamente a penales en eliminación directa?",
+      "options": ["Si hay empate al final de los 90 minutos", "Si hay empate después del tiempo suplementario", "Siempre que haya empate"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc24", "difficulty": "dificil",
+      "question": "¿Qué es el Handicap Asiático comparado con el europeo?",
+      "options": ["Son iguales", "El asiático elimina la posibilidad de empate", "El asiático solo aplica en partidos de Asia"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc25", "difficulty": "dificil",
+      "question": "Si el cliente hace Cashout cuando va ganando 2-0 y luego el partido termina 2-3, ¿qué ocurre?",
+      "options": ["Pierde porque su equipo perdió", "Cobró el Cashout antes, así que no importa el resultado final", "El sistema le devuelve lo apostado"],
+      "correct": 1, "points": 20
+    }
+  ],
+
+  "phases": {
+    "correct": ["Fase de Grupos", "Octavos de Final", "Cuartos de Final", "Semifinal", "Final"],
+    "scrambled": ["Final", "Fase de Grupos", "Semifinal", "Octavos de Final", "Cuartos de Final"]
+  }
+}

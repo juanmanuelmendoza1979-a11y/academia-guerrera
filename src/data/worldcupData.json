@@ -1,0 +1,192 @@
+{
+  "tournament": {
+    "name": "Copa del Mundo 2026",
+    "edition": "26ª edición",
+    "currentPhase": "Fase de Grupos",
+    "hosts": ["Estados Unidos", "Canadá", "México"],
+    "totalTeams": 48,
+    "startDate": "2026-06-11",
+    "finalDate": "2026-07-19"
+  },
+  "phases": [
+    { "id": 1, "name": "Fase de Grupos", "active": true },
+    { "id": 2, "name": "Octavos de Final", "active": false },
+    { "id": 3, "name": "Cuartos de Final", "active": false },
+    { "id": 4, "name": "Semifinal", "active": false },
+    { "id": 5, "name": "Final", "active": false }
+  ],
+  "featuredMatch": {
+    "id": "fm1",
+    "teamA": "Argentina",
+    "teamB": "Brasil",
+    "flagA": "🇦🇷",
+    "flagB": "🇧🇷",
+    "date": "2026-06-20",
+    "time": "15:00",
+    "phase": "Fase de Grupos - Grupo C",
+    "venue": "MetLife Stadium, Nueva York",
+    "status": "destacado",
+    "keyFact": "El clásico sudamericano más esperado del torneo. Dos potencias del fútbol mundial.",
+    "summary": "Argentina llega como actual campeón del mundo. Brasil busca recuperar su hegemonía. Este partido define el liderato del Grupo C y tiene historia de partidos intensos y definidos en los detalles.",
+    "tip": "Cuando el cliente pregunte por este partido, menciona el historial y la importancia de la fase de grupos para clasificar."
+  },
+  "matches": [
+    {
+      "id": "m1",
+      "teamA": "México",
+      "teamB": "Polonia",
+      "flagA": "🇲🇽",
+      "flagB": "🇵🇱",
+      "date": "2026-06-14",
+      "time": "13:00",
+      "phase": "Fase de Grupos - Grupo B",
+      "venue": "Estadio Azteca, CDMX",
+      "status": "proximo",
+      "keyFact": "México juega en casa. La presión del público será enorme.",
+      "summary": "México tiene la ventaja de jugar como local en el Estadio Azteca. Polonia cuenta con un delantero de élite mundial."
+    },
+    {
+      "id": "m2",
+      "teamA": "España",
+      "teamB": "Alemania",
+      "flagA": "🇪🇸",
+      "flagB": "🇩🇪",
+      "date": "2026-06-15",
+      "time": "18:00",
+      "phase": "Fase de Grupos - Grupo D",
+      "venue": "SoFi Stadium, Los Ángeles",
+      "status": "proximo",
+      "keyFact": "Un enfrentamiento entre dos de las selecciones más ganadoras de Europa.",
+      "summary": "España y Alemania se enfrentan en lo que podría ser el partido más atractivo de la fase de grupos. Ambos equipos tienen estilos de juego muy definidos."
+    },
+    {
+      "id": "m3",
+      "teamA": "Francia",
+      "teamB": "Uruguay",
+      "flagA": "🇫🇷",
+      "flagB": "🇺🇾",
+      "date": "2026-06-16",
+      "time": "16:00",
+      "phase": "Fase de Grupos - Grupo A",
+      "venue": "Rose Bowl, Pasadena",
+      "status": "proximo",
+      "keyFact": "Francia es favorita, pero Uruguay siempre da sorpresas en Mundiales.",
+      "summary": "Francia, actual subcampeona, se enfrenta a una Uruguay que ha sorprendido en los últimos torneos con su solidez defensiva."
+    },
+    {
+      "id": "m4",
+      "teamA": "Colombia",
+      "teamB": "Portugal",
+      "flagA": "🇨🇴",
+      "flagB": "🇵🇹",
+      "date": "2026-06-17",
+      "time": "19:00",
+      "phase": "Fase de Grupos - Grupo E",
+      "venue": "AT&T Stadium, Dallas",
+      "status": "proximo",
+      "keyFact": "Colombia busca su mejor actuación mundialista. Portugal llega con generación de relevo.",
+      "summary": "Colombia llega con buen momento en eliminatorias. Portugal se adapta a una nueva era generacional tras sus históricos referentes."
+    },
+    {
+      "id": "m5",
+      "teamA": "Argentina",
+      "teamB": "Brasil",
+      "flagA": "🇦🇷",
+      "flagB": "🇧🇷",
+      "date": "2026-06-20",
+      "time": "15:00",
+      "phase": "Fase de Grupos - Grupo C",
+      "venue": "MetLife Stadium, Nueva York",
+      "status": "destacado",
+      "keyFact": "El clásico más esperado del fútbol mundial.",
+      "summary": "Argentina campeón vs Brasil en busca de la reconquista. La Rivalidad más grande del fútbol sudamericano."
+    },
+    {
+      "id": "m6",
+      "teamA": "Inglaterra",
+      "teamB": "Japón",
+      "flagA": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "flagB": "🇯🇵",
+      "date": "2026-06-21",
+      "time": "12:00",
+      "phase": "Fase de Grupos - Grupo F",
+      "venue": "Levi's Stadium, San Francisco",
+      "status": "proximo",
+      "keyFact": "Japón ha demostrado ser una de las sorpresas de los últimos Mundiales.",
+      "summary": "Inglaterra busca su primer título desde 1966. Japón, siempre disciplinado y organizado tácticamente, es un rival a respetar."
+    }
+  ],
+  "teams": [
+    {
+      "id": "t1",
+      "name": "Argentina",
+      "flag": "🇦🇷",
+      "group": "Grupo C",
+      "keyPlayer": "Jugador estrella del mediocampo",
+      "style": "Juego directo, presión alta, habilidad individual",
+      "strength": "Campeones defensores, mentalidad ganadora",
+      "fact": "Argentina ganó el último Mundial en Qatar 2022"
+    },
+    {
+      "id": "t2",
+      "name": "Brasil",
+      "flag": "🇧🇷",
+      "group": "Grupo C",
+      "keyPlayer": "Generación de talento joven",
+      "style": "Fútbol técnico, creatividad, velocidad",
+      "strength": "5 títulos mundiales, cantera inagotable",
+      "fact": "Brasil es el único país con 5 Copas del Mundo"
+    },
+    {
+      "id": "t3",
+      "name": "España",
+      "flag": "🇪🇸",
+      "group": "Grupo D",
+      "keyPlayer": "Mediocampo técnico y creativo",
+      "style": "Posesión, toque corto, presión alta",
+      "strength": "Sistema de juego muy definido y efectivo",
+      "fact": "España ganó 3 títulos consecutivos entre 2008 y 2012"
+    },
+    {
+      "id": "t4",
+      "name": "Francia",
+      "flag": "🇫🇷",
+      "group": "Grupo A",
+      "keyPlayer": "Delantera con poder físico y velocidad",
+      "style": "Contragolpe letal, físico, velocidad extrema",
+      "strength": "Plantel profundo y con experiencia mundialista",
+      "fact": "Francia ganó el Mundial 1998 y 2018"
+    },
+    {
+      "id": "t5",
+      "name": "México",
+      "flag": "🇲🇽",
+      "group": "Grupo B",
+      "keyPlayer": "Mediocampistas técnicos y defensas sólidos",
+      "style": "Juego organizado, contraataque, intensidad",
+      "strength": "Juega en casa, apoyo masivo del público",
+      "fact": "México llegó a Cuartos de Final en 1970 y 1986"
+    },
+    {
+      "id": "t6",
+      "name": "Colombia",
+      "flag": "🇨🇴",
+      "group": "Grupo E",
+      "keyPlayer": "Atacantes veloces y creativos",
+      "style": "Presión alta, juego vertical, habilidad técnica",
+      "strength": "Buen rendimiento en eliminatorias sudamericanas",
+      "fact": "Colombia llegó a Cuartos en Brasil 2014"
+    }
+  ],
+  "dailyFact": {
+    "text": "En el Mundial 2026, por primera vez participarán 48 selecciones. América del Norte será la sede compartida entre Estados Unidos, Canadá y México.",
+    "category": "Dato del día"
+  },
+  "miniGlossary": [
+    { "term": "Fase de Grupos", "def": "Primera ronda donde los equipos juegan entre sí para clasificar" },
+    { "term": "Octavos de Final", "def": "16 equipos compiten en partidos de eliminación directa" },
+    { "term": "Hat-trick", "def": "Cuando un jugador marca 3 goles en el mismo partido" },
+    { "term": "Tiempo extra", "def": "30 minutos adicionales si hay empate en eliminación directa" },
+    { "term": "Penales", "def": "Serie de 5 tiros para definir al ganador si persiste el empate" }
+  ]
+}

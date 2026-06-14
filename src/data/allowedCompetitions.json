@@ -1,0 +1,202 @@
+[
+  {
+    "id": "brasileirao",
+    "name": "Brasileirão",
+    "country": "Brasil",
+    "sport": "Fútbol",
+    "category": "americanas",
+    "apiNames": ["Brazilian Serie A", "Brasileirao Serie A", "Brazil Serie A", "Brasileirão Série A"]
+  },
+  {
+    "id": "bundesliga",
+    "name": "Bundesliga",
+    "country": "Alemania",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["German Bundesliga", "Bundesliga", "1. Bundesliga"]
+  },
+  {
+    "id": "copa-libertadores",
+    "name": "Copa Libertadores",
+    "country": "Sudamérica",
+    "sport": "Fútbol",
+    "category": "copas",
+    "apiNames": ["Copa Libertadores", "CONMEBOL Libertadores"]
+  },
+  {
+    "id": "copa-sudamericana",
+    "name": "Copa Sudamericana",
+    "country": "Sudamérica",
+    "sport": "Fútbol",
+    "category": "copas",
+    "apiNames": ["Copa Sudamericana", "CONMEBOL Sudamericana"]
+  },
+  {
+    "id": "champions-league",
+    "name": "Champions League",
+    "country": "Europa",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["UEFA Champions League", "Champions League", "UCL"]
+  },
+  {
+    "id": "champions-league-femenina",
+    "name": "Champions League Femenina",
+    "country": "Europa",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["UEFA Women's Champions League", "Women's Champions League", "UWCL"]
+  },
+  {
+    "id": "copa-argentina",
+    "name": "Copa Argentina",
+    "country": "Argentina",
+    "sport": "Fútbol",
+    "category": "americanas",
+    "apiNames": ["Copa Argentina"]
+  },
+  {
+    "id": "copa-betplay",
+    "name": "Copa BetPlay Dimayor",
+    "country": "Colombia",
+    "sport": "Fútbol",
+    "category": "americanas",
+    "apiNames": ["Copa BetPlay Dimayor", "Copa BetPlay", "Colombian Copa"]
+  },
+  {
+    "id": "coppa-italia",
+    "name": "Copa Italia",
+    "country": "Italia",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["Coppa Italia", "Copa Italia", "Italian Cup"]
+  },
+  {
+    "id": "copa-brasil",
+    "name": "Copa de Brasil",
+    "country": "Brasil",
+    "sport": "Fútbol",
+    "category": "americanas",
+    "apiNames": ["Copa do Brasil", "Copa de Brasil", "Brazil Cup"]
+  },
+  {
+    "id": "copa-francia",
+    "name": "Copa de Francia",
+    "country": "Francia",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["Coupe de France", "Copa de Francia", "French Cup"]
+  },
+  {
+    "id": "copa-del-rey",
+    "name": "Copa del Rey",
+    "country": "España",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["Copa del Rey", "Spanish Cup"]
+  },
+  {
+    "id": "eliminatorias-uefa",
+    "name": "Eliminatorias UEFA",
+    "country": "Europa",
+    "sport": "Fútbol",
+    "category": "copas",
+    "apiNames": ["UEFA Euro Qualifiers", "UEFA European Championship Qualifying", "Euro Qualifiers", "UEFA Nations League"]
+  },
+  {
+    "id": "fa-cup",
+    "name": "FA Cup",
+    "country": "Inglaterra",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["FA Cup", "The FA Cup"]
+  },
+  {
+    "id": "laliga",
+    "name": "LaLiga",
+    "country": "España",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["Spanish La Liga", "La Liga", "LaLiga", "Primera Division"]
+  },
+  {
+    "id": "liga1-peru",
+    "name": "Liga 1 Perú",
+    "country": "Perú",
+    "sport": "Fútbol",
+    "category": "peru",
+    "apiNames": ["Peruvian Primera Division", "Liga 1", "Liga 1 Peru", "Liga 1 Betsson"]
+  },
+  {
+    "id": "liga-mx",
+    "name": "Liga MX",
+    "country": "México",
+    "sport": "Fútbol",
+    "category": "americanas",
+    "apiNames": ["Mexican Primera Division Tournament", "Liga MX", "Liga BBVA MX"]
+  },
+  {
+    "id": "ligue1",
+    "name": "Ligue 1",
+    "country": "Francia",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["French Ligue 1", "Ligue 1", "Ligue 1 Uber Eats"]
+  },
+  {
+    "id": "mls",
+    "name": "MLS",
+    "country": "Estados Unidos",
+    "sport": "Fútbol",
+    "category": "americanas",
+    "apiNames": ["Major League Soccer", "MLS"]
+  },
+  {
+    "id": "mundial-2026",
+    "name": "Copa del Mundo 2026",
+    "country": "Internacional",
+    "sport": "Fútbol",
+    "category": "mundial",
+    "apiNames": ["FIFA World Cup", "World Cup", "Copa del Mundo", "FIFA World Cup 2026"]
+  },
+  {
+    "id": "premier-league",
+    "name": "Premier League",
+    "country": "Inglaterra",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["English Premier League", "Premier League", "EPL"]
+  },
+  {
+    "id": "europa-league",
+    "name": "UEFA Europa League",
+    "country": "Europa",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["UEFA Europa League", "Europa League", "UEL"]
+  },
+  {
+    "id": "serie-a",
+    "name": "Serie A",
+    "country": "Italia",
+    "sport": "Fútbol",
+    "category": "europeas",
+    "apiNames": ["Italian Serie A", "Serie A", "Serie A TIM"]
+  },
+  {
+    "id": "amistoso-fifa",
+    "name": "Amistoso Internacional FIFA",
+    "country": "Internacional",
+    "sport": "Fútbol",
+    "category": "copas",
+    "apiNames": ["International Friendly", "Friendly International", "Amistoso Internacional", "FIFA Friendly"]
+  },
+  {
+    "id": "nba",
+    "name": "NBA",
+    "country": "Estados Unidos",
+    "sport": "Básquet",
+    "category": "basket",
+    "apiNames": ["NBA", "National Basketball Association"]
+  }
+]

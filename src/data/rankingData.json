@@ -1,0 +1,30 @@
+{
+  "promoters": [
+    { "rank": 1, "name": "María López", "region": "Bogotá Norte", "points": 1850, "level": 5, "badge": "Guerrera Experta", "streak": 12, "completedChallenges": 48, "avatar": "🦅" },
+    { "rank": 2, "name": "Daniela Torres", "region": "Medellín Centro", "points": 1720, "level": 5, "badge": "Campeona del Reto", "streak": 9, "completedChallenges": 44, "avatar": "⚡" },
+    { "rank": 3, "name": "Valentina Ríos", "region": "Cali Sur", "points": 1640, "level": 4, "badge": "Comunicadora Responsable", "streak": 7, "completedChallenges": 40, "avatar": "🌟" },
+    { "rank": 4, "name": "Luisa Martínez", "region": "Barranquilla", "points": 1510, "level": 4, "badge": "Experta en Mundial", "streak": 6, "completedChallenges": 36, "avatar": "🏆" },
+    { "rank": 5, "name": "Camila Herrera", "region": "Bogotá Sur", "points": 1380, "level": 3, "badge": "Guerrera Mundialista", "streak": 5, "completedChallenges": 32, "avatar": "🔥" },
+    { "rank": 6, "name": "Andrea Gómez", "region": "Pereira", "points": 1250, "level": 3, "badge": "Guerrera Mundialista", "streak": 4, "completedChallenges": 28, "avatar": "💪" },
+    { "rank": 7, "name": "Natalia Castro", "region": "Manizales", "points": 1100, "level": 3, "badge": "Guerrera Deportiva", "streak": 3, "completedChallenges": 24, "avatar": "🎯" },
+    { "rank": 8, "name": "Sofía Vargas", "region": "Bucaramanga", "points": 950, "level": 2, "badge": "Guerrera Deportiva", "streak": 2, "completedChallenges": 20, "avatar": "🌙" },
+    { "rank": 9, "name": "Isabella Ruiz", "region": "Cartagena", "points": 820, "level": 2, "badge": "Maestra del Glosario", "streak": 2, "completedChallenges": 16, "avatar": "📚" },
+    { "rank": 10, "name": "Ana Rodríguez", "region": "Santa Marta", "points": 680, "level": 1, "badge": "Guerrera Inicial", "streak": 1, "completedChallenges": 12, "avatar": "🌱" }
+  ],
+  "regions": [
+    { "name": "Bogotá Norte", "participants": 24, "avgPoints": 1200, "topBadge": "Experta en Mundial" },
+    { "name": "Medellín Centro", "participants": 19, "avgPoints": 1050, "topBadge": "Comunicadora Responsable" },
+    { "name": "Cali Sur", "participants": 17, "avgPoints": 980, "topBadge": "Guerrera Mundialista" },
+    { "name": "Barranquilla", "participants": 14, "avgPoints": 870, "topBadge": "Maestra del Glosario" },
+    { "name": "Bogotá Sur", "participants": 22, "avgPoints": 820, "topBadge": "Guerrera Deportiva" }
+  ],
+  "badges": [
+    { "name": "Guerrera Inicial", "icon": "🌱", "description": "Completó el nivel básico", "count": 45 },
+    { "name": "Guerrera Deportiva", "icon": "⚽", "description": "Domina los deportes principales", "count": 32 },
+    { "name": "Guerrera Mundialista", "icon": "🏆", "description": "Experta en el Mundial", "count": 28 },
+    { "name": "Comunicadora Responsable", "icon": "💬", "description": "Domina el speech responsable", "count": 18 },
+    { "name": "Maestra del Glosario", "icon": "📚", "description": "Conoce todos los conceptos", "count": 22 },
+    { "name": "Campeona del Reto", "icon": "🥇", "description": "Completó todos los retos diarios", "count": 15 },
+    { "name": "Guerrera Experta", "icon": "🦅", "description": "Completó todos los niveles", "count": 8 }
+  ]
+}

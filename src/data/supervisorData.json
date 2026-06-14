@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "totalPromoters": 87,
+    "activeToday": 62,
+    "avgPointsTeam": 980,
+    "totalChallengesCompleted": 1240
+  },
+  "levelProgress": [
+    { "level": "Nivel 1 - Guerrera Inicial", "percentage": 92, "count": 80 },
+    { "level": "Nivel 2 - Guerrera Deportiva", "percentage": 74, "count": 64 },
+    { "level": "Nivel 3 - Guerrera Mundialista", "percentage": 55, "count": 48 },
+    { "level": "Nivel 4 - Guerrera Comunicadora", "percentage": 38, "count": 33 },
+    { "level": "Nivel 5 - Guerrera Experta", "percentage": 18, "count": 16 }
+  ],
+  "topicErrors": [
+    { "topic": "Handicap", "errorRate": 65, "color": "#EF4444", "priority": "crítico" },
+    { "topic": "BetBuilder", "errorRate": 52, "color": "#F97316", "priority": "alto" },
+    { "topic": "Diferencia de goles", "errorRate": 45, "color": "#F97316", "priority": "alto" },
+    { "topic": "Cashout", "errorRate": 38, "color": "#FFD166", "priority": "medio" },
+    { "topic": "Fases del Mundial", "errorRate": 32, "color": "#FFD166", "priority": "medio" },
+    { "topic": "Cuotas básicas", "errorRate": 22, "color": "#19C37D", "priority": "bajo" }
+  ],
+  "promotersNeedingSupport": [
+    { "name": "Carmen Pérez", "region": "Cali Norte", "level": 1, "lastActive": "hace 3 días", "issue": "No ha completado Nivel 2", "avatar": "🔴" },
+    { "name": "Rosa Jiménez", "region": "Bogotá Este", "region": "Bogotá Este", "level": 2, "lastActive": "hace 2 días", "issue": "Errores en Handicap", "avatar": "🟡" },
+    { "name": "Patricia Mora", "region": "Medellín Norte", "level": 2, "lastActive": "hace 1 día", "issue": "Speech responsable incompleto", "avatar": "🟡" },
+    { "name": "Gloria Serrano", "region": "Bucaramanga", "level": 1, "lastActive": "hace 5 días", "issue": "Sin actividad reciente", "avatar": "🔴" }
+  ],
+  "dailyRecommendation": {
+    "topic": "Handicap",
+    "reason": "65% de las promotoras presenta errores en este concepto",
+    "action": "Reforzar explicación fácil en reunión matinal con ejemplo: 'Si Argentina tiene -1, necesita ganar por 2 goles'",
+    "timeNeeded": "5 minutos",
+    "priority": "crítico"
+  },
+  "weeklyActivity": [
+    { "day": "Lun", "active": 58 },
+    { "day": "Mar", "active": 65 },
+    { "day": "Mié", "active": 71 },
+    { "day": "Jue", "active": 63 },
+    { "day": "Vie", "active": 62 },
+    { "day": "Sáb", "active": 45 },
+    { "day": "Dom", "active": 38 }
+  ]
+}

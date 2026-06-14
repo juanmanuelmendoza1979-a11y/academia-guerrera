@@ -1,0 +1,172 @@
+{
+  "categories": [
+    {
+      "id": "nuevo",
+      "title": "Cliente Nuevo",
+      "icon": "👋",
+      "color": "#FF6100",
+      "description": "Para clientes que vienen por primera vez",
+      "speeches": [
+        {
+          "id": "n1",
+          "situation": "Cliente llega por primera vez al punto de venta",
+          "phrase": "Bienvenido. Le cuento que aquí puede encontrar opciones de apuestas deportivas. Le explico paso a paso sin prisa para que entienda bien antes de decidir. ¿Le interesa conocer más?",
+          "tip": "Sonríe, no presiones. El cliente nuevo necesita confianza, no urgencia.",
+          "avoid": "Nunca digas '¡Es fácil ganar!' o 'Esto es muy sencillo y seguro'."
+        },
+        {
+          "id": "n2",
+          "situation": "Cliente nuevo quiere saber cómo funciona",
+          "phrase": "Claro, le explico. Usted elige un partido deportivo, revisa las opciones disponibles y decide en cuál resultado le interesa participar. Yo le ayudo a entender cada opción antes de confirmar.",
+          "tip": "Usa ejemplos simples. Un partido conocido como referencia ayuda mucho.",
+          "avoid": "No uses términos técnicos sin explicar. No des por hecho que el cliente sabe."
+        }
+      ]
+    },
+    {
+      "id": "no-deportes",
+      "title": "No conoce deportes",
+      "icon": "🤔",
+      "color": "#19C37D",
+      "description": "Para clientes que no saben de deportes",
+      "speeches": [
+        {
+          "id": "nd1",
+          "situation": "Cliente dice que no entiende de deportes",
+          "phrase": "No se preocupe, no necesita ser experto. Le explico lo básico del partido: quiénes juegan, cuándo y qué opciones hay disponibles. La idea es que entienda antes de decidir.",
+          "tip": "Empieza con fútbol porque es el más conocido. Usa términos cotidianos.",
+          "avoid": "No te burles ni hagas sentir al cliente que debería saber. Toda persona merece explicación clara."
+        },
+        {
+          "id": "nd2",
+          "situation": "Cliente no sabe qué es un partido de fútbol internacional",
+          "phrase": "Le explico: en fútbol hay selecciones nacionales que representan a cada país. En el Mundial, las mejores del mundo compiten. El resultado del partido es lo que determina las opciones disponibles.",
+          "tip": "Usa la selección del cliente como punto de partida si la conoce.",
+          "avoid": "No des por sentado que el cliente sigue el fútbol local o internacional."
+        }
+      ]
+    },
+    {
+      "id": "mundial",
+      "title": "Pregunta por el Mundial",
+      "icon": "🏆",
+      "color": "#FFD166",
+      "description": "Cuando el cliente quiere saber del Mundial",
+      "speeches": [
+        {
+          "id": "m1",
+          "situation": "Cliente pregunta por el Mundial de fútbol",
+          "phrase": "Hoy tenemos este partido destacado: [menciona el partido]. Le puedo comentar el horario, la fase del torneo y algunos datos importantes del partido para que lo entienda mejor antes de revisar las opciones.",
+          "tip": "Ten siempre el partido del día preparado. Menciona la fase (grupos, cuartos, etc.) para dar contexto.",
+          "avoid": "No digas cuál equipo 'debería ganar'. Presenta la información sin sesgo."
+        },
+        {
+          "id": "m2",
+          "situation": "Cliente pregunta qué selección es la mejor",
+          "phrase": "Eso es interesante. Hay selecciones con más títulos mundiales como Brasil (5) y Argentina (3). Pero en el Mundial todo puede pasar. Le puedo mostrar la información de cada equipo para que forme su propio criterio.",
+          "tip": "Los datos históricos generan conversación sin prometer resultados.",
+          "avoid": "No digas 'seguro gana Brasil' ni ninguna afirmación de resultado."
+        },
+        {
+          "id": "m3",
+          "situation": "Cliente quiere saber cómo funciona la fase de grupos",
+          "phrase": "En la fase de grupos, cada selección juega contra todas las del grupo. Los dos mejores de cada grupo avanzan. No es eliminación directa, así que perder un partido no significa quedar fuera.",
+          "tip": "El cliente que entiende la estructura toma mejores decisiones.",
+          "avoid": "No asumas que el cliente sabe cómo funciona un torneo. Explica siempre."
+        }
+      ]
+    },
+    {
+      "id": "promocion",
+      "title": "Pregunta por promociones",
+      "icon": "🎁",
+      "color": "#A78BFA",
+      "description": "Cuando el cliente pregunta por ofertas especiales",
+      "speeches": [
+        {
+          "id": "p1",
+          "situation": "Cliente pregunta si hay alguna promoción",
+          "phrase": "Sí, déjeme revisar las promociones disponibles para hoy. Le explico exactamente qué condiciones tiene cada oferta para que decida con toda la información.",
+          "tip": "Siempre explica los términos. Una promoción mal entendida genera desconfianza.",
+          "avoid": "No exageres la promoción ni omitas condiciones importantes."
+        },
+        {
+          "id": "p2",
+          "situation": "Cliente quiere aprovechar una promo de Mundial",
+          "phrase": "Tenemos disponible esta oferta para el partido. Le explico cómo funciona: [explica condiciones]. ¿Le parece que revisamos las opciones disponibles para ese partido?",
+          "tip": "Primero explica, luego muestra. Nunca al revés.",
+          "avoid": "No presiones con 'solo por hoy' o 'última oportunidad' sin que sea real."
+        }
+      ]
+    },
+    {
+      "id": "rapido",
+      "title": "Cliente quiere algo rápido",
+      "icon": "⚡",
+      "color": "#FF6100",
+      "description": "Cuando el cliente tiene poco tiempo",
+      "speeches": [
+        {
+          "id": "r1",
+          "situation": "Cliente dice que tiene poco tiempo",
+          "phrase": "Claro, sin problema. En un minuto le muestro el partido más próximo y las opciones más simples disponibles. Así puede decidir rápido con información clara.",
+          "tip": "Prepara siempre el partido 'top del día' para clientes de paso.",
+          "avoid": "No apresures la decisión del cliente aunque tenga prisa. Siempre información antes de confirmar."
+        },
+        {
+          "id": "r2",
+          "situation": "Cliente quiere la opción más simple disponible",
+          "phrase": "La opción más directa es elegir el resultado del partido: gana uno, gana el otro o empatan. Le muestro las opciones disponibles ahora mismo.",
+          "tip": "El resultado simple (1X2) es el más fácil de entender para empezar.",
+          "avoid": "No ofrezcas combinadas o handicaps a clientes que piden algo simple."
+        }
+      ]
+    },
+    {
+      "id": "seguro",
+      "title": "Quiere algo seguro",
+      "icon": "🛡️",
+      "color": "#19C37D",
+      "description": "Cuando el cliente busca certezas",
+      "speeches": [
+        {
+          "id": "s1",
+          "situation": "Cliente dice: '¿Cuál es la jugada más segura?'",
+          "phrase": "Es importante que sepa que en deportes ningún resultado está garantizado. Lo que sí puedo hacer es darle información del partido para que revise las opciones y decida con responsabilidad.",
+          "tip": "Di esto con calma y seguridad. No es negativa la respuesta, es honesta.",
+          "avoid": "NUNCA digas que alguna opción es 'segura', 'fija' o 'garantizada'. Esto está prohibido."
+        },
+        {
+          "id": "s2",
+          "situation": "Cliente insiste en que quiere certeza de ganar",
+          "phrase": "Entiendo que busca seguridad, y lo más responsable que puedo hacer es darle información completa del partido. Las apuestas deportivas tienen riesgo y es importante decidir sabiendo eso.",
+          "tip": "Si el cliente insiste, mantén tu posición. La honestidad genera confianza a largo plazo.",
+          "avoid": "No cedas por presión del cliente. Mantén siempre el mensaje responsable."
+        }
+      ]
+    },
+    {
+      "id": "loterías",
+      "title": "Viene de loterías",
+      "icon": "🎰",
+      "color": "#FFD166",
+      "description": "Clientes que conocen solo loterías y chance",
+      "speeches": [
+        {
+          "id": "l1",
+          "situation": "Cliente que solo conoce lotería o chance quiere conocer deportes",
+          "phrase": "La diferencia principal es que aquí usted no elige números al azar. Elige un resultado específico de un partido de verdad: qué equipo gana, cuántos goles se anotan, entre otras opciones. Le explico con un ejemplo.",
+          "tip": "La analogía con la lotería ayuda a contextualize pero aclara la diferencia de inmediato.",
+          "avoid": "No compares cuotas con premios de lotería. Son sistemas muy diferentes."
+        },
+        {
+          "id": "l2",
+          "situation": "Cliente pregunta si las apuestas deportivas dan mejores premios que la lotería",
+          "phrase": "Son productos diferentes. En apuestas deportivas, el resultado depende de lo que pase en el partido real. Le puedo explicar cómo funcionan las cuotas para que entienda cómo se calcula el posible retorno.",
+          "tip": "No hagas comparaciones de montos. Enfócate en la información del producto.",
+          "avoid": "No digas 'aquí ganas más' ni hagas promesas de montos."
+        }
+      ]
+    }
+  ]
+}

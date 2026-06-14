@@ -1,0 +1,387 @@
+{
+  "_nota": "Tips de Atención organizados por momento de la atención. Mínimo 10 frases por tip.",
+  "segmentaciones": [
+    {
+      "id": "saludo",
+      "label": "SALUDO",
+      "emoji": "👋",
+      "color": "blue",
+      "descripcion": "Cómo abrir la atención y generar confianza desde el primer segundo.",
+      "tips": [
+        {
+          "id": "s1",
+          "titulo": "Bienvenida cálida y profesional",
+          "objetivo": "Hacer que el cliente se sienta bien recibido desde el primer momento, presentando todas las opciones disponibles, incluyendo La Tinka.",
+          "ejemplos": [
+            "¡Bienvenido a TE APUESTO! Aquí puede apostar a deportes, jugar La Tinka y cobrar sus premios.",
+            "Bienvenido a La Tinka de TE APUESTO. ¿Le cuento cómo funciona o ya la conoce?",
+            "Buenos días, señor. Bienvenido. ¿Viene por La Tinka, deportes o a cobrar un premio?",
+            "¡Bienvenido! Hoy hay sorteo de La Tinka y partidos muy interesantes. ¿Por cuál empezamos?",
+            "Hola, bienvenido. Aquí en TE APUESTO tiene deportes, La Tinka y opciones virtuales. ¿Qué le llama más la atención?",
+            "¿Es la primera vez que nos visita? Le cuento todo: apuestas deportivas, La Tinka y cómo cobrar.",
+            "Buenas tardes. ¿Viene por La Tinka o quiere revisar los partidos del día?",
+            "Bienvenido. Tome su tiempo. Tenemos La Tinka, apuestas deportivas y más. Cuénteme qué busca.",
+            "Buenos días. Si tiene alguna pregunta sobre La Tinka o deportes, con gusto se la respondo.",
+            "Buenas, señor. ¿Quiere revisar La Tinka de hoy o ya sabe qué jugada quiere hacer?",
+            "¡Bienvenido a La Tinka! Si es su primera vez, le explico cómo participar en dos minutos.",
+            "Hola, bienvenido. Con La Tinka aquí disponible, hoy puede ser su día de suerte. ¿Le cuento cómo funciona?"
+          ]
+        },
+        {
+          "id": "s2",
+          "titulo": "Identificar si es cliente nuevo o frecuente",
+          "objetivo": "Adaptar la atención según el tipo de cliente para dar la mejor orientación.",
+          "ejemplos": [
+            "¿Es la primera vez que apuesta con nosotros o ya conoce TE APUESTO?",
+            "¿Suele venir seguido o es su primera visita?",
+            "¿Ya conoce cómo funciona una apuesta o prefiere que le explique desde el inicio?",
+            "Para orientarlo mejor, ¿tiene experiencia con apuestas deportivas?",
+            "¿Le han explicado antes cómo funcionan las cuotas o comenzamos desde ahí?",
+            "¿Viene a hacer la misma jugada de siempre o quiere explorar algo diferente hoy?",
+            "Si ya juega seguido, podemos revisar alguna herramienta nueva que le puede gustar.",
+            "Para los clientes nuevos siempre empezamos con algo sencillo, ¿le parece bien?",
+            "¿Hay algún deporte en particular que le guste para empezar por ahí?",
+            "Si ya conoce el sistema, cuénteme qué quiere apostar y lo buscamos juntos."
+          ]
+        },
+        {
+          "id": "s3",
+          "titulo": "Romper el hielo con fútbol o el Mundial",
+          "objetivo": "Generar conversación natural usando el deporte como tema de conexión.",
+          "ejemplos": [
+            "¿Vio el partido de anoche? Estuvo bastante movido.",
+            "Con el Mundial 2026 ya encima, ¿tiene algún equipo favorito?",
+            "Hoy hay un partido muy esperado. ¿Lo va a seguir?",
+            "El Mundial este año va a ser histórico: 48 selecciones y 3 países anfitriones.",
+            "¿Sabe que el partido de hoy tiene opciones interesantes para revisar?",
+            "¿Tiene algún equipo al que le vaya? Le cuento qué partidos tiene próximamente.",
+            "El fútbol está muy emocionante esta temporada. ¿Sigue alguna liga?",
+            "Hoy juegan los favoritos. ¿Quiere revisar las opciones disponibles?",
+            "Con tantos partidos del Mundial, siempre hay algo interesante para explorar.",
+            "¿Cree que Brasil llega a la final? Muchos clientes tienen su opinión. ¿Cuál es la suya?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "venta",
+      "label": "VENTA",
+      "emoji": "💼",
+      "color": "orange",
+      "descripcion": "Cómo orientar al cliente durante la atención y ofrecer cada herramienta de forma responsable.",
+      "tips": [
+        {
+          "id": "v1",
+          "titulo": "Explicar una apuesta simple",
+          "objetivo": "Que el cliente entienda su jugada antes de confirmarla.",
+          "ejemplos": [
+            "Una apuesta simple es elegir un resultado: ¿gana el local, empata o gana el visitante?",
+            "La opción más sencilla es apostar al ganador del partido. ¿Le explico cómo se ve la cuota?",
+            "Si elige al ganador y acierta, la cuota multiplica su monto apostado.",
+            "Por ejemplo, si apuesta S/10 y la cuota es 2.00, al ganar recibiría S/20.",
+            "Doble Oportunidad le permite cubrir dos resultados a la vez para mayor seguridad.",
+            "Más de 1.5 goles significa que el partido debe terminar con 2 goles o más para que gane.",
+            "Ambos Anotan quiere decir que los dos equipos deben marcar al menos un gol.",
+            "Le muestro la pantalla para que vea cómo se registra la jugada antes de confirmar.",
+            "Siempre revisamos juntos el boleto antes de registrar para que todo esté claro.",
+            "Recuerde que esta es una orientación: usted siempre decide si quiere confirmar o no."
+          ]
+        },
+        {
+          "id": "v2",
+          "titulo": "Ofrecer BetBuilder",
+          "objetivo": "Presentar BetBuilder como una jugada personalizada dentro de un solo partido.",
+          "ejemplos": [
+            "Con BetBuilder podemos armar una jugada más completa dentro del mismo partido.",
+            "No solo elegimos quién gana; también podemos agregar goles u otras opciones.",
+            "Lo armamos paso a paso para que entienda cada parte antes de confirmar.",
+            "Si quiere algo más personalizado, BetBuilder puede ser una buena opción.",
+            "Podemos revisar qué opciones permite el sistema para ese partido en particular.",
+            "Primero elegimos una base sencilla y luego vemos si conviene agregar algo más.",
+            "BetBuilder es ideal para clientes que quieren una jugada más elaborada.",
+            "Lo importante es no agregar opciones que usted no entienda o no haya decidido.",
+            "Podemos armarlo con ganador, goles o ambos anotan, según lo que permita el sistema.",
+            "Mientras más opciones agregamos, también puede aumentar el riesgo de la jugada."
+          ]
+        },
+        {
+          "id": "v3",
+          "titulo": "Ofrecer combinada corta",
+          "objetivo": "Orientar al cliente hacia combinadas cortas y manejables, explicando el riesgo.",
+          "ejemplos": [
+            "Una combinada combina varios partidos en una sola jugada para buscar una cuota más alta.",
+            "Le recomiendo empezar con una combinada corta: 2 o 3 partidos como máximo.",
+            "Mientras más partidos combine, más difícil es acertar todos al mismo tiempo.",
+            "La cuota de una combinada se multiplica, pero todos los resultados deben acertar.",
+            "Por ejemplo, dos partidos con cuota 1.80 cada uno, combinados dan una cuota de 3.24.",
+            "Le muestro en pantalla cómo queda la combinada antes de confirmarla.",
+            "Si quiere combinar más de 4 partidos, le explico el nivel de riesgo primero.",
+            "Una combinada corta y bien elegida puede ser más efectiva que una larga y compleja.",
+            "Recuerde: si un partido falla, se pierde toda la combinada.",
+            "Usted decide qué partidos incluir; yo le ayudo a entender las cuotas de cada uno."
+          ]
+        },
+        {
+          "id": "v4",
+          "titulo": "Ofrecer La Yapa",
+          "objetivo": "Informar al cliente sobre La Yapa si está disponible en su cuenta.",
+          "ejemplos": [
+            "Antes de cerrar su apuesta, revisemos si tiene La Yapa disponible en su cuenta.",
+            "La Yapa es un beneficio que aparece según su historial y actividad en TE APUESTO.",
+            "No siempre está activa, por eso lo validamos primero en el sistema.",
+            "Si tiene La Yapa disponible, puede ser una buena oportunidad para aprovecharlo hoy.",
+            "La Yapa no es algo que yo le activo: aparece automáticamente si aplica para usted.",
+            "Solo necesita su DNI para que revisemos si hay algún beneficio activo.",
+            "Le cuento en qué consiste La Yapa para que decida si le interesa aprovecharlo.",
+            "Si no tiene La Yapa activa hoy, puede verificar en su próxima visita.",
+            "Es un beneficio adicional que no afecta su jugada principal si no está disponible.",
+            "Revisemos juntos, sin compromiso, si hay algo disponible para usted hoy."
+          ]
+        },
+        {
+          "id": "v5",
+          "titulo": "Explicar Cashout",
+          "objetivo": "Que el cliente entienda cómo funciona Cashout y cuándo puede usarlo.",
+          "ejemplos": [
+            "Cashout le permite cerrar su apuesta antes de que termine el partido.",
+            "Si el partido va bien y quiere asegurar algo, puede usar Cashout si el sistema lo muestra disponible.",
+            "No siempre está activo: depende del partido, el mercado y el momento exacto.",
+            "El monto que recibe con Cashout lo determina el sistema según cómo va el partido.",
+            "Si decide hacer Cashout, recibe el monto mostrado en ese momento, sin esperar el final.",
+            "Es una decisión suya: nadie le obliga a usarlo aunque esté disponible.",
+            "No todos los mercados tienen Cashout habilitado; revisamos juntos si aplica.",
+            "Si el partido está siendo difícil, Cashout puede ser una opción para no perder todo.",
+            "Le aviso cuando su apuesta esté activa para que pueda revisar si aparece la opción.",
+            "Recuerde que Cashout no garantiza ganancia; el monto puede ser menor a lo apostado."
+          ]
+        },
+        {
+          "id": "v6",
+          "titulo": "Explicar Pago Anticipado",
+          "objetivo": "Diferenciar Pago Anticipado de Cashout y explicar que es automático del sistema.",
+          "ejemplos": [
+            "Pago Anticipado es diferente a Cashout: lo activa el sistema automáticamente, no usted.",
+            "Si se cumple una condición específica durante el partido, el sistema puede pagar antes.",
+            "No todos los partidos ni mercados tienen Pago Anticipado disponible.",
+            "Es el sistema quien decide si aplica, según las condiciones definidas previamente.",
+            "Usted no presiona ningún botón para activar Pago Anticipado: ocurre solo si aplica.",
+            "Si quiere saber si su apuesta tiene esta opción, lo revisamos antes de confirmar.",
+            "A diferencia de Cashout, usted no elige el momento: el sistema lo determina.",
+            "Puede preguntar por cada apuesta si tiene o no esta condición antes de registrarla.",
+            "Si se activa, recibirá el pago correspondiente según lo que establezca la condición.",
+            "Siempre verificamos las condiciones antes de asegurarle que aplica para su jugada."
+          ]
+        },
+        {
+          "id": "v7",
+          "titulo": "Usar la tablet como apoyo de venta",
+          "objetivo": "Apoyarse en la tablet para mostrar opciones y acompañar la decisión del cliente.",
+          "ejemplos": [
+            "En la tablet podemos ver todos los partidos del día con sus opciones y cuotas.",
+            "Le muestro aquí los partidos disponibles para que elija el que más le interese.",
+            "Revisamos juntos en pantalla para que vea bien cada opción antes de decidir.",
+            "La tablet nos ayuda a buscar rápido cualquier partido o mercado que le interese.",
+            "Si el cliente quiere ver cuotas de otro deporte, lo buscamos en la tablet al momento.",
+            "Señalamos directamente en pantalla para que quede claro qué está eligiendo.",
+            "Esto también ayuda a evitar errores: usted ve lo mismo que yo antes de confirmar.",
+            "Si quiere revisar el calendario del Mundial, lo abrimos aquí mismo.",
+            "La tablet sirve también para mostrar cómo se arma un BetBuilder paso a paso.",
+            "Si la imagen no es clara, acercamos la pantalla o buscamos otra opción más sencilla."
+          ]
+        },
+        {
+          "id": "v8",
+          "titulo": "Orientar al cliente con el Mundial 2026",
+          "objetivo": "Usar el Mundial como tema de conversación y gancho de venta responsable.",
+          "ejemplos": [
+            "El Mundial 2026 es el más grande de la historia: 48 selecciones y 104 partidos.",
+            "Se juega en tres países: Estados Unidos, México y Canadá.",
+            "Hay partidos prácticamente todos los días durante el torneo.",
+            "Puede apostar a ganador del partido, avance de fase o goleador del torneo.",
+            "Le muestro el calendario para que vea cuándo juega su selección favorita.",
+            "Hay mercados especiales del Mundial que no están en ligas normales.",
+            "El partido de inauguración es un buen momento para una apuesta sencilla si es nuevo.",
+            "Para el Mundial le recomiendo empezar con apuestas simples y conocidas.",
+            "Podemos revisar los grupos y ver cuáles son los partidos más esperados.",
+            "El Mundial es una gran oportunidad para que clientes nuevos prueben TE APUESTO."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fidelizacion",
+      "label": "FIDELIZACIÓN",
+      "emoji": "🏅",
+      "color": "green",
+      "descripcion": "Cómo fortalecer la relación con el cliente para que regrese y confíe en TE APUESTO.",
+      "tips": [
+        {
+          "id": "f1",
+          "titulo": "Invitar al Club Te Apuesto",
+          "objetivo": "Presentar el Club como una forma de estar informado y recibir beneficios.",
+          "ejemplos": [
+            "¿Sabía que puede estar informado de partidos, novedades y beneficios en el Club TE APUESTO?",
+            "El Club es gratuito y le permite recibir información útil sobre promociones.",
+            "Si viene seguido, le conviene estar en el Club para enterarse de las novedades.",
+            "No tiene que comprometerse a nada: es solo para estar mejor informado.",
+            "Los miembros del Club pueden acceder a información de beneficios cuando estén activos.",
+            "Si quiere saber más sobre cómo funciona el Club, con gusto se lo explico.",
+            "Muchos clientes frecuentes ya están en el Club y valoran la información que reciben.",
+            "Puede unirse hoy mismo sin ningún costo ni compromiso adicional.",
+            "El Club le ayuda a no perderse los partidos importantes ni las promociones disponibles.",
+            "No garantizamos beneficios específicos, pero sí información oportuna para clientes como usted."
+          ]
+        },
+        {
+          "id": "f2",
+          "titulo": "Recordar dónde y cómo cobrar premios",
+          "objetivo": "Asegurar que el cliente sepa que puede cobrar sus premios en el punto de venta.",
+          "ejemplos": [
+            "Cuando su apuesta sea ganadora, puede venir aquí directamente a cobrar su premio.",
+            "El cobro es en efectivo, sin trámites complicados ni esperas innecesarias.",
+            "Solo necesita su boleto o código de apuesta para hacer válido su premio.",
+            "Si gana en la app, también puede cobrar aquí en el punto de venta sin problema.",
+            "Le conviene guardar su comprobante de apuesta hasta que termine el partido.",
+            "Si tiene alguna duda sobre su premio, venga y revisamos juntos el estado de su jugada.",
+            "El plazo para cobrar premios tiene un límite: no deje pasar mucho tiempo.",
+            "También puede revisar el estado de su apuesta en la app o aquí en la tablet.",
+            "Si viene a cobrar y hay alguna diferencia, lo verificamos en el sistema al momento.",
+            "Recuerde traer su DNI cuando venga a cobrar un premio para validar su identidad."
+          ]
+        },
+        {
+          "id": "f3",
+          "titulo": "Crear conversación mundialista para fidelizar",
+          "objetivo": "Usar el Mundial como tema de conversación recurrente que motive al cliente a volver.",
+          "ejemplos": [
+            "Con el Mundial 2026 hay partidos casi todos los días. ¿Cuáles no se quiere perder?",
+            "Venga antes del partido para que revisemos las opciones con calma.",
+            "Si su selección avanza, habrá más partidos interesantes. Lo esperamos para esos.",
+            "El Mundial dura casi un mes: hay mucho tiempo para participar con calma.",
+            "Cuénteme, ¿a cuál selección le va? Así le aviso cuando juegue.",
+            "Para la fase de eliminación directa las apuestas se ponen más emocionantes.",
+            "Hay clientes que vienen partido a partido durante el Mundial. ¿Se anima?",
+            "El ambiente mundialista en el punto de venta es muy bueno. Lo esperamos.",
+            "Le cuento cuándo juegan los favoritos para que no se le pase ningún partido.",
+            "Con el Mundial, siempre hay tema de conversación y opciones nuevas para revisar."
+          ]
+        },
+        {
+          "id": "f4",
+          "titulo": "Venta cruzada mientras el cliente espera",
+          "objetivo": "Aprovechar el tiempo de espera para mencionar otras opciones sin presionar.",
+          "ejemplos": [
+            "Mientras registramos su ticket, ¿le cuento sobre los deportes virtuales que salen cada minuto?",
+            "En lo que arranca su partido, hay opciones de fútbol virtual si quiere algo inmediato.",
+            "¿Sabía que también tenemos apuestas en vivo durante el partido?",
+            "Si su jugada está registrada, ¿quiere revisar qué otros partidos hay hoy?",
+            "Mientras espera, puedo mostrarle cómo funciona el BetBuilder para la próxima vez.",
+            "¿Le cuento sobre La Yapa? Puede tener un beneficio disponible para su próxima jugada.",
+            "Si quiere, revisamos si tiene algún beneficio del Club activo mientras esperamos.",
+            "En lo que su partido inicia, puedo mostrarle el calendario del Mundial.",
+            "¿Quiere que le explique cómo funciona el Cashout por si quiere usarlo durante el partido?",
+            "Mientras esperamos, ¿tiene alguna pregunta sobre cómo funciona alguna herramienta?"
+          ]
+        },
+        {
+          "id": "f5",
+          "titulo": "Usar la Pared de Ganadores como credibilidad",
+          "objetivo": "Mostrar la pared de ganadores para generar confianza real y motivar al cliente sin prometer resultados.",
+          "ejemplos": [
+            "¿Ve esa pared? Ahí están los clientes que han ganado premios en este punto de venta.",
+            "Estos son ganadores reales de aquí mismo. No son inventados ni de otra sucursal.",
+            "La pared de ganadores nos recuerda que los premios sí se cobran y sí existen.",
+            "Muchos de ellos empezaron igual que usted: revisando opciones sin saber bien cómo funciona.",
+            "Si quiere, le cuento la historia de alguno de ellos para que vea cómo fue su experiencia.",
+            "Tener un ganador en el punto de venta nos llena de orgullo. Es una señal de que esto funciona.",
+            "Cada foto en esa pared representa a alguien que apostó con información clara y responsable.",
+            "No todos ganaron en su primera jugada, pero sí aprendieron y siguieron con calma.",
+            "La pared nos dice que los premios existen. Nosotros nos aseguramos de que usted entienda bien antes de jugar.",
+            "Si algún día gana aquí, con gusto lo invitamos a ser parte de nuestra pared también.",
+            "Esa pared es nuestro mejor testimonio de que los premios se cobran y se pagan en este local.",
+            "No garantizamos que usted gane, pero sí que recibirá la misma atención que ellos recibieron."
+          ]
+        },
+        {
+          "id": "f6",
+          "titulo": "Compartir historias de ganadores",
+          "objetivo": "Usar historias reales de ganadores para generar confianza y entusiasmo sin prometer resultados.",
+          "ejemplos": [
+            "Una vez vino un cliente que nunca había apostado. Hicimos una jugada sencilla juntos y ganó.",
+            "Tuvimos un ganador que apostó al resultado de un partido de su liga favorita y acertó.",
+            "Un cliente frecuente usó el Cashout justo a tiempo y recuperó más de lo esperado.",
+            "Recuerdo a un señor que ganó en su segunda visita con una combinada corta de dos partidos.",
+            "Hubo una cliente que usó La Yapa disponible en su cuenta y eso le ayudó en su jugada.",
+            "Un cliente vino a cobrar un premio del fin de semana y no lo podía creer. Acertó los tres partidos.",
+            "Le cuento: tenemos clientes que vienen cada semana, aprenden poco a poco y ya saben elegir bien.",
+            "Un ganador me dijo que lo que más le gustó fue que le explicamos sin presión antes de confirmar.",
+            "La historia que más recuerdo es la de un cliente que apostó tranquilo porque entendió bien lo que hacía.",
+            "No siempre se gana, pero cuando se entiende bien la jugada, la experiencia es mejor en cualquier caso.",
+            "Un cliente ganó durante el Mundial y usó parte del premio para volver a jugar la siguiente fecha.",
+            "Lo más bonito no es solo el premio: es ver que el cliente confió en nuestra orientación y quedó contento."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "despedida",
+      "label": "DESPEDIDA",
+      "emoji": "🤝",
+      "color": "purple",
+      "descripcion": "Cómo cerrar la atención de forma que el cliente quiera regresar.",
+      "tips": [
+        {
+          "id": "d1",
+          "titulo": "Cierre amable y sin presión",
+          "objetivo": "Terminar la atención de forma positiva sin importar si el cliente jugó o no.",
+          "ejemplos": [
+            "Gracias por visitarnos. Lo esperamos para los próximos partidos.",
+            "Cualquier duda que tenga, aquí estamos para ayudarlo.",
+            "Fue un gusto atenderlo. Vuelva cuando guste.",
+            "Si tiene alguna pregunta después, puede volver sin ningún compromiso.",
+            "Espero haberle explicado bien. Si algo no quedó claro, con gusto lo repasamos.",
+            "Que le vaya muy bien. Lo esperamos pronto.",
+            "Gracias por su tiempo. Aquí siempre hay partidos y opciones nuevas.",
+            "Si quiere traer a algún amigo o familiar, con gusto les explicamos a los dos.",
+            "Recuerde que puede consultar cuántas veces quiera sin obligación de apostar.",
+            "Hasta pronto. Recuerde que aquí puede cobrar sus premios cuando gane."
+          ]
+        },
+        {
+          "id": "d2",
+          "titulo": "Invitación a volver sin presión",
+          "objetivo": "Dejar una puerta abierta para que el cliente regrese por voluntad propia.",
+          "ejemplos": [
+            "Si hoy no quiso apostar, no hay problema. Lo esperamos cuando se sienta listo.",
+            "Cuando tenga más tiempo, vuelva y revisamos juntos las opciones con calma.",
+            "No hay prisa. La próxima vez que venga le explico lo que no quedó claro hoy.",
+            "Si ve algún partido que le llame la atención, venga y lo revisamos.",
+            "Para el próximo partido importante, venga con anticipación para ver las opciones.",
+            "Si decide intentarlo la próxima vez, aquí estaremos para orientarlo.",
+            "Recuerde que siempre puede consultar sin compromiso antes de decidir.",
+            "Si un amigo le cuenta sobre TE APUESTO y tiene dudas, puede volver y preguntarme.",
+            "La próxima vez que venga podemos ir directo a lo que más le interesó hoy.",
+            "No se preocupe si no apostó hoy. Lo importante es que se fue con la información clara."
+          ]
+        },
+        {
+          "id": "d3",
+          "titulo": "Despedida con mensaje responsable",
+          "objetivo": "Cerrar siempre con un recordatorio de juego responsable de forma natural.",
+          "ejemplos": [
+            "Recuerde siempre apostar lo que puede manejar sin afectar sus gastos principales.",
+            "Las apuestas son entretenimiento. Lo más importante es disfrutarlo con responsabilidad.",
+            "Si alguna vez tiene dudas sobre su jugada, pregúnteme antes de confirmar.",
+            "Ningún resultado está garantizado: eso es parte del deporte y de las apuestas.",
+            "Si siente que está apostando más de lo que quisiera, hable con nosotros.",
+            "Lo más valioso es que usted entienda su jugada antes de decidir.",
+            "Aposte solo lo que decidió de antemano, no en el calor del momento.",
+            "Recuerde: informarse bien antes de apostar siempre es la mejor jugada.",
+            "Si algo no le quedó claro sobre su boleto, verifíquelo con nosotros antes de salir.",
+            "Que gane o no, lo importante es que haya sido una decisión informada y tranquila."
+          ]
+        }
+      ]
+    }
+  ]
+}

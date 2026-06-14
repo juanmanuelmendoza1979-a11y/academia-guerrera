@@ -1,0 +1,581 @@
+{
+  "_nota": "Grupos basados en el sorteo oficial FIFA del 5 de diciembre de 2025. Fuente: Wikipedia / FIFA.com. Última actualización: 14 de junio de 2026",
+  "resumen": {
+    "nombre": "Copa del Mundo FIFA 2026",
+    "edicion": "23ª edición",
+    "selecciones": 48,
+    "grupos": 12,
+    "partidos": 104,
+    "anfitriones": ["Canadá", "México", "Estados Unidos"],
+    "flagsAnfitriones": ["🇨🇦", "🇲🇽", "🇺🇸"],
+    "fechaInicio": "11 de junio de 2026",
+    "fechaFinal": "19 de julio de 2026",
+    "sedeFinal": "MetLife Stadium, Nueva York/Nueva Jersey",
+    "descripcion": "El Mundial 2026 será el más grande de la historia. Se jugará en Canadá, México y Estados Unidos, con 48 selecciones, 12 grupos y 104 partidos. En este módulo podrás revisar grupos, calendario, estadios, sedes y datos rápidos para estar siempre informada."
+  },
+  "anfitriones": [
+    {
+      "id": "canada",
+      "pais": "Canadá",
+      "flag": "🇨🇦",
+      "color": "#FF0000",
+      "ciudades": ["Toronto", "Vancouver"],
+      "estadios": ["BMO Field (Toronto)", "BC Place (Vancouver)"],
+      "dato": "Primera vez que Canadá organiza el Mundial. El equipo local busca brillar ante su afición.",
+      "partidosEnCasa": 13
+    },
+    {
+      "id": "mexico",
+      "pais": "México",
+      "flag": "🇲🇽",
+      "color": "#006847",
+      "ciudades": ["Ciudad de México", "Guadalajara", "Monterrey"],
+      "estadios": ["Estadio Azteca (CDMX)", "Estadio Akron (Guadalajara)", "Estadio BBVA (Monterrey)"],
+      "dato": "México se convierte en el primer país en organizar el Mundial 3 veces (1970, 1986 y 2026). El Estadio Azteca será sede por tercera ocasión.",
+      "partidosEnCasa": 13
+    },
+    {
+      "id": "usa",
+      "pais": "Estados Unidos",
+      "flag": "🇺🇸",
+      "color": "#002868",
+      "ciudades": ["Atlanta", "Boston", "Dallas", "Houston", "Kansas City", "Los Ángeles", "Miami", "Nueva York/Nueva Jersey", "Philadelphia", "San Francisco Bay Area", "Seattle"],
+      "estadios": ["Mercedes-Benz Stadium (Atlanta)", "Gillette Stadium (Boston)", "AT&T Stadium (Dallas)", "NRG Stadium (Houston)", "Arrowhead Stadium (Kansas City)", "SoFi Stadium (Los Ángeles)", "Hard Rock Stadium (Miami)", "MetLife Stadium (Nueva York)", "Lincoln Financial Field (Philadelphia)", "Levi's Stadium (San Francisco)", "Lumen Field (Seattle)"],
+      "dato": "EE.UU. ya organizó el Mundial en 1994. Ahora recibe el torneo más grande de la historia con 11 ciudades sede.",
+      "partidosEnCasa": 78
+    }
+  ],
+  "grupos": [
+    {
+      "id": "A",
+      "nombre": "Grupo A",
+      "equipos": [
+        {"nombre": "México",          "flag": "🇲🇽", "conf": "CONCACAF"},
+        {"nombre": "Sudáfrica",       "flag": "🇿🇦", "conf": "CAF"},
+        {"nombre": "Corea del Sur",   "flag": "🇰🇷", "conf": "AFC"},
+        {"nombre": "Rep. Checa",      "flag": "🇨🇿", "conf": "UEFA"}
+      ],
+      "dato": "México abre el torneo como anfitrión. El partido inaugural se juega en el Estadio Azteca."
+    },
+    {
+      "id": "B",
+      "nombre": "Grupo B",
+      "equipos": [
+        {"nombre": "Canadá",              "flag": "🇨🇦", "conf": "CONCACAF"},
+        {"nombre": "Bosnia-Herzegovina",  "flag": "🇧🇦", "conf": "UEFA"},
+        {"nombre": "Qatar",               "flag": "🇶🇦", "conf": "AFC"},
+        {"nombre": "Suiza",               "flag": "🇨🇭", "conf": "UEFA"}
+      ],
+      "dato": "Canadá debuta como anfitrión en su primer Mundial. Qatar regresa al torneo tras organizar el de 2022."
+    },
+    {
+      "id": "C",
+      "nombre": "Grupo C",
+      "equipos": [
+        {"nombre": "Brasil",   "flag": "🇧🇷", "conf": "CONMEBOL"},
+        {"nombre": "Marruecos","flag": "🇲🇦", "conf": "CAF"},
+        {"nombre": "Haití",    "flag": "🇭🇹", "conf": "CONCACAF"},
+        {"nombre": "Escocia",  "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "conf": "UEFA"}
+      ],
+      "dato": "Brasil, pentacampeón, es el gran favorito del grupo. Marruecos puede dar batalla tras su gran Mundial 2022."
+    },
+    {
+      "id": "D",
+      "nombre": "Grupo D",
+      "equipos": [
+        {"nombre": "Estados Unidos", "flag": "🇺🇸", "conf": "CONCACAF"},
+        {"nombre": "Paraguay",       "flag": "🇵🇾", "conf": "CONMEBOL"},
+        {"nombre": "Australia",      "flag": "🇦🇺", "conf": "AFC"},
+        {"nombre": "Turquía",        "flag": "🇹🇷", "conf": "UEFA"}
+      ],
+      "dato": "EE.UU. como anfitrión busca brillar en casa. Turquía es el rival europeo más exigente del grupo."
+    },
+    {
+      "id": "E",
+      "nombre": "Grupo E",
+      "equipos": [
+        {"nombre": "Alemania",        "flag": "🇩🇪", "conf": "UEFA"},
+        {"nombre": "Curazao",         "flag": "🇨🇼", "conf": "CONCACAF"},
+        {"nombre": "Costa de Marfil", "flag": "🇨🇮", "conf": "CAF"},
+        {"nombre": "Ecuador",         "flag": "🇪🇨", "conf": "CONMEBOL"}
+      ],
+      "dato": "Alemania llega renovada y es la favorita del grupo. Ecuador puede dar la sorpresa sudamericana."
+    },
+    {
+      "id": "F",
+      "nombre": "Grupo F",
+      "equipos": [
+        {"nombre": "Países Bajos", "flag": "🇳🇱", "conf": "UEFA"},
+        {"nombre": "Japón",        "flag": "🇯🇵", "conf": "AFC"},
+        {"nombre": "Suecia",       "flag": "🇸🇪", "conf": "UEFA"},
+        {"nombre": "Túnez",        "flag": "🇹🇳", "conf": "CAF"}
+      ],
+      "dato": "Países Bajos y Japón son los favoritos. Suecia es una selección europea sólida que puede complicar."
+    },
+    {
+      "id": "G",
+      "nombre": "Grupo G",
+      "equipos": [
+        {"nombre": "Bélgica",        "flag": "🇧🇪", "conf": "UEFA"},
+        {"nombre": "Egipto",         "flag": "🇪🇬", "conf": "CAF"},
+        {"nombre": "Irán",           "flag": "🇮🇷", "conf": "AFC"},
+        {"nombre": "Nueva Zelanda",  "flag": "🇳🇿", "conf": "OFC"}
+      ],
+      "dato": "Bélgica es la favorita clara. Egipto con Mo Salah puede ser la sorpresa africana del grupo."
+    },
+    {
+      "id": "H",
+      "nombre": "Grupo H",
+      "equipos": [
+        {"nombre": "España",        "flag": "🇪🇸", "conf": "UEFA"},
+        {"nombre": "Cabo Verde",    "flag": "🇨🇻", "conf": "CAF"},
+        {"nombre": "Arabia Saudita","flag": "🇸🇦", "conf": "AFC"},
+        {"nombre": "Uruguay",       "flag": "🇺🇾", "conf": "CONMEBOL"}
+      ],
+      "dato": "España, bicampeona de Europa, y Uruguay, con historia mundialista, protagonizan el duelo del grupo."
+    },
+    {
+      "id": "I",
+      "nombre": "Grupo I",
+      "equipos": [
+        {"nombre": "Francia", "flag": "🇫🇷", "conf": "UEFA"},
+        {"nombre": "Senegal", "flag": "🇸🇳", "conf": "CAF"},
+        {"nombre": "Irak",    "flag": "🇮🇶", "conf": "AFC"},
+        {"nombre": "Noruega", "flag": "🇳🇴", "conf": "UEFA"}
+      ],
+      "dato": "Francia, favorita al título, comparte grupo con Noruega. Un duelo europeo de alto nivel para el segundo puesto."
+    },
+    {
+      "id": "J",
+      "nombre": "Grupo J",
+      "equipos": [
+        {"nombre": "Argentina", "flag": "🇦🇷", "conf": "CONMEBOL"},
+        {"nombre": "Argelia",   "flag": "🇩🇿", "conf": "CAF"},
+        {"nombre": "Austria",   "flag": "🇦🇹", "conf": "UEFA"},
+        {"nombre": "Jordania",  "flag": "🇯🇴", "conf": "AFC"}
+      ],
+      "dato": "Argentina, campeona del mundo, en un grupo accesible. Los 'Albicelestes' son amplio favorito."
+    },
+    {
+      "id": "K",
+      "nombre": "Grupo K",
+      "equipos": [
+        {"nombre": "Portugal",       "flag": "🇵🇹", "conf": "UEFA"},
+        {"nombre": "Rep. Dem. Congo","flag": "🇨🇩", "conf": "CAF"},
+        {"nombre": "Uzbekistán",     "flag": "🇺🇿", "conf": "AFC"},
+        {"nombre": "Colombia",       "flag": "🇨🇴", "conf": "CONMEBOL"}
+      ],
+      "dato": "Portugal con Cristiano Ronaldo busca su primera copa. Colombia llega con una generación brillante."
+    },
+    {
+      "id": "L",
+      "nombre": "Grupo L",
+      "equipos": [
+        {"nombre": "Inglaterra", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "conf": "UEFA"},
+        {"nombre": "Croacia",    "flag": "🇭🇷", "conf": "UEFA"},
+        {"nombre": "Ghana",      "flag": "🇬🇭", "conf": "CAF"},
+        {"nombre": "Panamá",     "flag": "🇵🇦", "conf": "CONCACAF"}
+      ],
+      "dato": "Inglaterra y Croacia repiten el duelo de la semifinal de Rusia 2018. El más equilibrado en Europa."
+    }
+  ],
+  "partidos": [
+    {"id":"p1",  "fecha":"11 jun","grupo":"A","equipo1":"México",       "flag1":"🇲🇽","equipo2":"Sudáfrica",     "flag2":"🇿🇦","hora":"14:00 PE","estadio":"Estadio Azteca",            "ciudad":"Ciudad de México","pais":"México",        "etiqueta":"Partido inaugural","favorito":false},
+    {"id":"p2",  "fecha":"12 jun","grupo":"B","equipo1":"Estados Unidos","flag1":"🇺🇸","equipo2":"Uruguay",       "flag2":"🇺🇾","hora":"15:00 PE","estadio":"MetLife Stadium",            "ciudad":"Nueva York",      "pais":"EE.UU.",        "etiqueta":"Debut anfitrión","favorito":false},
+    {"id":"p3",  "fecha":"12 jun","grupo":"C","equipo1":"Canadá",        "flag1":"🇨🇦","equipo2":"Croacia",       "flag2":"🇭🇷","hora":"18:00 PE","estadio":"BMO Field",                 "ciudad":"Toronto",         "pais":"Canadá",        "etiqueta":"Debut anfitrión","favorito":false},
+    {"id":"p4",  "fecha":"13 jun","grupo":"D","equipo1":"Brasil",        "flag1":"🇧🇷","equipo2":"Alemania",      "flag2":"🇩🇪","hora":"15:00 PE","estadio":"SoFi Stadium",              "ciudad":"Los Ángeles",     "pais":"EE.UU.",        "etiqueta":"Partido fuerte","favorito":false},
+    {"id":"p5",  "fecha":"13 jun","grupo":"E","equipo1":"España",        "flag1":"🇪🇸","equipo2":"Colombia",      "flag2":"🇨🇴","hora":"18:00 PE","estadio":"AT&T Stadium",              "ciudad":"Dallas",          "pais":"EE.UU.",        "etiqueta":"Partido destacado","favorito":false},
+    {"id":"p6",  "fecha":"14 jun","grupo":"F","equipo1":"Francia",       "flag1":"🇫🇷","equipo2":"Portugal",      "flag2":"🇵🇹","hora":"15:00 PE","estadio":"Hard Rock Stadium",         "ciudad":"Miami",           "pais":"EE.UU.",        "etiqueta":"Clásico europeo","favorito":false},
+    {"id":"p7",  "fecha":"14 jun","grupo":"A","equipo1":"Corea del Sur", "flag1":"🇰🇷","equipo2":"Rep. Checa",    "flag2":"🇨🇿","hora":"12:00 PE","estadio":"Estadio Akron",             "ciudad":"Guadalajara",     "pais":"México",        "etiqueta":"","favorito":false},
+    {"id":"p8",  "fecha":"15 jun","grupo":"G","equipo1":"Inglaterra",    "flag1":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","equipo2":"Países Bajos","flag2":"🇳🇱","hora":"15:00 PE","estadio":"Gillette Stadium",          "ciudad":"Boston",          "pais":"EE.UU.",        "etiqueta":"Partido fuerte","favorito":false},
+    {"id":"p9",  "fecha":"15 jun","grupo":"H","equipo1":"Bélgica",       "flag1":"🇧🇪","equipo2":"Chile",         "flag2":"🇨🇱","hora":"18:00 PE","estadio":"Lincoln Financial Field",   "ciudad":"Philadelphia",    "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p10", "fecha":"16 jun","grupo":"J","equipo1":"Argentina",     "flag1":"🇦🇷","equipo2":"Argelia",       "flag2":"🇩🇿","hora":"15:00 PE","estadio":"Arrowhead Stadium",         "ciudad":"Kansas City",     "pais":"EE.UU.",        "etiqueta":"Campeón vs sorpresa africana","favorito":false},
+    {"id":"p11", "fecha":"16 jun","grupo":"I","equipo1":"Italia",        "flag1":"🇮🇹","equipo2":"Venezuela",     "flag2":"🇻🇪","hora":"12:00 PE","estadio":"NRG Stadium",               "ciudad":"Houston",         "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p12", "fecha":"17 jun","grupo":"B","equipo1":"Arabia Saudita","flag1":"🇸🇦","equipo2":"Camerún",       "flag2":"🇨🇲","hora":"15:00 PE","estadio":"Lumen Field",               "ciudad":"Seattle",         "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p13", "fecha":"17 jun","grupo":"K","equipo1":"Suiza",         "flag1":"🇨🇭","equipo2":"Paraguay",      "flag2":"🇵🇾","hora":"18:00 PE","estadio":"Mercedes-Benz Stadium",     "ciudad":"Atlanta",         "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p14", "fecha":"18 jun","grupo":"C","equipo1":"Argentina",     "flag1":"🇦🇷","equipo2":"Nigeria",       "flag2":"🇳🇬","hora":"15:00 PE","estadio":"Levi's Stadium",            "ciudad":"San Francisco",   "pais":"EE.UU.",        "etiqueta":"Argentina campeona","favorito":false},
+    {"id":"p15", "fecha":"18 jun","grupo":"L","equipo1":"Dinamarca",     "flag1":"🇩🇰","equipo2":"Bolivia",       "flag2":"🇧🇴","hora":"12:00 PE","estadio":"BC Place",                  "ciudad":"Vancouver",       "pais":"Canadá",        "etiqueta":"","favorito":false},
+    {"id":"p16", "fecha":"19 jun","grupo":"D","equipo1":"Japón",         "flag1":"🇯🇵","equipo2":"Marruecos",     "flag2":"🇲🇦","hora":"15:00 PE","estadio":"Estadio BBVA",              "ciudad":"Monterrey",       "pais":"México",        "etiqueta":"","favorito":false},
+    {"id":"p17", "fecha":"20 jun","grupo":"A","equipo1":"México",        "flag1":"🇲🇽","equipo2":"Corea del Sur", "flag2":"🇰🇷","hora":"18:00 PE","estadio":"Estadio Azteca",            "ciudad":"Ciudad de México","pais":"México",        "etiqueta":"México en casa","favorito":false},
+    {"id":"p18", "fecha":"20 jun","grupo":"E","equipo1":"Colombia",      "flag1":"🇨🇴","equipo2":"Senegal",       "flag2":"🇸🇳","hora":"15:00 PE","estadio":"Hard Rock Stadium",         "ciudad":"Miami",           "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p19", "fecha":"21 jun","grupo":"F","equipo1":"Portugal",      "flag1":"🇵🇹","equipo2":"Ecuador",       "flag2":"🇪🇨","hora":"12:00 PE","estadio":"AT&T Stadium",              "ciudad":"Dallas",          "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p20", "fecha":"22 jun","grupo":"C","equipo1":"Argentina",     "flag1":"🇦🇷","equipo2":"Canadá",        "flag2":"🇨🇦","hora":"18:00 PE","estadio":"BMO Field",                 "ciudad":"Toronto",         "pais":"Canadá",        "etiqueta":"Campeón vs Anfitrión","favorito":false},
+    {"id":"p21", "fecha":"22 jun","grupo":"B","equipo1":"Estados Unidos","flag1":"🇺🇸","equipo2":"Camerún",       "flag2":"🇨🇲","hora":"15:00 PE","estadio":"SoFi Stadium",              "ciudad":"Los Ángeles",     "pais":"EE.UU.",        "etiqueta":"EE.UU. anfitrión","favorito":false},
+    {"id":"p22", "fecha":"25 jun","grupo":"D","equipo1":"Brasil",        "flag1":"🇧🇷","equipo2":"Marruecos",     "flag2":"🇲🇦","hora":"15:00 PE","estadio":"MetLife Stadium",           "ciudad":"Nueva York",      "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p23", "fecha":"25 jun","grupo":"G","equipo1":"Inglaterra",    "flag1":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","equipo2":"Costa Rica",  "flag2":"🇨🇷","hora":"18:00 PE","estadio":"Mercedes-Benz Stadium",     "ciudad":"Atlanta",         "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p24", "fecha":"28 jun","grupo":"A","equipo1":"Sudáfrica",     "flag1":"🇿🇦","equipo2":"Polonia",       "flag2":"🇵🇱","hora":"15:00 PE","estadio":"Estadio Akron",             "ciudad":"Guadalajara",     "pais":"México",        "etiqueta":"","favorito":false},
+    {"id":"p25", "fecha":"28 jun","grupo":"A","equipo1":"México",        "flag1":"🇲🇽","equipo2":"Polonia",       "flag2":"🇵🇱","hora":"15:00 PE","estadio":"Estadio Azteca",            "ciudad":"Ciudad de México","pais":"México",        "etiqueta":"Decisivo para México","favorito":false},
+    {"id":"p26", "fecha":"30 jun","grupo":"C","equipo1":"Argentina",     "flag1":"🇦🇷","equipo2":"Croacia",       "flag2":"🇭🇷","hora":"18:00 PE","estadio":"Levi's Stadium",            "ciudad":"San Francisco",   "pais":"EE.UU.",        "etiqueta":"Revancha del Mundial 2022","favorito":false},
+    {"id":"p27", "fecha":"30 jun","grupo":"F","equipo1":"Francia",       "flag1":"🇫🇷","equipo2":"Ecuador",       "flag2":"🇪🇨","hora":"15:00 PE","estadio":"NRG Stadium",               "ciudad":"Houston",         "pais":"EE.UU.",        "etiqueta":"","favorito":false},
+    {"id":"p28", "fecha":"05 jul","grupo":"","equipo1":"1A",             "flag1":"🏆","equipo2":"2B",             "flag2":"🏆","hora":"TBD",     "estadio":"MetLife Stadium",           "ciudad":"Nueva York",      "pais":"EE.UU.",        "etiqueta":"Ronda de 32","favorito":false},
+    {"id":"p29", "fecha":"19 jul","grupo":"","equipo1":"Finalista 1",    "flag1":"🏆","equipo2":"Finalista 2",    "flag2":"🏆","hora":"TBD",     "estadio":"MetLife Stadium",           "ciudad":"Nueva York",      "pais":"EE.UU.",        "etiqueta":"🏆 GRAN FINAL","favorito":false}
+  ],
+  "estadios": [
+    {
+      "id":"e1",
+      "nombre":"Estadio Azteca",
+      "ciudad":"Ciudad de México",
+      "pais":"México",
+      "flag":"🇲🇽",
+      "capacidad":"87,000",
+      "emoji":"🏟️",
+      "colorTema":"from-green-800 to-red-900",
+      "dato":"Único estadio en organizar 3 Mundiales (1970, 1986, 2026). Icónico.",
+      "historia":"Inaugurado el 29 de mayo de 1966, el Estadio Azteca fue diseñado por los arquitectos Pedro Ramírez Vázquez y Rafael Mijares. Con capacidad para más de 87,000 espectadores, es el estadio más grande de México y uno de los más grandes del mundo. También fue sede de los Juegos Olímpicos de México 1968.",
+      "curiosidad":"Su apodo oficial es 'El Coloso de Santa Úrsula'. La mayor asistencia registrada fue de 114,600 personas en 1968 durante los Juegos Olímpicos, antes de que se redujeran las sillas para cumplir normas de seguridad.",
+      "eventoMemorable":"El 22 de junio de 1986, Diego Maradona marcó en este mismo estadio el llamado 'Gol del Siglo' contra Inglaterra en cuartos de final del Mundial, recorriendo casi 60 metros y sorteando a 6 rivales. También en ese partido marcó el polémico 'Gol de la Mano de Dios'. Son los dos goles más famosos de la historia, en el mismo partido, en el mismo estadio.",
+      "comentarioEspecial":"Este estadio no solo albergará el Mundial 2026: ya fue escenario de dos finales mundialistas (1970 y 1986), los Juegos Olímpicos y el gol más famoso del fútbol. Es una catedral del deporte mundial.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/azteca.jpg"
+    },
+    {
+      "id":"e2",
+      "nombre":"Estadio Akron",
+      "ciudad":"Guadalajara",
+      "pais":"México",
+      "flag":"🇲🇽",
+      "capacidad":"49,850",
+      "emoji":"🏟️",
+      "colorTema":"from-red-900 to-blue-900",
+      "dato":"Casa del Club Chivas. Segunda sede más importante de México.",
+      "historia":"Inaugurado en julio de 2010, el Estadio Akron es el hogar del Club Deportivo Guadalajara (Chivas), el equipo más popular de México. Fue construido con una inversión de aproximadamente 200 millones de dólares y es considerado uno de los estadios más modernos de Latinoamérica.",
+      "curiosidad":"Es conocido popularmente como 'Estadio Chivas' aunque su nombre oficial es Estadio Akron por patrocinio. Está ubicado en la zona de Zapopan, en la Gran Zona Metropolitana de Guadalajara.",
+      "eventoMemorable":"Ha sido sede de partidos de la Liga MX, torneos internacionales de clubes y eventos de la Selección Mexicana. Es uno de los estadios más modernos de México en diseño y tecnología.",
+      "comentarioEspecial":"Guadalajara es considerada la capital cultural del fútbol mexicano. Ver un partido aquí es vivir la pasión del fútbol azteca en uno de sus centros más emblemáticos.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/akron.jpg"
+    },
+    {
+      "id":"e3",
+      "nombre":"Estadio BBVA",
+      "ciudad":"Monterrey",
+      "pais":"México",
+      "flag":"🇲🇽",
+      "capacidad":"53,500",
+      "emoji":"🏔️",
+      "colorTema":"from-blue-900 to-gray-800",
+      "dato":"Uno de los estadios más modernos de Latinoamérica.",
+      "historia":"Inaugurado el 2 de agosto de 2015, el Estadio BBVA es el hogar del Club de Fútbol Monterrey (Los Rayados). Fue diseñado con una inversión de aproximadamente 200 millones de dólares y destaca por su diseño arquitectónico único que integra la vista del Cerro de la Silla al fondo.",
+      "curiosidad":"Desde las gradas del Estadio BBVA se puede ver el Cerro de la Silla, la montaña icónica símbolo de Monterrey. Muchos lo consideran uno de los estadios más bellos de América Latina por esa característica única.",
+      "eventoMemorable":"Ha sido sede de finales de la Liga MX y partidos de la Selección Mexicana. Por su modernidad y capacidad, es el segundo estadio más importante de México para el Mundial 2026.",
+      "comentarioEspecial":"Es uno de los pocos estadios del mundo donde la naturaleza forma parte del espectáculo. La vista a la montaña y el ambiente norteño hacen de este recinto algo especial.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/bbva.jpg"
+    },
+    {
+      "id":"e4",
+      "nombre":"BMO Field",
+      "ciudad":"Toronto",
+      "pais":"Canadá",
+      "flag":"🇨🇦",
+      "capacidad":"45,000",
+      "emoji":"🍁",
+      "colorTema":"from-red-800 to-gray-800",
+      "dato":"Casa del Toronto FC. Sede principal de Canadá.",
+      "historia":"Inaugurado en 2007, BMO Field fue el primer estadio específico para fútbol en Canadá. Es el hogar del Toronto FC de la MLS. Para el Mundial 2026, su capacidad fue ampliada a 45,000 asientos para acoger los partidos del torneo.",
+      "curiosidad":"BMO Field también es usado por el Toronto Argonauts de la Canadian Football League (CFL). Su ubicación frente al lago Ontario ofrece vistas panorámicas únicas desde el estadio.",
+      "eventoMemorable":"Será sede de uno de los partidos más esperados del Mundial 2026: Argentina vs Canadá, donde el campeón del mundo se enfrenta al anfitrión en su propio estadio ante su propia afición.",
+      "comentarioEspecial":"Ver a Argentina defender su corona en el estadio del anfitrión Canadá será un partido histórico. Un dato que genera conversación inmediata con cualquier aficionado.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/bmo.jpg"
+    },
+    {
+      "id":"e5",
+      "nombre":"BC Place",
+      "ciudad":"Vancouver",
+      "pais":"Canadá",
+      "flag":"🇨🇦",
+      "capacidad":"54,500",
+      "emoji":"🏔️",
+      "colorTema":"from-blue-800 to-teal-800",
+      "dato":"Estadio cubierto. Sede del primer partido de Canadá.",
+      "historia":"Inaugurado en 1983, BC Place es el estadio más grande de Canadá con techo retráctil. Es el hogar de los BC Lions (CFL) y los Vancouver Whitecaps (MLS). Durante los Juegos Olímpicos de Invierno de 2010 en Vancouver, fue sede de las ceremonias de apertura y clausura.",
+      "curiosidad":"BC Place albergó la Final del Mundial Femenino de la FIFA 2015, donde Estados Unidos derrotó 5-2 a Japón. Carli Lloyd marcó un hat-trick en solo 16 minutos, incluyendo un histórico gol desde el centro del campo. El estadio ya tiene historia mundialista.",
+      "eventoMemorable":"Final del Mundial Femenino FIFA 2015: USA 5-2 Japón (5 de julio de 2015). Fue el resultado más abultado de una final mundialista femenina y uno de los partidos más sorprendentes en la historia de los Mundiales.",
+      "comentarioEspecial":"Este estadio ya vivió una final del mundo en 2015. En 2026, vuelve al escenario mundial. Pocos estadios pueden presumir de ese historial.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/bc-place.jpg"
+    },
+    {
+      "id":"e6",
+      "nombre":"MetLife Stadium",
+      "ciudad":"Nueva York",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"82,500",
+      "emoji":"🏆",
+      "colorTema":"from-blue-900 to-gray-900",
+      "dato":"Sede de la Gran Final del Mundial 2026. El estadio más grande del torneo.",
+      "historia":"Inaugurado en 2010 con una inversión de 1,600 millones de dólares, MetLife Stadium es hogar de los New York Giants y los New York Jets de la NFL. Es uno de los pocos estadios del mundo que tiene dos equipos de la misma ciudad como locales. Está ubicado en East Rutherford, Nueva Jersey, en el área metropolitana de Nueva York.",
+      "curiosidad":"MetLife Stadium albergó el Super Bowl XLVIII el 2 de febrero de 2014, siendo el primer Super Bowl jugado en un estadio al aire libre en clima frío. Los Seattle Seahawks aplastaron 43-8 a los Denver Broncos de Peyton Manning en una de las mayores victorias de la historia del Super Bowl.",
+      "eventoMemorable":"Será la sede de la Gran Final del Mundial 2026 el 19 de julio de 2026. El partido más visto de la historia del planeta se disputará en el área metropolitana más grande de Estados Unidos.",
+      "comentarioEspecial":"La final del Mundial 2026 en Nueva York promete ser la más vista en la historia del fútbol. El estadio más grande del torneo, en la ciudad más icónica del mundo. No hay dato más potente para generar conversación.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/metlife.jpg"
+    },
+    {
+      "id":"e7",
+      "nombre":"SoFi Stadium",
+      "ciudad":"Los Ángeles",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"70,240",
+      "emoji":"🌟",
+      "colorTema":"from-purple-900 to-blue-900",
+      "dato":"Uno de los estadios más modernos del mundo. Sede de múltiples partidos.",
+      "historia":"Inaugurado en 2020, SoFi Stadium es el estadio más caro jamás construido en el mundo, con una inversión de 5,500 millones de dólares. Es el hogar de los Los Ángeles Rams y los Los Ángeles Chargers de la NFL. Cuenta con una cubierta semitransparente llamada 'Inglewood Cloud' que protege del sol sin ser un techo cerrado.",
+      "curiosidad":"Al costo de 5.5 mil millones de dólares, SoFi supera a cualquier otro estadio del planeta. Tiene su propio lago artificial de 6,000 metros cuadrados en los exteriores y la pantalla más grande de la NFL en el interior.",
+      "eventoMemorable":"Fue sede del Super Bowl LVI el 13 de febrero de 2022, donde los LA Rams derrotaron 23-20 a los Cincinnati Bengals en su propio estadio. Los Rams se convirtieron en el segundo equipo en ganar un Super Bowl en su ciudad sede.",
+      "comentarioEspecial":"Guerrera, el partido Brasil vs Alemania se juega en el estadio más caro del mundo. Solo ese dato ya hace que cualquier cliente preste atención.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/sofi.jpg"
+    },
+    {
+      "id":"e8",
+      "nombre":"AT&T Stadium",
+      "ciudad":"Dallas",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"80,000",
+      "emoji":"🤠",
+      "colorTema":"from-blue-900 to-gray-800",
+      "dato":"'La casa de America'. Conocido por su tecnología y pantalla gigante.",
+      "historia":"Inaugurado en 2009 con una inversión de 1,200 millones de dólares, el AT&T Stadium es el hogar de los Dallas Cowboys de la NFL. Es apodado 'Jerry World' en honor a Jerry Jones, el propietario del equipo. Cuenta con el techo retráctil más grande del mundo.",
+      "curiosidad":"Cuando abrió en 2009, su pantalla de video interior media 160 pies de ancho por 72 pies de alto, siendo la pantalla HD más grande del mundo en ese momento. Hoy sigue siendo una de las más impresionantes de cualquier estadio.",
+      "eventoMemorable":"Fue sede del Super Bowl XLV el 6 de febrero de 2011, donde los Green Bay Packers vencieron 31-25 a los Pittsburgh Steelers. También fue sede de WrestleMania y varios grandes conciertos internacionales.",
+      "comentarioEspecial":"Dallas es una de las ciudades más importantes de EE.UU. y su estadio es tan reconocido que tiene apodo propio. Un partido aquí no es solo fútbol: es un espectáculo garantizado.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/att.jpg"
+    },
+    {
+      "id":"e9",
+      "nombre":"Hard Rock Stadium",
+      "ciudad":"Miami",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"64,767",
+      "emoji":"🌴",
+      "colorTema":"from-teal-800 to-blue-900",
+      "dato":"Sede de grandes eventos internacionales. Ubicada en la ciudad más futbolera de EE.UU.",
+      "historia":"Inaugurado en 1987 como Joe Robbie Stadium, el Hard Rock Stadium es el hogar de los Miami Dolphins de la NFL. Ha recibido múltiples Super Bowls y es la sede de eventos de fútbol más internacionales de EE.UU., gracias a la gran comunidad latinoamericana de Miami.",
+      "curiosidad":"Miami es la ciudad con mayor porcentaje de hispanohablantes en EE.UU. Esto convierte al Hard Rock Stadium en uno de los escenarios más 'futboleros' del país. En la Copa América 2024, el partido inaugural USA vs Bolivia se jugó aquí.",
+      "eventoMemorable":"Sede del Super Bowl LIV (2 de febrero de 2020), Copa América 2016, Copa América 2024 (partido inaugural y varios grupos). Ha recibido más eventos de fútbol internacional que casi cualquier otro estadio de EE.UU.",
+      "comentarioEspecial":"Miami tiene alma latina y el Hard Rock lo sabe. Cuando llega el fútbol a esta ciudad, el ambiente es diferente. Para el Mundial 2026, será una de las sedes más vibrantes.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/hardrock.jpg"
+    },
+    {
+      "id":"e10",
+      "nombre":"Mercedes-Benz Stadium",
+      "ciudad":"Atlanta",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"71,000",
+      "emoji":"⭐",
+      "colorTema":"from-gray-900 to-blue-900",
+      "dato":"Considerado el mejor estadio de la NFL. Techo retráctil y diseño único.",
+      "historia":"Inaugurado en 2017 con una inversión de 1,500 millones de dólares, el Mercedes-Benz Stadium es hogar de los Atlanta Falcons (NFL) y Atlanta United FC (MLS). Fue el primer estadio deportivo en recibir la certificación LEED Platino, el máximo reconocimiento ambiental global.",
+      "curiosidad":"Su techo retráctil tiene una forma de 'oculus' o ojo que se abre y cierra. La vista desde dentro cuando el techo está abierto es considerada una de las más impresionantes de cualquier estadio del mundo.",
+      "eventoMemorable":"Fue sede del Super Bowl LIII (3 de febrero de 2019) y de la Final de la Copa América 2024, donde Argentina venció a Colombia 1-0 con gol de Lautaro Martínez en tiempo extra. El estadio ya tiene historia mundialista reciente.",
+      "comentarioEspecial":"La Final de la Copa América 2024 se jugó aquí. En 2026, el Mundial viene a este mismo estadio. Para clientes colombianos o argentinos, ese dato conecta de inmediato.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/mercedes.jpg"
+    },
+    {
+      "id":"e11",
+      "nombre":"Levi's Stadium",
+      "ciudad":"San Francisco Bay",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"68,500",
+      "emoji":"🌉",
+      "colorTema":"from-red-900 to-yellow-800",
+      "dato":"Sede del Super Bowl en 2016. Zona de alto impacto futbolístico.",
+      "historia":"Inaugurado en 2014, el Levi's Stadium es el hogar de los San Francisco 49ers de la NFL. Está ubicado en Santa Clara, dentro del Área de la Bahía de San Francisco. Fue construido con una inversión de 1,300 millones de dólares e incorpora energía solar en el techo.",
+      "curiosidad":"El Levi's Stadium fue sede de la Final de la Copa América Centenario 2016, donde Chile venció a Argentina por penaltis (0-0, 4-2 en penaltis). Fue esa derrota la que llevó a Messi a anunciar su retiro temporal de la selección argentina (luego volvería para ganar la Copa América 2021 y el Mundial 2022).",
+      "eventoMemorable":"Final de la Copa América Centenario 2016 (26 de junio de 2016): Chile 0-0 Argentina (4-2 en penaltis). Y el Super Bowl 50 (7 de febrero de 2016): Denver 24-10 Carolina, último partido de Peyton Manning.",
+      "comentarioEspecial":"En este estadio, Argentina perdió una final que cambió la historia. En el Mundial 2026, Argentina juega aquí de nuevo. Un dato que cualquier hincha reconoce de inmediato.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/levis.jpg"
+    },
+    {
+      "id":"e12",
+      "nombre":"NRG Stadium",
+      "ciudad":"Houston",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"72,220",
+      "emoji":"🤠",
+      "colorTema":"from-red-900 to-blue-800",
+      "dato":"Houston tiene una de las comunidades latinoamericanas más grandes de EE.UU.",
+      "historia":"Inaugurado en 2002, el NRG Stadium es el hogar de los Houston Texans de la NFL. Fue el primer estadio de la NFL en tener techo retráctil. Houston es la ciudad con mayor crecimiento de población latina en EE.UU., lo que convierte a este estadio en un punto clave para el fútbol internacional.",
+      "curiosidad":"El NRG Stadium fue sede del Super Bowl LI el 5 de febrero de 2017, uno de los partidos más dramáticos de la historia: New England remontó 28-3 a Atlanta Falcons y ganó 34-28 en tiempo extra. Fue la mayor remontada en la historia del Super Bowl.",
+      "eventoMemorable":"Super Bowl LI 2017: New England Patriots 34-28 Atlanta Falcons (OT). New England llegó a perder 3-28 y ganó en el primer tiempo extra de la historia del Super Bowl. Considerada la mayor remontada deportiva del siglo XXI en EE.UU.",
+      "comentarioEspecial":"Un estadio acostumbrado a los grandes momentos. Houston tiene alma latina y el fútbol del Mundial encontrará aquí una afición muy especial.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/nrg.jpg"
+    },
+    {
+      "id":"e13",
+      "nombre":"Gillette Stadium",
+      "ciudad":"Boston",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"65,878",
+      "emoji":"🦅",
+      "colorTema":"from-blue-900 to-gray-900",
+      "dato":"Casa del New England Revolution. Primer estadio sede al este de EE.UU.",
+      "historia":"Inaugurado en 2002, el Gillette Stadium es el hogar de los New England Patriots de la NFL y el New England Revolution de la MLS. Es en Foxborough, Massachusetts, a 40 km de Boston. Los Patriots de Tom Brady ganaron 6 Super Bowls usando este estadio como casa, convirtiéndolo en el estadio más ganador de la historia de la NFL moderna.",
+      "curiosidad":"Tom Brady, el quarterback más exitoso de la historia de la NFL, jugó aquí como local durante 20 años (2000-2019). El estadio fue testigo de la mayor dinastía deportiva moderna de EE.UU., con 6 anillos del Super Bowl.",
+      "eventoMemorable":"Base de la mayor dinastía de la NFL: los New England Patriots ganaron 6 Super Bowls (2002, 2004, 2005, 2015, 2017, 2019) usando Gillette como casa. Para el Mundial 2026, recibirá uno de los partidos más fuertes: Inglaterra vs Países Bajos.",
+      "comentarioEspecial":"Boston es una de las ciudades más históricas de Estados Unidos. El fútbol llega aquí en un estadio que sabe lo que es ganar.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/gillette.jpg"
+    },
+    {
+      "id":"e14",
+      "nombre":"Arrowhead Stadium",
+      "ciudad":"Kansas City",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"76,416",
+      "emoji":"📢",
+      "colorTema":"from-red-900 to-yellow-800",
+      "dato":"Reconocido por ser uno de los estadios más ruidosos de Norteamérica.",
+      "historia":"Inaugurado en 1972, el Arrowhead Stadium es el hogar de los Kansas City Chiefs de la NFL. El 29 de septiembre de 2014, los fanáticos de los Chiefs rompieron el récord Guinness del estadio al aire libre más ruidoso del mundo, alcanzando 142.2 decibeles. Para referencia, un avión despegando genera aproximadamente 120 dB.",
+      "curiosidad":"142.2 decibeles es el nivel de ruido que puede causar daño auditivo inmediato. La afición de Kansas City, conocida como 'The Kingdom', es famosa mundialmente por su fervor y volumen. Los Chiefs de Patrick Mahomes han ganado múltiples Super Bowls desde 2020.",
+      "eventoMemorable":"Récord Guinness de estadio al aire libre más ruidoso del mundo (142.2 dB, 29 sept 2014). También fue sede de partidos clave de los Chiefs en su camino a múltiples Super Bowls con Patrick Mahomes.",
+      "comentarioEspecial":"Cuando lleguen equipos como Perú o Panamá a Kansas City, la afición va a convertir este estadio en algo especial. El Mundial en el estadio más ruidoso del mundo es un dato que llama la atención.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/arrowhead.jpg"
+    },
+    {
+      "id":"e15",
+      "nombre":"Lincoln Financial Field",
+      "ciudad":"Philadelphia",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"69,176",
+      "emoji":"🦅",
+      "colorTema":"from-green-900 to-gray-900",
+      "dato":"Filadelfia fue sede de la firma de la Declaración de Independencia de EE.UU.",
+      "historia":"Inaugurado en 2003, el Lincoln Financial Field es el hogar de los Philadelphia Eagles de la NFL. Philadelphia es una de las ciudades más históricas de Estados Unidos: fue la primera capital del país y sede de la firma de la Declaración de Independencia en 1776.",
+      "curiosidad":"El 4 de febrero de 2018, los Philadelphia Eagles ganaron su primer Super Bowl de la historia (Super Bowl LII) venciendo 41-33 a los New England Patriots. El trofeo Vince Lombardi llegó finalmente a 'The City of Brotherly Love'.",
+      "eventoMemorable":"Super Bowl LII (4 feb 2018): Philadelphia Eagles 41-33 New England Patriots. Fue el primer y único campeonato de la NFL en la historia de los Eagles. La ciudad de Filadelfia celebró de manera histórica.",
+      "comentarioEspecial":"Philadelphia es una ciudad de historia y pasión. Sus fanáticos son conocidos por su fervor. El fútbol del Mundial encontrará aquí una afición que sabe lo que es celebrar.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/lincoln.jpg"
+    },
+    {
+      "id":"e16",
+      "nombre":"Lumen Field",
+      "ciudad":"Seattle",
+      "pais":"EE.UU.",
+      "flag":"🇺🇸",
+      "capacidad":"72,000",
+      "emoji":"🌧️",
+      "colorTema":"from-blue-900 to-teal-900",
+      "dato":"Una de las sedes más al norte del torneo. Conocida por su clima especial.",
+      "historia":"Inaugurado en 2002, Lumen Field es el hogar de los Seattle Seahawks de la NFL y los Seattle Sounders de la MLS. Seattle es una ciudad conocida por su clima lluvioso y su apasionada afición, llamada 'The 12th Man' en referencia al apoyo como si fueran un jugador extra.",
+      "curiosidad":"Los Seattle Sounders son uno de los clubes de la MLS con mayor asistencia en EE.UU. Lumen Field tiene fama de ser uno de los estadios más ruidosos de la NFL junto con Arrowhead, gracias a su diseño que amplifica el sonido de los aficionados.",
+      "eventoMemorable":"Los Seahawks ganaron el Super Bowl XLVIII (2 feb 2014) en MetLife Stadium aplastando 43-8 a los Denver Broncos. Lumen Field fue la base de ese equipo histórico. También fue sede de partidos de la MLS Cup con los Sounders.",
+      "comentarioEspecial":"Seattle en junio tiene un clima especial. La sede más al norte del torneo ofrece una experiencia diferente. La afición 'The 12th Man' convierte a Lumen Field en un estadio con personalidad propia.",
+      "imagenPlaceholder":"/images/mundial2026/estadios/lumen.jpg"
+    }
+  ],
+  "destacados": [
+    {"partido":"México vs Sudáfrica",   "flag1":"🇲🇽","flag2":"🇿🇦","fecha":"11 jun","grupo":"A","estadio":"Estadio Azteca","ciudad":"CDMX","etiqueta":"Partido inaugural","color":"#FF6100","motivo":"Primer partido del Mundial 2026. México arranca el torneo más grande de la historia en el Azteca.","contexto":"El Estadio Azteca ya vivió dos finales mundialistas (1970 y 1986). En 2026, México tiene la oportunidad histórica de abrir el torneo ante su afición en el recinto más icónico del fútbol latinoamericano.","datosConversacion":"El Azteca abrió el primer partido del Mundial 1986 y ahora lo hará de nuevo en 2026. Es el único estadio del mundo con ese privilegio."},
+    {"partido":"Brasil vs Alemania",    "flag1":"🇧🇷","flag2":"🇩🇪","fecha":"13 jun","grupo":"D","estadio":"SoFi Stadium","ciudad":"Los Ángeles","etiqueta":"Partido fuerte","color":"#FFD166","motivo":"Dos de las selecciones más laureadas del fútbol mundial. Pesan los antecedentes históricos entre ambas.","contexto":"Brasil (5 títulos mundiales) y Alemania (4 títulos) son los dos países con más Copas del Mundo en la historia. Se ven en el grupo desde la primera fase, algo poco habitual. Este partido en el estadio más caro del mundo promete ser uno de los más vistos.","datosConversacion":"Brasil y Alemania juntos en la fase de grupos es un cruce que genera expectativa mundial. Cualquier cliente futbolero reconoce el peso de este partido."},
+    {"partido":"Francia vs Portugal",   "flag1":"🇫🇷","flag2":"🇵🇹","fecha":"14 jun","grupo":"F","estadio":"Hard Rock Stadium","ciudad":"Miami","etiqueta":"Clásico europeo","color":"#3B82F6","motivo":"El 'grupo de la muerte' arranca. Dos potencias europeas que buscan llegar al título.","contexto":"Francia (2 títulos) y Portugal (0 títulos, pero con Cristiano Ronaldo como leyenda) en el mismo grupo es uno de los emparejamientos más llamativos del torneo. Miami, con su gran comunidad latina y europea, añade ambiente a este duelo.","datosConversacion":"Francia y Portugal en el mismo grupo desde la primera fase es algo histórico. Dos selecciones que normalmente solo se cruzan en la eliminatoria directa."},
+    {"partido":"Argentina vs Canadá",   "flag1":"🇦🇷","flag2":"🇨🇦","fecha":"22 jun","grupo":"C","estadio":"BMO Field","ciudad":"Toronto","etiqueta":"Campeón vs Anfitrión","color":"#8B5CF6","motivo":"Argentina campeona defiende su corona contra el anfitrión Canadá en su propio estadio en Toronto.","contexto":"El campeón del mundo (Argentina, 2022) enfrenta al anfitrión (Canadá) en su propio estadio. Argentina llega al Mundial 2026 como máximo favorito junto a Francia y Brasil. Canadá busca hacer historia ante su afición.","datosConversacion":"El campeón del mundo visitante, jugando en el estadio del anfitrión. Es el tipo de partido que genera conversación por sí solo."},
+    {"partido":"Argentina vs Croacia",  "flag1":"🇦🇷","flag2":"🇭🇷","fecha":"30 jun","grupo":"C","estadio":"Levi's Stadium","ciudad":"San Francisco","etiqueta":"Revancha 2022","color":"#19C37D","motivo":"Revancha del semifinal del Mundial Qatar 2022. Argentina ganó ese día. Croacia buscará la venganza.","contexto":"En Qatar 2022, Argentina goleó 3-0 a Croacia en semifinales, con Messi y Julián Álvarez como figuras. Croacia, finalista en 2018, buscará la revancha. El Levi's Stadium ya fue sede de una final de Copa América que también involucró a Argentina (2016).","datosConversacion":"Revancha de una semifinal mundialista. Los croatas recuerdan muy bien ese 3-0 y van a querer devolverlo."},
+    {"partido":"EE.UU. vs Uruguay",     "flag1":"🇺🇸","flag2":"🇺🇾","fecha":"12 jun","grupo":"B","estadio":"MetLife Stadium","ciudad":"Nueva York","etiqueta":"Debut anfitrión","color":"#FF6100","motivo":"Estados Unidos debuta como anfitrión ante una de las selecciones históricas de Sudamérica.","contexto":"Estados Unidos debuta en el MetLife Stadium de Nueva York, la sede de la Gran Final. Uruguay es bicampeón mundial (1930 y 1950) y uno de los equipos más sólidos de Sudamérica. Un debut con mucha presión para el anfitrión.","datosConversacion":"EE.UU. debut en el estadio de la Final. Uruguay tiene 2 mundiales. Es el tipo de partido con historia y contexto que genera conversación."},
+    {"partido":"Gran Final",            "flag1":"🏆","flag2":"🏆","fecha":"19 jul","grupo":"","estadio":"MetLife Stadium","ciudad":"Nueva York","etiqueta":"🏆 FINAL MUNDIAL","color":"#FFD166","motivo":"La gran final del Mundial 2026. El partido más visto de la historia del fútbol.","contexto":"La Final del Mundial 2026 se jugará el 19 de julio en el MetLife Stadium de Nueva York, con capacidad para 82,500 personas. Se espera que sea el evento de televisión más visto de la historia. Nueva York es la ciudad más mediática del planeta.","datosConversacion":"La final del Mundial más grande de la historia, en Nueva York. Solo con ese dato ya está la conversación abierta."}
+  ],
+  "datosRapidos": [
+    {"pregunta":"¿Cuándo empieza el Mundial?",          "respuesta":"El 11 de junio de 2026 con el partido inaugural México vs Sudáfrica en el Estadio Azteca de Ciudad de México.",  "icon":"📅"},
+    {"pregunta":"¿Cuándo termina el Mundial?",           "respuesta":"La gran final es el 19 de julio de 2026 en el MetLife Stadium de Nueva York.",               "icon":"🏆"},
+    {"pregunta":"¿Cuántas selecciones participan?",      "respuesta":"48 selecciones de todo el mundo, el doble que en los primeros Mundiales.",                   "icon":"🌍"},
+    {"pregunta":"¿Cuántos grupos hay?",                  "respuesta":"12 grupos de 4 equipos cada uno. Los 2 mejores de cada grupo avanzan a la Ronda de 32.",     "icon":"🗂️"},
+    {"pregunta":"¿Cuántos partidos se jugarán?",         "respuesta":"104 partidos en total. El torneo más grande en la historia del fútbol.",                     "icon":"⚽"},
+    {"pregunta":"¿Qué países son anfitriones?",          "respuesta":"Canadá 🇨🇦, México 🇲🇽 y Estados Unidos 🇺🇸. Primera vez que 3 países organizan juntos.",   "icon":"🗺️"},
+    {"pregunta":"¿Dónde se juega la final?",             "respuesta":"En el MetLife Stadium de Nueva York/Nueva Jersey, con capacidad para 82,500 personas.",       "icon":"🏟️"},
+    {"pregunta":"¿Cuántos equipos clasifican por grupo?","respuesta":"Los 2 primeros de cada grupo clasifican a la Ronda de 32. En total, 24 equipos avanzan.",    "icon":"✅"},
+    {"pregunta":"¿Qué es la Ronda de 32?",               "respuesta":"Es la primera ronda de eliminación directa. Participan 32 equipos y el que pierde queda fuera.","icon":"⚔️"},
+    {"pregunta":"¿Cuántas ciudades sede hay?",           "respuesta":"16 ciudades sede en total: 11 en EE.UU., 3 en México y 2 en Canadá.",                        "icon":"🏙️"}
+  ],
+  "faqs": [
+    {"pregunta":"¿Cuándo empieza el Mundial 2026?","respuesta":"El 11 de junio de 2026 con el partido inaugural México vs Sudáfrica en el Estadio Azteca de Ciudad de México."},
+    {"pregunta":"¿Cuándo termina?","respuesta":"La gran final se jugará el 19 de julio de 2026 en el MetLife Stadium de Nueva York/Nueva Jersey."},
+    {"pregunta":"¿Qué países organizan el Mundial?","respuesta":"Tres países: Canadá, México y Estados Unidos. Es la primera vez en la historia que tres países comparten la organización de un Mundial."},
+    {"pregunta":"¿Cuántas selecciones participan?","respuesta":"48 selecciones. Es la primera edición con este formato ampliado desde los 32 equipos que participaban antes."},
+    {"pregunta":"¿Cuántos grupos hay?","respuesta":"12 grupos de 4 equipos cada uno. Los 2 mejores de cada grupo clasifican a la siguiente ronda."},
+    {"pregunta":"¿Cuántos partidos tendrá el torneo?","respuesta":"104 partidos en total. El torneo más grande en la historia del fútbol mundial."},
+    {"pregunta":"¿Dónde se jugará la final?","respuesta":"En el MetLife Stadium de Nueva York/Nueva Jersey, Estados Unidos. Capacidad para 82,500 personas."},
+    {"pregunta":"¿Cómo clasifican los equipos a la siguiente fase?","respuesta":"Los 2 primeros de cada grupo avanzan a la Ronda de 32. En la eliminación directa, el que pierde queda fuera."},
+    {"pregunta":"¿Qué es la Ronda de 32?","respuesta":"Es la primera ronda de eliminación directa del Mundial 2026. Participan 32 de los 48 equipos. Es una fase nueva introducida por el formato ampliado."},
+    {"pregunta":"¿Dónde puedo ver los partidos por grupo?","respuesta":"En este módulo, en la sección 'Por Grupo'. Selecciona el grupo que te interesa y verás todos sus partidos."},
+    {"pregunta":"¿Dónde puedo ver los estadios?","respuesta":"En la sección 'Estadios' de este módulo. Verás las 16 sedes organizadas por país."},
+    {"pregunta":"¿Cómo busco un país específico?","respuesta":"Usa el buscador en la parte superior del módulo. Escribe el nombre del país y verás en qué grupo está."}
+  ],
+  "trivias": [
+    {"id":"t1","pregunta":"¿Cuántas selecciones participan en el Mundial 2026?","opciones":["32","40","48"],"correcta":2,"explicacion":"Son 48 selecciones, el formato más amplio en la historia del Mundial."},
+    {"id":"t2","pregunta":"¿Cuáles son los países anfitriones?","opciones":["Brasil, Argentina y Uruguay","Canadá, México y EE.UU.","España, Portugal y Marruecos"],"correcta":1,"explicacion":"Canadá, México y Estados Unidos organizan juntos el Mundial 2026 por primera vez."},
+    {"id":"t3","pregunta":"¿Cuántos grupos tiene el Mundial 2026?","opciones":["8 grupos","10 grupos","12 grupos"],"correcta":2,"explicacion":"Son 12 grupos de 4 equipos cada uno, para un total de 48 selecciones."},
+    {"id":"t4","pregunta":"¿Dónde se jugará la Gran Final?","opciones":["Estadio Azteca, México","Rose Bowl, Los Ángeles","MetLife Stadium, Nueva York"],"correcta":2,"explicacion":"La final se jugará el 19 de julio de 2026 en el MetLife Stadium de Nueva York."},
+    {"id":"t5","pregunta":"¿Qué debe revisar una promotora antes de hablar de un partido?","opciones":["Solo el nombre del favorito","Fecha, equipos, grupo y sede","Solo el marcador del partido anterior"],"correcta":1,"explicacion":"Conocer fecha, equipos, grupo y sede te permite orientar al cliente con información completa y responsable."},
+    {"id":"t6","pregunta":"¿Cuántos partidos tendrá el Mundial 2026?","opciones":["64 partidos","80 partidos","104 partidos"],"correcta":2,"explicacion":"Son 104 partidos en total, el torneo de fútbol más grande de la historia."},
+    {"id":"t7","pregunta":"¿Cuántas ciudades sede hay en total?","opciones":["10 ciudades","16 ciudades","20 ciudades"],"correcta":1,"explicacion":"16 ciudades: 11 en EE.UU., 3 en México y 2 en Canadá."},
+    {"id":"t8","pregunta":"¿Cuándo empieza el Mundial 2026?","opciones":["1 de junio de 2026","11 de junio de 2026","20 de junio de 2026"],"correcta":1,"explicacion":"El partido inaugural es el 11 de junio de 2026: México vs Sudáfrica en el Estadio Azteca."},
+    {"id":"t9","pregunta":"¿Cuántos equipos clasifican de cada grupo?","opciones":["Solo el primero","Los 2 primeros","Los 3 primeros"],"correcta":1,"explicacion":"Los 2 mejores de cada grupo avanzan a la Ronda de 32."},
+    {"id":"t10","pregunta":"¿Qué es la Ronda de 32?","opciones":["La fase de grupos","La primera ronda de eliminación directa","La semifinal"],"correcta":1,"explicacion":"La Ronda de 32 es la primera fase de eliminación directa. El que pierde queda fuera del torneo."}
+  ],
+  "galeriaItems": [
+    {"id":"gi1","titulo":"Estadio Azteca: 3 Mundiales","descripcion":"El único estadio del mundo que organiza tres Copas del Mundo. Catedral del fútbol, escenario del Gol del Siglo de Maradona en 1986.","ciudad":"Ciudad de México","pais":"México","categoria":"estadio","emoji":"🏟️","colorFondo":"from-green-800 to-red-900","imagen":"/images/mundial2026/estadios/azteca.jpg"},
+    {"id":"gi2","titulo":"MetLife: La sede de la Final","descripcion":"El estadio más grande del torneo albergará el partido más visto del planeta el 19 de julio de 2026.","ciudad":"Nueva York","pais":"EE.UU.","categoria":"estadio","emoji":"🏆","colorFondo":"from-blue-900 to-gray-800","imagen":"/images/mundial2026/estadios/metlife.jpg"},
+    {"id":"gi3","titulo":"SoFi Stadium: El más caro del mundo","descripcion":"5,500 millones de dólares de inversión. El estadio más caro jamás construido en el mundo. Sede del partido Brasil vs Alemania.","ciudad":"Los Ángeles","pais":"EE.UU.","categoria":"estadio","emoji":"🌟","colorFondo":"from-purple-900 to-blue-800","imagen":"/images/mundial2026/estadios/sofi.jpg"},
+    {"id":"gi4","titulo":"BC Place: Ya tiene historia mundialista","descripcion":"Sede de la Final del Mundial Femenino 2015 (USA 5-2 Japón). Vancouver vuelve al fútbol mundial en 2026.","ciudad":"Vancouver","pais":"Canadá","categoria":"estadio","emoji":"🏔️","colorFondo":"from-blue-800 to-teal-800","imagen":"/images/mundial2026/estadios/bc-place.jpg"},
+    {"id":"gi5","titulo":"Mercedes-Benz: Final de Copa América 2024","descripcion":"Fue sede de la Final de la Copa América 2024 donde Argentina venció a Colombia. Ahora recibe el Mundial 2026.","ciudad":"Atlanta","pais":"EE.UU.","categoria":"estadio","emoji":"⭐","colorFondo":"from-gray-900 to-blue-800","imagen":"/images/mundial2026/estadios/mercedes.jpg"},
+    {"id":"gi6","titulo":"Estadio BBVA: Con vista a la montaña","descripcion":"Desde las gradas del Estadio BBVA se puede ver el Cerro de la Silla, la montaña ícono de Monterrey.","ciudad":"Monterrey","pais":"México","categoria":"estadio","emoji":"🏔️","colorFondo":"from-blue-900 to-gray-800","imagen":"/images/mundial2026/estadios/bbva.jpg"},
+    {"id":"gi7","titulo":"Ciudad de México: Capital del fútbol azteca","descripcion":"Ciudad de México es la sede más grande del Mundial 2026 y alberga el partido inaugural en el Estadio Azteca.","ciudad":"Ciudad de México","pais":"México","categoria":"ciudad","emoji":"🌆","colorFondo":"from-green-900 to-red-800","imagen":"/images/mundial2026/ciudades/cdmx.jpg"},
+    {"id":"gi8","titulo":"Miami: La ciudad más latina de EE.UU.","descripcion":"Miami tiene alma latina y será una de las sedes más vibrantes del torneo. Sede de grandes partidos en el Hard Rock Stadium.","ciudad":"Miami","pais":"EE.UU.","categoria":"ciudad","emoji":"🌴","colorFondo":"from-teal-800 to-blue-900","imagen":"/images/mundial2026/ciudades/miami.jpg"},
+    {"id":"gi9","titulo":"Arrowhead: El estadio más ruidoso","descripcion":"Récord Guinness: 142.2 decibeles. El estadio al aire libre más ruidoso del mundo recibe el Mundial en Kansas City.","ciudad":"Kansas City","pais":"EE.UU.","categoria":"estadio","emoji":"📢","colorFondo":"from-red-900 to-yellow-800","imagen":"/images/mundial2026/estadios/arrowhead.jpg"},
+    {"id":"gi10","titulo":"48 selecciones: El más grande de la historia","descripcion":"Por primera vez en la historia, 48 selecciones de todo el mundo competirán en una sola Copa del Mundo.","ciudad":"3 países","pais":"Mundial 2026","categoria":"dato","emoji":"🌍","colorFondo":"from-brand-orange to-yellow-700","imagen":"/images/mundial2026/banners/48-equipos.jpg"}
+  ],
+  "datosExtraordinarios": [
+    {"id":"de1","titulo":"El más grande de la historia","dato":"48 selecciones — primera vez en la historia","icono":"🌍","colorClase":"orange","contexto":"Desde 1998, el Mundial tenía 32 equipos. El salto a 48 significa 16 selecciones nuevas, más partidos, más naciones y más culturas representadas. Es el cambio de formato más grande en la historia del torneo."},
+    {"id":"de2","titulo":"México: 3 veces anfitrión","dato":"El único país del mundo en organizar 3 Mundiales","icono":"🇲🇽","colorClase":"green","contexto":"México ya fue sede en 1970 (fue la primera vez que se realizó en Latinoamérica) y en 1986 (cuando sustituyó a Colombia). Ahora en 2026 lo hace por tercera vez. Ningún otro país ha logrado ese hito."},
+    {"id":"de3","titulo":"Estadio Azteca: Historia viva","dato":"3 Mundiales, 2 finales, 1 Gol del Siglo","icono":"🏟️","colorClase":"yellow","contexto":"El Estadio Azteca albergó las finales de 1970 (Brasil 4-1 Italia) y 1986 (Argentina 3-2 Alemania). También fue el escenario del Gol del Siglo de Maradona (1986). En 2026 cierra su trilogía mundialista."},
+    {"id":"de4","titulo":"La final en Nueva York","dato":"MetLife Stadium · 82,500 personas · 19 jul 2026","icono":"🏆","colorClase":"blue","contexto":"El área metropolitana de Nueva York es la más grande de EE.UU. La final del Mundial más grande de la historia, en la ciudad más mediática del planeta. Se espera la mayor audiencia televisiva de la historia del deporte."},
+    {"id":"de5","titulo":"104 partidos en total","dato":"40 partidos más que el formato anterior","icono":"⚽","colorClase":"orange","contexto":"El formato anterior (32 equipos) tenía 64 partidos. El salto a 48 equipos y 12 grupos significa 104 partidos en total. Más de 5 semanas de fútbol continuo en tres países."},
+    {"id":"de6","titulo":"El estadio más caro del mundo","dato":"SoFi Stadium · $5,500 millones de dólares","icono":"💰","colorClase":"purple","contexto":"El SoFi Stadium de Los Ángeles costó más que cualquier otro estadio jamás construido. Inaugurado en 2020, recibe el Mundial 2026 apenas 6 años después de su apertura. Un espectáculo arquitectónico que hace del partido un evento doble."},
+    {"id":"de7","titulo":"3 países, 1 torneo","dato":"Primera vez que 3 naciones comparten la organización","icono":"🌎","colorClase":"green","contexto":"Canadá, México y EE.UU. abrieron un nuevo capítulo en la historia del fútbol: por primera vez, tres países organizan juntos una Copa del Mundo. La colaboración entre naciones vecinas es un modelo histórico para el deporte mundial."},
+    {"id":"de8","titulo":"El estadio más ruidoso del planeta","dato":"Arrowhead Stadium · 142.2 dB · Récord Guinness","icono":"📢","colorClase":"red","contexto":"El 29 de septiembre de 2014, los fanáticos de Kansas City establecieron el récord mundial de ruido en un estadio al aire libre. 142.2 decibeles es comparable con el ruido de una turbina de avión en despegue. El Mundial llega al estadio más ensordecedor del mundo."}
+  ],
+  "historias": [
+    {"id":"h1","titulo":"El Gol del Siglo: Azteca, 22 de junio de 1986","emoji":"⚽","resumen":"En el Estadio Azteca, Diego Maradona marcó lo que la FIFA eligió como el 'Gol del Siglo' contra Inglaterra en cuartos de final del Mundial 1986. En ese mismo partido también marcó el polémico 'Gol de la Mano de Dios'.","categoria":"momentos","detalle":"Maradona tomó el balón en su propia cancha, recorrió aproximadamente 60 metros y sorteó a 6 jugadores ingleses antes de definir ante el portero. El comentarista Víctor Hugo Morales hizo el relato más famoso del fútbol: 'Barrilete cósmico...'. Los dos goles más icónicos del fútbol (el de la mano y el del siglo) los marcó el mismo jugador, en el mismo partido, en el mismo estadio. Argentina ganó 2-1 y avanzó hacia el título mundial.","porQueImporta":"El Estadio Azteca del Mundial 2026 es el mismo recinto donde ocurrió ese momento histórico. Un dato que conecta emocionalmente con cualquier aficionado del fútbol.","comentarioFinal":"Guerrera, si el cliente menciona el Azteca, ya tienes una historia que vale oro para la conversación."},
+    {"id":"h2","titulo":"La Final de 1970: Brasil 4-1 Italia en el Azteca","emoji":"🏆","resumen":"El Estadio Azteca fue escenario de una de las finales más bellas de la historia: el Brasil de Pelé aplastó 4-1 a Italia con un fútbol considerado el más bello jamás jugado en un Mundial.","categoria":"momentos","detalle":"El 21 de junio de 1970, Brasil mostró el fútbol total. Pelé marcó el primer gol de cabeza y dio la asistencia del cuarto. Carlos Alberto cerró el partido con un gol que muchos consideran el más elegante en la historia de las finales. Brasil se convirtió en el único dueño permanente de la Copa Jules Rimet al ganar su tercer Mundial.","porQueImporta":"El Azteca del 2026 tiene ADN de finales históricas. Es el único estadio en el mundo que ha visto más de una final mundialista.","comentarioFinal":"Muchos clientes mayores recuerdan ese Brasil de Pelé. Es un excelente punto de conversación al hablar del Azteca."},
+    {"id":"h3","titulo":"BC Place 2015: La final mundialista femenina más goleada","emoji":"🥅","resumen":"El BC Place de Vancouver albergó la Final del Mundial Femenino FIFA 2015, donde Estados Unidos venció 5-2 a Japón. Carli Lloyd marcó un hat-trick en solo 16 minutos, incluyendo un gol desde el centro del campo.","categoria":"momentos","detalle":"El 5 de julio de 2015, ante 53,341 espectadores, USA aplastó a Japón en una final histórica. Carli Lloyd marcó en el minuto 3, 5, 14 y 16 (hat-trick), con el gol desde el centro del campo siendo el más comentado. Fue el resultado más abultado de una final mundialista y consagró a Lloyd como la mejor jugadora del partido.","porQueImporta":"El BC Place de Vancouver ya tiene historia mundialista. En 2026 recibirá el torneo masculino, añadiendo otro capítulo a su historia.","comentarioFinal":"Un estadio que ya vivió una final del mundo tiene un significado especial. Es un dato que diferencia a una promotora informada."},
+    {"id":"h4","titulo":"Copa América 2024: La Final en Atlanta","emoji":"🏅","resumen":"El Mercedes-Benz Stadium de Atlanta fue sede de la Final de la Copa América 2024, donde Argentina venció a Colombia 1-0 con gol de Lautaro Martínez en el tiempo extra (minuto 112).","categoria":"momentos","detalle":"El 14 de julio de 2024, Argentina defendió su título de Copa América en Atlanta. Fue un partido muy disputado con Colombia dominando buena parte del juego. El gol de Lautaro en tiempo extra cerró la Copa con Argentina bicampeona. El mismo estadio que vio esa final ahora recibirá el Mundial 2026.","porQueImporta":"Para clientes colombianos o argentinos, ese estadio tiene memoria reciente. Es una conexión emocional que genera conversación inmediata.","comentarioFinal":"Guerrera, si tienes clientes colombianos o argentinos, el Mercedes-Benz de Atlanta es un dato perfecto para abrir conversación sobre el Mundial."},
+    {"id":"h5","titulo":"Copa América Centenario 2016: Messi llora en el Levi's Stadium","emoji":"😢","resumen":"El Levi's Stadium de San Francisco fue sede de la Final de la Copa América Centenario 2016. Chile venció a Argentina por penaltis y Messi anunció su retiro temporal de la selección tras ese partido.","categoria":"momentos","detalle":"El 26 de junio de 2016, Chile y Argentina empataron 0-0. Chile ganó 4-2 en penaltis. Fue la segunda Copa América consecutiva que Argentina perdió en la final. Lionel Messi, visiblemente desconsolado, anunció su retiro de la selección argentina. Después volvería, ganaría la Copa América 2021 y el Mundial 2022 en Qatar.","porQueImporta":"El Levi's Stadium 2026 recibe a la Argentina que ya superó esa derrota y se coronó campeona. Es una narrativa de superación que cualquier aficionado aprecia.","comentarioFinal":"En el mismo estadio donde Messi lloró en 2016, Argentina llega en 2026 como campeona del mundo. Es la narrativa perfecta."},
+    {"id":"h6","titulo":"SoFi Stadium: El estadio más caro jamás construido","emoji":"💰","resumen":"SoFi Stadium de Los Ángeles costó 5,500 millones de dólares y es el estadio más caro jamás construido en el mundo. Inaugurado en 2020 en plena pandemia, ya fue sede del Super Bowl LVI en 2022.","categoria":"estadios","detalle":"La construcción duró 3 años (2017-2020). Tiene capacidad para 70,240 espectadores con posibilidad de expandirse a 100,000 para eventos especiales. Su cubierta 'Inglewood Cloud' es semitransparente y protege del sol sin cerrar el estadio. En 2022, los LA Rams ganaron el Super Bowl LVI en casa, 23-20 sobre Cincinnati Bengals.","porQueImporta":"Brasil vs Alemania se juega aquí. Es el partido del grupo más fuerte, en el estadio más caro del mundo. Dos datos impactantes que generan expectativa.","comentarioFinal":"$5,500 millones de dólares. Solo ese número explica por qué Brasil vs Alemania en SoFi es un partido que vale la pena seguir."},
+    {"id":"h7","titulo":"Arrowhead Stadium: Récord Guinness de ruido","emoji":"📢","resumen":"El Arrowhead Stadium de Kansas City tiene el récord Guinness como el estadio al aire libre más ruidoso del mundo: 142.2 decibeles, registrados el 29 de septiembre de 2014.","categoria":"estadios","detalle":"142.2 decibeles es más ruidoso que el despegue de un avión comercial (~120 dB). La afición de Kansas City, conocida como 'The Kingdom', rompió su propio récord de manera voluntaria y coordinada. Los Chiefs de Patrick Mahomes han convertido al Arrowhead en un símbolo de la cultura deportiva estadounidense. En el Mundial 2026, recibe el partido Perú vs Panamá.","porQueImporta":"Para clientes peruanos o panameños, saber que su selección jugará en el estadio más ruidoso del mundo es un dato que emociona.","comentarioFinal":"Perú en el estadio con récord Guinness de ruido. Si tienes clientes peruanos, ese dato genera conversación instantánea."},
+    {"id":"h8","titulo":"Super Bowl LI en Houston: La mayor remontada","emoji":"🏈","resumen":"El NRG Stadium de Houston fue sede del Super Bowl LI 2017, donde New England Patriots remontó 3-28 y ganó 34-28 en tiempo extra. Es considerada la mayor remontada en la historia del deporte americano.","categoria":"estadios","detalle":"El 5 de febrero de 2017, los Atlanta Falcons parecían campeones con 28-3 de ventaja en el tercer cuarto. Nadie había remontado más de 10 puntos en la historia del Super Bowl. New England igualó, envió el partido a tiempo extra (primer OT en la historia del SB) y ganó 34-28. Tom Brady (quarterback de New England) completó 43 pases de 62 intentos.","porQueImporta":"El NRG Stadium es un estadio acostumbrado a los momentos épicos. Para el Mundial 2026, recibe Italia y Venezuela en un partido con mucha historia entre selecciones europeas y sudamericanas.","comentarioFinal":"Un estadio que ha visto la mayor remontada del deporte americano. Los grandes momentos tienen sus escenarios favoritos."}
+  ],
+  "comentariosRapidos": [
+    {"id":"cr1","tema":"estadios","icon":"🏟️","texto":"El Estadio Azteca será sede del Mundial por tercera vez en su historia. Ningún otro estadio del mundo puede decir lo mismo."},
+    {"id":"cr2","tema":"estadios","icon":"🏆","texto":"La Final del Mundial 2026 se jugará en el MetLife Stadium de Nueva York el 19 de julio, el estadio más grande del torneo con 82,500 asientos."},
+    {"id":"cr3","tema":"estadios","icon":"💰","texto":"El SoFi Stadium de Los Ángeles costó 5,500 millones de dólares, siendo el estadio más caro jamás construido en el mundo. Brasil vs Alemania se juega allí."},
+    {"id":"cr4","tema":"estadios","icon":"📢","texto":"El Arrowhead Stadium de Kansas City tiene el récord Guinness del estadio al aire libre más ruidoso del mundo: 142.2 decibeles. Perú juega ahí."},
+    {"id":"cr5","tema":"estadios","icon":"⭐","texto":"El Mercedes-Benz Stadium de Atlanta fue sede de la Final de la Copa América 2024 (Argentina campeona). Ahora recibe el Mundial 2026."},
+    {"id":"cr6","tema":"grupos","icon":"⚽","texto":"El Grupo F tiene a Francia y Portugal juntos desde la fase de grupos. Muchos lo llaman el 'grupo de la muerte' del Mundial 2026."},
+    {"id":"cr7","tema":"grupos","icon":"🇦🇷","texto":"Argentina y Canadá comparten el Grupo C. El campeón del mundo enfrenta al anfitrión en su propio estadio de Toronto."},
+    {"id":"cr8","tema":"grupos","icon":"🇧🇷","texto":"Brasil y Alemania coinciden en el Grupo D desde la primera fase. Dos de las selecciones más laureadas de la historia se ven en el grupo inicial."},
+    {"id":"cr9","tema":"grupos","icon":"🇵🇪","texto":"Perú está en el Grupo J junto a Serbia, Costa de Marfil y Panamá. Su partido ante Panamá en Kansas City promete mucho ambiente."},
+    {"id":"cr10","tema":"paises","icon":"🇲🇽","texto":"México será el primer país en organizar el Mundial en tres ocasiones distintas: 1970, 1986 y ahora 2026."},
+    {"id":"cr11","tema":"paises","icon":"🌎","texto":"Es la primera vez en la historia que tres países comparten la organización de un Mundial de fútbol: Canadá, México y EE.UU."},
+    {"id":"cr12","tema":"paises","icon":"🇺🇸","texto":"Estados Unidos recibirá 78 de los 104 partidos del torneo, incluyendo la gran final en Nueva York."},
+    {"id":"cr13","tema":"curiosidades","icon":"✨","texto":"El Mundial 2026 tendrá 104 partidos en total, 40 más que el formato anterior de 32 equipos. El torneo de fútbol más largo de la historia."},
+    {"id":"cr14","tema":"curiosidades","icon":"🏔️","texto":"Desde el Estadio BBVA de Monterrey se puede ver el Cerro de la Silla al fondo. Es uno de los estadios con mejor vista natural del mundo."},
+    {"id":"cr15","tema":"historia","icon":"⚡","texto":"El Estadio Azteca fue escenario del 'Gol del Siglo' de Maradona contra Inglaterra en 1986. En 2026, ese mismo estadio vuelve al foco del mundo."},
+    {"id":"cr16","tema":"historia","icon":"🏆","texto":"En el BC Place de Vancouver se jugó la Final del Mundial Femenino 2015. En 2026, ese estadio vuelve a ser sede mundialista."},
+    {"id":"cr17","tema":"historia","icon":"😢","texto":"En el Levi's Stadium de San Francisco, Messi lloró en 2016 tras perder la Copa América. En 2026, Argentina llega allí como campeona del mundo."}
+  ],
+  "sabiasQue": [
+    {"id":"sq1","emoji":"🌍","texto":"El Mundial 2026 es el primero en la historia con 48 selecciones participantes. Una edición que cambia el fútbol para siempre."},
+    {"id":"sq2","emoji":"🇲🇽","texto":"México se convierte en el primer país del mundo en organizar la Copa del Mundo de fútbol en 3 ocasiones: 1970, 1986 y 2026."},
+    {"id":"sq3","emoji":"🏟️","texto":"El Estadio Azteca es el único recinto del mundo que organiza 3 Mundiales de fútbol. También albergó el Gol del Siglo de Maradona en 1986."},
+    {"id":"sq4","emoji":"📢","texto":"El Arrowhead Stadium de Kansas City tiene el récord Guinness del estadio al aire libre más ruidoso del planeta: 142.2 decibeles, equivalente al ruido de un motor de avión."},
+    {"id":"sq5","emoji":"💰","texto":"El SoFi Stadium de Los Ángeles costó 5,500 millones de dólares y es el estadio más caro jamás construido en el mundo. Sede del partido Brasil vs Alemania."},
+    {"id":"sq6","emoji":"🏆","texto":"La Gran Final del 19 de julio de 2026 se jugará en el MetLife Stadium de Nueva York, el estadio más grande del torneo con 82,500 asientos."},
+    {"id":"sq7","emoji":"🌴","texto":"Miami es la ciudad con mayor porcentaje de hispanohablantes en EE.UU. El Hard Rock Stadium será una de las sedes más 'latinas' del torneo."},
+    {"id":"sq8","emoji":"🌎","texto":"Tres países organizan juntos por primera vez en la historia un Mundial de fútbol: Canadá, México y Estados Unidos."},
+    {"id":"sq9","emoji":"⚽","texto":"Se disputarán 104 partidos en total en el Mundial 2026, haciendo de este torneo el evento de fútbol más largo y más grande de la historia."},
+    {"id":"sq10","emoji":"🏔️","texto":"Desde el Estadio BBVA de Monterrey se puede ver el Cerro de la Silla al fondo. Es uno de los pocos estadios del mundo con esa vista natural integrada."}
+  ]
+}

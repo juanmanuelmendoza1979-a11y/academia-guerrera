@@ -1,0 +1,155 @@
+{
+  "terms": [
+    {
+      "id": "cuota",
+      "term": "Cuota",
+      "category": "Básico",
+      "emoji": "🔢",
+      "explanation": "Es el número que indica cuánto podría multiplicarse el monto apostado si el resultado es correcto. Una cuota más alta indica que ese resultado es considerado menos probable.",
+      "example": "Si un equipo tiene cuota 2.50, por cada unidad apostada podrías recibir 2.50 unidades si ese resultado se da.",
+      "warning": "Nunca debes decir que una cuota alta significa que 'seguro pierde'. La cuota refleja probabilidad, no certeza.",
+      "responsiblePhrase": "Esta cuota indica la relación entre el monto apostado y el posible retorno. No garantiza ningún resultado."
+    },
+    {
+      "id": "favorito",
+      "term": "Favorito",
+      "category": "Básico",
+      "emoji": "⭐",
+      "explanation": "Es el equipo o jugador con mayor probabilidad de ganar según el mercado. Se identifica porque tiene la cuota más baja.",
+      "example": "Si Argentina tiene cuota 1.80 y su rival tiene 3.50, Argentina es el favorito.",
+      "warning": "El favorito no siempre gana. Ser favorito solo significa que se le asigna mayor probabilidad, no certeza.",
+      "responsiblePhrase": "Aunque sea el favorito, ningún resultado en deportes está garantizado. Puede ganar, empatar o perder."
+    },
+    {
+      "id": "combinada",
+      "term": "Combinada",
+      "category": "Tipos de apuesta",
+      "emoji": "🔗",
+      "explanation": "Es cuando se combinan dos o más selecciones en una sola apuesta. Todas las selecciones deben ser correctas para ganar.",
+      "example": "Seleccionas que gane Argentina Y que haya más de 2 goles. Si ambas son correctas, ganas.",
+      "warning": "Nunca sugierir que la combinada es 'fácil de ganar'. Al combinar, el riesgo se multiplica porque todas deben acertar.",
+      "responsiblePhrase": "En una combinada, todas las selecciones deben resultar correctas. Más selecciones = más posibilidad de error."
+    },
+    {
+      "id": "doble-oportunidad",
+      "term": "Doble Oportunidad",
+      "category": "Tipos de apuesta",
+      "emoji": "2️⃣",
+      "explanation": "Permite cubrir dos de los tres resultados posibles en un partido: Gana equipo A o Empate (1X), Empate o Gana equipo B (X2), o Gana cualquiera de los dos equipos (12).",
+      "example": "Con '1X' ganas si gana el local O si hay empate. Solo pierdes si gana el visitante.",
+      "warning": "No se debe decir que la doble oportunidad es 'casi segura'. Sigue siendo una opción con riesgo.",
+      "responsiblePhrase": "La doble oportunidad cubre más resultados, pero la cuota es más baja. No elimina el riesgo."
+    },
+    {
+      "id": "mas-goles",
+      "term": "Más de Goles",
+      "category": "Mercados especiales",
+      "emoji": "⬆️",
+      "explanation": "Es apostar a que el total de goles del partido será mayor al número indicado. Si la línea es 2.5, necesitas 3 o más goles para ganar.",
+      "example": "Si apuestas 'Más de 2.5 goles' y el partido termina 2-1, ganaste porque hay 3 goles en total.",
+      "warning": "No predecir cuántos goles habrá. El marcador final puede ser muy diferente a lo esperado.",
+      "responsiblePhrase": "Esta opción depende del total de goles anotados en el partido, sin importar qué equipo los marque."
+    },
+    {
+      "id": "menos-goles",
+      "term": "Menos de Goles",
+      "category": "Mercados especiales",
+      "emoji": "⬇️",
+      "explanation": "Es apostar a que el total de goles será menor al número indicado. Si la línea es 2.5, necesitas 0, 1 o 2 goles.",
+      "example": "Con 'Menos de 2.5 goles', si el partido termina 1-0 o 1-1, ganaste.",
+      "warning": "No sugerir este mercado como 'partido fácil de predecir'. Los partidos defensivos pueden cambiar en cualquier momento.",
+      "responsiblePhrase": "Esta opción apuesta a encuentros de baja anotación, pero cualquier partido puede cambiar."
+    },
+    {
+      "id": "ambos-anotan",
+      "term": "Ambos Equipos Anotan",
+      "category": "Mercados especiales",
+      "emoji": "🥅",
+      "explanation": "También conocido como BTTS (Both Teams To Score). Se apuesta a que ambos equipos marcarán al menos un gol en el partido.",
+      "example": "Si el partido termina 2-1, ganaste porque ambos equipos anotaron.",
+      "warning": "No decir que si ambos equipos son buenos, 'seguro anotan'. El fútbol siempre puede sorprender.",
+      "responsiblePhrase": "Esta opción requiere que los dos equipos anoten. Puede o no ocurrir independiente del nivel de los equipos."
+    },
+    {
+      "id": "handicap",
+      "term": "Handicap",
+      "category": "Mercados especiales",
+      "emoji": "⚖️",
+      "explanation": "Es una ventaja o desventaja que se le asigna a un equipo para equilibrar la apuesta. El equipo favorito empieza con goles en contra (-1, -2) y el débil empieza ganando (+1, +2).",
+      "example": "Con Handicap -1 para Argentina, si ganan 1-0 en realidad 'empatan' en el handicap. Necesitan ganar por 2 o más.",
+      "warning": "El handicap es uno de los mercados más confusos. Explicar siempre con ejemplo concreto y verificar que el cliente entendió.",
+      "responsiblePhrase": "El handicap ajusta la diferencia entre equipos. Asegúrate de entender bien cómo funciona antes de decidir."
+    },
+    {
+      "id": "cashout",
+      "term": "Cashout",
+      "category": "Funciones especiales",
+      "emoji": "💰",
+      "explanation": "Es la función que permite cobrar una apuesta antes de que termine el evento. El monto ofrecido varía según el desarrollo del partido.",
+      "example": "Si apostaste al ganador y tu equipo va ganando al descanso, puedes hacer cashout y asegurar una ganancia parcial.",
+      "warning": "No prometer que el cashout siempre estará disponible. Depende del sistema y del partido.",
+      "responsiblePhrase": "El cashout te permite gestionar tu apuesta durante el evento. El monto depende del momento del partido."
+    },
+    {
+      "id": "pago-anticipado",
+      "term": "Pago Anticipado",
+      "category": "Funciones especiales",
+      "emoji": "⚡",
+      "explanation": "Es una promoción donde se paga la apuesta como ganadora antes de que termine el evento, si se cumplen ciertas condiciones (ejemplo: si tu equipo gana por cierta diferencia).",
+      "example": "Si la plataforma paga anticipado cuando el equipo va ganando 2-0, y eso ocurre, cobras aunque el partido no terminó.",
+      "warning": "No garantizar que siempre habrá pago anticipado. Es una promoción que puede variar o no estar disponible.",
+      "responsiblePhrase": "El pago anticipado es una promoción especial. Revisa siempre los términos de la oferta con el cliente."
+    },
+    {
+      "id": "betbuilder",
+      "term": "BetBuilder",
+      "category": "Funciones especiales",
+      "emoji": "🏗️",
+      "explanation": "Es una herramienta que permite combinar múltiples mercados del mismo partido en una sola apuesta personalizada.",
+      "example": "Puedes combinar: 'Gana Argentina' + 'Más de 2 goles' + 'Ambos anotan' en un mismo partido.",
+      "warning": "No decir que el betbuilder da más posibilidad de ganar. Al combinar más opciones, el riesgo es mayor.",
+      "responsiblePhrase": "El BetBuilder combina opciones del mismo partido. Más opciones = cuota más alta pero también más difícil acertar."
+    },
+    {
+      "id": "fase-grupos",
+      "term": "Fase de Grupos",
+      "category": "Mundial",
+      "emoji": "🏆",
+      "explanation": "Es la primera etapa de un torneo. Los equipos se dividen en grupos y todos juegan entre sí. Los mejores de cada grupo avanzan.",
+      "example": "En el Mundial, 4 equipos por grupo. Los 2 mejores de cada grupo pasan a la siguiente ronda.",
+      "warning": "No confundir 'fase de grupos' con 'eliminación directa'. En grupos, perder un partido no significa quedar eliminado.",
+      "responsiblePhrase": "En la fase de grupos, el rendimiento acumulado determina quién avanza. No es eliminación directa."
+    },
+    {
+      "id": "eliminacion-directa",
+      "term": "Eliminación Directa",
+      "category": "Mundial",
+      "emoji": "⚔️",
+      "explanation": "Es la fase donde el equipo que pierde queda eliminado del torneo. A partir de Octavos de Final, cada partido es definitorio.",
+      "example": "En los Cuartos de Final, si tu equipo pierde, queda eliminado sin segunda oportunidad.",
+      "warning": "No subestimar a ningún equipo en esta fase. La eliminación directa cambia completamente la dinámica.",
+      "responsiblePhrase": "En eliminación directa, un solo partido decide. El nivel de los equipos puede igualarse por la presión."
+    },
+    {
+      "id": "diferencia-goles",
+      "term": "Diferencia de Goles",
+      "category": "Mundial",
+      "emoji": "📊",
+      "explanation": "Es el criterio para separar equipos con los mismos puntos en la tabla. Se calcula restando goles en contra a goles a favor.",
+      "example": "Si dos equipos tienen 4 puntos, avanza el que tenga mejor diferencia de goles (+3 sobre +1).",
+      "warning": "No asumir que el mejor goleador del grupo siempre avanza. Los puntos y la diferencia de goles se combinan.",
+      "responsiblePhrase": "La diferencia de goles puede ser decisiva para clasificar. Por eso cada gol importa en la fase de grupos."
+    },
+    {
+      "id": "in-play",
+      "term": "In-Play / En Vivo",
+      "category": "Tipos de apuesta",
+      "emoji": "🔴",
+      "explanation": "Son las apuestas que se realizan mientras el partido está en curso. Las cuotas cambian en tiempo real según el desarrollo del juego.",
+      "example": "Puedes apostar al marcador final cuando el partido va 1-0 al descanso.",
+      "warning": "Las apuestas en vivo requieren decisiones rápidas. No presionar al cliente a decidir sin información clara.",
+      "responsiblePhrase": "Las apuestas en vivo tienen cuotas que cambian constantemente. Decide con calma y con información del partido."
+    }
+  ],
+  "categories": ["Todos", "Básico", "Tipos de apuesta", "Mercados especiales", "Funciones especiales", "Mundial"]
+}
