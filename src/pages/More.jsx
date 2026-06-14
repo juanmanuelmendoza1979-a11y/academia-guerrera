@@ -38,7 +38,9 @@ const BLOQUES = [
   },
 ]
 
-export default function More({ onNavigate }) {
+export default function More({ onNavigate, isSupervisor, isJefe }) {
+  const puedeVerGestion = isSupervisor || isJefe
+
   return (
     <div className="px-4 py-4 pb-24 max-w-4xl mx-auto animate-fade-in space-y-5">
       <div className="mb-2">
@@ -46,7 +48,7 @@ export default function More({ onNavigate }) {
         <p className="text-sm text-gray-500">Organizadas por bloques de uso</p>
       </div>
 
-      {BLOQUES.map(bloque => (
+      {BLOQUES.filter(b => b.label !== 'GESTIÓN' || puedeVerGestion).map(bloque => (
         <div key={bloque.label}>
           <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest mb-2 px-1">
             {bloque.label}

@@ -304,7 +304,7 @@ export default function App() {
           </div>
         </div>
         <nav className="flex-1 overflow-y-auto py-2">
-          {SIDEBAR_BLOCKS.map(block => (
+          {SIDEBAR_BLOCKS.filter(b => b.label !== 'GESTIÓN' || isSupervisor || isJefe).map(block => (
             <div key={block.label}>
               {/* Block label */}
               <p className="px-4 pt-3 pb-1 text-[10px] font-black text-gray-600 uppercase tracking-widest">
@@ -372,7 +372,7 @@ export default function App() {
             : <Supervisor session={activeSession} />
           )}
           {currentPage === 'tips' && <Tips />}
-          {currentPage === 'more' && <More onNavigate={handleNavigate} />}
+          {currentPage === 'more' && <More onNavigate={handleNavigate} isSupervisor={isSupervisor} isJefe={isJefe} />}
           {currentPage === 'bettools' && <BetTools onUpdatePoints={handleUpdatePoints} />}
           {currentPage === 'worldcup2026' && <WorldCup2026 onUpdatePoints={handleUpdatePoints} />}
           {currentPage === 'puntoventa' && <PuntoVenta onUpdatePoints={handleUpdatePoints} />}
