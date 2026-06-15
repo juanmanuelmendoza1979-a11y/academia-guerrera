@@ -48,6 +48,7 @@ export default function Onboarding({ onComplete }) {
   const [primerNombre, setPrimerNombre] = useState('')
   const [primerApellido, setPrimerApellido] = useState('')
   const [inicialApellido, setInicialApellido] = useState('')
+  const [correo, setCorreo]           = useState('')
   const [supervisor, setSupervisor]   = useState('')
   const [pin, setPin]                 = useState('')
   const [pinConf, setPinConf]         = useState('')
@@ -67,7 +68,7 @@ export default function Onboarding({ onComplete }) {
     if (pin !== pinConf)  { setError('Los PIN no coinciden'); return }
     setLoading(true)
     try {
-      const guerrera = await crearGuerrera({ nombre, avatar, pin, supervisor })
+      const guerrera = await crearGuerrera({ nombre, correo, avatar, pin, supervisor })
       localStorage.setItem('guerrera_session', JSON.stringify(guerrera))
       setPaso('listo')
     } catch (e) {
@@ -185,6 +186,17 @@ export default function Onboarding({ onComplete }) {
                 </div>
               )}
               <div>
+                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Correo electrónico personal</label>
+                <input
+                  type="email"
+                  value={correo}
+                  onChange={e => setCorreo(e.target.value.trim())}
+                  placeholder="Ej: maria@gmail.com"
+                  className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-brand-orange outline-none text-sm"
+                />
+                <p className="text-xs text-gray-600 mt-1">Para recuperar tu PIN si lo olvidas</p>
+              </div>
+              <div>
                 <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Tu supervisor</label>
                 <p className="text-xs text-gray-600 mb-2">Selecciona el nombre de la persona que te supervisa directamente</p>
                 <div className="space-y-3">
@@ -222,7 +234,7 @@ export default function Onboarding({ onComplete }) {
             </div>
 
             <button
-              disabled={!primerNombre.trim() || !primerApellido.trim() || !inicialApellido.trim() || !supervisor}
+              disabled={!primerNombre.trim() || !primerApellido.trim() || !inicialApellido.trim() || !correo.includes('@') || !supervisor}
               onClick={() => setPaso('pin')}
               className="w-full bg-brand-orange text-white font-black py-4 rounded-2xl text-base hover:bg-orange-500 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >

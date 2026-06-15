@@ -9,7 +9,7 @@ import { db } from './firebase'
 const COLLECTION = 'guerreras'
 
 // ─── Crear perfil nuevo ─────────────────────────────────────────────────────
-export async function crearGuerrera({ nombre, avatar, pin, supervisor }) {
+export async function crearGuerrera({ nombre, correo, avatar, pin, supervisor }) {
   const id = generarId(nombre, 'pro')
   const ref = doc(db, COLLECTION, id)
 
@@ -22,6 +22,7 @@ export async function crearGuerrera({ nombre, avatar, pin, supervisor }) {
   await setDoc(ref, {
     id,
     nombre,
+    correo: correo || '',
     supervisor,
     avatar,
     pin: hashPin(pin),
@@ -34,7 +35,7 @@ export async function crearGuerrera({ nombre, avatar, pin, supervisor }) {
     retosCompletados: 0,
   })
 
-  return { id, nombre, supervisor, avatar, puntos: 0, racha: 0, insignias: [], nivel: 'Inicial' }
+  return { id, nombre, correo: correo || '', supervisor, avatar, puntos: 0, racha: 0, insignias: [], nivel: 'Inicial' }
 }
 
 // ─── Login con PIN ───────────────────────────────────────────────────────────
