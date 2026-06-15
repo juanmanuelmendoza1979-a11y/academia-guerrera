@@ -93,12 +93,12 @@ const SIDEBAR_BLOCKS = [
       { id: 'learn',    icon: '📚', label: 'Aprende TE APUESTO' },
       { id: 'bettools', icon: '🛠️', label: 'Herramientas' },
       { id: 'glossary', icon: '🔤', label: 'Glosario Fácil' },
+      { id: 'games',    icon: '🎮', label: 'Practica Jugando' },
     ],
   },
   {
     label: 'PRACTICA Y GANA',
     items: [
-      { id: 'games',  icon: '🎮', label: 'Practica Jugando' },
       { id: 'speech', icon: '💬', label: 'Speech Listo' },
       { id: 'tips',   icon: '💡', label: 'Tips de Atención' },
     ],
