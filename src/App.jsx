@@ -91,7 +91,6 @@ const SIDEBAR_BLOCKS = [
     label: 'APRENDE TE APUESTO',
     items: [
       { id: 'games',    icon: '🎮', label: 'Practica Jugando' },
-      { id: 'learn',    icon: '📚', label: 'Aprende TE APUESTO' },
       { id: 'bettools', icon: '🛠️', label: 'Herramientas' },
       { id: 'glossary', icon: '🔤', label: 'Glosario Fácil' },
     ],
