@@ -319,7 +319,7 @@ export default function JefeDashboard({ session }) {
                                 <Avatar seed={p.avatar} size="sm" />
                                 <div className="flex-1 min-w-0">
                                   <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
-                                  <p className="text-[10px] text-gray-500 truncate">{p.pos} · 🔥 {p.racha||0}d</p>
+                                  <p className="text-[10px] text-gray-500 truncate">🔥 {p.racha||0}d · 🔑 {p.loginCount||0} ingresos</p>
                                 </div>
                                 <div className="text-right flex-shrink-0">
                                   <p className="text-sm font-black text-yellow-400">⭐ {p.puntos||0}</p>

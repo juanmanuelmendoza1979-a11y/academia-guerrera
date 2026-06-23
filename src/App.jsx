@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Header from './components/Header'
 import BottomNavigation from './components/BottomNavigation'
 import Home from './pages/Home'
@@ -202,6 +202,23 @@ export default function App() {
   const isJefe             = !!jefeSession
   const isSupervisor       = !!supSession && !jefeSession
   const handleActiveLogout = isJefe ? handleJefeLogout : isSupervisor ? handleSupLogout : handleLogout
+
+  // Auto-logout por inactividad (20 minutos)
+  const inactivityTimer = useRef(null)
+  useEffect(() => {
+    if (!activeSession) return
+    function resetTimer() {
+      clearTimeout(inactivityTimer.current)
+      inactivityTimer.current = setTimeout(handleActiveLogout, 20 * 60 * 1000)
+    }
+    const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click']
+    events.forEach(e => window.addEventListener(e, resetTimer, { passive: true }))
+    resetTimer()
+    return () => {
+      clearTimeout(inactivityTimer.current)
+      events.forEach(e => window.removeEventListener(e, resetTimer))
+    }
+  }, [activeSession, handleActiveLogout])
 
   // ── Auth gates ───────────────────────────────────────────────────────────
   // Sin sesión de ningún tipo → flujo de autenticación

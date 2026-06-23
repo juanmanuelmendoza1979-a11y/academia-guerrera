@@ -58,6 +58,7 @@ export async function loginGuerrera({ nombre, pin }) {
     ultimoAcceso: serverTimestamp(),
     ultimoAccesoFecha: hoy,
     racha: nuevaRacha,
+    loginCount: increment(1),
   })
 
   return { ...data, id, racha: nuevaRacha }

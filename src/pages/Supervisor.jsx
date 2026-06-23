@@ -226,6 +226,7 @@ export default function Supervisor({ session }) {
                         {(p.retosCompletados || 0) > 0 && (
                           <span className="text-[10px] text-gray-500">🎯 {p.retosCompletados} retos</span>
                         )}
+                        <span className="text-[10px] text-gray-500">🔑 {p.loginCount || 0} ingresos</span>
                       </div>
                     </div>
                   ))}
@@ -264,6 +265,7 @@ function PromotoraRow({ p }) {
         <p className={`text-[10px] font-bold ${activa ? 'text-green-400' : 'text-red-400'}`}>
           {ultimaActividadTexto(p.ultimoAccesoFecha)}
         </p>
+        <p className="text-[10px] text-gray-600">🔑 {p.loginCount || 0} ingresos</p>
       </div>
     </div>
   )
