@@ -1060,7 +1060,7 @@ export default function Home({ userState, onUpdatePoints, onNavigate }) {
           src="/tita.png"
           alt="Tita TE APUESTO"
           className="absolute bottom-0 right-0 h-32 sm:h-44 w-auto object-contain pointer-events-none select-none"
-          style={{ mixBlendMode: 'screen' }}
+          style={{ filter: 'drop-shadow(-4px 0 12px rgba(0,0,0,0.30))' }}
         />
       </div>
 
