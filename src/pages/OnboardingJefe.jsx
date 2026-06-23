@@ -6,6 +6,7 @@ const JEFES = ['Victor Lazo', 'Karem Romero', 'Jesus Ynocencio', 'Tirza Vargasa'
 export default function OnboardingJefe({ onComplete, onVolver }) {
   const [paso, setPaso]       = useState('bienvenida')
   const [nombre, setNombre]   = useState('')
+  const [correo, setCorreo]   = useState('')
   const [pin, setPin]         = useState('')
   const [pinConf, setPinConf] = useState('')
   const [loading, setLoading] = useState(false)
@@ -17,7 +18,7 @@ export default function OnboardingJefe({ onComplete, onVolver }) {
     if (pin !== pinConf)   { setError('Los PIN no coinciden'); return }
     setLoading(true)
     try {
-      const jefe = await crearJefe({ nombre, pin })
+      const jefe = await crearJefe({ nombre, correo, pin })
       localStorage.setItem('jefe_session', JSON.stringify(jefe))
       setPaso('listo')
     } catch (e) {
@@ -96,6 +97,13 @@ export default function OnboardingJefe({ onComplete, onVolver }) {
             </div>
             <div className="space-y-3">
               <div>
+                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Correo electrónico</label>
+                <input type="email" value={correo} onChange={e => setCorreo(e.target.value)}
+                  placeholder="tu@correo.com"
+                  className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-yellow-500 outline-none text-sm" />
+                <p className="text-xs text-gray-600 mt-1">Para recuperar tu PIN si lo olvidas</p>
+              </div>
+              <div>
                 <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">PIN</label>
                 <input type="password" inputMode="numeric" maxLength={4}
                   value={pin} onChange={e => setPin(e.target.value.replace(/\D/g, '').slice(0,4))}
@@ -112,7 +120,7 @@ export default function OnboardingJefe({ onComplete, onVolver }) {
               {pinConf && pinConf === pin && <p className="text-xs text-green-400 text-center">✓ Los PIN coinciden</p>}
             </div>
             {error && <div className="bg-red-900/30 border border-red-500/40 rounded-xl p-3"><p className="text-xs text-red-400">{error}</p></div>}
-            <button disabled={pin.length !== 4 || pin !== pinConf || loading} onClick={registrar}
+            <button disabled={pin.length !== 4 || pin !== pinConf || !correo.includes('@') || loading} onClick={registrar}
               className="w-full bg-yellow-500 text-black font-black py-4 rounded-2xl text-base hover:bg-yellow-400 transition-all disabled:opacity-40 flex items-center justify-center gap-2">
               {loading ? <><span className="animate-spin">⏳</span> Creando...</> : '¡Crear cuenta! →'}
             </button>

@@ -20,6 +20,7 @@ const PASOS = ['bienvenida', 'nombre', 'pin', 'listo']
 export default function OnboardingSupervisor({ onComplete, onVolver }) {
   const [paso, setPaso]       = useState('bienvenida')
   const [nombre, setNombre]   = useState('')
+  const [correo, setCorreo]   = useState('')
   const [pin, setPin]         = useState('')
   const [pinConf, setPinConf] = useState('')
   const [loading, setLoading] = useState(false)
@@ -35,7 +36,7 @@ export default function OnboardingSupervisor({ onComplete, onVolver }) {
     if (pin !== pinConf)   { setError('Los PIN no coinciden'); return }
     setLoading(true)
     try {
-      const supervisor = await crearSupervisor({ nombre, jefe, pin })
+      const supervisor = await crearSupervisor({ nombre, jefe, correo, pin })
       localStorage.setItem('supervisor_session', JSON.stringify(supervisor))
       setPaso('listo')
     } catch (e) {
@@ -167,6 +168,17 @@ export default function OnboardingSupervisor({ onComplete, onVolver }) {
 
             <div className="space-y-3">
               <div>
+                <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Correo electrónico</label>
+                <input
+                  type="email"
+                  value={correo}
+                  onChange={e => setCorreo(e.target.value)}
+                  placeholder="tu@correo.com"
+                  className="w-full bg-brand-dark border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-purple-500 outline-none text-sm"
+                />
+                <p className="text-xs text-gray-600 mt-1">Para recuperar tu PIN si lo olvidas</p>
+              </div>
+              <div>
                 <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">PIN (4 dígitos)</label>
                 <input
                   type="password"
@@ -204,7 +216,7 @@ export default function OnboardingSupervisor({ onComplete, onVolver }) {
             )}
 
             <button
-              disabled={pin.length !== 4 || pin !== pinConf || loading}
+              disabled={pin.length !== 4 || pin !== pinConf || !correo.includes('@') || loading}
               onClick={registrar}
               className="w-full bg-purple-600 text-white font-black py-4 rounded-2xl text-base hover:bg-purple-500 transition-all disabled:opacity-40 flex items-center justify-center gap-2"
             >

@@ -106,18 +106,18 @@ export async function agregarInsignia(guerreraId, insignia) {
 // ─── Jefes Regionales ────────────────────────────────────────────────────────
 const COLLECTION_JEFE = 'jefes'
 
-export async function crearJefe({ nombre, pin }) {
+export async function crearJefe({ nombre, correo, pin }) {
   const id = generarId(nombre, 'jefe')
   const ref = doc(db, COLLECTION_JEFE, id)
   const snap = await getDoc(ref)
   if (snap.exists()) throw new Error('YA_EXISTE')
   await setDoc(ref, {
-    id, nombre, rol: 'jefe',
+    id, nombre, correo: correo || '', rol: 'jefe',
     pin: hashPin(pin),
     creado: serverTimestamp(),
     ultimoAcceso: serverTimestamp(),
   })
-  return { id, nombre, rol: 'jefe' }
+  return { id, nombre, correo: correo || '', rol: 'jefe' }
 }
 
 export async function loginJefe({ nombre, pin }) {
@@ -148,18 +148,18 @@ export async function obtenerDatosRegion(supervisoresDeJefe) {
 // ─── Supervisores ────────────────────────────────────────────────────────────
 const COLLECTION_SUP = 'supervisores'
 
-export async function crearSupervisor({ nombre, jefe, pin }) {
+export async function crearSupervisor({ nombre, jefe, correo, pin }) {
   const id = generarId(nombre, 'sup')
   const ref = doc(db, COLLECTION_SUP, id)
   const snap = await getDoc(ref)
   if (snap.exists()) throw new Error('YA_EXISTE')
   await setDoc(ref, {
-    id, nombre, jefe, rol: 'supervisor',
+    id, nombre, jefe, correo: correo || '', rol: 'supervisor',
     pin: hashPin(pin),
     creado: serverTimestamp(),
     ultimoAcceso: serverTimestamp(),
   })
-  return { id, nombre, jefe, rol: 'supervisor' }
+  return { id, nombre, jefe, correo: correo || '', rol: 'supervisor' }
 }
 
 export async function loginSupervisor({ nombre, pin }) {
@@ -202,6 +202,52 @@ export async function guardarCodigoRecuperacion(guerreraId, codigo) {
 export async function actualizarPin(guerreraId, nuevoPin) {
   const ref = doc(db, COLLECTION, guerreraId)
   await updateDoc(ref, {
+    pin: hashPin(nuevoPin),
+    codigoRecuperacion: null,
+    codigoExpira: null,
+  })
+}
+
+// ─── Recuperación PIN — Supervisor ───────────────────────────────────────────
+export async function buscarSupervisorParaRecuperacion(nombre) {
+  const id = generarId(nombre, 'sup')
+  const snap = await getDoc(doc(db, COLLECTION_SUP, id))
+  if (!snap.exists()) throw new Error('NO_ENCONTRADO')
+  return snap.data()
+}
+
+export async function guardarCodigoRecuperacionSupervisor(supId, codigo) {
+  await updateDoc(doc(db, COLLECTION_SUP, supId), {
+    codigoRecuperacion: codigo,
+    codigoExpira: Date.now() + 10 * 60 * 1000,
+  })
+}
+
+export async function actualizarPinSupervisor(supId, nuevoPin) {
+  await updateDoc(doc(db, COLLECTION_SUP, supId), {
+    pin: hashPin(nuevoPin),
+    codigoRecuperacion: null,
+    codigoExpira: null,
+  })
+}
+
+// ─── Recuperación PIN — Jefe Regional ────────────────────────────────────────
+export async function buscarJefeParaRecuperacion(nombre) {
+  const id = generarId(nombre, 'jefe')
+  const snap = await getDoc(doc(db, COLLECTION_JEFE, id))
+  if (!snap.exists()) throw new Error('NO_ENCONTRADO')
+  return snap.data()
+}
+
+export async function guardarCodigoRecuperacionJefe(jefeId, codigo) {
+  await updateDoc(doc(db, COLLECTION_JEFE, jefeId), {
+    codigoRecuperacion: codigo,
+    codigoExpira: Date.now() + 10 * 60 * 1000,
+  })
+}
+
+export async function actualizarPinJefe(jefeId, nuevoPin) {
+  await updateDoc(doc(db, COLLECTION_JEFE, jefeId), {
     pin: hashPin(nuevoPin),
     codigoRecuperacion: null,
     codigoExpira: null,
