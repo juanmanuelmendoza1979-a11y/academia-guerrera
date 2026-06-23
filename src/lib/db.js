@@ -181,6 +181,32 @@ export async function obtenerPromotorasDeSupervisor(nombreSupervisor) {
   return snap.docs.map(d => d.data()).sort((a, b) => (b.puntos || 0) - (a.puntos || 0))
 }
 
+// ─── Recuperación de PIN por correo ──────────────────────────────────────────
+export async function buscarGuerreraParaRecuperacion(nombre) {
+  const id = generarId(nombre, 'pro')
+  const ref = doc(db, COLLECTION, id)
+  const snap = await getDoc(ref)
+  if (!snap.exists()) throw new Error('NO_ENCONTRADA')
+  return snap.data()
+}
+
+export async function guardarCodigoRecuperacion(guerreraId, codigo) {
+  const ref = doc(db, COLLECTION, guerreraId)
+  await updateDoc(ref, {
+    codigoRecuperacion: codigo,
+    codigoExpira: Date.now() + 10 * 60 * 1000, // 10 minutos
+  })
+}
+
+export async function actualizarPin(guerreraId, nuevoPin) {
+  const ref = doc(db, COLLECTION, guerreraId)
+  await updateDoc(ref, {
+    pin: hashPin(nuevoPin),
+    codigoRecuperacion: null,
+    codigoExpira: null,
+  })
+}
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function generarId(nombre, pos) {
   return (nombre.trim().toLowerCase().replace(/\s+/g, '_') + '_' + pos.trim().toLowerCase().replace(/\s+/g, '_'))
