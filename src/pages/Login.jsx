@@ -3,9 +3,9 @@ import emailjs from '@emailjs/browser'
 import { loginGuerrera, buscarGuerreraParaRecuperacion, guardarCodigoRecuperacion, actualizarPin } from '../lib/db'
 
 // ── EmailJS — completa estos 3 valores después de crear tu cuenta en emailjs.com ──
-const EJS_SERVICE_ID  = 'TU_SERVICE_ID'
-const EJS_TEMPLATE_ID = 'TU_TEMPLATE_ID'
-const EJS_PUBLIC_KEY  = 'TU_PUBLIC_KEY'
+const EJS_SERVICE_ID  = 'service_8cleoof'
+const EJS_TEMPLATE_ID = 'template_mfq3qpf'
+const EJS_PUBLIC_KEY  = 'iuFumzVNHBPlz3lPB'
 
 function generarCodigo() {
   return String(Math.floor(100000 + Math.random() * 900000))
