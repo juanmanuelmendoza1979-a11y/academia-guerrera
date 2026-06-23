@@ -43,7 +43,7 @@ const SUPERVISORES_POR_JEFE = [
 
 const PASOS = ['bienvenida', 'perfil', 'pin', 'avatar', 'listo']
 
-export default function Onboarding({ onComplete }) {
+export default function Onboarding({ onComplete, onVolver }) {
   const [paso, setPaso]               = useState('bienvenida')
   const [primerNombre, setPrimerNombre] = useState('')
   const [primerApellido, setPrimerApellido] = useState('')
@@ -135,6 +135,11 @@ export default function Onboarding({ onComplete }) {
             >
               Crear mi cuenta →
             </button>
+            {onVolver && (
+              <button onClick={onVolver} className="w-full text-center text-xs text-gray-600 hover:text-gray-400 transition-all py-2">
+                ← Volver al inicio
+              </button>
+            )}
             <p className="text-xs text-gray-600">Contenido interno · Solo personal autorizado adulto</p>
           </div>
         )}

@@ -219,6 +219,7 @@ export default function App() {
       return (
         <Onboarding
           onComplete={() => { const s = loadSession(); setSession(s) }}
+          onVolver={() => setAuthView('login')}
         />
       )
     }
