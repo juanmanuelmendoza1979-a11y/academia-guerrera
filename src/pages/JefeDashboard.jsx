@@ -2,10 +2,33 @@ import { useState, useEffect } from 'react'
 import { obtenerDatosRegion } from '../lib/db'
 import Avatar from '../components/Avatar'
 
-function descargarCSV(filas, nombreArchivo) {
-  const BOM = '﻿'
-  const contenido = BOM + filas.map(f => f.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n')
-  const blob = new Blob([contenido], { type: 'text/csv;charset=utf-8;' })
+function descargarXLS(filas, nombreArchivo) {
+  const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+  const filaXML = fila => '<Row>' + fila.map(c => {
+    const val   = c ?? ''
+    const tipo  = typeof val === 'number' ? 'Number' : 'String'
+    return `<Cell><Data ss:Type="${tipo}">${esc(val)}</Data></Cell>`
+  }).join('') + '</Row>'
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Styles>
+  <Style ss:ID="cabecera">
+   <Font ss:Bold="1" ss:Color="#FFFFFF"/>
+   <Interior ss:Color="#1a1a2e" ss:Pattern="Solid"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Reporte">
+  <Table>
+   <Row ss:StyleID="cabecera">${filas[0].map(c=>`<Cell ss:StyleID="cabecera"><Data ss:Type="String">${esc(c)}</Data></Cell>`).join('')}</Row>
+   ${filas.slice(1).map(filaXML).join('\n   ')}
+  </Table>
+ </Worksheet>
+</Workbook>`
+
+  const blob = new Blob([xml], { type: 'application/vnd.ms-excel;charset=utf-8;' })
   const url  = URL.createObjectURL(blob)
   const a    = document.createElement('a')
   a.href = url
@@ -74,7 +97,7 @@ function RankingsRegion({ promotoras, misSupes, hoy }) {
       p.ultimoAccesoFecha === hoy ? 'Sí' : 'No',
     ])
     const tipo = vista === 'ranking' ? 'ranking' : 'usabilidad'
-    descargarCSV([cabecera, ...filas], `region_${tipo}_${hoyStr.replace(/\//g,'-')}.csv`)
+    descargarXLS([cabecera, ...filas], `region_${tipo}_${hoyStr.replace(/\//g,'-')}.xls`)
   }
 
   return (
@@ -95,7 +118,7 @@ function RankingsRegion({ promotoras, misSupes, hoy }) {
         </button>
         <button onClick={handleDescargar}
           className="flex-shrink-0 flex items-center gap-1 bg-green-700/30 border border-green-500/40 text-green-400 text-xs font-bold px-3 rounded-xl hover:bg-green-700/50 transition-all active:scale-95">
-          ⬇️ CSV
+          ⬇️ Excel
         </button>
       </div>
 
@@ -233,7 +256,7 @@ function SupDetalle({ supNombre, supData, promotoras, hoy, onVolver }) {
       formatearFecha(p.ultimoAccesoFecha),
       p.ultimoAccesoFecha === hoy ? 'Sí' : 'No',
     ])
-    descargarCSV([cabecera, ...filas], `equipo_${supNombre.replace(/ /g,'_')}_${hoyStr.replace(/\//g,'-')}.csv`)
+    descargarXLS([cabecera, ...filas], `equipo_${supNombre.replace(/ /g,'_')}_${hoyStr.replace(/\//g,'-')}.xls`)
   }
 
   return (
@@ -249,7 +272,7 @@ function SupDetalle({ supNombre, supData, promotoras, hoy, onVolver }) {
         </div>
         <button onClick={handleDescargar}
           className="flex-shrink-0 flex items-center gap-1.5 bg-green-700/30 border border-green-500/40 text-green-400 text-xs font-bold px-3 py-2 rounded-xl hover:bg-green-700/50 transition-all active:scale-95">
-          ⬇️ CSV
+          ⬇️ Excel
         </button>
       </div>
 
