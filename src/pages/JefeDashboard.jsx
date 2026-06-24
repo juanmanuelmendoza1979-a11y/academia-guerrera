@@ -170,6 +170,125 @@ function RankingsRegion({ promotoras, misSupes, hoy }) {
   )
 }
 
+function SupDetalle({ supNombre, supData, promotoras, hoy, onVolver }) {
+  const [vista, setVista] = useState('ranking')
+  const equipo      = [...promotoras.filter(p => p.supervisor === supNombre)]
+  const porPuntos   = [...equipo].sort((a,b) => (b.puntos||0)-(a.puntos||0))
+  const porIngresos = [...equipo].sort((a,b) => (b.loginCount||0)-(a.loginCount||0))
+  const maxLogin    = porIngresos[0]?.loginCount || 1
+  const activas     = equipo.filter(p => p.ultimoAccesoFecha === hoy)
+  const avgPts      = equipo.length ? Math.round(equipo.reduce((s,p)=>s+(p.puntos||0),0)/equipo.length) : 0
+
+  return (
+    <div className="space-y-4 animate-fade-in">
+      {/* Header */}
+      <div className="flex items-center gap-3">
+        <button onClick={onVolver} className="w-9 h-9 rounded-xl bg-brand-medium flex items-center justify-center text-white hover:bg-brand-dark transition-all flex-shrink-0">
+          ←
+        </button>
+        <div className="flex-1 min-w-0">
+          <p className="text-base font-black text-white truncate">{supNombre}</p>
+          <p className="text-xs text-gray-500">{equipo.length} promotoras · ⚡ {activas.length} activas hoy · ⭐ {avgPts} pts prom.</p>
+        </div>
+        <div className={`w-3 h-3 rounded-full flex-shrink-0 ${supData?.registrado ? 'bg-green-500' : 'bg-red-500'}`} />
+      </div>
+
+      {/* Sub-tabs */}
+      <div className="flex gap-2">
+        <button onClick={() => setVista('ranking')}
+          className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            vista === 'ranking' ? 'bg-yellow-500 text-black' : 'bg-brand-medium text-gray-400'
+          }`}>
+          🏆 Ranking Juegos
+        </button>
+        <button onClick={() => setVista('usabilidad')}
+          className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${
+            vista === 'usabilidad' ? 'bg-purple-600 text-white' : 'bg-brand-medium text-gray-400'
+          }`}>
+          🔑 Usabilidad
+        </button>
+      </div>
+
+      {/* Ranking */}
+      {vista === 'ranking' && (
+        <div className="bg-brand-dark rounded-2xl border border-yellow-600/20 overflow-hidden">
+          <div className="px-4 py-3 border-b border-white/5 bg-yellow-900/20">
+            <p className="text-sm font-bold text-yellow-300">🏆 Ranking por puntos — {equipo.length} promotoras</p>
+          </div>
+          <div className="divide-y divide-white/5 max-h-[420px] overflow-y-auto">
+            {porPuntos.length === 0
+              ? <p className="text-xs text-gray-500 text-center py-8">Sin promotoras registradas en este equipo</p>
+              : porPuntos.map((p, i) => (
+              <div key={p.id||i} className="flex items-center gap-3 px-4 py-3">
+                <span className={`text-xs font-black w-6 text-center flex-shrink-0 ${i===0?'text-yellow-400':i===1?'text-gray-300':i===2?'text-amber-600':'text-gray-600'}`}>
+                  {i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`}
+                </span>
+                <Avatar seed={p.avatar} size="sm" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
+                  <p className="text-[10px] text-gray-500">🎯 {p.retosCompletados||0} retos · 🔥 {p.racha||0}d racha</p>
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <p className="text-sm font-black text-yellow-400">⭐ {p.puntos||0}</p>
+                  <p className={`text-[10px] ${p.ultimoAccesoFecha===hoy?'text-green-400':'text-gray-600'}`}>
+                    {p.ultimoAccesoFecha===hoy?'Hoy ✅':tiempoDesde(p.ultimoAccesoFecha)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Usabilidad */}
+      {vista === 'usabilidad' && (
+        <div className="bg-brand-dark rounded-2xl border border-purple-600/30 overflow-hidden">
+          <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20">
+            <p className="text-sm font-bold text-white">🔑 Ingresos a la plataforma</p>
+            <p className="text-xs text-gray-500 mt-0.5">Ordenado por número de accesos</p>
+          </div>
+          <div className="divide-y divide-white/5 max-h-[420px] overflow-y-auto">
+            {porIngresos.length === 0
+              ? <p className="text-xs text-gray-500 text-center py-8">Sin promotoras registradas</p>
+              : porIngresos.map((p, i) => {
+              const logins   = p.loginCount || 0
+              const barWidth = Math.round((logins / maxLogin) * 100)
+              const activa   = p.ultimoAccesoFecha === hoy
+              return (
+                <div key={p.id||i} className="px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-black text-gray-600 w-5 text-center flex-shrink-0">#{i+1}</span>
+                    <Avatar seed={p.avatar} size="sm" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
+                      <p className={`text-[10px] font-bold ${activa?'text-green-400':'text-gray-600'}`}>
+                        {activa ? 'Activa hoy ✅' : `Último: ${tiempoDesde(p.ultimoAccesoFecha)}`}
+                      </p>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <p className={`text-lg font-black ${logins>=10?'text-green-400':logins>=3?'text-yellow-400':'text-red-400'}`}>{logins}</p>
+                      <p className="text-[10px] text-gray-500">ingresos</p>
+                    </div>
+                  </div>
+                  <div className="mt-1.5 ml-14 bg-brand-medium rounded-full h-1.5">
+                    <div className={`h-1.5 rounded-full ${logins>=10?'bg-green-500':logins>=3?'bg-yellow-500':'bg-red-500'}`}
+                      style={{ width: `${barWidth}%` }} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          <div className="px-4 py-2.5 border-t border-white/5 bg-brand-medium/30 flex gap-4 text-[10px]">
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block"/>10+ ingresos</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500 inline-block"/>3-9 ingresos</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block"/>0-2 ingresos</span>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function JefeDashboard({ session }) {
   const [tab, setTab]           = useState('resumen')
   const [promotoras, setPromotoras] = useState([])
@@ -178,6 +297,7 @@ export default function JefeDashboard({ session }) {
   const [error, setError]       = useState('')
   const [rankOpen, setRankOpen] = useState(null)
   const [statAbierta, setStatAbierta] = useState(null)
+  const [supSeleccionado, setSupSeleccionado] = useState(null)
 
   const misSupes = SUPERVISORES_POR_JEFE[session?.nombre] || []
 
@@ -376,33 +496,47 @@ export default function JefeDashboard({ session }) {
                 </div>
               )}
 
-              {/* Resumen por supervisor */}
-              <div>
-                <p className="text-xs font-black text-gray-500 uppercase tracking-wider mb-2">📋 Vista rápida por supervisor</p>
-                <div className="space-y-2">
-                  {misSupes.map(supNombre => {
-                    const supData = supervisores.find(s => s.nombre === supNombre)
-                    const equipo  = promotoras.filter(p => p.supervisor === supNombre)
-                    const activas = equipo.filter(p => p.ultimoAccesoFecha === hoy)
-                    const avgPts  = equipo.length ? Math.round(equipo.reduce((s,p) => s+(p.puntos||0), 0) / equipo.length) : 0
-                    return (
-                      <div key={supNombre} className="bg-brand-dark rounded-2xl p-4 border border-white/5 flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0 ${supData?.registrado ? 'bg-purple-500/20' : 'bg-red-500/10'}`}>
-                          {supData?.registrado ? '👔' : '⚠️'}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-bold text-white truncate">{supNombre}</p>
-                          <p className="text-xs text-gray-500">{equipo.length} promotoras · {activas.length} activas hoy</p>
-                        </div>
-                        <div className="text-right flex-shrink-0">
-                          <p className="text-sm font-black text-yellow-400">⭐ {avgPts}</p>
-                          <p className="text-xs text-gray-600">promedio</p>
-                        </div>
-                      </div>
-                    )
-                  })}
+              {/* Resumen por supervisor — clickeable */}
+              {supSeleccionado ? (
+                <SupDetalle
+                  supNombre={supSeleccionado}
+                  supData={supervisores.find(s => s.nombre === supSeleccionado)}
+                  promotoras={promotoras}
+                  hoy={hoy}
+                  onVolver={() => setSupSeleccionado(null)}
+                />
+              ) : (
+                <div>
+                  <p className="text-xs font-black text-gray-500 uppercase tracking-wider mb-2">📋 Vista rápida por supervisor</p>
+                  <div className="space-y-2">
+                    {misSupes.map(supNombre => {
+                      const supData = supervisores.find(s => s.nombre === supNombre)
+                      const equipo  = promotoras.filter(p => p.supervisor === supNombre)
+                      const activas = equipo.filter(p => p.ultimoAccesoFecha === hoy)
+                      const avgPts  = equipo.length ? Math.round(equipo.reduce((s,p) => s+(p.puntos||0), 0) / equipo.length) : 0
+                      return (
+                        <button key={supNombre} onClick={() => setSupSeleccionado(supNombre)}
+                          className="w-full bg-brand-dark rounded-2xl p-4 border border-white/5 flex items-center gap-3 hover:border-yellow-500/30 hover:bg-yellow-900/10 transition-all text-left active:scale-[0.98]">
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0 ${supData?.registrado ? 'bg-purple-500/20' : 'bg-red-500/10'}`}>
+                            {supData?.registrado ? '👔' : '⚠️'}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-bold text-white truncate">{supNombre}</p>
+                            <p className="text-xs text-gray-500">{equipo.length} promotoras · {activas.length} activas hoy</p>
+                          </div>
+                          <div className="text-right flex-shrink-0 flex items-center gap-2">
+                            <div>
+                              <p className="text-sm font-black text-yellow-400">⭐ {avgPts}</p>
+                              <p className="text-xs text-gray-600">promedio</p>
+                            </div>
+                            <span className="text-gray-500 text-sm">›</span>
+                          </div>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Top 5 región */}
               {promotoras.length > 0 && (
