@@ -2,6 +2,24 @@ import { useState, useEffect } from 'react'
 import { obtenerDatosRegion } from '../lib/db'
 import Avatar from '../components/Avatar'
 
+function descargarCSV(filas, nombreArchivo) {
+  const BOM = '﻿'
+  const contenido = BOM + filas.map(f => f.map(c => `"${String(c ?? '').replace(/"/g, '""')}"`).join(',')).join('\n')
+  const blob = new Blob([contenido], { type: 'text/csv;charset=utf-8;' })
+  const url  = URL.createObjectURL(blob)
+  const a    = document.createElement('a')
+  a.href = url
+  a.download = nombreArchivo
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return 'Sin acceso'
+  try { return new Date(fechaStr).toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' }) }
+  catch { return fechaStr }
+}
+
 const SUPERVISORES_POR_JEFE = {
   'Victor Lazo':     ['Sara Salazar', 'Diana Paz', 'Candy Odar'],
   'Karem Romero':    ['Estefanny Martinez', 'Lady Zelada', 'Michelle Gomez', 'Zurhama Pisconte'],
@@ -40,9 +58,28 @@ function RankingsRegion({ promotoras, misSupes, hoy }) {
   const porIngresos = [...promotoras].sort((a,b) => (b.loginCount||0)-(a.loginCount||0))
   const maxLogin    = porIngresos[0]?.loginCount || 1
 
+  function handleDescargar() {
+    const hoyStr   = new Date().toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' })
+    const lista    = vista === 'ranking' ? porPuntos : porIngresos
+    const cabecera = ['#', 'Nombre', 'Supervisor', 'Puntos', 'Retos completados', 'Racha (días)', 'Ingresos', 'Último acceso', 'Activa hoy']
+    const filas = lista.map((p, i) => [
+      i + 1,
+      p.nombre,
+      p.supervisor,
+      p.puntos || 0,
+      p.retosCompletados || 0,
+      p.racha || 0,
+      p.loginCount || 0,
+      formatearFecha(p.ultimoAccesoFecha),
+      p.ultimoAccesoFecha === hoy ? 'Sí' : 'No',
+    ])
+    const tipo = vista === 'ranking' ? 'ranking' : 'usabilidad'
+    descargarCSV([cabecera, ...filas], `region_${tipo}_${hoyStr.replace(/\//g,'-')}.csv`)
+  }
+
   return (
     <>
-      {/* Sub-tabs */}
+      {/* Sub-tabs + descarga */}
       <div className="flex gap-2">
         <button onClick={() => setVista('ranking')}
           className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
@@ -55,6 +92,10 @@ function RankingsRegion({ promotoras, misSupes, hoy }) {
             vista === 'usabilidad' ? 'bg-purple-600 text-white' : 'bg-brand-medium text-gray-400'
           }`}>
           🔑 Usabilidad
+        </button>
+        <button onClick={handleDescargar}
+          className="flex-shrink-0 flex items-center gap-1 bg-green-700/30 border border-green-500/40 text-green-400 text-xs font-bold px-3 rounded-xl hover:bg-green-700/50 transition-all active:scale-95">
+          ⬇️ CSV
         </button>
       </div>
 
@@ -179,6 +220,22 @@ function SupDetalle({ supNombre, supData, promotoras, hoy, onVolver }) {
   const activas     = equipo.filter(p => p.ultimoAccesoFecha === hoy)
   const avgPts      = equipo.length ? Math.round(equipo.reduce((s,p)=>s+(p.puntos||0),0)/equipo.length) : 0
 
+  function handleDescargar() {
+    const hoyStr = new Date().toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' })
+    const cabecera = ['Nombre', 'Supervisor', 'Puntos', 'Retos completados', 'Racha (días)', 'Ingresos', 'Último acceso', 'Activa hoy']
+    const filas = equipo.map(p => [
+      p.nombre,
+      p.supervisor,
+      p.puntos || 0,
+      p.retosCompletados || 0,
+      p.racha || 0,
+      p.loginCount || 0,
+      formatearFecha(p.ultimoAccesoFecha),
+      p.ultimoAccesoFecha === hoy ? 'Sí' : 'No',
+    ])
+    descargarCSV([cabecera, ...filas], `equipo_${supNombre.replace(/ /g,'_')}_${hoyStr.replace(/\//g,'-')}.csv`)
+  }
+
   return (
     <div className="space-y-4 animate-fade-in">
       {/* Header */}
@@ -190,7 +247,10 @@ function SupDetalle({ supNombre, supData, promotoras, hoy, onVolver }) {
           <p className="text-base font-black text-white truncate">{supNombre}</p>
           <p className="text-xs text-gray-500">{equipo.length} promotoras · ⚡ {activas.length} activas hoy · ⭐ {avgPts} pts prom.</p>
         </div>
-        <div className={`w-3 h-3 rounded-full flex-shrink-0 ${supData?.registrado ? 'bg-green-500' : 'bg-red-500'}`} />
+        <button onClick={handleDescargar}
+          className="flex-shrink-0 flex items-center gap-1.5 bg-green-700/30 border border-green-500/40 text-green-400 text-xs font-bold px-3 py-2 rounded-xl hover:bg-green-700/50 transition-all active:scale-95">
+          ⬇️ CSV
+        </button>
       </div>
 
       {/* Sub-tabs */}
