@@ -39,6 +39,7 @@ export default function JefeDashboard({ session }) {
   const [loading, setLoading]   = useState(true)
   const [error, setError]       = useState('')
   const [rankOpen, setRankOpen] = useState(null)
+  const [statAbierta, setStatAbierta] = useState(null)
 
   const misSupes = SUPERVISORES_POR_JEFE[session?.nombre] || []
 
@@ -112,22 +113,130 @@ export default function JefeDashboard({ session }) {
           {/* ═══ RESUMEN ═══ */}
           {tab === 'resumen' && (
             <>
-              {/* Stats globales */}
+              {/* Stats globales — clickeables */}
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { icon:'👥', valor: promotoras.length, label:'Promotoras',      sub:'en tu región',          color:'bg-blue-700/20 border-blue-600/30' },
-                  { icon:'⚡', valor: activasHoy.length,  label:'Activas hoy',    sub:`de ${promotoras.length}`, color:'bg-green-700/20 border-green-600/30' },
-                  { icon:'👔', valor: supervisores.filter(s=>s.registrado).length, label:'Sups. activos',sub:`de ${misSupes.length} total`, color:'bg-purple-700/20 border-purple-600/30' },
-                  { icon:'⭐', valor: promPuntos,          label:'Pts. promedio',  sub:'región completa',        color:'bg-yellow-700/20 border-yellow-600/30' },
+                  { key:'todas',    icon:'👥', valor: promotoras.length,                                    label:'Promotoras',    sub:'en tu región',           color:'bg-blue-700/20 border-blue-600/30',   activeColor:'ring-2 ring-blue-400' },
+                  { key:'activas',  icon:'⚡', valor: activasHoy.length,                                    label:'Activas hoy',   sub:`de ${promotoras.length}`, color:'bg-green-700/20 border-green-600/30', activeColor:'ring-2 ring-green-400' },
+                  { key:'sups',     icon:'👔', valor: supervisores.filter(s=>s.registrado).length,          label:'Sups. activos', sub:`de ${misSupes.length} total`, color:'bg-purple-700/20 border-purple-600/30', activeColor:'ring-2 ring-purple-400' },
+                  { key:'ranking',  icon:'⭐', valor: promPuntos,                                           label:'Pts. promedio', sub:'región completa',        color:'bg-yellow-700/20 border-yellow-600/30', activeColor:'ring-2 ring-yellow-400' },
                 ].map(s => (
-                  <div key={s.label} className={`rounded-2xl p-4 border ${s.color}`}>
+                  <button key={s.key} onClick={() => setStatAbierta(statAbierta === s.key ? null : s.key)}
+                    className={`rounded-2xl p-4 border text-left transition-all ${s.color} ${statAbierta === s.key ? s.activeColor : 'hover:opacity-80'}`}>
                     <span className="text-2xl block mb-1">{s.icon}</span>
                     <p className="text-2xl font-black text-white">{s.valor}</p>
                     <p className="text-xs font-bold text-white/80 leading-tight">{s.label}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{s.sub}</p>
-                  </div>
+                    <p className="text-[10px] text-gray-600 mt-1">{statAbierta === s.key ? '▲ cerrar' : '▼ ver lista'}</p>
+                  </button>
                 ))}
               </div>
+
+              {/* Lista expandida según stat seleccionada */}
+              {statAbierta === 'todas' && (
+                <div className="bg-brand-dark rounded-2xl border border-blue-600/30 overflow-hidden">
+                  <div className="px-4 py-3 border-b border-white/5 bg-blue-900/20">
+                    <p className="text-sm font-bold text-blue-300">👥 Todas las promotoras — {promotoras.length}</p>
+                  </div>
+                  <div className="divide-y divide-white/5 max-h-80 overflow-y-auto">
+                    {promotoras.map((p, i) => (
+                      <div key={p.id||i} className="px-4 py-2.5 flex items-center gap-3">
+                        <span className="text-xs font-black text-gray-600 w-5 text-center">#{i+1}</span>
+                        <Avatar seed={p.avatar} size="sm" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
+                          <p className="text-[10px] text-gray-500 truncate">Sup: {p.supervisor}</p>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <p className="text-xs font-black text-yellow-400">⭐ {p.puntos||0}</p>
+                          <p className={`text-[10px] font-bold ${p.ultimoAccesoFecha===hoy?'text-green-400':'text-gray-600'}`}>
+                            {p.ultimoAccesoFecha===hoy?'Hoy ✅':tiempoDesde(p.ultimoAccesoFecha)}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {statAbierta === 'activas' && (
+                <div className="bg-brand-dark rounded-2xl border border-green-600/30 overflow-hidden">
+                  <div className="px-4 py-3 border-b border-white/5 bg-green-900/20">
+                    <p className="text-sm font-bold text-green-300">⚡ Activas hoy — {activasHoy.length}</p>
+                  </div>
+                  <div className="divide-y divide-white/5 max-h-80 overflow-y-auto">
+                    {activasHoy.length === 0
+                      ? <p className="text-xs text-gray-500 text-center py-6">Ninguna promotora activa hoy aún</p>
+                      : activasHoy.map((p, i) => (
+                        <div key={p.id||i} className="px-4 py-2.5 flex items-center gap-3">
+                          <Avatar seed={p.avatar} size="sm" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
+                            <p className="text-[10px] text-gray-500 truncate">Sup: {p.supervisor}</p>
+                          </div>
+                          <p className="text-xs font-black text-yellow-400 flex-shrink-0">⭐ {p.puntos||0}</p>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              )}
+
+              {statAbierta === 'sups' && (
+                <div className="bg-brand-dark rounded-2xl border border-purple-600/30 overflow-hidden">
+                  <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20">
+                    <p className="text-sm font-bold text-purple-300">👔 Supervisores — {misSupes.length}</p>
+                  </div>
+                  <div className="divide-y divide-white/5">
+                    {misSupes.map((supNombre, i) => {
+                      const supData = supervisores.find(s => s.nombre === supNombre)
+                      const equipo  = promotoras.filter(p => p.supervisor === supNombre)
+                      const activas = equipo.filter(p => p.ultimoAccesoFecha === hoy)
+                      const ultimoAcc = accesoDesdeSup(supData)
+                      return (
+                        <div key={i} className="px-4 py-3 flex items-center gap-3">
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-lg flex-shrink-0 ${supData?.registrado ? 'bg-purple-500/20' : 'bg-red-500/10'}`}>
+                            {supData?.registrado ? '👔' : '⚠️'}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold text-white truncate">{supNombre}</p>
+                            <p className="text-[10px] text-gray-500">{equipo.length} promotoras · {activas.length} activas hoy</p>
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            {supData?.registrado
+                              ? <p className={`text-[10px] font-bold ${ultimoAcc===hoy?'text-green-400':'text-yellow-400'}`}>{tiempoDesde(ultimoAcc)}</p>
+                              : <p className="text-[10px] text-red-400">Sin cuenta</p>
+                            }
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {statAbierta === 'ranking' && (
+                <div className="bg-brand-dark rounded-2xl border border-yellow-600/30 overflow-hidden">
+                  <div className="px-4 py-3 border-b border-white/5 bg-yellow-900/20">
+                    <p className="text-sm font-bold text-yellow-300">⭐ Ranking completo — {promotoras.length} promotoras</p>
+                  </div>
+                  <div className="divide-y divide-white/5 max-h-80 overflow-y-auto">
+                    {promotoras.map((p, i) => (
+                      <div key={p.id||i} className="px-4 py-2.5 flex items-center gap-3">
+                        <span className={`text-xs font-black w-6 text-center flex-shrink-0 ${i===0?'text-yellow-400':i===1?'text-gray-300':i===2?'text-amber-600':'text-gray-600'}`}>
+                          {i===0?'🥇':i===1?'🥈':i===2?'🥉':`#${i+1}`}
+                        </span>
+                        <Avatar seed={p.avatar} size="sm" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
+                          <p className="text-[10px] text-gray-500 truncate">Sup: {p.supervisor} · 🔑 {p.loginCount||0}</p>
+                        </div>
+                        <p className="text-sm font-black text-yellow-400 flex-shrink-0">⭐ {p.puntos||0}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Resumen por supervisor */}
               <div>
