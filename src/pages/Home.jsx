@@ -326,6 +326,171 @@ function ModalTextoHome({ partido, tipo, onClose }) {
   )
 }
 
+// ─── Partido Principal del Día (card dinámica) ───────────────────────────────
+function PartidoPrincipalDelDia() {
+  const [loading, setLoading]   = useState(true)
+  const [partido, setPartido]   = useState(null)
+  const [formaL, setFormaL]     = useState([])
+  const [formaV, setFormaV]     = useState([])
+  const [modal, setModal]       = useState(null) // tipo: 'speech'|'tendencias'|'club'
+
+  useEffect(() => {
+    const ctrl = new AbortController()
+    const sig  = { signal: ctrl.signal }
+    let _top1  = null
+
+    Promise.all([
+      fetch(`https://www.thesportsdb.com/api/v1/json/${FUT_API}/eventsday.php?d=${getFechaLima()}&s=Soccer`, sig).then(r=>r.json()),
+      fetch(`https://www.thesportsdb.com/api/v1/json/${FUT_API}/eventsday.php?d=${getFechaMananaLima()}&s=Soccer`, sig).then(r=>r.json()),
+    ])
+    .then(([dHoy, dManana]) => {
+      const filtrar  = evs => (evs||[]).filter(p => LIGAS_HOME.has((p.strLeague||'').toLowerCase().trim()))
+      const vigentes = filtrar(dHoy.events).filter(p => !partidoTerminado(p.dateEvent, p.strTime))
+      const manana   = filtrar(dManana.events).map(p => ({...p, _esManana: true}))
+      const combined = vigentes.length > 0 ? [...vigentes, ...manana] : manana
+      _top1 = [...combined].sort((a,b) => getPrioridad(a.strLeague)-getPrioridad(b.strLeague))[0]
+      if (!_top1) { setLoading(false); return null }
+      setPartido(_top1)
+      return Promise.all([
+        fetch(`https://www.thesportsdb.com/api/v1/json/${FUT_API}/eventslast.php?id=${_top1.idHomeTeam}`, sig).then(r=>r.json()),
+        fetch(`https://www.thesportsdb.com/api/v1/json/${FUT_API}/eventslast.php?id=${_top1.idAwayTeam}`, sig).then(r=>r.json()),
+      ])
+    })
+    .then(result => {
+      if (!result) return
+      const [dL, dV] = result
+      setFormaL(calcularFormaFut(dL.results||[], _top1.idHomeTeam))
+      setFormaV(calcularFormaFut(dV.results||[], _top1.idAwayTeam))
+      setLoading(false)
+    })
+    .catch(() => setLoading(false))
+
+    return () => ctrl.abort()
+  }, [])
+
+  if (!loading && !partido) return null
+
+  const liga  = partido ? contextoLiga(partido.strLeague) : null
+  const hora  = partido ? formatHoraFut(partido.strTime)  : '--:--'
+  const dato  = (!loading && partido) ? generarDatoClave(formaL, formaV, tn(partido.strHomeTeam), tn(partido.strAwayTeam)) : ''
+  const [a1]  = (!loading && partido) ? generarApuestasFut(formaL, formaV, partido) : [null]
+  const gancho = (!loading && partido) ? generarPreguntaGancho(partido, formaL, formaV) : ''
+
+  return (
+    <>
+      {modal && partido && (
+        <ModalTextoHome partido={partido} tipo={modal} onClose={() => setModal(null)} />
+      )}
+
+      <div className="bg-brand-dark rounded-2xl border overflow-hidden"
+        style={{borderColor: liga ? `${liga.color}33` : 'rgba(255,255,255,0.05)'}}>
+
+        {/* Header */}
+        <div className="px-4 pt-4 pb-3 flex items-center justify-between"
+          style={{background: liga ? `linear-gradient(135deg,${liga.color}14 0%,transparent 100%)` : ''}}>
+          <p className="text-xs font-bold text-brand-yellow uppercase tracking-wider">⚽ Partido del día</p>
+          {!loading && partido && (
+            <span className="text-[10px] font-black px-2 py-0.5 rounded-full"
+              style={{color: liga?.color, backgroundColor:`${liga?.color}20`}}>
+              {liga?.emoji} {liga?.texto}
+            </span>
+          )}
+        </div>
+
+        {loading ? (
+          <div className="px-4 pb-4 space-y-3 animate-pulse">
+            <div className="flex items-center gap-4">
+              <div className="flex-1 flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-full bg-brand-medium"/>
+                <div className="h-3 w-20 bg-brand-medium rounded-full"/>
+                <div className="flex gap-1">{[1,2,3,4,5].map(i=><div key={i} className="w-5 h-5 rounded-full bg-brand-medium"/>)}</div>
+              </div>
+              <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                <div className="h-5 w-8 bg-brand-medium rounded-full"/>
+                <div className="h-3 w-12 bg-brand-medium rounded-full"/>
+              </div>
+              <div className="flex-1 flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-full bg-brand-medium"/>
+                <div className="h-3 w-20 bg-brand-medium rounded-full"/>
+                <div className="flex gap-1">{[1,2,3,4,5].map(i=><div key={i} className="w-5 h-5 rounded-full bg-brand-medium"/>)}</div>
+              </div>
+            </div>
+            <div className="h-14 rounded-xl bg-brand-medium"/>
+            <div className="flex gap-2">{[1,2,3].map(i=><div key={i} className="flex-1 h-9 rounded-xl bg-brand-medium"/>)}</div>
+          </div>
+        ) : partido ? (
+          <div className="px-4 pb-4 space-y-3">
+            {/* Equipos */}
+            <div className="flex items-center gap-3">
+              {/* Local */}
+              <div className="flex-1 flex flex-col items-center gap-1.5 min-w-0">
+                {partido.strHomeTeamBadge
+                  ? <img src={partido.strHomeTeamBadge+'/tiny'} className="w-12 h-12 object-contain" onError={e=>{e.target.style.display='none'}}/>
+                  : <span className="text-3xl">⚽</span>}
+                <p className="text-xs font-black text-white text-center line-clamp-2 leading-tight">{tn(partido.strHomeTeam)}</p>
+                <div className="flex gap-0.5 flex-wrap justify-center">
+                  {formaL.length ? formaL.map((r,i)=><CirculoFut key={i} r={r}/>) : <span className="text-[9px] text-gray-600">—</span>}
+                </div>
+              </div>
+              {/* Centro */}
+              <div className="flex flex-col items-center gap-0.5 flex-shrink-0">
+                <span className="text-xs font-black text-gray-500">VS</span>
+                <span className="text-[10px] font-black" style={{color: partido._esManana ? '#60a5fa' : '#f97316'}}>
+                  ⏰ {hora}
+                </span>
+                {partido._esManana && <span className="text-[8px] text-blue-400 font-bold">Mañana</span>}
+              </div>
+              {/* Visitante */}
+              <div className="flex-1 flex flex-col items-center gap-1.5 min-w-0">
+                {partido.strAwayTeamBadge
+                  ? <img src={partido.strAwayTeamBadge+'/tiny'} className="w-12 h-12 object-contain" onError={e=>{e.target.style.display='none'}}/>
+                  : <span className="text-3xl">⚽</span>}
+                <p className="text-xs font-black text-white text-center line-clamp-2 leading-tight">{tn(partido.strAwayTeam)}</p>
+                <div className="flex gap-0.5 flex-wrap justify-center">
+                  {formaV.length ? formaV.map((r,i)=><CirculoFut key={i} r={r}/>) : <span className="text-[9px] text-gray-600">—</span>}
+                </div>
+              </div>
+            </div>
+
+            {/* Dato clave + speech gancho */}
+            {dato && (
+              <div className="rounded-xl p-3" style={{backgroundColor:'rgba(234,179,8,0.08)',border:'1px solid rgba(234,179,8,0.18)'}}>
+                <p className="text-[10px] font-black text-yellow-400 mb-1">💡 Dato clave</p>
+                <p className="text-[11px] text-yellow-200 leading-snug">{dato}</p>
+              </div>
+            )}
+            {gancho && (
+              <div className="rounded-xl p-3" style={{backgroundColor:'rgba(249,115,22,0.08)',border:'1px solid rgba(249,115,22,0.2)'}}>
+                <p className="text-[10px] font-black text-brand-orange mb-1">💬 Ofrécelo así:</p>
+                <p className="text-[11px] text-orange-200 leading-relaxed italic">{gancho}</p>
+              </div>
+            )}
+
+            {/* Botones de acción */}
+            <div className="flex gap-2">
+              <button onClick={() => setModal('tendencias')}
+                className="flex-1 py-2 rounded-xl text-[11px] font-black text-green-400 flex items-center justify-center gap-1 transition-all"
+                style={{backgroundColor:'rgba(34,197,94,0.1)',border:'1px solid rgba(34,197,94,0.3)'}}>
+                📊 Tendencias
+              </button>
+              <button onClick={() => setModal('speech')}
+                className="flex-1 py-2 rounded-xl text-[11px] font-black text-brand-orange flex items-center justify-center gap-1 transition-all"
+                style={{backgroundColor:'rgba(249,115,22,0.1)',border:'1px solid rgba(249,115,22,0.3)'}}>
+                📢 Speech
+              </button>
+              <button onClick={() => setModal('club')}
+                className="flex-1 py-2 rounded-xl text-[11px] font-black text-blue-400 flex items-center justify-center gap-1 transition-all"
+                style={{backgroundColor:'rgba(59,130,246,0.1)',border:'1px solid rgba(59,130,246,0.3)'}}>
+                📋 CTA
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </>
+  )
+}
+
 // ─── Widget: Partidos más importantes del día ─────────────────────────────────
 function PartidosDelDia({ onNavigate }) {
   const [loading, setLoading]           = useState(true)
@@ -1118,24 +1283,8 @@ export default function Home({ userState, onUpdatePoints, onNavigate }) {
         <ProgressBar value={weeklyProgress} max={weeklyGoal} color="orange" showPercent={false} height="h-3" />
       </div>
 
-      {/* ── Partido del día ── */}
-      <div className="bg-brand-dark rounded-2xl p-4 border border-yellow-600/20">
-        <p className="text-xs font-bold text-brand-yellow uppercase tracking-wider mb-3">⚽ Partido del día</p>
-        <div className="flex items-center gap-3">
-          <span className="text-3xl">{HOY.partido.emoji}</span>
-          <div className="flex-1">
-            <p className="font-black text-white text-sm">{HOY.partido.titulo}</p>
-            <p className="text-xs text-gray-400">{HOY.partido.detalle}</p>
-            <span className="text-[10px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded-full font-bold mt-1 inline-block">
-              {HOY.partido.indicador}
-            </span>
-          </div>
-        </div>
-        <div className="mt-3 bg-brand-orange/10 border border-brand-orange/20 rounded-xl p-3">
-          <p className="text-[10px] font-bold text-brand-orange uppercase tracking-wider mb-1">💡 Ofrécelo así:</p>
-          <p className="text-xs text-gray-200 italic leading-relaxed">"{HOY.partido.cta}"</p>
-        </div>
-      </div>
+      {/* ── Partido del día (dinámico) ── */}
+      <PartidoPrincipalDelDia />
 
       {/* ── Herramienta del día ── */}
       <div className="bg-brand-dark rounded-2xl p-4 border border-blue-500/15">
