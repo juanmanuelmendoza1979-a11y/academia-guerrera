@@ -529,6 +529,7 @@ export default function JefeDashboard({ session }) {
   const [rankOpen, setRankOpen] = useState(null)
   const [statAbierta, setStatAbierta] = useState(null)
   const [supSeleccionado, setSupSeleccionado] = useState(null)
+  const [supExpandido, setSupExpandido] = useState(null)
 
   const misSupes = SUPERVISORES_POR_JEFE[session?.nombre] || []
 
@@ -822,45 +823,97 @@ export default function JefeDashboard({ session }) {
                   const dot = !supData?.registrado ? 'bg-red-500'
                     : activoHoy ? 'bg-green-500' : 'bg-yellow-500'
 
-                  return (
-                    <div key={supNombre} className={`rounded-2xl p-4 border ${statusColor}`}>
-                      <div className="flex items-start gap-3">
-                        <div className="relative flex-shrink-0">
-                          <div className="w-11 h-11 rounded-xl bg-brand-medium flex items-center justify-center text-2xl">👔</div>
-                          <span className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-brand-black ${dot}`} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-black text-white">{supNombre}</p>
-                          {!supData?.registrado ? (
-                            <p className="text-xs text-red-400 mt-0.5 font-semibold">⚠️ Aún no creó su cuenta</p>
-                          ) : (
-                            <p className="text-xs text-gray-400 mt-0.5">
-                              Último acceso: <span className={`font-bold ${activoHoy?'text-green-400':activoRec?'text-yellow-400':'text-gray-500'}`}>
-                                {tiempoDesde(ultimoAcc)}
-                              </span>
-                            </p>
-                          )}
-                          {/* Stats del equipo */}
-                          <div className="flex gap-3 mt-2 flex-wrap">
-                            <span className="text-[11px] text-gray-400">👥 {equipo.length} promotoras</span>
-                            <span className={`text-[11px] font-bold ${activas.length > 0 ? 'text-green-400' : 'text-gray-600'}`}>
-                              ⚡ {activas.length} activas hoy
-                            </span>
-                            {equipo.length > 0 && (
-                              <span className="text-[11px] text-yellow-400">
-                                ⭐ {Math.round(equipo.reduce((s,p)=>s+(p.puntos||0),0)/equipo.length)} pts prom.
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
+                  const isOpen    = supExpandido === supNombre
+                  const porLogin  = [...equipo].sort((a,b) => (b.loginCount||0)-(a.loginCount||0))
+                  const maxLogin  = porLogin[0]?.loginCount || 1
+                  const verdes    = equipo.filter(p=>(p.loginCount||0)>=10).length
+                  const amarillas = equipo.filter(p=>(p.loginCount||0)>=3&&(p.loginCount||0)<10).length
+                  const rojas     = equipo.filter(p=>(p.loginCount||0)<3).length
 
-                      {/* Alerta si no tiene cuenta */}
-                      {!supData?.registrado && (
-                        <div className="mt-3 bg-red-900/20 rounded-xl px-3 py-2">
-                          <p className="text-xs text-red-300 leading-relaxed">
-                            Recuérdale que debe crear su cuenta en la app para acceder al módulo de supervisores.
-                          </p>
+                  return (
+                    <div key={supNombre} className={`rounded-2xl border overflow-hidden ${statusColor}`}>
+                      {/* Header clickeable */}
+                      <button
+                        onClick={() => setSupExpandido(isOpen ? null : supNombre)}
+                        className="w-full p-4 text-left hover:bg-white/5 transition-all">
+                        <div className="flex items-start gap-3">
+                          <div className="relative flex-shrink-0">
+                            <div className="w-11 h-11 rounded-xl bg-brand-medium flex items-center justify-center text-2xl">👔</div>
+                            <span className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-brand-black ${dot}`} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-black text-white">{supNombre}</p>
+                            {!supData?.registrado ? (
+                              <p className="text-xs text-red-400 mt-0.5 font-semibold">⚠️ Aún no creó su cuenta</p>
+                            ) : (
+                              <p className="text-xs text-gray-400 mt-0.5">
+                                Último acceso: <span className={`font-bold ${activoHoy?'text-green-400':activoRec?'text-yellow-400':'text-gray-500'}`}>
+                                  {tiempoDesde(ultimoAcc)}
+                                </span>
+                              </p>
+                            )}
+                            <div className="flex gap-3 mt-2 flex-wrap">
+                              <span className="text-[11px] text-gray-400">👥 {equipo.length} promotoras</span>
+                              <span className={`text-[11px] font-bold ${activas.length > 0 ? 'text-green-400' : 'text-gray-600'}`}>⚡ {activas.length} hoy</span>
+                              <span className="text-[11px] text-green-400">✓{verdes}</span>
+                              <span className="text-[11px] text-yellow-400">~{amarillas}</span>
+                              <span className="text-[11px] text-red-400">✗{rojas}</span>
+                            </div>
+                          </div>
+                          <span className={`text-gray-400 text-sm transition-transform flex-shrink-0 mt-1 ${isOpen?'rotate-180':''}`}>▼</span>
+                        </div>
+
+                        {!supData?.registrado && (
+                          <div className="mt-3 bg-red-900/20 rounded-xl px-3 py-2">
+                            <p className="text-xs text-red-300 leading-relaxed">
+                              Recuérdale que debe crear su cuenta en la app para acceder al módulo de supervisores.
+                            </p>
+                          </div>
+                        )}
+                      </button>
+
+                      {/* Lista expandida de promotoras — usabilidad */}
+                      {isOpen && (
+                        <div className="border-t border-white/10">
+                          <div className="px-4 py-2 bg-purple-900/20 flex items-center justify-between">
+                            <p className="text-[10px] font-black text-purple-300 uppercase tracking-wider">🔑 Usabilidad del equipo</p>
+                            <p className="text-[10px] text-gray-500">ordenado por ingresos</p>
+                          </div>
+                          {porLogin.length === 0
+                            ? <p className="text-xs text-gray-500 text-center py-4">Sin promotoras registradas</p>
+                            : porLogin.map((p, i) => {
+                                const logins  = p.loginCount || 0
+                                const barW    = Math.round((logins / maxLogin) * 100)
+                                const activa  = p.ultimoAccesoFecha === hoy
+                                return (
+                                  <div key={p.id||i} className="px-4 py-2.5 border-b border-white/5 last:border-0">
+                                    <div className="flex items-center gap-3">
+                                      <span className="text-[10px] font-black text-gray-600 w-5 text-center flex-shrink-0">#{i+1}</span>
+                                      <Avatar seed={p.avatar} size="sm" />
+                                      <div className="flex-1 min-w-0">
+                                        <p className="text-xs font-bold text-white truncate">{p.nombre}</p>
+                                        <p className={`text-[10px] font-bold ${activa?'text-green-400':'text-gray-600'}`}>
+                                          {activa ? 'Activa hoy ✅' : tiempoDesde(p.ultimoAccesoFecha)}
+                                        </p>
+                                      </div>
+                                      <div className="text-right flex-shrink-0">
+                                        <p className={`text-base font-black ${logins>=10?'text-green-400':logins>=3?'text-yellow-400':'text-red-400'}`}>{logins}</p>
+                                        <p className="text-[9px] text-gray-500">ingresos</p>
+                                      </div>
+                                    </div>
+                                    <div className="mt-1.5 ml-12 bg-brand-medium rounded-full h-1.5">
+                                      <div className={`h-1.5 rounded-full ${logins>=10?'bg-green-500':logins>=3?'bg-yellow-500':'bg-red-500'}`}
+                                        style={{ width: `${barW}%` }} />
+                                    </div>
+                                  </div>
+                                )
+                              })
+                          }
+                          <div className="px-4 py-2 border-t border-white/5 bg-brand-medium/20 flex gap-3 text-[9px]">
+                            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"/>10+ ingresos</span>
+                            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-yellow-500 inline-block"/>3-9 ingresos</span>
+                            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-red-500 inline-block"/>0-2 ingresos</span>
+                          </div>
                         </div>
                       )}
                     </div>
