@@ -62,6 +62,7 @@ function saveFavs(f) { try { localStorage.setItem(FAVS_KEY, JSON.stringify(f)) }
 
 const TABS = [
   { id: 'resumen',      icon: '🌍', label: 'Inicio' },
+  { id: 'fasefinal',    icon: '🏅', label: 'Fase Final' },
   { id: 'calientes',    icon: '🔥', label: 'Datos Calientes' },
   { id: 'jugadores',    icon: '⭐', label: 'Jugadores' },
   { id: 'explorar',     icon: '🔍', label: 'Explorar' },
@@ -173,6 +174,7 @@ export default function WorldCup2026({ onUpdatePoints }) {
 
       <div className="px-4 py-4 max-w-4xl mx-auto space-y-4">
         {tab === 'resumen'     && <TabResumen onTabChange={setTab} />}
+        {tab === 'fasefinal'   && <TabFaseFinal />}
         {tab === 'calientes'   && <TabDatosCalientes />}
         {tab === 'jugadores'   && <TabJugadores />}
         {tab === 'explorar'    && <TabExplorar onTabChange={setTab} />}
@@ -323,7 +325,7 @@ const SLIDES = [
   { bg: 'from-[#0a2e6e] via-[#1a4a8a] to-brand-orange', emoji: '🌍', titulo: 'Un Mundial histórico', sub: '48 selecciones · 3 países · 104 partidos · 1 torneo para recordar', cta: 'resumen', ctaTxt: 'Ver resumen' },
   { bg: 'from-blue-900 via-indigo-900 to-brand-orange/80', emoji: '🗂️', titulo: '12 Grupos · 48 Selecciones', sub: 'Argentina, Francia, Brasil, España — los favoritos ya tienen grupo. ¿Quién pasa?', cta: 'grupos', ctaTxt: 'Ver grupos' },
   { bg: 'from-purple-900 via-pink-900 to-indigo-900', emoji: '⭐', titulo: 'Los cracks del torneo', sub: 'Mbappé, Vinicius, Bellingham, Haaland y más — los que pondrán a arder el estadio', cta: 'jugadores', ctaTxt: 'Ver jugadores' },
-  { bg: 'from-yellow-800 via-orange-900 to-red-900', emoji: '🔥', titulo: 'Datos Calientes', sub: 'Brasil vs Alemania · Francia vs Portugal · Argentina vs Croacia — los partidos que todos esperan', cta: 'calientes', ctaTxt: 'Ver partidos' },
+  { bg: 'from-yellow-800 via-orange-900 to-red-900', emoji: '🏅', titulo: 'Fase Final en marcha', sub: '32 clasificados confirmados · Ronda de 32 · El camino al título empieza ahora', cta: 'fasefinal', ctaTxt: 'Ver clasificados' },
 ]
 
 function HeroCarrusel({ onTabChange }) {
@@ -403,7 +405,7 @@ function TabResumen({ onTabChange }) {
         <p className="text-xs font-black text-gray-500 uppercase tracking-wider mb-2">⚡ Acceso rápido</p>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { tab:'grupos',     emoji:'🗂️',  titulo:'Grupos del Mundial',    sub:'12 grupos · 48 selecciones confirmadas', bg:'from-blue-900/60 to-indigo-900/40', border:'border-blue-500/40' },
+            { tab:'fasefinal',  emoji:'🏅',   titulo:'Fase Final · Clasificados', sub:'32 equipos · Ronda de 32 · Calendario', bg:'from-yellow-900/60 to-amber-900/40', border:'border-yellow-500/40' },
             { tab:'jugadores',  emoji:'⭐',   titulo:'Los Cracks',            sub:'Estrellas · Los más temidos · Favoritos', bg:'from-purple-900/60 to-pink-900/40', border:'border-purple-500/40' },
             { tab:'calientes',  emoji:'🔥',   titulo:'Datos Calientes',       sub:'Partidos clave + speech para el cliente', bg:'from-orange-900/60 to-red-900/40',  border:'border-orange-500/40' },
             { tab:'trivia',     emoji:'🧠',   titulo:'Trivia — Gana Puntos',  sub:'Aprende jugando · +10 pts por pregunta',  bg:'from-blue-900/60 to-indigo-900/40', border:'border-blue-500/40' },
@@ -584,6 +586,360 @@ function TabAnfitriones() {
           )}
         </div>
       ))}
+    </div>
+  )
+}
+
+/* ════════════════════════════════════════
+   TAB: FASE FINAL — Ronda de 32 en adelante
+════════════════════════════════════════ */
+const FASES_KO = [
+  { id:'r32', label:'Ronda de 32',  emoji:'🔝', fechas:'28 jun – 4 jul',  equipos:32 },
+  { id:'r16', label:'Octavos',      emoji:'⚔️',  fechas:'5 – 8 jul',       equipos:16 },
+  { id:'r8',  label:'Cuartos',      emoji:'🔥', fechas:'9 – 12 jul',      equipos:8  },
+  { id:'r4',  label:'Semifinales',  emoji:'💥', fechas:'14 – 15 jul',     equipos:4  },
+  { id:'r2',  label:'Final',        emoji:'🏆', fechas:'19 jul',           equipos:2  },
+]
+
+function TabFaseFinal() {
+  const [subTab,    setSubTab]    = useState('clasificados')
+  const [standings, setStandings] = useState([])
+  const [loadingSt, setLoadingSt] = useState(true)
+  const [eventos,   setEventos]   = useState([])
+  const [loadingEv, setLoadingEv] = useState(true)
+
+  useEffect(() => {
+    fetch('https://www.thesportsdb.com/api/v1/json/3929240369/lookuptable.php?l=4429&s=2026')
+      .then(r => r.json()).then(j => { setStandings(j.table || []); setLoadingSt(false) })
+      .catch(() => setLoadingSt(false))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://www.thesportsdb.com/api/v1/json/3929240369/eventsnextleague.php?id=4429')
+      .then(r => r.json()).then(j => { setEventos(j.events || []); setLoadingEv(false) })
+      .catch(() => setLoadingEv(false))
+  }, [])
+
+  const byGroup = useMemo(() => {
+    const map = {}
+    standings.forEach(t => {
+      const m = (t.strGroup || '').match(/Group\s+([A-L])/i)
+      const grp = m ? m[1].toUpperCase() : null
+      if (!grp) return
+      if (!map[grp]) map[grp] = []
+      map[grp].push({
+        nombre: t.strTeam,
+        pts:  parseInt(t.intPoints)         || 0,
+        pj:   parseInt(t.intPlayed)         || 0,
+        gf:   parseInt(t.intGoalsFor)       || 0,
+        dif:  parseInt(t.intGoalDifference) || 0,
+      })
+    })
+    Object.keys(map).forEach(g => {
+      map[g].sort((a, b) => b.pts - a.pts || b.dif - a.dif || b.gf - a.gf)
+    })
+    return map
+  }, [standings])
+
+  const tercerosMejores = useMemo(() => {
+    return Object.entries(byGroup)
+      .map(([grp, teams]) => teams[2] ? { ...teams[2], grupo: grp } : null)
+      .filter(Boolean)
+      .sort((a, b) => b.pts - a.pts || b.dif - a.dif || b.gf - a.gf)
+      .slice(0, 8)
+  }, [byGroup])
+
+  const ti = nombre => TEAM_MAP[nombre] || { es: nombre, flag: '🏳️' }
+
+  return (
+    <div className="space-y-4 animate-fade-in">
+      {/* Banner */}
+      <div className="bg-gradient-to-r from-yellow-900/50 to-amber-900/30 border border-yellow-500/30 rounded-2xl p-4">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-xl">🏅</span>
+          <p className="text-sm font-black text-white">Fase Final · Mundial 2026</p>
+          <span className="ml-auto text-xs bg-green-500 text-white px-2 py-0.5 rounded-full font-bold animate-pulse">● EN CURSO</span>
+        </div>
+        <p className="text-xs text-yellow-200 leading-relaxed">
+          Fase de grupos concluida · 32 equipos clasificados listos para la Ronda de 32
+        </p>
+      </div>
+
+      {/* Timeline de rondas */}
+      <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+        {FASES_KO.map(f => (
+          <div key={f.id} className="flex-shrink-0 bg-brand-dark border border-white/5 rounded-xl px-3 py-2 text-center min-w-[84px]">
+            <p className="text-lg">{f.emoji}</p>
+            <p className="text-[10px] font-black text-white leading-tight">{f.label}</p>
+            <p className="text-[9px] text-gray-500 mt-0.5">{f.fechas}</p>
+            <p className="text-[9px] text-brand-orange mt-0.5">{f.equipos} equipos</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Sub-tabs */}
+      <div className="flex gap-2">
+        {[['clasificados','⭐ 32 Clasificados'],['partidos','📅 Partidos']].map(([id, label]) => (
+          <button key={id} onClick={() => setSubTab(id)}
+            className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${
+              subTab === id ? 'bg-brand-orange text-white' : 'bg-brand-medium text-gray-400'
+            }`}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── CLASIFICADOS ── */}
+      {subTab === 'clasificados' && (
+        <div className="space-y-4">
+          {loadingSt ? (
+            <div className="text-center py-10 animate-pulse">
+              <p className="text-3xl mb-2">⏳</p>
+              <p className="text-xs text-gray-500">Cargando clasificados en tiempo real...</p>
+            </div>
+          ) : Object.keys(byGroup).length === 0 ? (
+            <div className="bg-brand-dark border border-white/5 rounded-2xl p-6 text-center">
+              <p className="text-3xl mb-2">🔄</p>
+              <p className="text-sm font-bold text-white mb-1">Datos en proceso</p>
+              <p className="text-xs text-gray-500">La información de clasificados se actualizará en breve.</p>
+            </div>
+          ) : (
+            <>
+              <p className="text-xs font-black text-green-400 uppercase tracking-wider">
+                ✅ 24 clasificados directos — 1.° y 2.° de cada grupo
+              </p>
+              <div className="grid grid-cols-1 gap-2">
+                {Object.entries(byGroup).sort(([a],[b]) => a.localeCompare(b)).map(([grp, teams]) => (
+                  <div key={grp} className="bg-brand-dark rounded-xl border border-white/5 p-3">
+                    <p className="text-[10px] font-black text-brand-orange uppercase tracking-wider mb-2">Grupo {grp}</p>
+                    <div className="space-y-1.5">
+                      {/* 1.° y 2.° clasificados directos */}
+                      {teams.slice(0, 2).map((t, i) => {
+                        const { es, flag } = ti(t.nombre)
+                        return (
+                          <div key={t.nombre} className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 ${i===0?'bg-brand-orange/10 border border-brand-orange/20':'bg-green-900/20 border border-green-500/20'}`}>
+                            <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black flex-shrink-0 ${i===0?'bg-brand-orange text-white':'bg-green-600 text-white'}`}>{i+1}</span>
+                            <span className="text-sm">{flag}</span>
+                            <span className="text-xs font-bold text-white flex-1 truncate">{es}</span>
+                            <span className="text-[9px] text-gray-500 flex-shrink-0">{t.pts} pts</span>
+                            <span className="text-[9px] text-green-400 flex-shrink-0 font-bold">✓</span>
+                          </div>
+                        )
+                      })}
+                      {/* 3.° — puede clasificar como mejor tercero */}
+                      {teams[2] && (() => {
+                        const { es, flag } = ti(teams[2].nombre)
+                        const esMejorTercero = tercerosMejores.some(t => t.nombre === teams[2].nombre)
+                        return (
+                          <div className={`flex items-center gap-2 rounded-lg px-2.5 py-1 ${esMejorTercero?'bg-yellow-900/20 border border-yellow-500/20':'bg-brand-medium/30 border border-white/5'}`}>
+                            <span className="w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black flex-shrink-0 bg-gray-700 text-gray-300">3</span>
+                            <span className="text-sm">{flag}</span>
+                            <span className={`text-xs truncate flex-1 ${esMejorTercero?'text-yellow-400 font-bold':'text-gray-500'}`}>{es}</span>
+                            <span className="text-[9px] text-gray-600 flex-shrink-0">{teams[2].pts} pts</span>
+                            {esMejorTercero && <span className="text-[9px] text-yellow-400 flex-shrink-0">⭐</span>}
+                          </div>
+                        )
+                      })()}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mejores 8 terceros */}
+              {tercerosMejores.length > 0 && (
+                <div>
+                  <p className="text-xs font-black text-yellow-400 uppercase tracking-wider mb-2">⭐ 8 mejores terceros — también clasificados</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {tercerosMejores.map((t, i) => {
+                      const { es, flag } = ti(t.nombre)
+                      return (
+                        <div key={t.nombre} className="bg-brand-dark rounded-xl border border-yellow-500/20 p-2.5 flex items-center gap-2">
+                          <span className="w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-black flex-shrink-0 bg-yellow-600 text-white">{i+1}</span>
+                          <span className="text-base">{flag}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold text-white truncate">{es}</p>
+                            <p className="text-[9px] text-gray-500">Gr.{t.grupo} · {t.pts}pts · DF:{t.dif>0?`+${t.dif}`:t.dif}</p>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  <div className="flex gap-3 mt-2 flex-wrap">
+                    <span className="text-[10px] text-gray-500 flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-brand-orange inline-block" /> 1.° de grupo</span>
+                    <span className="text-[10px] text-gray-500 flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> 2.° de grupo</span>
+                    <span className="text-[10px] text-gray-500 flex items-center gap-1">⭐ Mejor 3.°</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Speech para promotora */}
+              <div className="bg-brand-orange/10 border border-brand-orange/30 rounded-2xl p-4">
+                <p className="text-xs font-bold text-brand-orange mb-2">💬 Guerrera, úsalo así</p>
+                <p className="text-sm text-gray-300 leading-relaxed italic">
+                  "¿Ya viste quién clasificó? Argentina, Brasil, España y Francia ya están en la Ronda de 32. En TE APUESTO puedes apostar a quién llega a cuartos o a la final desde ahora. ¿Revisamos las opciones?"
+                </p>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* ── PARTIDOS ── */}
+      {subTab === 'partidos' && (
+        <PartidosFaseFinal eventos={eventos} loading={loadingEv} />
+      )}
+
+      <div className="bg-brand-medium rounded-2xl p-2.5 border border-white/5">
+        <p className="text-[10px] text-gray-600 text-center">🔄 Datos en tiempo real · TheSportsDB · Hora Perú (PE UTC-5)</p>
+      </div>
+    </div>
+  )
+}
+
+function PartidosFaseFinal({ eventos, loading }) {
+  const [faseActiva, setFaseActiva] = useState('all')
+
+  const ti = nombre => TEAM_MAP[nombre] || { es: nombre, flag: '🏳️' }
+
+  function getRondaLabel(round) {
+    if (!round) return null
+    const r = String(round).toLowerCase()
+    if (r.includes('32'))                                           return 'Ronda de 32'
+    if (r.includes('16') || r.includes('octav'))                   return 'Octavos de Final'
+    if (r.includes('quarter') || r.includes('cuart'))              return 'Cuartos de Final'
+    if (r.includes('third') || r.includes('tercer') || r.includes('3rd')) return '3.er y 4.° Puesto'
+    if (r.includes('semi'))                                        return 'Semifinal'
+    if (r.includes('final'))                                       return 'Gran Final'
+    return null
+  }
+
+  const byRonda = useMemo(() => {
+    const map = {}
+    eventos.forEach(ev => {
+      const ronda = getRondaLabel(ev.strRound || ev.intRound)
+      if (!ronda) return
+      if (!map[ronda]) map[ronda] = []
+      map[ronda].push(ev)
+    })
+    return map
+  }, [eventos])
+
+  const ORDEN_RONDAS = ['Ronda de 32','Octavos de Final','Cuartos de Final','Semifinal','3.er y 4.° Puesto','Gran Final']
+  const rondas = ORDEN_RONDAS.filter(r => byRonda[r])
+
+  function formatHora(dateStr, timeStr) {
+    if (!timeStr || timeStr === 'null' || !timeStr) return 'TBD'
+    try {
+      const dt = new Date(`${dateStr}T${timeStr}`)
+      return dt.toLocaleTimeString('es-PE', { hour:'2-digit', minute:'2-digit', timeZone:'America/Lima' }) + ' PE'
+    } catch { return '' }
+  }
+
+  function formatFecha(dateStr) {
+    if (!dateStr) return ''
+    const [, m, d] = dateStr.split('-')
+    return `${parseInt(d)} ${['','ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][parseInt(m)]}`
+  }
+
+  if (loading) {
+    return (
+      <div className="text-center py-10 animate-pulse">
+        <p className="text-3xl mb-2">⏳</p>
+        <p className="text-xs text-gray-500">Cargando partidos...</p>
+      </div>
+    )
+  }
+
+  if (rondas.length === 0) {
+    return (
+      <div className="space-y-3">
+        <div className="bg-brand-dark border border-white/5 rounded-2xl p-6 text-center">
+          <p className="text-3xl mb-2">🔜</p>
+          <p className="text-sm font-bold text-white mb-1">Cruces próximamente</p>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Los partidos de la Ronda de 32 aparecerán aquí en cuanto sean confirmados.
+          </p>
+        </div>
+        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">📋 Calendario de rondas</p>
+        {FASES_KO.map(f => (
+          <div key={f.id} className="bg-brand-dark rounded-xl border border-white/5 p-3 flex items-center gap-3">
+            <span className="text-2xl">{f.emoji}</span>
+            <div className="flex-1">
+              <p className="text-sm font-bold text-white">{f.label}</p>
+              <p className="text-xs text-gray-500">📅 {f.fechas} · {f.equipos} equipos</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  const eventosMostrar = faseActiva === 'all'
+    ? rondas.flatMap(r => (byRonda[r] || []).map(ev => ({ ...ev, _ronda: r })))
+    : (byRonda[faseActiva] || []).map(ev => ({ ...ev, _ronda: faseActiva }))
+
+  return (
+    <div className="space-y-4">
+      {/* Filtro de rondas */}
+      <div className="flex gap-2 overflow-x-auto no-scrollbar">
+        <button onClick={() => setFaseActiva('all')}
+          className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold ${faseActiva==='all'?'bg-brand-orange text-white':'bg-brand-medium text-gray-400'}`}>
+          🌍 Todos
+        </button>
+        {rondas.map(r => (
+          <button key={r} onClick={() => setFaseActiva(r)}
+            className={`flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold ${faseActiva===r?'bg-brand-orange text-white':'bg-brand-medium text-gray-400'}`}>
+            {r}
+          </button>
+        ))}
+      </div>
+
+      {/* Partidos agrupados por ronda */}
+      {(faseActiva === 'all' ? rondas : [faseActiva]).map(ronda => {
+        const evs = byRonda[ronda] || []
+        return (
+          <div key={ronda}>
+            <p className="text-xs font-black text-brand-orange uppercase tracking-wider mb-2">🏆 {ronda} · {evs.length} partido{evs.length!==1?'s':''}</p>
+            <div className="space-y-2">
+              {evs.map(ev => {
+                const { es: esHome, flag: fHome } = ti(ev.strHomeTeam)
+                const { es: esAway, flag: fAway } = ti(ev.strAwayTeam)
+                const hasScore = ev.intHomeScore !== null && ev.intHomeScore !== '' && ev.intAwayScore !== null
+                const fecha = formatFecha(ev.dateEvent)
+                const hora  = formatHora(ev.dateEvent, ev.strTime)
+                return (
+                  <div key={ev.idEvent} className={`bg-brand-dark rounded-2xl border p-3 ${hasScore?'border-green-500/20':'border-white/5'}`}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="flex-1 flex flex-col items-center gap-0.5 text-center">
+                        <span className="text-2xl">{fHome}</span>
+                        <p className="text-xs font-bold text-white leading-tight">{esHome}</p>
+                      </div>
+                      <div className="flex flex-col items-center px-2 min-w-[56px]">
+                        {hasScore ? (
+                          <p className="text-xl font-black text-white whitespace-nowrap">{ev.intHomeScore} – {ev.intAwayScore}</p>
+                        ) : (
+                          <p className="text-xs font-black text-gray-500">VS</p>
+                        )}
+                        <p className="text-[9px] text-gray-600 mt-0.5">{fecha}</p>
+                      </div>
+                      <div className="flex-1 flex flex-col items-center gap-0.5 text-center">
+                        <span className="text-2xl">{fAway}</span>
+                        <p className="text-xs font-bold text-white leading-tight">{esAway}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-[10px] text-gray-600 flex-wrap">
+                      {ev.strVenue && <span>🏟️ {ev.strVenue}</span>}
+                      {ev.strCity  && <span>· 📍 {ev.strCity}</span>}
+                      {!hasScore && hora !== 'TBD' && hora && <span>· 🕐 {hora}</span>}
+                      {hasScore && <span className="text-green-400 font-bold">· ✓ Final</span>}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
