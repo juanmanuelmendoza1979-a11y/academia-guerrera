@@ -11,6 +11,17 @@ function generarCodigo() {
   return String(Math.floor(100000 + Math.random() * 900000))
 }
 
+function mensajeErrorFirebase(e) {
+  if (!navigator.onLine) return 'Sin conexión a internet. Activa tu internet e intenta de nuevo.'
+  const code = e?.code || ''
+  if (code.includes('unavailable'))      return 'Servidor no disponible en este momento. Intenta en unos minutos.'
+  if (code.includes('quota-exceeded'))   return 'Límite de uso del servidor alcanzado. Intenta más tarde.'
+  if (code.includes('permission-denied'))return 'Acceso bloqueado por configuración del servidor. Contacta al administrador.'
+  if (code.includes('not-found'))        return 'Base de datos no encontrada. Contacta al administrador.'
+  if (code.includes('network'))          return 'Error de red al contactar el servidor. Intenta de nuevo.'
+  return 'Error del servidor. Tu internet está bien — el problema está en Firebase. Intenta en unos minutos.'
+}
+
 // ══════════════════════════════════════════
 // PANTALLA PRINCIPAL DE LOGIN
 // ══════════════════════════════════════════
@@ -48,7 +59,7 @@ function FormLogin({ onLogin, onNuevaCuenta, onVolver, onRecuperar }) {
       } else if (e.message === 'PIN_INCORRECTO') {
         setError('PIN incorrecto. Inténtalo de nuevo.')
       } else {
-        setError('Error de conexión. Verifica tu internet e intenta de nuevo.')
+        setError(mensajeErrorFirebase(e))
       }
     } finally {
       setLoading(false)
@@ -188,7 +199,7 @@ function RecuperarPin({ onVolver }) {
       if (e.message === 'NO_ENCONTRADA') {
         setError('No encontramos una cuenta con ese nombre. Verifica que sea exactamente como lo registraste.')
       } else {
-        setError('Error al enviar el correo. Verifica tu conexión e intenta de nuevo.')
+        setError(mensajeErrorFirebase(e))
       }
     } finally {
       setLoading(false)

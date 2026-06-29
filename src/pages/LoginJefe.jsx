@@ -12,6 +12,15 @@ function generarCodigo() {
   return String(Math.floor(100000 + Math.random() * 900000))
 }
 
+function mensajeErrorFirebase(e) {
+  if (!navigator.onLine) return 'Sin conexión a internet. Activa tu internet e intenta de nuevo.'
+  const code = e?.code || ''
+  if (code.includes('unavailable'))      return 'Servidor no disponible en este momento. Intenta en unos minutos.'
+  if (code.includes('quota-exceeded'))   return 'Límite de uso del servidor alcanzado. Intenta más tarde.'
+  if (code.includes('permission-denied'))return 'Acceso bloqueado por configuración del servidor. Contacta al administrador.'
+  return 'Error del servidor (Firebase). Tu internet está bien — intenta en unos minutos.'
+}
+
 export default function LoginJefe({ onLogin, onNuevaCuenta, onVolver }) {
   const [vista, setVista] = useState('login')
   if (vista === 'recuperar') return <RecuperarPin onVolver={() => setVista('login')} />
@@ -36,7 +45,7 @@ function FormLogin({ onLogin, onNuevaCuenta, onVolver, onRecuperar }) {
     } catch (e) {
       if (e.message === 'NO_ENCONTRADO') setError('No encontramos tu cuenta. ¿Ya te registraste?')
       else if (e.message === 'PIN_INCORRECTO') setError('PIN incorrecto. Inténtalo de nuevo.')
-      else setError('Error de conexión. Verifica tu internet.')
+      else setError(mensajeErrorFirebase(e))
     } finally { setLoading(false) }
   }
 
