@@ -14,11 +14,11 @@ function generarCodigo() {
 
 function mensajeErrorFirebase(e) {
   if (!navigator.onLine) return 'Sin conexión a internet. Activa tu internet e intenta de nuevo.'
-  const code = e?.code || ''
-  if (code.includes('unavailable'))      return 'Servidor no disponible en este momento. Intenta en unos minutos.'
-  if (code.includes('quota-exceeded'))   return 'Límite de uso del servidor alcanzado. Intenta más tarde.'
-  if (code.includes('permission-denied'))return 'Acceso bloqueado por configuración del servidor. Contacta al administrador.'
-  return 'Error del servidor (Firebase). Tu internet está bien — intenta en unos minutos.'
+  const code = e?.code || e?.message || ''
+  if (code.includes('unavailable'))      return '⚠️ Firebase no disponible. Intenta en unos minutos.'
+  if (code.includes('quota-exceeded'))   return '⚠️ Límite diario de Firebase alcanzado. Espera hasta mañana.'
+  if (code.includes('permission-denied'))return '🔒 Reglas de Firebase bloqueando acceso — actualiza las reglas en la consola Firebase.'
+  return `❌ Error Firebase: ${code || 'desconocido'}. Tu internet funciona bien.`
 }
 
 export default function LoginJefe({ onLogin, onNuevaCuenta, onVolver }) {
