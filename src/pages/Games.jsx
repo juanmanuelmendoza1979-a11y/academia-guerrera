@@ -25,6 +25,7 @@ const GAMES = [
   { id: 'phases',    icon: '🗺️', title: 'Ordena las Fases',       desc: 'Pon el Mundial en orden correcto',      color: 'from-yellow-700 to-orange-700', totalQ: 1  },
   { id: 'client',    icon: '🤝', title: '¿Qué le responderías?',  desc: 'Elige la respuesta responsable',        color: 'from-blue-700 to-cyan-700',     totalQ: 25 },
   { id: 'quick',     icon: '⚡', title: 'Reto de 3 Minutos',      desc: '6 preguntas · gana hasta 90 puntos',   color: 'from-red-700 to-orange-700',    totalQ: 25 },
+  { id: 'mundial',   icon: '🌍', title: 'Trivia Mundial 2026',    desc: 'Grupos · Jugadores · Goles · Apuestas · Curiosidades', color: 'from-yellow-600 to-green-700', totalQ: 50 },
 ]
 
 export default function Games({ onUpdatePoints }) {
@@ -107,6 +108,7 @@ export default function Games({ onUpdatePoints }) {
           {activeGame === 'phases'    && <PhasesGame    onPoints={onUpdatePoints} />}
           {activeGame === 'client'    && <ClientGame    difficulty={difficulty} onPoints={onUpdatePoints} />}
           {activeGame === 'quick'     && <QuickGame     difficulty={difficulty} onPoints={onUpdatePoints} />}
+          {activeGame === 'mundial'   && <MundialGame   difficulty={difficulty} onPoints={onUpdatePoints} />}
         </div>
       )}
     </div>
@@ -459,6 +461,82 @@ function QuickGame({ difficulty, onPoints }) {
           </p>
         )}
       </div>
+    </div>
+  )
+}
+
+/* ─── GAME 6: Mundial 2026 Trivia ─── */
+const CATEGORY_COLORS = {
+  '🌍 Formato':      'text-blue-400 border-blue-500/30',
+  '🏆 Historia':     'text-yellow-400 border-yellow-500/30',
+  '⭐ Jugadores':    'text-purple-400 border-purple-500/30',
+  '🎯 Curiosidades': 'text-orange-400 border-orange-500/30',
+  '⚽ Goles':        'text-green-400 border-green-500/30',
+  '🎰 Apuestas':     'text-pink-400 border-pink-500/30',
+  '💰 Estrellas':    'text-amber-400 border-amber-500/30',
+}
+
+function MundialGame({ difficulty, onPoints }) {
+  const questions = useMemo(() => getQuestions(quizData.mundial2026, difficulty, 10), [difficulty])
+  const [current, setCurrent] = useState(0)
+  const [answered, setAnswered] = useState(null)
+  const [score, setScore] = useState(0)
+  const [finished, setFinished] = useState(false)
+
+  const q = questions[current]
+  const pts = q?.difficulty === 'dificil' ? 20 : q?.difficulty === 'medio' ? 15 : 10
+  const catStyle = CATEGORY_COLORS[q?.category] || 'text-gray-400 border-white/10'
+
+  function handleAnswer(idx) {
+    if (answered !== null) return
+    setAnswered(idx)
+    if (idx === q.correct) { setScore(s => s + pts); onPoints && onPoints(pts) }
+  }
+
+  function next() {
+    if (current < questions.length - 1) { setCurrent(c => c + 1); setAnswered(null) }
+    else setFinished(true)
+  }
+
+  function restart() { setCurrent(0); setAnswered(null); setScore(0); setFinished(false) }
+
+  if (finished) return <GameFinished score={score} total={questions.length} onRestart={restart} />
+
+  return (
+    <div className="space-y-4 animate-fade-in">
+      <GameHeader title="Trivia Mundial 2026" current={current + 1} total={questions.length} score={score} color="bg-gradient-to-r from-yellow-600 to-green-700" />
+      <div className={`bg-brand-dark rounded-2xl p-5 border ${catStyle.split(' ')[1] || 'border-white/10'}`}>
+        <div className="flex items-center justify-between mb-3">
+          <span className={`text-xs font-bold uppercase tracking-wider ${catStyle.split(' ')[0]}`}>{q.category}</span>
+          <DiffBadge difficulty={q.difficulty} />
+        </div>
+        <p className="text-base font-semibold text-white leading-relaxed mb-4">{q.question}</p>
+        <div className="space-y-2">
+          {q.options.map((opt, idx) => {
+            let style = 'border-white/10 text-gray-300 hover:border-yellow-500/50'
+            if (answered !== null) {
+              if (idx === q.correct) style = 'border-brand-green bg-brand-green/10 text-brand-green'
+              else if (idx === answered) style = 'border-red-500 bg-red-500/10 text-red-400'
+              else style = 'border-white/5 text-gray-600 opacity-40'
+            }
+            return (
+              <button key={idx} onClick={() => handleAnswer(idx)} className={`w-full text-left border rounded-xl p-3 text-sm font-semibold transition-all ${style}`}>
+                {opt}
+              </button>
+            )
+          })}
+        </div>
+        {answered !== null && (
+          <div className={`mt-3 rounded-xl p-3 text-sm leading-relaxed ${answered === q.correct ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-medium text-gray-300'}`}>
+            {answered === q.correct ? `🎉 ¡Correcto! +${pts} pts` : `💡 ${q.explanation}`}
+          </div>
+        )}
+      </div>
+      {answered !== null && (
+        <button onClick={next} className="w-full py-3 bg-gradient-to-r from-yellow-600 to-green-700 rounded-xl font-bold text-white">
+          {current < questions.length - 1 ? 'Siguiente →' : 'Ver resultado'}
+        </button>
+      )}
     </div>
   )
 }

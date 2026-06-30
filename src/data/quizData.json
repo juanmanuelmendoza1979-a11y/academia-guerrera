@@ -829,5 +829,358 @@
   "phases": {
     "correct": ["Fase de Grupos", "Octavos de Final", "Cuartos de Final", "Semifinal", "Final"],
     "scrambled": ["Final", "Fase de Grupos", "Semifinal", "Octavos de Final", "Cuartos de Final"]
-  }
+  },
+
+  "mundial2026": [
+    {
+      "id": "mw1", "difficulty": "facil", "category": "🌍 Formato",
+      "question": "¿En cuántos países se celebra el Mundial 2026?",
+      "options": ["1 país", "2 países", "3 países", "4 países"],
+      "correct": 2,
+      "explanation": "¡Por primera vez en la historia tres países comparten la sede: Estados Unidos, México y Canadá!"
+    },
+    {
+      "id": "mw2", "difficulty": "facil", "category": "🌍 Formato",
+      "question": "¿Cuántos equipos participan en el Mundial 2026?",
+      "options": ["32 equipos", "36 equipos", "40 equipos", "48 equipos"],
+      "correct": 3,
+      "explanation": "El Mundial 2026 estrena el formato de 48 equipos, 16 más que en Qatar 2022."
+    },
+    {
+      "id": "mw3", "difficulty": "facil", "category": "🌍 Formato",
+      "question": "¿Cuántos grupos hay en el Mundial 2026?",
+      "options": ["8 grupos", "10 grupos", "12 grupos", "16 grupos"],
+      "correct": 2,
+      "explanation": "Con 48 equipos, el torneo se organiza en 12 grupos de 4 equipos cada uno."
+    },
+    {
+      "id": "mw4", "difficulty": "medio", "category": "🌍 Formato",
+      "question": "¿Cuántos equipos de cada grupo avanzan a la fase eliminatoria?",
+      "options": ["Solo el primero", "Los 2 primeros siempre", "Los 2 primeros + 8 mejores terceros", "Los 3 primeros de cada grupo"],
+      "correct": 2,
+      "explanation": "Pasan los 2 primeros de cada grupo (24 equipos) más los 8 mejores terceros, totalizando 32 clasificados a la fase eliminatoria."
+    },
+    {
+      "id": "mw5", "difficulty": "facil", "category": "🌍 Formato",
+      "question": "¿En qué estadio se juega la gran final del Mundial 2026?",
+      "options": ["Rose Bowl (Los Ángeles)", "Estadio Azteca (México)", "MetLife Stadium (Nueva York/NJ)", "AT&T Stadium (Dallas)"],
+      "correct": 2,
+      "explanation": "El MetLife Stadium en Nueva Jersey albergará la gran final del Mundial 2026. ¡Tiene capacidad para más de 82,000 personas!"
+    },
+    {
+      "id": "mw6", "difficulty": "medio", "category": "🌍 Formato",
+      "question": "¿Cuántos partidos en total se juegan en el Mundial 2026?",
+      "options": ["64 partidos", "80 partidos", "96 partidos", "104 partidos"],
+      "correct": 3,
+      "explanation": "Con 48 equipos y el nuevo formato, el Mundial 2026 tendrá 104 partidos en total — 40 más que en Qatar 2022."
+    },
+    {
+      "id": "mw7", "difficulty": "facil", "category": "🏆 Historia",
+      "question": "¿Qué selección es la campeona defensora en el Mundial 2026?",
+      "options": ["Francia", "Brasil", "Argentina", "España"],
+      "correct": 2,
+      "explanation": "Argentina ganó el Mundial 2022 en Qatar, derrotando a Francia en penales. ¡Messi por fin levantó la Copa del Mundo!"
+    },
+    {
+      "id": "mw8", "difficulty": "medio", "category": "🌍 Formato",
+      "question": "¿Cómo se llama la primera fase eliminatoria del Mundial 2026?",
+      "options": ["Octavos de Final", "Ronda de 32", "Play-off", "Ronda de 16"],
+      "correct": 1,
+      "explanation": "Con 32 clasificados, la primera ronda eliminatoria se llama 'Ronda de 32', antes de los Octavos de Final."
+    },
+    {
+      "id": "mw9", "difficulty": "facil", "category": "⭐ Jugadores",
+      "question": "¿De qué país es Kylian Mbappé?",
+      "options": ["Bélgica", "Senegal", "Francia", "Costa de Marfil"],
+      "correct": 2,
+      "explanation": "Mbappé nació en Bondy, Francia. Es el máximo goleador del Mundial 2022 con 8 goles, incluyendo un hat-trick en la final."
+    },
+    {
+      "id": "mw10", "difficulty": "facil", "category": "⭐ Jugadores",
+      "question": "¿Cuántos Balones de Oro tiene Lionel Messi?",
+      "options": ["6", "7", "8", "9"],
+      "correct": 2,
+      "explanation": "Messi ganó su 8° Balón de Oro en 2023, consolidándose como el jugador con más premios FIFA de la historia."
+    },
+    {
+      "id": "mw11", "difficulty": "facil", "category": "⭐ Jugadores",
+      "question": "¿Con qué selección juega Vinicius Jr.?",
+      "options": ["Portugal", "Argentina", "España", "Brasil"],
+      "correct": 3,
+      "explanation": "Vinicius Jr. juega para la Canarinha de Brasil y es uno de los jugadores más explosivos del mundo actualmente."
+    },
+    {
+      "id": "mw12", "difficulty": "facil", "category": "⭐ Jugadores",
+      "question": "¿Cuál es el apodo de Cristiano Ronaldo?",
+      "options": ["La Pulga", "CR7", "El Rey", "El Bicho"],
+      "correct": 1,
+      "explanation": "CR7 viene de Cristiano Ronaldo + el número 7, su dorsal histórico en Manchester United, Real Madrid y la selección de Portugal."
+    },
+    {
+      "id": "mw13", "difficulty": "facil", "category": "⭐ Jugadores",
+      "question": "¿De qué país es Jude Bellingham?",
+      "options": ["Irlanda", "Escocia", "Australia", "Inglaterra"],
+      "correct": 3,
+      "explanation": "Jude Bellingham nació en Stourbridge, Inglaterra, y es considerado uno de los mejores centrocampistas del mundo."
+    },
+    {
+      "id": "mw14", "difficulty": "medio", "category": "⭐ Jugadores",
+      "question": "¿En qué equipo juega Erling Haaland?",
+      "options": ["Bayern München", "Manchester City", "Real Madrid", "Paris Saint-Germain"],
+      "correct": 1,
+      "explanation": "Haaland fichó por el Manchester City en 2022 y desde entonces ha batido múltiples récords de goles en la Premier League."
+    },
+    {
+      "id": "mw15", "difficulty": "medio", "category": "⭐ Jugadores",
+      "question": "¿Qué posición juega Lamine Yamal en el campo?",
+      "options": ["Portero", "Defensa central", "Extremo derecho", "Mediapunta"],
+      "correct": 2,
+      "explanation": "Lamine Yamal es extremo derecho del FC Barcelona y España. ¡Ganó la Eurocopa 2024 con solo 17 años siendo el jugador más joven en hacerlo!"
+    },
+    {
+      "id": "mw16", "difficulty": "medio", "category": "⭐ Jugadores",
+      "question": "¿Dónde juega actualmente Cristiano Ronaldo?",
+      "options": ["Manchester United", "Juventus", "Al Nassr (Arabia Saudita)", "Al Hilal"],
+      "correct": 2,
+      "explanation": "Cristiano Ronaldo fichó por el Al Nassr de la Saudi Pro League en enero de 2023, convirtiéndose en uno de los jugadores mejor pagados del mundo."
+    },
+    {
+      "id": "mw17", "difficulty": "medio", "category": "⭐ Jugadores",
+      "question": "¿Con qué club ganó Rodri el Balón de Oro 2024?",
+      "options": ["Atlético de Madrid", "Barcelona", "Manchester City", "Real Madrid"],
+      "correct": 2,
+      "explanation": "Rodri Hernández del Manchester City ganó el Balón de Oro 2024 tras una temporada histórica y ganar la Eurocopa con España."
+    },
+    {
+      "id": "mw18", "difficulty": "dificil", "category": "⭐ Jugadores",
+      "question": "¿Cuántos goles marcó Mbappé en el Mundial 2022 para ganar la Bota de Oro?",
+      "options": ["5 goles", "6 goles", "7 goles", "8 goles"],
+      "correct": 3,
+      "explanation": "Mbappé marcó 8 goles en Qatar 2022, incluyendo un hat-trick en la final contra Argentina, y se llevó la Bota de Oro del torneo."
+    },
+    {
+      "id": "mw19", "difficulty": "facil", "category": "🎯 Curiosidades",
+      "question": "¿Qué país ha ganado más Copas del Mundo en la historia?",
+      "options": ["Alemania", "Argentina", "Italia", "Brasil"],
+      "correct": 3,
+      "explanation": "Brasil es el único pentacampeón del mundo con 5 títulos (1958, 1962, 1970, 1994, 2002). ¡Los únicos en llegar a 5!"
+    },
+    {
+      "id": "mw20", "difficulty": "medio", "category": "🎯 Curiosidades",
+      "question": "¿Quién es el máximo goleador histórico en Mundiales?",
+      "options": ["Ronaldo (Brasil)", "Pelé", "Miroslav Klose", "Gerd Müller"],
+      "correct": 2,
+      "explanation": "Miroslav Klose de Alemania marcó 16 goles en 4 Mundiales (2002, 2006, 2010, 2014). Superó a Ronaldo Nazário en el 2014."
+    },
+    {
+      "id": "mw21", "difficulty": "facil", "category": "🎯 Curiosidades",
+      "question": "¿En qué país se celebró el Mundial 2022?",
+      "options": ["Rusia", "Arabia Saudita", "Qatar", "Emiratos Árabes"],
+      "correct": 2,
+      "explanation": "Qatar 2022 fue el primer Mundial en Medio Oriente y el primero en jugarse en noviembre-diciembre por el calor extremo del verano árabe."
+    },
+    {
+      "id": "mw22", "difficulty": "medio", "category": "🎯 Curiosidades",
+      "question": "¿Qué sorpresa histórica ocurrió en el Mundial 2022 en la fase de grupos?",
+      "options": ["Alemania eliminó a Brasil", "Arabia Saudita venció a la Argentina campeona", "Japón ganó el Mundial", "Italia no clasificó"],
+      "correct": 1,
+      "explanation": "Arabia Saudita derrotó 2-1 a la Argentina campeona en la fase de grupos. ¡Una de las sorpresas más grandes de la historia mundialista!"
+    },
+    {
+      "id": "mw23", "difficulty": "medio", "category": "🎯 Curiosidades",
+      "question": "¿En qué año se celebró el primer Mundial de fútbol?",
+      "options": ["1920", "1924", "1930", "1934"],
+      "correct": 2,
+      "explanation": "El primer Mundial FIFA se celebró en Uruguay en 1930. El anfitrión Uruguay fue el primer campeón del mundo de la historia."
+    },
+    {
+      "id": "mw24", "difficulty": "dificil", "category": "🎯 Curiosidades",
+      "question": "¿Cuál fue el partido con más goles en la historia de los Mundiales?",
+      "options": ["Brasil 8-0 Argentina", "Austria 7-5 Suiza (1954)", "Hungría 10-1 El Salvador (1982)", "Alemania 7-1 Brasil (2014)"],
+      "correct": 2,
+      "explanation": "Hungría 10-1 El Salvador en 1982 es el partido con más goles (11) en la historia de los Mundiales. ¡Un récord que sigue en pie!"
+    },
+    {
+      "id": "mw25", "difficulty": "medio", "category": "🎯 Curiosidades",
+      "question": "¿Qué selección africana llegó a semifinales del Mundial 2022 por primera vez en la historia?",
+      "options": ["Nigeria", "Senegal", "Ghana", "Marruecos"],
+      "correct": 3,
+      "explanation": "Marruecos hizo historia en Qatar 2022 al convertirse en el primer país africano en llegar a las semifinales de un Mundial. ¡Equipo revelación total!"
+    },
+    {
+      "id": "mw26", "difficulty": "facil", "category": "🎯 Curiosidades",
+      "question": "¿En qué año ganó Francia su primer Mundial?",
+      "options": ["1994", "1998", "2002", "2006"],
+      "correct": 1,
+      "explanation": "Francia ganó su primer Mundial en casa en 1998, derrotando a Brasil 3-0 en la final. Zidane marcó dos goles de cabeza en ese partido."
+    },
+    {
+      "id": "mw27", "difficulty": "dificil", "category": "🎯 Curiosidades",
+      "question": "¿Cuál es el primer criterio de desempate entre equipos igualados en puntos en la fase de grupos?",
+      "options": ["Goles a favor", "Diferencia de goles", "Resultado entre ellos", "Tarjetas amarillas"],
+      "correct": 1,
+      "explanation": "El desempate en grupos va así: 1° diferencia de goles, 2° goles a favor, 3° resultado en el duelo directo, 4° fair play (tarjetas), 5° sorteo."
+    },
+    {
+      "id": "mw28", "difficulty": "facil", "category": "⚽ Goles",
+      "question": "¿Cuántos goles necesitas para ganar la apuesta 'Más de 2.5 goles'?",
+      "options": ["2 goles", "3 goles", "4 goles", "Más de 2 goles"],
+      "correct": 1,
+      "explanation": "Para ganar 'Más de 2.5 goles' necesitas que el partido tenga 3 o más goles en total. El .5 evita el empate exacto en la línea."
+    },
+    {
+      "id": "mw29", "difficulty": "facil", "category": "⚽ Goles",
+      "question": "¿Qué significa 'hat-trick' en fútbol?",
+      "options": ["3 asistencias de un jugador en un partido", "3 goles del mismo jugador en un partido", "Ganar 3 partidos seguidos", "Marcar en 3 Mundiales distintos"],
+      "correct": 1,
+      "explanation": "Hat-trick es cuando un jugador marca 3 goles en el mismo partido. Mbappé lo logró en la final del Mundial 2022 contra Argentina."
+    },
+    {
+      "id": "mw30", "difficulty": "medio", "category": "⚽ Goles",
+      "question": "¿Cuántos goles marcó Miroslav Klose en su carrera mundialista?",
+      "options": ["12 goles", "14 goles", "16 goles", "18 goles"],
+      "correct": 2,
+      "explanation": "Klose marcó 16 goles en 4 Mundiales con Alemania. Superó el récord de Ronaldo Nazário (15 goles) precisamente en el Mundial 2014."
+    },
+    {
+      "id": "mw31", "difficulty": "medio", "category": "⚽ Goles",
+      "question": "¿Cuántos goles se marcan en promedio por partido en un Mundial moderno?",
+      "options": ["1.5 goles", "2.0 goles", "2.7 goles", "3.5 goles"],
+      "correct": 2,
+      "explanation": "El promedio en Mundiales modernos ronda los 2.5-2.7 goles por partido. Por eso la línea 'Más/Menos de 2.5' es la más popular del torneo."
+    },
+    {
+      "id": "mw32", "difficulty": "dificil", "category": "⚽ Goles",
+      "question": "¿En qué tramo del partido se marcan estadísticamente más goles en los Mundiales?",
+      "options": ["1-15 minutos", "30-45 minutos", "76-90 minutos", "En tiempo extra"],
+      "correct": 2,
+      "explanation": "El tramo 76-90 minutos es el más productivo en goles. Los equipos abren espacios buscando el resultado y eso genera más ocasiones."
+    },
+    {
+      "id": "mw33", "difficulty": "medio", "category": "⚽ Goles",
+      "question": "¿Cuántos goles marcó Ronaldo Nazário (Brasil) en Mundiales en total?",
+      "options": ["10 goles", "12 goles", "15 goles", "18 goles"],
+      "correct": 2,
+      "explanation": "Ronaldo Nazário marcó 15 goles en 4 Mundiales (1994, 1998, 2002, 2006). Fue el récord histórico hasta que Klose lo superó con 16 en 2014."
+    },
+    {
+      "id": "mw34", "difficulty": "dificil", "category": "⚽ Goles",
+      "question": "¿Cuántos goles se marcaron en la final del Mundial 2022 entre Argentina y Francia?",
+      "options": ["3 goles", "4 goles", "5 goles", "6 goles"],
+      "correct": 2,
+      "explanation": "La final de Qatar 2022 terminó 3-3 después de tiempo extra (Messi x2, Di María por Argentina; Mbappé hat-trick por Francia). Argentina ganó por penales."
+    },
+    {
+      "id": "mw35", "difficulty": "facil", "category": "🎰 Apuestas",
+      "question": "¿Cómo se llama la apuesta al campeón del torneo antes de que empiece?",
+      "options": ["1X2", "Outright / Ganador del torneo", "Handicap", "Doble Oportunidad"],
+      "correct": 1,
+      "explanation": "El mercado Outright o 'Ganador del torneo' permite apostar al campeón antes o durante el Mundial. Tiene cuotas muy atractivas al inicio."
+    },
+    {
+      "id": "mw36", "difficulty": "facil", "category": "🎰 Apuestas",
+      "question": "¿Qué significa '1X2' en una apuesta de partido del Mundial?",
+      "options": ["1 gol, empate o 2 goles", "Gana local (1), empate (X) o gana visitante (2)", "Primera mitad, extra o penales", "1 equipo, X jugadores, 2 árbitros"],
+      "correct": 1,
+      "explanation": "1X2 es el mercado más básico: 1 = gana el local, X = empate, 2 = gana el visitante. Es el mercado más popular en los partidos del Mundial."
+    },
+    {
+      "id": "mw37", "difficulty": "facil", "category": "🎰 Apuestas",
+      "question": "¿Qué apuesta se gana si los dos equipos anotan al menos un gol cada uno?",
+      "options": ["Más de 2.5 goles", "Ambos Anotan (BTTS)", "Resultado exacto 1-1", "Doble Oportunidad"],
+      "correct": 1,
+      "explanation": "Ambos Anotan (BTTS - Both Teams To Score) se gana si cada equipo marca mínimo 1 gol. No importa quién gane ni el marcador final."
+    },
+    {
+      "id": "mw38", "difficulty": "medio", "category": "🎰 Apuestas",
+      "question": "Si apuestas 'Gana Argentina a tiempo reglamentario' y el partido va a penales, ¿qué pasa?",
+      "options": ["Ganas si Argentina gana los penales", "La apuesta se pierde porque los penales no son tiempo reglamentario", "Depende del operador", "Solo pierde si fue 0-0"],
+      "correct": 1,
+      "explanation": "Las apuestas a 'tiempo reglamentario' solo cuentan los 90 minutos. Si hay empate y se va a prórroga o penales, esa apuesta se pierde."
+    },
+    {
+      "id": "mw39", "difficulty": "medio", "category": "🎰 Apuestas",
+      "question": "¿Qué es el mercado 'primer goleador del partido'?",
+      "options": ["El equipo que marca primero", "El jugador que anota el primer gol del partido", "El goleador del torneo", "El jugador con más goles en el grupo"],
+      "correct": 1,
+      "explanation": "El mercado 'primer goleador' permite apostar a qué jugador marcará el primer gol. Tiene cuotas muy atractivas ya que solo uno puede ser el primero."
+    },
+    {
+      "id": "mw40", "difficulty": "medio", "category": "🎰 Apuestas",
+      "question": "¿Qué es el Handicap en un partido del Mundial?",
+      "options": ["Una apuesta para partidos empatados", "Ventaja o desventaja de goles que se aplica al resultado final", "El número de faltas del partido", "La diferencia de cuotas entre los dos equipos"],
+      "correct": 1,
+      "explanation": "El Handicap ajusta el resultado aplicando ventaja/desventaja. Ejemplo: Argentina -1.5 significa que deben ganar por 2 o más goles para que ganes la apuesta."
+    },
+    {
+      "id": "mw41", "difficulty": "dificil", "category": "🎰 Apuestas",
+      "question": "Un cliente apuesta 'Más de 0.5 goles en el primer tiempo'. ¿Cuándo gana?",
+      "options": ["Si el partido termina con goles", "Si hay al menos 1 gol antes del minuto 45", "Si el local anota en el primer tiempo", "Si ambos equipos anotan antes del descanso"],
+      "correct": 1,
+      "explanation": "'Más de 0.5 goles en el primer tiempo' se gana con que haya al menos 1 gol antes del descanso. Es popular porque muchos partidos mundialistas arrancan con goles tempraneros."
+    },
+    {
+      "id": "mw42", "difficulty": "dificil", "category": "🎰 Apuestas",
+      "question": "¿Qué ventaja tiene apostar al ganador del Mundial al inicio del torneo vs. durante?",
+      "options": ["No hay ninguna diferencia", "Al inicio las cuotas son más altas porque hay más incertidumbre", "Durante el torneo siempre conviene más apostar", "Al inicio no hay opción de Cashout"],
+      "correct": 1,
+      "explanation": "Al inicio del torneo las cuotas son más altas porque hay 48 equipos con posibilidades. Conforme avanzan, el favorito baja su cuota. Mayor riesgo = mayor retorno potencial."
+    },
+    {
+      "id": "mw43", "difficulty": "facil", "category": "💰 Estrellas",
+      "question": "¿En qué liga juega Cristiano Ronaldo desde 2023?",
+      "options": ["Premier League (Inglaterra)", "Serie A (Italia)", "Saudi Pro League (Arabia Saudita)", "MLS (Estados Unidos)"],
+      "correct": 2,
+      "explanation": "Cristiano Ronaldo juega en el Al Nassr de la Saudi Pro League desde enero de 2023, ganando más de 200 millones de dólares anuales. ¡El jugador mejor pagado del mundo!"
+    },
+    {
+      "id": "mw44", "difficulty": "medio", "category": "💰 Estrellas",
+      "question": "¿Qué selección fue la gran revelación del Mundial 2022?",
+      "options": ["Japón", "Marruecos", "Australia", "Corea del Sur"],
+      "correct": 1,
+      "explanation": "Marruecos fue la gran revelación de Qatar 2022: eliminó a España, Portugal y llegó a semifinales. Primer país africano en la historia en lograrlo."
+    },
+    {
+      "id": "mw45", "difficulty": "medio", "category": "💰 Estrellas",
+      "question": "¿Cuántos Balones de Oro ganó Messi en total?",
+      "options": ["5", "6", "7", "8"],
+      "correct": 3,
+      "explanation": "Lionel Messi ganó 8 Balones de Oro (2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023). El récord absoluto e histórico de la FIFA."
+    },
+    {
+      "id": "mw46", "difficulty": "medio", "category": "💰 Estrellas",
+      "question": "¿Por cuánto dinero fichó Neymar al PSG en 2017, el traspaso más caro de la historia?",
+      "options": ["150 millones de euros", "180 millones de euros", "222 millones de euros", "250 millones de euros"],
+      "correct": 2,
+      "explanation": "Neymar Jr. fichó por el Paris Saint-Germain en 2017 por 222 millones de euros, convirtiéndose en el traspaso más caro de la historia del fútbol."
+    },
+    {
+      "id": "mw47", "difficulty": "dificil", "category": "💰 Estrellas",
+      "question": "¿Qué hizo especial la defensa de Marruecos en el Mundial 2022?",
+      "options": ["Fue el único equipo sin goles en contra en grupos", "No perdió ningún partido en tiempo reglamentario hasta las semifinales", "Tuvo el portero más joven del torneo", "Solo recibió 1 gol en todo el torneo"],
+      "correct": 1,
+      "explanation": "Marruecos no perdió ningún partido en tiempo reglamentario hasta las semifinales ante Francia. Una muralla defensiva que hizo historia en el fútbol africano."
+    },
+    {
+      "id": "mw48", "difficulty": "facil", "category": "💰 Estrellas",
+      "question": "¿Qué premio individual recibió Lionel Messi en el Mundial 2022?",
+      "options": ["Bota de Oro (máximo goleador)", "Balón de Oro (mejor jugador)", "Guante de Oro (mejor portero)", "Premio Fair Play"],
+      "correct": 1,
+      "explanation": "Messi ganó el Balón de Oro del Mundial 2022 como mejor jugador del torneo. También levantó la Copa con Argentina. ¡Su Mundial perfecto!"
+    },
+    {
+      "id": "mw49", "difficulty": "medio", "category": "🎰 Apuestas",
+      "question": "¿Qué significa que un partido del Mundial esté 'In-Play'?",
+      "options": ["Que el partido ya terminó", "Que el partido está en curso y se puede apostar en vivo", "Que es un partido amistoso", "Que el resultado no aplica para apuestas"],
+      "correct": 1,
+      "explanation": "In-Play significa apuestas en vivo mientras el partido se juega. Las cuotas cambian en tiempo real según lo que ocurre en el campo. ¡Muy emocionante en el Mundial!"
+    },
+    {
+      "id": "mw50", "difficulty": "dificil", "category": "🌍 Formato",
+      "question": "¿Cuántas ciudades sede tiene el Mundial 2026 en total entre los 3 países?",
+      "options": ["10 ciudades", "12 ciudades", "16 ciudades", "20 ciudades"],
+      "correct": 2,
+      "explanation": "El Mundial 2026 tiene 16 ciudades sede: 11 en Estados Unidos, 3 en México y 2 en Canadá. La organización más grande en la historia del torneo."
+    }
+  ]
 }
