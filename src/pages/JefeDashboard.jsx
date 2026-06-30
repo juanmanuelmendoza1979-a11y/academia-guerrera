@@ -530,6 +530,7 @@ export default function JefeDashboard({ session }) {
   const [statAbierta, setStatAbierta] = useState(null)
   const [supSeleccionado, setSupSeleccionado] = useState(null)
   const [supExpandido, setSupExpandido] = useState(null)
+  const [busqueda, setBusqueda] = useState('')
 
   const misSupes = SUPERVISORES_POR_JEFE[session?.nombre] || []
 
@@ -603,6 +604,70 @@ export default function JefeDashboard({ session }) {
           {/* ═══ RESUMEN ═══ */}
           {tab === 'resumen' && (
             <>
+              {/* 🔍 Buscador de promotora */}
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">🔍</span>
+                <input
+                  type="text"
+                  value={busqueda}
+                  onChange={e => setBusqueda(e.target.value)}
+                  placeholder="Buscar promotora por nombre..."
+                  className="w-full bg-brand-dark border border-white/10 rounded-2xl pl-9 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-yellow-500/50"
+                />
+                {busqueda && (
+                  <button onClick={() => setBusqueda('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white text-xs">✕</button>
+                )}
+              </div>
+
+              {/* Resultados del buscador */}
+              {busqueda.trim().length >= 2 && (() => {
+                const resultados = promotoras.filter(p => p.nombre?.toLowerCase().includes(busqueda.toLowerCase()))
+                return (
+                  <div className="bg-brand-dark rounded-2xl border border-yellow-500/30 overflow-hidden">
+                    <div className="px-4 py-2.5 border-b border-white/5 bg-yellow-900/20 flex items-center justify-between">
+                      <p className="text-xs font-bold text-yellow-300">🔍 {resultados.length} resultado{resultados.length !== 1 ? 's' : ''} para "{busqueda}"</p>
+                    </div>
+                    {resultados.length === 0 ? (
+                      <p className="text-xs text-gray-500 text-center py-6">No se encontró ninguna promotora con ese nombre</p>
+                    ) : (
+                      <div className="divide-y divide-white/5 max-h-96 overflow-y-auto">
+                        {resultados.map((p, i) => (
+                          <div key={p.id||i} className="px-4 py-3">
+                            <div className="flex items-center gap-3">
+                              <Avatar seed={p.avatar} size="sm" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-bold text-white truncate">{p.nombre}</p>
+                                <p className="text-[10px] text-gray-500 truncate">👔 {p.supervisor || 'Sin asignar'}</p>
+                              </div>
+                              <div className="text-right flex-shrink-0">
+                                <p className="text-sm font-black text-yellow-400">⭐ {p.puntos||0}</p>
+                                <p className={`text-[10px] font-bold ${p.ultimoAccesoFecha===hoy?'text-green-400':'text-gray-500'}`}>
+                                  {p.ultimoAccesoFecha===hoy?'Hoy ✅':tiempoDesde(p.ultimoAccesoFecha)}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="mt-2 ml-11 grid grid-cols-3 gap-2">
+                              <div className="bg-brand-medium rounded-lg px-2 py-1 text-center">
+                                <p className="text-xs font-black text-orange-400">🔥 {p.racha||0}d</p>
+                                <p className="text-[9px] text-gray-500">Racha</p>
+                              </div>
+                              <div className="bg-brand-medium rounded-lg px-2 py-1 text-center">
+                                <p className="text-xs font-black text-blue-400">🎯 {p.retosCompletados||0}</p>
+                                <p className="text-[9px] text-gray-500">Retos</p>
+                              </div>
+                              <div className="bg-brand-medium rounded-lg px-2 py-1 text-center">
+                                <p className="text-xs font-black text-purple-400">🔑 {p.loginCount||0}</p>
+                                <p className="text-[9px] text-gray-500">Ingresos</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              })()}
+
               {/* Stats globales — clickeables */}
               <div className="grid grid-cols-2 gap-2">
                 {[
