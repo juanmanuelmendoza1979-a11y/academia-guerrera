@@ -179,6 +179,126 @@
       "description": "Si un equipo tiene Handicap +2 y pierde 0-3, ¿cómo queda en el marcador virtual?",
       "options": ["Pierde 1-3 en el handicap", "Empata 2-2 en el handicap (no, pierde 2-3)", "Pierde aun con la ventaja"], "correct": 2,
       "explanation": "Con +2, el marcador virtual sería 2-3. El equipo sigue perdiendo, la apuesta no gana."
+    },
+    {
+      "id": "gc31", "difficulty": "facil",
+      "description": "Premio o selección extra que el operador añade gratuitamente a tu combinada para hacerla más atractiva.",
+      "options": ["Cashout", "YAPA", "Freebet"], "correct": 1,
+      "explanation": "La YAPA es un beneficio adicional gratuito que el operador agrega a tu apuesta combinada como incentivo especial."
+    },
+    {
+      "id": "gc32", "difficulty": "facil",
+      "description": "Apuesta gratuita que el operador regala como promoción. Si ganas, cobras solo las ganancias, no el monto apostado.",
+      "options": ["YAPA", "Rollover", "Freebet"], "correct": 2,
+      "explanation": "La Freebet es una apuesta sin costo. La diferencia con dinero real: si ganas, el monto apostado no se devuelve, solo las ganancias."
+    },
+    {
+      "id": "gc33", "difficulty": "medio",
+      "description": "Número de veces que debes apostar el monto de un bono antes de poder retirar las ganancias.",
+      "options": ["Rollover", "Límite de apuesta", "Cuota mínima"], "correct": 0,
+      "explanation": "El Rollover es el requisito de apuesta de un bono. Ejemplo: bono de $10 con rollover x5 = debes apostar $50 antes de retirar."
+    },
+    {
+      "id": "gc34", "difficulty": "medio",
+      "description": "Tipo de Handicap que elimina el empate dividiendo la apuesta en dos líneas fraccionadas (.25, .75).",
+      "options": ["Handicap Europeo", "Handicap Asiático", "Handicap de goles"], "correct": 1,
+      "explanation": "El Handicap Asiático usa líneas fraccionadas (.25, .75) que dividen la apuesta en dos, eliminando el empate como resultado posible."
+    },
+    {
+      "id": "gc35", "difficulty": "medio",
+      "description": "Tipo de Handicap donde el empate con la ventaja aplicada sí es un resultado posible y tiene su propia cuota.",
+      "options": ["Handicap Europeo", "Handicap Asiático", "Handicap de tarjetas"], "correct": 0,
+      "explanation": "El Handicap Europeo tiene 3 resultados posibles: gana con ventaja, empate con ventaja, pierde con ventaja."
+    },
+    {
+      "id": "gc36", "difficulty": "medio",
+      "description": "Opción de cobrar solo una parte de la apuesta activa, dejando el resto en juego hasta el final.",
+      "options": ["Cashout parcial", "Cashout total", "Doble oportunidad"], "correct": 0,
+      "explanation": "El Cashout parcial asegura una parte de las ganancias mientras el resto de la apuesta sigue activa."
+    },
+    {
+      "id": "gc37", "difficulty": "facil",
+      "description": "Proceso por el cual el operador entrega las ganancias al cliente una vez confirmado el resultado ganador.",
+      "options": ["Cashout", "Pago de premios", "Rollover"], "correct": 1,
+      "explanation": "El Pago de premios es cuando el operador acredita las ganancias al saldo del cliente tras confirmarse el resultado."
+    },
+    {
+      "id": "gc38", "difficulty": "medio",
+      "description": "Monto máximo que el operador permite apostar en un evento o mercado específico.",
+      "options": ["Rollover", "Cuota mínima", "Límite de apuesta"], "correct": 2,
+      "explanation": "El Límite de apuesta varía según el evento, la cuota y el perfil del cliente. Protege al operador de exposición excesiva."
+    },
+    {
+      "id": "gc39", "difficulty": "facil",
+      "description": "Estado en que el operador detiene las apuestas temporalmente por cambios importantes en el evento (lesión, gol, VAR).",
+      "options": ["Apuesta anulada", "Mercado suspendido", "Cashout activo"], "correct": 1,
+      "explanation": "Mercado suspendido significa que no se pueden hacer apuestas en ese momento. El operador actualiza la información y reabre."
+    },
+    {
+      "id": "gc40", "difficulty": "facil",
+      "description": "Apuesta que el sistema cancela completamente, devolviendo el dinero apostado al cliente.",
+      "options": ["Cashout", "Apuesta VOID (anulada)", "Apuesta perdida"], "correct": 1,
+      "explanation": "Una apuesta VOID o anulada devuelve el dinero sin costo. Ocurre si el evento se suspende, pospone o hay error del operador."
+    },
+    {
+      "id": "gc41", "difficulty": "medio",
+      "description": "Tipo de apuesta donde con 3 selecciones se crean 3 combinadas de 2, permitiendo ganar aunque una selección falle.",
+      "options": ["Combinada estándar", "Sistema 2/3", "BetBuilder triple"], "correct": 1,
+      "explanation": "El Sistema 2/3 crea 3 dobles de tus 3 selecciones. Si una falla, las otras 2 dobles siguen activas y puedes recuperar parte."
+    },
+    {
+      "id": "gc42", "difficulty": "medio",
+      "description": "Valor mínimo que debe tener cada cuota individual para que una apuesta califique a una promoción o bono.",
+      "options": ["Rollover", "Cuota mínima", "Límite de apuesta"], "correct": 1,
+      "explanation": "La Cuota mínima es un requisito de promociones. Ejemplo: 'YAPA válida para combinadas con cuota mínima de 1.50 por selección'."
+    },
+    {
+      "id": "gc43", "difficulty": "dificil",
+      "description": "Porcentaje que retiene el operador incorporado en las cuotas, haciendo que la suma de probabilidades implícitas supere el 100%.",
+      "options": ["Margen del operador / Vigorish", "Rollover", "Límite de mercado"], "correct": 0,
+      "explanation": "El margen (vigorish) es la ventaja incorporada del operador. Si la suma de probabilidades implícitas es 105%, el margen es 5%."
+    },
+    {
+      "id": "gc44", "difficulty": "facil",
+      "description": "Apuesta al campeón de un torneo completo, que puede hacerse antes o durante la competencia.",
+      "options": ["Resultado exacto", "Outright / Ganador del torneo", "Handicap de torneo"], "correct": 1,
+      "explanation": "El Outright o ganador del torneo permite apostar al campeón final. Cuotas más altas al inicio, más bajas conforme avanza el torneo."
+    },
+    {
+      "id": "gc45", "difficulty": "medio",
+      "description": "Apuesta que gana si al menos uno de los dos equipos NO marca gol durante el partido.",
+      "options": ["Ambos Anotan NO", "Menos de 0.5 goles", "Doble Oportunidad X2"], "correct": 0,
+      "explanation": "Ambos Anotan NO gana si cualquiera de los equipos se queda sin marcar. Un 1-0 o un 0-0 ganan esta apuesta."
+    },
+    {
+      "id": "gc46", "difficulty": "dificil",
+      "description": "Apuesta donde las ganancias o pérdidas dependen de qué tan exacto fue el pronóstico, no solo si acertaste o no.",
+      "options": ["Apuesta a cuota fija", "Spread betting", "Resultado exacto"], "correct": 1,
+      "explanation": "En el Spread betting puedes ganar o perder más según cuán lejos esté el resultado de tu predicción. Mayor precisión = mayor ganancia."
+    },
+    {
+      "id": "gc47", "difficulty": "facil",
+      "description": "Mercado de apuesta que no tiene relación con el marcador: goleador del torneo, tarjetas, córners totales.",
+      "options": ["Mercado especial", "Resultado exacto", "In-Play"], "correct": 0,
+      "explanation": "Los Especiales o Mercados especiales cubren estadísticas y eventos fuera del marcador habitual del partido."
+    },
+    {
+      "id": "gc48", "difficulty": "medio",
+      "description": "Apuesta a qué equipo marcará el primer gol del partido, sin importar el resultado final.",
+      "options": ["Primer goleador (jugador)", "Primero en marcar (equipo)", "Doble Oportunidad"], "correct": 1,
+      "explanation": "Primero en marcar (equipo) apuesta a qué equipo anota primero. Si ninguno marca, la apuesta puede anularse según el operador."
+    },
+    {
+      "id": "gc49", "difficulty": "dificil",
+      "description": "En el Handicap Asiático -0.25, si el equipo gana, ¿qué pasa con la apuesta?",
+      "options": ["Gana toda la apuesta", "Gana la mitad, la otra mitad se anula", "Pierde la mitad"], "correct": 0,
+      "explanation": "Con Handicap Asiático -0.25, si el equipo gana, ganas toda la apuesta. Solo pierdes si empata (pierdes la mitad) o si pierde."
+    },
+    {
+      "id": "gc50", "difficulty": "dificil",
+      "description": "Si un cliente tiene una Freebet de $5 y gana con cuota 3.0, ¿cuánto cobra en ganancias netas?",
+      "options": ["$15 totales", "$10 de ganancia (sin recuperar los $5)", "$5 de ganancia"], "correct": 1,
+      "explanation": "Con Freebet: $5 × 3.0 = $15, pero la Freebet no se devuelve. Ganancia neta = $15 - $5 = $10. No recuperas el monto de la apuesta gratuita."
     }
   ],
 
@@ -392,6 +512,126 @@
       "statement": "Las apuestas deportivas son un producto dirigido a mayores de edad.",
       "answer": true,
       "explanation": "Correcto. Las apuestas deportivas son exclusivas para personas mayores de edad. Es responsabilidad del equipo verificarlo."
+    },
+    {
+      "id": "tf36", "difficulty": "facil",
+      "statement": "La YAPA es un beneficio gratuito que el operador agrega a tu combinada como incentivo.",
+      "answer": true,
+      "explanation": "Correcto. La YAPA es una selección o beneficio adicional que el operador da gratis para hacer más atractiva tu apuesta combinada."
+    },
+    {
+      "id": "tf37", "difficulty": "medio",
+      "statement": "La YAPA está disponible en todos los tipos de apuesta sin restricciones.",
+      "answer": false,
+      "explanation": "Falso. La YAPA tiene condiciones específicas: tipo de apuesta, cuota mínima, número de selecciones. Siempre verificar las bases."
+    },
+    {
+      "id": "tf38", "difficulty": "medio",
+      "statement": "El Handicap Asiático elimina la posibilidad de empate como resultado.",
+      "answer": true,
+      "explanation": "Correcto. El Handicap Asiático usa líneas fraccionadas (.25, .75) que hacen imposible el empate, devolviendo o dividiendo la apuesta en caso límite."
+    },
+    {
+      "id": "tf39", "difficulty": "medio",
+      "statement": "Una Freebet devuelve el monto apostado si ganas.",
+      "answer": false,
+      "explanation": "Falso. Con una Freebet solo cobras las GANANCIAS. El monto de la apuesta gratuita no se devuelve. Ejemplo: Freebet $5 con cuota 3.0 = $10 de ganancia neta."
+    },
+    {
+      "id": "tf40", "difficulty": "medio",
+      "statement": "En el Cashout parcial, la porción que no cobraste sigue activa hasta el final del partido.",
+      "answer": true,
+      "explanation": "Correcto. El Cashout parcial asegura una fracción de las ganancias mientras el resto de la apuesta continúa activa."
+    },
+    {
+      "id": "tf41", "difficulty": "facil",
+      "statement": "El mercado 'Ambos Anotan Sí' se pierde si el partido termina 0-0.",
+      "answer": true,
+      "explanation": "Correcto. Para ganar 'Ambos Anotan Sí', AMBOS equipos deben marcar al menos 1 gol. Un 0-0 pierde esta apuesta."
+    },
+    {
+      "id": "tf42", "difficulty": "medio",
+      "statement": "La cuota 1.0 significa que no hay ninguna ganancia posible, solo recuperas lo apostado.",
+      "answer": true,
+      "explanation": "Correcto. Cuota 1.0 significa retorno de 1x lo apostado. Ganas $0 de ganancia neta. No tiene sentido apostar a cuota 1.0."
+    },
+    {
+      "id": "tf43", "difficulty": "medio",
+      "statement": "Las apuestas In-Play tienen exactamente las mismas cuotas que antes de que empiece el partido.",
+      "answer": false,
+      "explanation": "Falso. Las cuotas In-Play cambian constantemente en tiempo real según lo que ocurre en el partido: goles, tarjetas, lesiones, tiempo."
+    },
+    {
+      "id": "tf44", "difficulty": "dificil",
+      "statement": "En un Sistema 2/3, si una de las 3 selecciones falla, la apuesta pierde completamente.",
+      "answer": false,
+      "explanation": "Falso. Un Sistema 2/3 crea 3 dobles (AB, AC, BC). Si una falla, las otras 2 dobles siguen activas. Puedes recuperar parte o incluso ganar."
+    },
+    {
+      "id": "tf45", "difficulty": "medio",
+      "statement": "Cuando una apuesta es anulada (VOID), el dinero apostado se devuelve al cliente.",
+      "answer": true,
+      "explanation": "Correcto. Una apuesta VOID se cancela y el cliente recupera el monto apostado íntegramente. Ocurre por suspensión del evento o error."
+    },
+    {
+      "id": "tf46", "difficulty": "medio",
+      "statement": "La cuota más baja del mercado es siempre la opción más segura para apostar.",
+      "answer": false,
+      "explanation": "Falso. Ninguna apuesta está garantizada. La cuota baja indica mayor probabilidad según el mercado, pero los resultados en el deporte son impredecibles."
+    },
+    {
+      "id": "tf47", "difficulty": "dificil",
+      "statement": "Si una selección en una Combinada queda VOID (anulada), toda la Combinada pierde.",
+      "answer": false,
+      "explanation": "Falso. Si una selección queda VOID en una Combinada, esa selección se elimina y la cuota total se recalcula sin ella. El resto sigue activo."
+    },
+    {
+      "id": "tf48", "difficulty": "medio",
+      "statement": "El BetBuilder permite combinar mercados de diferentes partidos o deportes.",
+      "answer": false,
+      "explanation": "Falso. El BetBuilder solo combina mercados del MISMO partido. Para diferentes partidos o deportes se usa la Combinada estándar."
+    },
+    {
+      "id": "tf49", "difficulty": "facil",
+      "statement": "El pago de un premio puede verificarse en el historial de apuestas del cliente.",
+      "answer": true,
+      "explanation": "Correcto. El historial de apuestas registra cada jugada, su resultado y el pago. Es la fuente de información más confiable para verificar un cobro."
+    },
+    {
+      "id": "tf50", "difficulty": "dificil",
+      "statement": "La cuota de un favorito sube cuando mucha gente apuesta a que gane.",
+      "answer": false,
+      "explanation": "Falso. Cuando mucha gente apuesta al favorito, su cuota BAJA. El operador ajusta para equilibrar su exposición y mantener su margen."
+    },
+    {
+      "id": "tf51", "difficulty": "dificil",
+      "statement": "En el Handicap Europeo -1, si el equipo favorito gana exactamente por 1 gol, la apuesta es anulada (empate virtual).",
+      "answer": true,
+      "explanation": "Correcto. Con Handicap Europeo -1 y victoria por 1 gol exacto, el marcador virtual es 0-0 (empate). La apuesta al ganador se anula, se devuelve el dinero."
+    },
+    {
+      "id": "tf52", "difficulty": "facil",
+      "statement": "Las Freebets generalmente tienen una fecha de vencimiento para ser utilizadas.",
+      "answer": true,
+      "explanation": "Correcto. Las Freebets expiran si no se usan en el plazo indicado. Siempre informar al cliente sobre la vigencia de sus apuestas gratuitas."
+    },
+    {
+      "id": "tf53", "difficulty": "dificil",
+      "statement": "El operador siempre debe ofrecer Cashout en todos los partidos del Mundial.",
+      "answer": false,
+      "explanation": "Falso. El Cashout es una opción del operador que puede suspenderse en momentos críticos (gol VAR, penales, tiempo añadido) o en ciertos mercados."
+    },
+    {
+      "id": "tf54", "difficulty": "medio",
+      "statement": "La apuesta 'Primer gol en la primera mitad' se pierde si el primer gol cae en el segundo tiempo.",
+      "answer": true,
+      "explanation": "Correcto. Si el primer gol del partido cae después del minuto 45, la apuesta al primer gol en la primera mitad se pierde."
+    },
+    {
+      "id": "tf55", "difficulty": "dificil",
+      "statement": "El Rollover es una condición que protege al operador de que los clientes retiren bonos sin apostar.",
+      "answer": true,
+      "explanation": "Correcto. El Rollover exige apostar el bono varias veces antes de retirar. Así el operador asegura que el bono se use para apuestas, no como retiro directo."
     }
   ],
 
@@ -670,6 +910,171 @@
       ],
       "correct": 1,
       "explanation": "BetBuilder es para un solo partido. La Combinada es para varios partidos o deportes."
+    },
+    {
+      "id": "cs26", "difficulty": "facil",
+      "situation": "Cliente pregunta: '¿Qué es la YAPA y siempre me la dan?'",
+      "options": [
+        "Sí, la YAPA es automática en todas las apuestas que hagas.",
+        "La YAPA es una selección o beneficio adicional que el operador agrega a tu combinada. Tiene condiciones específicas como cuota mínima o número de selecciones.",
+        "La YAPA es lo mismo que un Cashout."
+      ],
+      "correct": 1,
+      "explanation": "La YAPA tiene condiciones. Explicarlas evita confusión cuando el cliente no la recibe en una apuesta que no calificaba."
+    },
+    {
+      "id": "cs27", "difficulty": "medio",
+      "situation": "Cliente dice: 'Quiero hacer Cashout pero no veo el botón en mi apuesta.'",
+      "options": [
+        "Le digo que el Cashout no existe en esa plataforma.",
+        "Le explico que el Cashout puede no estar disponible en ciertos momentos del partido (goles VAR, penales, tiempo añadido) o en algunos mercados específicos. Le sugiero revisar más tarde o contactar soporte.",
+        "Le confirmo que hizo mal la apuesta."
+      ],
+      "correct": 1,
+      "explanation": "El Cashout puede suspenderse temporalmente. Dar información correcta evita frustración y genera confianza en el cliente."
+    },
+    {
+      "id": "cs28", "difficulty": "medio",
+      "situation": "Cliente reclama: 'Usé mi Freebet de $5, gané con cuota 3.0 y solo me pagaron $10, ¡me deben $15!'",
+      "options": [
+        "Le digo que el sistema cometió un error y que le faltaron $5.",
+        "Le explico que con una Freebet, el monto apostado no se devuelve. Con $5 de Freebet a cuota 3.0, las ganancias netas son $10 (no $15), porque los $5 de apuesta gratuita no se recuperan.",
+        "Le digo que así funciona y que no hay nada que hacer."
+      ],
+      "correct": 1,
+      "explanation": "Explicar cómo funciona la Freebet con un ejemplo claro resuelve el reclamo y educa al cliente para futuras apuestas."
+    },
+    {
+      "id": "cs29", "difficulty": "dificil",
+      "situation": "Cliente pregunta: '¿Cuál es la diferencia entre Handicap Asiático y Handicap Europeo?'",
+      "options": [
+        "Son exactamente lo mismo, solo cambia el nombre.",
+        "El Handicap Europeo tiene 3 resultados posibles (incluyendo empate virtual). El Asiático usa líneas fraccionadas y elimina el empate, dividiendo la apuesta a veces en dos partes.",
+        "El Asiático es solo para equipos de Asia."
+      ],
+      "correct": 1,
+      "explanation": "La diferencia clave es el empate: el Europeo puede tener empate virtual (anula apuesta), el Asiático lo elimina con líneas fraccionadas."
+    },
+    {
+      "id": "cs30", "difficulty": "facil",
+      "situation": "Cliente pregunta: '¿Cómo cobro mi premio si gané?'",
+      "options": [
+        "Le digo que el dinero llega solo sin hacer nada.",
+        "Le explico el proceso: el resultado se confirma, el premio se acredita automáticamente al saldo, y puede verificarlo en su historial de apuestas. Si quiere retirarlo, debe seguir el proceso de retiro de la plataforma.",
+        "Le digo que debe esperar una semana."
+      ],
+      "correct": 1,
+      "explanation": "Explicar el proceso de pago de premios paso a paso genera confianza y reduce reclamos innecesarios."
+    },
+    {
+      "id": "cs31", "difficulty": "dificil",
+      "situation": "Cliente tiene un Sistema 2/3 con tres selecciones y una quedó VOID (anulada). Dice que perdió todo.",
+      "options": [
+        "Confirmo que perdió todo porque el sistema falló.",
+        "Le explico que si una selección queda VOID en un Sistema 2/3, esa selección se elimina de todas las combinadas donde aparecía. Las combinadas restantes siguen activas y pueden ganar.",
+        "Le digo que debe abrir un reclamo porque eso no debería pasar."
+      ],
+      "correct": 1,
+      "explanation": "Entender cómo los VOID afectan los sistemas evita malos reclamos y da información precisa al cliente sobre el estado real de su apuesta."
+    },
+    {
+      "id": "cs32", "difficulty": "medio",
+      "situation": "Cliente pregunta: '¿Por qué la cuota de Argentina bajó si es el favorito y todos apuestan a que gane?'",
+      "options": [
+        "Le digo que es raro que haya bajado y que probablemente sea un error.",
+        "Le explico que cuando mucha gente apuesta al mismo equipo, el operador baja su cuota para equilibrar su exposición. Más demanda = cuota más baja.",
+        "Le confirmo que la cuota debe subir si hay muchas apuestas."
+      ],
+      "correct": 1,
+      "explanation": "El movimiento de cuotas por acción del público es un concepto clave. Entenderlo ayuda al cliente a leer el mercado."
+    },
+    {
+      "id": "cs33", "difficulty": "medio",
+      "situation": "Cliente quiere apostar más del límite máximo permitido en ese evento.",
+      "options": [
+        "Le dejo apostar lo que quiera para no perder al cliente.",
+        "Le explico que los eventos tienen un límite de apuesta que no podemos superar. Le sugiero distribuir la apuesta en otras selecciones o que consulte con el operador sobre límites especiales.",
+        "Le digo que no hay límites si es cliente frecuente."
+      ],
+      "correct": 1,
+      "explanation": "El límite de apuesta es una regla del operador. Explicarlo con respeto y ofrecer alternativas mantiene la relación con el cliente."
+    },
+    {
+      "id": "cs34", "difficulty": "medio",
+      "situation": "Cliente pregunta: '¿Qué pasa con mi apuesta si el partido se suspende?'",
+      "options": [
+        "La apuesta se pierde automáticamente.",
+        "Depende del operador: si el partido se suspende antes de empezar, generalmente se anula (VOID) y se devuelve el dinero. Si ya empezó, depende del tiempo jugado y las políticas del operador.",
+        "La apuesta siempre se mantiene para cuando se reprograme el partido."
+      ],
+      "correct": 1,
+      "explanation": "Las políticas de suspensión varían. Dar información honesta y completa evita expectativas equivocadas del cliente."
+    },
+    {
+      "id": "cs35", "difficulty": "dificil",
+      "situation": "Cliente pregunta la diferencia entre agregar una YAPA a su Combinada vs. hacer un BetBuilder.",
+      "options": [
+        "Son exactamente lo mismo, elige el que más le guste.",
+        "La Combinada con YAPA une partidos distintos y el operador agrega una selección gratis. El BetBuilder combina múltiples mercados del mismo partido (ej: ganador + más de 2.5 + ambos anotan).",
+        "La YAPA es solo para el BetBuilder."
+      ],
+      "correct": 1,
+      "explanation": "Distinguir Combinada + YAPA del BetBuilder ayuda al cliente a elegir la herramienta correcta según lo que quiere apostar."
+    },
+    {
+      "id": "cs36", "difficulty": "medio",
+      "situation": "Cliente apostó 'Ambos Anotan Sí' y el partido terminó 1-0. Cree que ganó porque hubo goles.",
+      "options": [
+        "Le confirmo que ganó porque hubo gol en el partido.",
+        "Le explico amablemente que 'Ambos Anotan Sí' requiere que AMBOS equipos marquen al menos 1 gol. En el 1-0, solo un equipo anotó, por lo que la apuesta se pierde.",
+        "Le digo que el sistema cometió un error."
+      ],
+      "correct": 1,
+      "explanation": "Aclarar con paciencia la condición de 'ambos' evita el malentendido más común de este mercado."
+    },
+    {
+      "id": "cs37", "difficulty": "dificil",
+      "situation": "Cliente tiene un bono con rollover x5 y pregunta cuándo puede retirar sus ganancias.",
+      "options": [
+        "Puede retirar cuando quiera, el rollover no aplica a ganancias.",
+        "Le explico que con rollover x5, debe apostar 5 veces el monto del bono antes de poder retirar. Ejemplo: bono $20 con rollover x5 = debe apostar un total de $100 en apuestas válidas.",
+        "El rollover no existe en nuestra plataforma."
+      ],
+      "correct": 1,
+      "explanation": "Explicar el rollover con un ejemplo en números concretos es la forma más clara de que el cliente entienda cuándo puede retirar."
+    },
+    {
+      "id": "cs38", "difficulty": "dificil",
+      "situation": "Cliente dice: 'Mi equipo iba ganando 3-0 y quise hacer Cashout pero no estaba disponible. Luego el equipo perdió 3-4 y perdí todo.'",
+      "options": [
+        "Le digo que debió haber apostado diferente desde el inicio.",
+        "Le explico que el Cashout puede suspenderse en momentos críticos o de alto volumen de apuestas. Lamentablemente cuando no está disponible, la apuesta sigue su curso normal hasta el final.",
+        "Le ofrezco devolverle el dinero como cortesía."
+      ],
+      "correct": 1,
+      "explanation": "Validar la experiencia del cliente y explicar con honestidad las limitaciones del Cashout genera más confianza que evadir el tema."
+    },
+    {
+      "id": "cs39", "difficulty": "medio",
+      "situation": "Cliente quiere apostar al ganador del Mundial cuando ya comenzaron los cuartos de final.",
+      "options": [
+        "No se puede apostar al ganador del torneo una vez que comenzó.",
+        "Sí, el mercado Outright o 'Ganador del torneo' generalmente sigue disponible durante el torneo, pero las cuotas ya son más bajas que al inicio porque quedaron menos equipos con posibilidades.",
+        "Solo se puede apostar al ganador antes del torneo."
+      ],
+      "correct": 1,
+      "explanation": "El Outright suele estar disponible durante todo el torneo. Las cuotas varían. Explicarlo abre la posibilidad de una apuesta adicional."
+    },
+    {
+      "id": "cs40", "difficulty": "medio",
+      "situation": "Cliente quiere hacer un BetBuilder para el partido Argentina vs. Francia del Mundial. ¿Cómo le explicas?",
+      "options": [
+        "Le digo que el BetBuilder solo funciona para ligas europeas.",
+        "Le explico que con BetBuilder puede combinar varios mercados del mismo partido en una sola apuesta: por ejemplo, gana Argentina + más de 2.5 goles + Mbappé anota. Todos deben cumplirse para ganar, pero la cuota final puede ser muy atractiva.",
+        "Le digo que es mejor hacer apuestas separadas."
+      ],
+      "correct": 1,
+      "explanation": "Ejemplificar el BetBuilder con jugadores o selecciones del Mundial hace el concepto más real y atractivo para el cliente."
     }
   ],
 
@@ -823,12 +1228,164 @@
       "question": "Si el cliente hace Cashout cuando va ganando 2-0 y luego el partido termina 2-3, ¿qué ocurre?",
       "options": ["Pierde porque su equipo perdió", "Cobró el Cashout antes, así que no importa el resultado final", "El sistema le devuelve lo apostado"],
       "correct": 1, "points": 20
+    },
+    {
+      "id": "qc26", "difficulty": "facil",
+      "question": "¿Qué es la YAPA en apuestas deportivas?",
+      "options": ["Una apuesta gratis sin condiciones", "Una selección o beneficio adicional que el operador agrega a tu combinada", "El nombre del sistema de puntos"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc27", "difficulty": "medio",
+      "question": "Con una Freebet de $10 y cuota 2.5, ¿cuánto cobras de ganancia neta si ganas?",
+      "options": ["$25 totales", "$15 de ganancia neta (no recuperas los $10)", "$10 de ganancia"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc28", "difficulty": "medio",
+      "question": "¿El Handicap Asiático puede terminar en empate virtual?",
+      "options": ["Sí, siempre puede empatar", "No, elimina el empate con líneas fraccionadas", "Solo en partidos de fase de grupos"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc29", "difficulty": "medio",
+      "question": "¿Qué pasa con una Combinada si una selección queda VOID (anulada)?",
+      "options": ["Toda la combinada pierde", "Esa selección se elimina y la cuota total se recalcula sin ella", "La combinada se pausa hasta nuevo resultado"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc30", "difficulty": "medio",
+      "question": "¿Qué es el Rollover de un bono?",
+      "options": ["El tiempo para cobrar un premio", "Las veces que debes apostar el bono antes de poder retirar ganancias", "El porcentaje de ganancia del bono"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc31", "difficulty": "dificil",
+      "question": "¿En qué situación puede el operador suspender el Cashout?",
+      "options": ["Nunca, el Cashout siempre está disponible", "En momentos críticos: goles en revisión VAR, penales en curso, tiempo añadido", "Solo si el cliente tiene deudas"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc32", "difficulty": "facil",
+      "question": "¿Qué cuota necesitas para exactamente doblar lo apostado?",
+      "options": ["Cuota 1.5", "Cuota 2.0", "Cuota 3.0"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc33", "difficulty": "facil",
+      "question": "¿Qué es el Outright en apuestas?",
+      "options": ["Una apuesta al resultado exacto", "La apuesta al ganador de un torneo completo", "Una apuesta In-Play de último minuto"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc34", "difficulty": "facil",
+      "question": "¿Cuál apuesta gana si el partido termina 1-0 (un equipo no marcó)?",
+      "options": ["Ambos Anotan Sí", "Ambos Anotan NO", "Más de 1.5 goles"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc35", "difficulty": "medio",
+      "question": "¿En qué se diferencia BetBuilder de una Combinada?",
+      "options": ["No hay diferencia, son lo mismo", "BetBuilder combina mercados del mismo partido; Combinada une partidos distintos", "BetBuilder es solo para fútbol americano"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc36", "difficulty": "medio",
+      "question": "Cuando mucha gente apuesta al favorito, ¿qué le pasa a su cuota?",
+      "options": ["Sube porque más gente quiere apostar ahí", "Baja porque el operador reduce la exposición", "No cambia, las cuotas son fijas"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc37", "difficulty": "medio",
+      "question": "¿Qué pasa con una apuesta si el evento se suspende antes de iniciar?",
+      "options": ["La apuesta se pierde", "Se anula (VOID) y se devuelve el dinero", "Se congela hasta que el partido se reprograme"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc38", "difficulty": "facil",
+      "question": "El partido termina 1-1. ¿Se activa la apuesta 'Ambos Anotan Sí'?",
+      "options": ["No, porque ninguno ganó", "Sí, ambos equipos marcaron al menos 1 gol", "Solo si hubo goles en el primer tiempo"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc39", "difficulty": "medio",
+      "question": "¿Para qué sirve el Cashout parcial?",
+      "options": ["Para cancelar la apuesta y recuperar todo", "Para asegurar parte de la ganancia sin cerrar toda la apuesta", "Para transferir la apuesta a otro partido"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc40", "difficulty": "facil",
+      "question": "¿La YAPA tiene algún costo para el cliente?",
+      "options": ["Sí, cuesta el 10% del valor de la apuesta", "No, es un regalo del operador sin costo adicional", "Sí, solo aplica si el cliente tiene bono activo"],
+      "correct": 1, "points": 10
+    },
+    {
+      "id": "qc41", "difficulty": "dificil",
+      "question": "Un Sistema 2/3, ¿cuántas combinadas de 2 selecciones genera automáticamente?",
+      "options": ["2 combinadas", "3 combinadas (AB, AC, BC)", "6 combinadas"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc42", "difficulty": "dificil",
+      "question": "Equipo con Handicap +1.5 pierde el partido 0-2. ¿Cómo queda en el marcador virtual?",
+      "options": ["Pierde 1.5-2, la apuesta pierde", "Queda 1.5-2, la apuesta pierde (0+1.5=1.5 vs 2)", "Empata, se devuelve el dinero"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc43", "difficulty": "medio",
+      "question": "Para ganar 'Más de 1.5 goles en el primer tiempo', ¿cuántos goles necesitas antes del descanso?",
+      "options": ["1 gol", "2 goles o más", "Exactamente 2 goles"],
+      "correct": 1, "points": 15
+    },
+    {
+      "id": "qc44", "difficulty": "dificil",
+      "question": "¿El mercado de resultado exacto puede incluirse en un BetBuilder?",
+      "options": ["No, nunca", "Sí, si el operador lo permite dentro de los mercados del mismo partido", "Solo en partidos del Mundial"],
+      "correct": 1, "points": 20
+    },
+    {
+      "id": "qc45", "difficulty": "dificil",
+      "question": "¿Qué significa que la cuota de un visitante tiene 'movimiento positivo'?",
+      "options": ["Que el visitante tiene más probabilidad de ganar ahora", "Que más gente apostó al visitante y el operador ajustó bajando su cuota", "Que el partido va ganando el visitante"],
+      "correct": 1, "points": 20
     }
   ],
 
   "phases": {
     "correct": ["Fase de Grupos", "Octavos de Final", "Cuartos de Final", "Semifinal", "Final"],
-    "scrambled": ["Final", "Fase de Grupos", "Semifinal", "Octavos de Final", "Cuartos de Final"]
+    "scrambled": ["Final", "Fase de Grupos", "Semifinal", "Octavos de Final", "Cuartos de Final"],
+    "challenges": [
+      {
+        "title": "Fases del Mundial 2026",
+        "emoji": "🌍",
+        "correct": ["Fase de Grupos", "Ronda de 32", "Octavos de Final", "Cuartos de Final", "Semifinal", "Gran Final"],
+        "scrambled": ["Gran Final", "Octavos de Final", "Fase de Grupos", "Semifinal", "Ronda de 32", "Cuartos de Final"]
+      },
+      {
+        "title": "Proceso para cobrar un premio",
+        "emoji": "💰",
+        "correct": ["Hacer la apuesta", "Esperar el resultado", "Verificar ganancia en historial", "Solicitar retiro", "Recibir el pago"],
+        "scrambled": ["Recibir el pago", "Hacer la apuesta", "Solicitar retiro", "Esperar el resultado", "Verificar ganancia en historial"]
+      },
+      {
+        "title": "Apuestas de menor a mayor riesgo",
+        "emoji": "🎰",
+        "correct": ["Doble Oportunidad", "1X2 (resultado)", "Ambos Anotan", "Combinada de 3", "Resultado Exacto"],
+        "scrambled": ["Resultado Exacto", "Doble Oportunidad", "Combinada de 3", "1X2 (resultado)", "Ambos Anotan"]
+      },
+      {
+        "title": "Pasos de atención al cliente",
+        "emoji": "🤝",
+        "correct": ["Saludar con energía", "Escuchar la necesidad", "Informar con datos reales", "Asesorar responsablemente", "Confirmar y despedir"],
+        "scrambled": ["Confirmar y despedir", "Saludar con energía", "Asesorar responsablemente", "Escuchar la necesidad", "Informar con datos reales"]
+      },
+      {
+        "title": "Ciclo de vida de una apuesta",
+        "emoji": "⚽",
+        "correct": ["Elegir el evento", "Seleccionar el mercado", "Revisar la cuota", "Confirmar la apuesta", "Seguir el partido en vivo"],
+        "scrambled": ["Confirmar la apuesta", "Elegir el evento", "Seguir el partido en vivo", "Seleccionar el mercado", "Revisar la cuota"]
+      }
+    ]
   },
 
   "mundial2026": [

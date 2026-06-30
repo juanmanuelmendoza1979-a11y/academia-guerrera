@@ -263,10 +263,13 @@ function TrueFalseGame({ difficulty, onPoints }) {
 
 /* ─── GAME 3: Order Phases ─── */
 function PhasesGame({ onPoints }) {
-  const correct = quizData.phases.correct
-  const [items, setItems] = useState([...quizData.phases.scrambled])
+  const challenges = quizData.phases.challenges
+  const [challengeIdx, setChallengeIdx] = useState(() => Math.floor(Math.random() * challenges.length))
+  const challenge = challenges[challengeIdx]
+  const [items, setItems] = useState([...challenge.scrambled])
   const [checked, setChecked] = useState(false)
   const [rewarded, setRewarded] = useState(false)
+  const [completed, setCompleted] = useState([])
 
   function moveUp(i) {
     if (i === 0) return
@@ -278,22 +281,34 @@ function PhasesGame({ onPoints }) {
   }
   function checkAnswer() {
     setChecked(true)
-    const ok = items.every((item, i) => item === correct[i])
+    const ok = items.every((item, i) => item === challenge.correct[i])
     if (ok && !rewarded) { onPoints && onPoints(20); setRewarded(true) }
   }
+  function nextChallenge() {
+    const next = (challengeIdx + 1) % challenges.length
+    setCompleted(c => [...c, challengeIdx])
+    setChallengeIdx(next)
+    setItems([...challenges[next].scrambled])
+    setChecked(false)
+    setRewarded(false)
+  }
+  function retry() { setItems([...challenge.scrambled]); setChecked(false); setRewarded(false) }
 
-  const isCorrectOrder = checked && items.every((item, i) => item === correct[i])
+  const isCorrectOrder = checked && items.every((item, i) => item === challenge.correct[i])
 
   return (
     <div className="space-y-4 animate-fade-in">
       <div className="bg-yellow-700/20 border border-yellow-500/30 rounded-2xl p-4">
-        <p className="text-xs font-bold text-brand-yellow uppercase tracking-wider mb-1">🗺️ Ordena las Fases · +20 pts</p>
-        <p className="text-sm text-gray-300">Usa ▲▼ para poner en orden correcto las fases del Mundial</p>
+        <div className="flex items-center justify-between mb-1">
+          <p className="text-xs font-bold text-brand-yellow uppercase tracking-wider">{challenge.emoji} {challenge.title} · +20 pts</p>
+          <span className="text-xs text-gray-500">{completed.length + 1}/{challenges.length} retos</span>
+        </div>
+        <p className="text-sm text-gray-300">Usa ▲▼ para poner en el orden correcto</p>
       </div>
       <div className="space-y-2">
         {items.map((phase, i) => {
-          const isRight = checked && items[i] === correct[i]
-          const isWrong = checked && items[i] !== correct[i]
+          const isRight = checked && items[i] === challenge.correct[i]
+          const isWrong = checked && items[i] !== challenge.correct[i]
           return (
             <div key={phase} className={`flex items-center gap-3 rounded-xl p-3 border transition-all ${
               isRight ? 'bg-brand-green/10 border-brand-green/40' : isWrong ? 'bg-red-500/10 border-red-500/40' : 'bg-brand-dark border-white/10'
@@ -316,11 +331,11 @@ function PhasesGame({ onPoints }) {
         <button onClick={checkAnswer} className="w-full py-3 bg-yellow-600 rounded-xl font-bold text-white">Verificar orden</button>
       ) : (
         <div className={`rounded-2xl p-4 text-center font-bold ${isCorrectOrder ? 'bg-brand-green/10 text-brand-green' : 'bg-brand-medium text-gray-300'}`}>
-          {isCorrectOrder ? '🎉 ¡Perfecto! +20 pts' : '💡 Orden: Grupos → Octavos → Cuartos → Semifinal → Final'}
-          <button onClick={() => { setItems([...quizData.phases.scrambled]); setChecked(false); setRewarded(false) }}
-            className="block w-full mt-3 py-2 bg-brand-orange rounded-xl text-sm font-bold text-white">
-            Reintentar
-          </button>
+          {isCorrectOrder ? `🎉 ¡Perfecto! +20 pts` : `💡 Correcto: ${challenge.correct.join(' → ')}`}
+          <div className="flex gap-2 mt-3">
+            <button onClick={retry} className="flex-1 py-2 bg-brand-medium rounded-xl text-sm font-bold text-white">🔁 Reintentar</button>
+            <button onClick={nextChallenge} className="flex-1 py-2 bg-brand-orange rounded-xl text-sm font-bold text-white">Siguiente reto →</button>
+          </div>
         </div>
       )}
     </div>
