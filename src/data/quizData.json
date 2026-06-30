@@ -1384,6 +1384,48 @@
         "emoji": "⚽",
         "correct": ["Elegir el evento", "Seleccionar el mercado", "Revisar la cuota", "Confirmar la apuesta", "Seguir el partido en vivo"],
         "scrambled": ["Confirmar la apuesta", "Elegir el evento", "Seguir el partido en vivo", "Seleccionar el mercado", "Revisar la cuota"]
+      },
+      {
+        "title": "Proceso de Cashout paso a paso",
+        "emoji": "💸",
+        "correct": ["Tener apuesta activa", "Ver la oferta de Cashout", "Decidir monto (total o parcial)", "Confirmar el Cashout", "Recibir monto en saldo"],
+        "scrambled": ["Recibir monto en saldo", "Confirmar el Cashout", "Tener apuesta activa", "Decidir monto (total o parcial)", "Ver la oferta de Cashout"]
+      },
+      {
+        "title": "Tipos de apuesta por complejidad",
+        "emoji": "📊",
+        "correct": ["Apuesta Simple (1 selección)", "Doble Oportunidad", "Combinada de 2 selecciones", "Sistema 2/3", "Combinada de 5 o más"],
+        "scrambled": ["Sistema 2/3", "Apuesta Simple (1 selección)", "Combinada de 5 o más", "Doble Oportunidad", "Combinada de 2 selecciones"]
+      },
+      {
+        "title": "Evolución del formato del Mundial",
+        "emoji": "📅",
+        "correct": ["13 equipos · Uruguay 1930", "16 equipos · Francia 1938", "24 equipos · España 1982", "32 equipos · Francia 1998", "48 equipos · USA/MEX/CAN 2026"],
+        "scrambled": ["32 equipos · Francia 1998", "13 equipos · Uruguay 1930", "48 equipos · USA/MEX/CAN 2026", "16 equipos · Francia 1938", "24 equipos · España 1982"]
+      },
+      {
+        "title": "Registro de cliente nuevo en POS",
+        "emoji": "🧾",
+        "correct": ["Saludar y presentarse", "Verificar mayoría de edad", "Registrar datos del cliente", "Explicar reglas y juego responsable", "Acompañar en la primera apuesta"],
+        "scrambled": ["Acompañar en la primera apuesta", "Verificar mayoría de edad", "Saludar y presentarse", "Explicar reglas y juego responsable", "Registrar datos del cliente"]
+      },
+      {
+        "title": "Proceso para reclamar un premio",
+        "emoji": "🏆",
+        "correct": ["Identificar la apuesta ganadora", "Verificar en el historial", "Solicitar el cobro", "Confirmar identidad del cliente", "Recibir el pago del premio"],
+        "scrambled": ["Confirmar identidad del cliente", "Identificar la apuesta ganadora", "Recibir el pago del premio", "Verificar en el historial", "Solicitar el cobro"]
+      },
+      {
+        "title": "Fases de atención ante un reclamo",
+        "emoji": "🛡️",
+        "correct": ["Escuchar sin interrumpir", "Validar la emoción del cliente", "Investigar el caso con datos", "Dar una respuesta honesta", "Hacer seguimiento del cierre"],
+        "scrambled": ["Dar una respuesta honesta", "Escuchar sin interrumpir", "Hacer seguimiento del cierre", "Validar la emoción del cliente", "Investigar el caso con datos"]
+      },
+      {
+        "title": "Cuotas de menor a mayor retorno",
+        "emoji": "📈",
+        "correct": ["Cuota 1.10 (casi seguro)", "Cuota 1.50 (favorito claro)", "Cuota 2.00 (par)", "Cuota 3.50 (outsider)", "Cuota 10.00 (sorpresa total)"],
+        "scrambled": ["Cuota 3.50 (outsider)", "Cuota 1.10 (casi seguro)", "Cuota 10.00 (sorpresa total)", "Cuota 2.00 (par)", "Cuota 1.50 (favorito claro)"]
       }
     ]
   },

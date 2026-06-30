@@ -22,7 +22,7 @@ const DIFFICULTY_CONFIG = {
 const GAMES = [
   { id: 'guess',     icon: '🔍', title: 'Adivina el Concepto',   desc: 'Lee la definición · elige el término', color: 'from-purple-700 to-indigo-700', totalQ: 30 },
   { id: 'truefalse', icon: '✅', title: 'Verdadero o Falso',      desc: 'Decide si cada afirmación es correcta', color: 'from-green-700 to-teal-700',   totalQ: 35 },
-  { id: 'phases',    icon: '🗺️', title: 'Ordena las Fases',       desc: 'Pon el Mundial en orden correcto',      color: 'from-yellow-700 to-orange-700', totalQ: 1  },
+  { id: 'phases',    icon: '🗺️', title: 'Ordena las Fases',       desc: '13 retos distintos · orden aleatorio',  color: 'from-yellow-700 to-orange-700', totalQ: 13 },
   { id: 'client',    icon: '🤝', title: '¿Qué le responderías?',  desc: 'Elige la respuesta responsable',        color: 'from-blue-700 to-cyan-700',     totalQ: 25 },
   { id: 'quick',     icon: '⚡', title: 'Reto de 3 Minutos',      desc: '6 preguntas · gana hasta 90 puntos',   color: 'from-red-700 to-orange-700',    totalQ: 25 },
   { id: 'mundial',   icon: '🌍', title: 'Trivia Mundial 2026',    desc: 'Grupos · Jugadores · Goles · Apuestas · Curiosidades', color: 'from-yellow-600 to-green-700', totalQ: 50 },
