@@ -40,6 +40,7 @@ export default function AdminDashboard({ onLogout }) {
   const [datos, setDatos]         = useState({ guerreras: [], supervisores: [], jefes: [] })
   const [loading, setLoading]     = useState(true)
   const [tab, setTab]             = useState('resumen')
+  const [filtroActivo, setFiltroActivo] = useState(null) // 'activas-hoy' | 'sin-acceso' | 'por-ingresos' | null
   const [busqueda, setBusqueda]   = useState('')
   const [modal, setModal]         = useState(null)
   const [pinNuevo, setPinNuevo]   = useState('')
@@ -47,6 +48,13 @@ export default function AdminDashboard({ onLogout }) {
   const [toast, setToast]         = useState('')
 
   const hoy = new Date().toDateString()
+
+  function irATab(tabId, filtro = null) {
+    setTab(tabId)
+    setFiltroActivo(filtro)
+    setBusqueda('')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   function mostrarToast(msg) {
     setToast(msg)
@@ -248,11 +256,14 @@ export default function AdminDashboard({ onLogout }) {
       <div className="sticky top-0 z-30 bg-brand-black/95 backdrop-blur-sm border-b border-white/5 px-4 pb-2 pt-3">
         <div className="flex gap-1.5 max-w-4xl mx-auto">
           {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)}
-              className={`flex-1 flex items-center justify-center gap-1 py-2 rounded-xl text-xs font-bold transition-all ${
+            <button key={t.id} onClick={() => irATab(t.id)}
+              className={`flex-1 flex items-center justify-center gap-1 py-2 rounded-xl text-xs font-bold transition-all relative ${
                 tab === t.id ? 'bg-red-700 text-white' : 'bg-brand-medium text-gray-400'
               }`}>
               <span>{t.icon}</span><span className="hidden sm:inline">{t.label}</span>
+              {tab === t.id && filtroActivo && (
+                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-yellow-400" />
+              )}
             </button>
           ))}
         </div>
@@ -304,18 +315,20 @@ export default function AdminDashboard({ onLogout }) {
               <>
                 <div className="grid grid-cols-2 gap-2">
                   {[
-                    { icon: '👥', val: datos.guerreras.length,   label: 'Promotoras',    color: 'bg-blue-700/20 border-blue-600/30'    },
-                    { icon: '⚡', val: activasHoy,               label: 'Activas hoy',   color: 'bg-green-700/20 border-green-600/30'  },
-                    { icon: '👔', val: datos.supervisores.length, label: 'Supervisores',  color: 'bg-purple-700/20 border-purple-600/30' },
-                    { icon: '🏆', val: datos.jefes.length,        label: 'Jefes',         color: 'bg-yellow-700/20 border-yellow-600/30' },
-                    { icon: '🔑', val: totalIngresos,             label: 'Total ingresos',color: 'bg-red-700/20 border-red-600/30'      },
-                    { icon: '😴', val: sinActividad,             label: 'Sin acceso',    color: 'bg-gray-700/20 border-gray-600/30'    },
+                    { icon: '👥', val: datos.guerreras.length,    label: 'Promotoras',     color: 'bg-blue-700/20 border-blue-600/30',    hint: 'Ver todas →', accion: () => irATab('promotoras')                          },
+                    { icon: '⚡', val: activasHoy,                label: 'Activas hoy',    color: 'bg-green-700/20 border-green-600/30',  hint: 'Ver activas →', accion: () => irATab('promotoras', 'activas-hoy')           },
+                    { icon: '👔', val: datos.supervisores.length,  label: 'Supervisores',   color: 'bg-purple-700/20 border-purple-600/30', hint: 'Ver lista →', accion: () => irATab('supervisores')                        },
+                    { icon: '🏆', val: datos.jefes.length,         label: 'Jefes',          color: 'bg-yellow-700/20 border-yellow-600/30', hint: 'Ver lista →', accion: () => irATab('jefes')                               },
+                    { icon: '🔑', val: totalIngresos,              label: 'Total ingresos', color: 'bg-red-700/20 border-red-600/30',      hint: 'Por ingresos →', accion: () => irATab('promotoras', 'por-ingresos')        },
+                    { icon: '😴', val: sinActividad,              label: 'Sin acceso',     color: 'bg-gray-700/20 border-gray-600/30',    hint: 'Ver inactivas →', accion: () => irATab('promotoras', 'sin-acceso')         },
                   ].map((s, i) => (
-                    <div key={i} className={`rounded-2xl p-4 border ${s.color}`}>
+                    <button key={i} onClick={s.accion}
+                      className={`rounded-2xl p-4 border text-left transition-all active:scale-95 hover:brightness-125 ${s.color}`}>
                       <span className="text-2xl block mb-1">{s.icon}</span>
                       <p className="text-2xl font-black text-white">{s.val}</p>
                       <p className="text-xs font-bold text-white/70 leading-tight">{s.label}</p>
-                    </div>
+                      <p className="text-[10px] text-white/40 mt-1">{s.hint}</p>
+                    </button>
                   ))}
                 </div>
 
@@ -372,22 +385,51 @@ export default function AdminDashboard({ onLogout }) {
             )}
 
             {/* ── PROMOTORAS ── */}
-            {tab === 'promotoras' && (
-              <div className="bg-brand-dark rounded-2xl border border-blue-600/20 overflow-hidden">
-                <div className="px-4 py-3 border-b border-white/5 bg-blue-900/20 flex items-center justify-between">
-                  <p className="text-sm font-bold text-blue-300">👥 Promotoras — {datos.guerreras.length}</p>
-                  <span className="text-xs text-green-400">{activasHoy} activas hoy</span>
+            {tab === 'promotoras' && (() => {
+              let lista = [...datos.guerreras]
+              let tituloFiltro = null
+
+              if (filtroActivo === 'activas-hoy') {
+                lista = lista.filter(p => p.ultimoAccesoFecha === hoy)
+                tituloFiltro = { icon: '⚡', texto: `Activas hoy — ${lista.length}`, color: 'text-green-300 bg-green-900/20 border-green-600/20' }
+              } else if (filtroActivo === 'sin-acceso') {
+                lista = lista.filter(p => !p.ultimoAccesoFecha)
+                tituloFiltro = { icon: '😴', texto: `Sin acceso nunca — ${lista.length}`, color: 'text-gray-300 bg-gray-900/20 border-gray-600/20' }
+              } else if (filtroActivo === 'por-ingresos') {
+                lista = lista.sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                tituloFiltro = { icon: '🔑', texto: `Por ingresos — ${lista.length}`, color: 'text-red-300 bg-red-900/20 border-red-600/20' }
+              } else {
+                lista = lista.sort((a, b) => (b.puntos||0) - (a.puntos||0))
+              }
+
+              return (
+                <div className="space-y-2">
+                  {filtroActivo && (
+                    <div className={`flex items-center justify-between rounded-2xl px-4 py-2.5 border ${tituloFiltro.color}`}>
+                      <p className={`text-xs font-bold ${tituloFiltro.color.split(' ')[0]}`}>
+                        {tituloFiltro.icon} {tituloFiltro.texto}
+                      </p>
+                      <button onClick={() => setFiltroActivo(null)}
+                        className="text-[10px] text-gray-500 hover:text-white border border-white/10 rounded-lg px-2 py-1 transition-all">
+                        ✕ Quitar filtro
+                      </button>
+                    </div>
+                  )}
+                  <div className="bg-brand-dark rounded-2xl border border-blue-600/20 overflow-hidden">
+                    <div className="px-4 py-3 border-b border-white/5 bg-blue-900/20 flex items-center justify-between">
+                      <p className="text-sm font-bold text-blue-300">👥 {filtroActivo ? 'Resultado filtrado' : 'Todas las Promotoras'} — {lista.length}</p>
+                      <span className="text-xs text-green-400">{activasHoy} activas hoy</span>
+                    </div>
+                    <div className="max-h-[600px] overflow-y-auto">
+                      {lista.length === 0
+                        ? <p className="text-xs text-gray-500 text-center py-8">Sin resultados para este filtro</p>
+                        : lista.map((u, i) => <FilaUsuario key={u._docId||i} u={u} coleccion="guerreras" />)
+                      }
+                    </div>
+                  </div>
                 </div>
-                <div className="max-h-[600px] overflow-y-auto">
-                  {datos.guerreras.length === 0
-                    ? <p className="text-xs text-gray-500 text-center py-8">Sin promotoras registradas</p>
-                    : [...datos.guerreras]
-                        .sort((a, b) => (b.puntos||0) - (a.puntos||0))
-                        .map((u, i) => <FilaUsuario key={u._docId||i} u={u} coleccion="guerreras" />)
-                  }
-                </div>
-              </div>
-            )}
+              )
+            })()}
 
             {/* ── SUPERVISORES ── */}
             {tab === 'supervisores' && (
