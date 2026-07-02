@@ -1,4 +1,4 @@
-export default function RoleSelector({ onSelectPromotera, onSelectSupervisor, onSelectJefe }) {
+export default function RoleSelector({ onSelectPromotera, onSelectSupervisor, onSelectJefe, onSelectAdmin }) {
   return (
     <div className="min-h-screen bg-brand-black flex flex-col items-center justify-center px-6 py-10">
       <div className="mb-10 text-center">
@@ -53,6 +53,16 @@ export default function RoleSelector({ onSelectPromotera, onSelectSupervisor, on
         </button>
 
         <p className="text-xs text-gray-600 text-center pt-2">🛡️ Contenido interno · Solo personal autorizado adulto</p>
+
+        {/* Acceso Admin (discreto) */}
+        <div className="pt-4 text-center">
+          <button
+            onClick={onSelectAdmin}
+            className="text-[10px] text-gray-700 hover:text-gray-500 transition-all underline underline-offset-2"
+          >
+            Acceso administrador
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -22,6 +22,8 @@ import LoginSupervisor from './pages/LoginSupervisor'
 import LoginJefe from './pages/LoginJefe'
 import OnboardingJefe from './pages/OnboardingJefe'
 import JefeDashboard from './pages/JefeDashboard'
+import LoginAdmin from './pages/LoginAdmin'
+import AdminDashboard from './pages/AdminDashboard'
 import RoleSelector from './pages/RoleSelector'
 import Avatar from './components/Avatar'
 import { sumarPuntos } from './lib/db'
@@ -126,6 +128,7 @@ export default function App() {
   const [session, setSession]         = useState(loadSession)      // promotora
   const [supSession, setSupSession]   = useState(loadSupSession)   // supervisor
   const [jefeSession, setJefeSession] = useState(loadJefeSession)  // jefe regional
+  const [adminSession, setAdminSession] = useState(null)            // admin
   const [authView, setAuthView]       = useState('role-select')
 
   // Check daily streak
@@ -190,6 +193,12 @@ export default function App() {
     setAuthView('role-select')
   }
 
+  function handleAdminLogin(admin) { setAdminSession(admin) }
+  function handleAdminLogout() {
+    setAdminSession(null)
+    setAuthView('role-select')
+  }
+
   function handleNavigate(page) {
     setCurrentPage(page)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -220,15 +229,29 @@ export default function App() {
     }
   }, [activeSession, handleActiveLogout])
 
+  // ── Admin gate (independiente del resto de sesiones) ─────────────────────
+  if (adminSession) {
+    return <AdminDashboard onLogout={handleAdminLogout} />
+  }
+
   // ── Auth gates ───────────────────────────────────────────────────────────
   // Sin sesión de ningún tipo → flujo de autenticación
   if (!activeSession) {
+    if (authView === 'login-admin') {
+      return (
+        <LoginAdmin
+          onLogin={handleAdminLogin}
+          onVolver={() => setAuthView('role-select')}
+        />
+      )
+    }
     if (authView === 'role-select') {
       return (
         <RoleSelector
           onSelectPromotera={() => setAuthView('login')}
           onSelectSupervisor={() => setAuthView('login-supervisor')}
           onSelectJefe={() => setAuthView('login-jefe')}
+          onSelectAdmin={() => setAuthView('login-admin')}
         />
       )
     }

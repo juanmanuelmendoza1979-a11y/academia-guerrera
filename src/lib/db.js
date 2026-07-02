@@ -1,6 +1,6 @@
 // Operaciones con Firestore para Academia Guerrera
 import {
-  doc, getDoc, setDoc, updateDoc,
+  doc, getDoc, setDoc, updateDoc, deleteDoc,
   collection, getDocs, query, orderBy, limit, where,
   serverTimestamp, increment,
 } from 'firebase/firestore'
@@ -252,6 +252,35 @@ export async function actualizarPinJefe(jefeId, nuevoPin) {
     codigoRecuperacion: null,
     codigoExpira: null,
   })
+}
+
+// ─── Admin ───────────────────────────────────────────────────────────────────
+export async function obtenerTodosUsuarios() {
+  const [gSnap, sSnap, jSnap] = await Promise.all([
+    getDocs(collection(db, 'guerreras')),
+    getDocs(collection(db, 'supervisores')),
+    getDocs(collection(db, 'jefes')),
+  ])
+  return {
+    guerreras:    gSnap.docs.map(d => ({ _docId: d.id, ...d.data() })),
+    supervisores: sSnap.docs.map(d => ({ _docId: d.id, ...d.data() })),
+    jefes:        jSnap.docs.map(d => ({ _docId: d.id, ...d.data() })),
+  }
+}
+
+export async function resetearDatosUsuario(docId, coleccion) {
+  const campos = coleccion === 'guerreras'
+    ? { puntos: 0, racha: 0, loginCount: 0, retosCompletados: 0, insignias: [], ultimoAccesoFecha: null, ultimoAcceso: serverTimestamp() }
+    : { loginCount: 0, ultimoAcceso: serverTimestamp() }
+  await updateDoc(doc(db, coleccion, docId), campos)
+}
+
+export async function eliminarDocumento(docId, coleccion) {
+  await deleteDoc(doc(db, coleccion, docId))
+}
+
+export async function cambiarPinAdmin(docId, coleccion, nuevoPin) {
+  await updateDoc(doc(db, coleccion, docId), { pin: hashPin(nuevoPin) })
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
