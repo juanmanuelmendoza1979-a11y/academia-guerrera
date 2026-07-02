@@ -127,17 +127,94 @@ export default function AdminDashboard({ onLogout }) {
     setProcesando(false)
   }
 
+  const fechaHoy = new Date().toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' }).replace(/\//g,'-')
+
   function exportarTodo() {
-    const cabG = ['Rol', 'Nombre', 'Correo', 'Supervisor', 'Puntos', 'Racha', 'Retos', 'Ingresos', 'Nivel', 'Último acceso']
-    const filasG = datos.guerreras.map(p => ['Promotora', p.nombre, p.correo||'', p.supervisor||'', p.puntos||0, p.racha||0, p.retosCompletados||0, p.loginCount||0, p.nivel||'Inicial', p.ultimoAccesoFecha||'Nunca'])
-    const filasS = datos.supervisores.map(s => ['Supervisor', s.nombre, s.correo||'', s.jefe||'', '-', '-', '-', s.loginCount||0, '-', ''])
-    const filasJ = datos.jefes.map(j => ['Jefe', j.nombre, j.correo||'', '', '-', '-', '-', j.loginCount||0, '-', ''])
-    const hoyStr = new Date().toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' })
-    descargarXLS([cabG, ...filasG, ...filasS, ...filasJ], `admin_todos_usuarios_${hoyStr.replace(/\//g,'-')}.xls`)
+    const cab  = ['Rol', 'Nombre', 'Correo', 'Supervisor / Jefe', 'Puntos', 'Racha', 'Retos', 'Ingresos', 'Nivel', 'Último acceso']
+    const filasG = datos.guerreras.map(p    => ['Promotora',  p.nombre, p.correo||'', p.supervisor||'',  p.puntos||0, p.racha||0, p.retosCompletados||0, p.loginCount||0, p.nivel||'Inicial', p.ultimoAccesoFecha||'Nunca'])
+    const filasS = datos.supervisores.map(s => ['Supervisor', s.nombre, s.correo||'', s.jefe||'',         '-',         '-',        '-',                    s.loginCount||0, '-',               s.ultimoAccesoFecha||''])
+    const filasJ = datos.jefes.map(j        => ['Jefe',       j.nombre, j.correo||'', '',                 '-',         '-',        '-',                    j.loginCount||0, '-',               j.ultimoAccesoFecha||''])
+    descargarXLS([cab, ...filasG, ...filasS, ...filasJ], `todos_usuarios_${fechaHoy}.xls`)
+  }
+
+  function exportarPromotoras(lista, etiqueta) {
+    // Enriquece con el jefe del supervisor de cada promotora
+    const supMap = {}
+    datos.supervisores.forEach(s => { supMap[s.nombre] = s.jefe||'' })
+    const cab = ['Nombre', 'Correo', 'Supervisor', 'Jefe Regional', 'Puntos', 'Racha', 'Retos completados', 'Ingresos', 'Nivel', 'Último acceso']
+    const filas = lista.map(p => [
+      p.nombre, p.correo||'', p.supervisor||'', supMap[p.supervisor]||'',
+      p.puntos||0, p.racha||0, p.retosCompletados||0, p.loginCount||0,
+      p.nivel||'Inicial', p.ultimoAccesoFecha||'Nunca',
+    ])
+    descargarXLS([cab, ...filas], `promotoras_${etiqueta}_${fechaHoy}.xls`)
+  }
+
+  function exportarSupervisores() {
+    const cab = ['Nombre', 'Correo', 'Jefe Regional', 'N° Promotoras', 'Total puntos equipo', 'Promotoras activas hoy', 'Ingresos supervisor', 'Último acceso']
+    const filas = [...datos.supervisores]
+      .sort((a, b) => (a.nombre||'').localeCompare(b.nombre||''))
+      .map(s => {
+        const promo       = datos.guerreras.filter(p => p.supervisor === s.nombre)
+        const totalPuntos = promo.reduce((acc, p) => acc + (p.puntos||0), 0)
+        const activasHoyS = promo.filter(p => p.ultimoAccesoFecha === hoy).length
+        return [s.nombre, s.correo||'', s.jefe||'', promo.length, totalPuntos, activasHoyS, s.loginCount||0, s.ultimoAccesoFecha||'Nunca']
+      })
+    descargarXLS([cab, ...filas], `supervisores_${fechaHoy}.xls`)
+  }
+
+  function exportarSupervisorConPromotoras(supervisor) {
+    // Descarga 1 supervisor + todas sus promotoras
+    const promo = datos.guerreras.filter(p => p.supervisor === supervisor.nombre)
+    const cab   = ['Tipo', 'Nombre', 'Correo', 'Supervisor / Jefe', 'Puntos', 'Racha', 'Retos', 'Ingresos', 'Nivel', 'Último acceso']
+    const filaSup  = [['Supervisor', supervisor.nombre, supervisor.correo||'', supervisor.jefe||'', '-', '-', '-', supervisor.loginCount||0, '-', supervisor.ultimoAccesoFecha||'Nunca']]
+    const filasP   = promo
+      .sort((a, b) => (b.puntos||0) - (a.puntos||0))
+      .map(p => ['Promotora', p.nombre, p.correo||'', p.supervisor||'', p.puntos||0, p.racha||0, p.retosCompletados||0, p.loginCount||0, p.nivel||'Inicial', p.ultimoAccesoFecha||'Nunca'])
+    const nombre = supervisor.nombre.replace(/\s+/g, '_').toLowerCase()
+    descargarXLS([cab, ...filaSup, ...filasP], `supervisor_${nombre}_${fechaHoy}.xls`)
+  }
+
+  function exportarJefes() {
+    const cab = ['Nombre', 'Correo', 'N° Supervisores', 'N° Promotoras total', 'Total puntos región', 'Promotoras activas hoy', 'Ingresos jefe', 'Último acceso']
+    const filas = [...datos.jefes]
+      .sort((a, b) => (a.nombre||'').localeCompare(b.nombre||''))
+      .map(j => {
+        const sups        = datos.supervisores.filter(s => s.jefe === j.nombre)
+        const supNombres  = sups.map(s => s.nombre)
+        const promo       = datos.guerreras.filter(p => supNombres.includes(p.supervisor))
+        const totalPuntos = promo.reduce((acc, p) => acc + (p.puntos||0), 0)
+        const activasHoyJ = promo.filter(p => p.ultimoAccesoFecha === hoy).length
+        return [j.nombre, j.correo||'', sups.length, promo.length, totalPuntos, activasHoyJ, j.loginCount||0, j.ultimoAccesoFecha||'Nunca']
+      })
+    descargarXLS([cab, ...filas], `jefes_regionales_${fechaHoy}.xls`)
+  }
+
+  function exportarJefeConSuEquipo(jefe) {
+    // Descarga 1 jefe + sus supervisores + todas sus promotoras
+    const sups       = datos.supervisores.filter(s => s.jefe === jefe.nombre)
+    const supNombres = sups.map(s => s.nombre)
+    const promo      = datos.guerreras.filter(p => supNombres.includes(p.supervisor))
+    const cab = ['Tipo', 'Nombre', 'Correo', 'Supervisor / Jefe', 'Puntos', 'Racha', 'Retos', 'Ingresos', 'Nivel', 'Último acceso']
+    const filaJefe = [['Jefe Regional', jefe.nombre, jefe.correo||'', '', '-', '-', '-', jefe.loginCount||0, '-', jefe.ultimoAccesoFecha||'Nunca']]
+    const filasS   = sups.map(s => ['Supervisor', s.nombre, s.correo||'', jefe.nombre, '-', '-', '-', s.loginCount||0, '-', s.ultimoAccesoFecha||'Nunca'])
+    const filasP   = promo.sort((a, b) => (b.puntos||0) - (a.puntos||0)).map(p => ['Promotora', p.nombre, p.correo||'', p.supervisor||'', p.puntos||0, p.racha||0, p.retosCompletados||0, p.loginCount||0, p.nivel||'Inicial', p.ultimoAccesoFecha||'Nunca'])
+    const nombre = jefe.nombre.replace(/\s+/g, '_').toLowerCase()
+    descargarXLS([cab, ...filaJefe, ...filasS, ...filasP], `jefe_${nombre}_${fechaHoy}.xls`)
+  }
+
+  function exportarInactivas(nuncaEntraron, sinPractica, sinPuntos) {
+    const cab = ['Grupo', 'Nombre', 'Correo', 'Supervisor', 'Puntos', 'Retos', 'Ingresos', 'Último acceso']
+    const filas = [
+      ...nuncaEntraron.map(p => ['Nunca ingresó',          p.nombre, p.correo||'', p.supervisor||'', p.puntos||0, p.retosCompletados||0, p.loginCount||0, 'Nunca']),
+      ...sinPractica.map(p  => ['Sin práctica',             p.nombre, p.correo||'', p.supervisor||'', p.puntos||0, p.retosCompletados||0, p.loginCount||0, p.ultimoAccesoFecha||'']),
+      ...sinPuntos.map(p    => ['Sin puntos en ranking',    p.nombre, p.correo||'', p.supervisor||'', p.puntos||0, p.retosCompletados||0, p.loginCount||0, p.ultimoAccesoFecha||'']),
+    ]
+    descargarXLS([cab, ...filas], `sin_actividad_${fechaHoy}.xls`)
   }
 
   // ── Componente de fila de usuario ──
-  function FilaUsuario({ u, coleccion }) {
+  function FilaUsuario({ u, coleccion, onExportar }) {
     const [expandido, setExpandido] = useState(false)
     const esGuerrera = coleccion === 'guerreras'
     const activa = u.ultimoAccesoFecha === hoy
@@ -201,6 +278,16 @@ export default function AdminDashboard({ onLogout }) {
               <p className="text-[10px] text-gray-500">📧 {u.correo}</p>
             )}
 
+            {/* Descarga individual */}
+            {onExportar && (
+              <button
+                onClick={() => onExportar(u)}
+                className="w-full py-2 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold rounded-xl hover:bg-green-700/50 transition-all"
+              >
+                ⬇️ Descargar Excel de {coleccion === 'supervisores' ? 'mi equipo (supervisor + promotoras)' : 'mi región (jefe + supervisores + promotoras)'}
+              </button>
+            )}
+
             {/* Acciones */}
             <div className="grid grid-cols-3 gap-2">
               <button
@@ -240,9 +327,6 @@ export default function AdminDashboard({ onLogout }) {
             <p className="text-xs text-gray-400 mt-1">{totalTodos} usuarios registrados</p>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={exportarTodo} className="flex items-center gap-1.5 bg-green-700/30 border border-green-500/40 text-green-400 text-xs font-bold px-3 py-2 rounded-xl hover:bg-green-700/50 transition-all">
-              ⬇️ Excel
-            </button>
             <button onClick={recargar} className="flex items-center gap-1.5 bg-brand-medium border border-white/10 text-gray-300 text-xs font-bold px-3 py-2 rounded-xl hover:bg-brand-dark transition-all">
               🔄
             </button>
@@ -382,6 +466,12 @@ export default function AdminDashboard({ onLogout }) {
                     }
                   </div>
                 </div>
+
+                {/* Descarga resumen completo */}
+                <button onClick={exportarTodo}
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-green-700/20 border border-green-600/30 text-green-400 text-xs font-bold rounded-2xl hover:bg-green-700/40 transition-all">
+                  ⬇️ Descargar Excel completo — todos los usuarios ({totalTodos})
+                </button>
               </>
             )}
 
@@ -417,9 +507,17 @@ export default function AdminDashboard({ onLogout }) {
                     </div>
                   )}
                   <div className="bg-brand-dark rounded-2xl border border-blue-600/20 overflow-hidden">
-                    <div className="px-4 py-3 border-b border-white/5 bg-blue-900/20 flex items-center justify-between">
+                    <div className="px-4 py-3 border-b border-white/5 bg-blue-900/20 flex items-center justify-between gap-2">
                       <p className="text-sm font-bold text-blue-300">👥 {filtroActivo ? 'Resultado filtrado' : 'Todas las Promotoras'} — {lista.length}</p>
-                      <span className="text-xs text-green-400">{activasHoy} activas hoy</span>
+                      <button
+                        onClick={() => {
+                          const etiqueta = filtroActivo === 'activas-hoy' ? 'activas_hoy' : filtroActivo === 'sin-acceso' ? 'sin_acceso' : filtroActivo === 'por-ingresos' ? 'por_ingresos' : 'todas'
+                          exportarPromotoras(lista, etiqueta)
+                        }}
+                        className="flex items-center gap-1 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold px-2.5 py-1.5 rounded-xl hover:bg-green-700/50 transition-all flex-shrink-0"
+                      >
+                        ⬇️ Excel ({lista.length})
+                      </button>
                     </div>
                     <div className="max-h-[600px] overflow-y-auto">
                       {lista.length === 0
@@ -434,35 +532,55 @@ export default function AdminDashboard({ onLogout }) {
 
             {/* ── SUPERVISORES ── */}
             {tab === 'supervisores' && (
-              <div className="bg-brand-dark rounded-2xl border border-purple-600/20 overflow-hidden">
-                <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20">
-                  <p className="text-sm font-bold text-purple-300">👔 Supervisores — {datos.supervisores.length}</p>
+              <div className="space-y-2">
+                <div className="bg-brand-dark rounded-2xl border border-purple-600/20 overflow-hidden">
+                  <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20 flex items-center justify-between gap-2">
+                    <p className="text-sm font-bold text-purple-300">👔 Supervisores — {datos.supervisores.length}</p>
+                    <button onClick={exportarSupervisores}
+                      className="flex items-center gap-1 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold px-2.5 py-1.5 rounded-xl hover:bg-green-700/50 transition-all flex-shrink-0">
+                      ⬇️ Excel todos ({datos.supervisores.length})
+                    </button>
+                  </div>
+                  <div className="max-h-[600px] overflow-y-auto">
+                    {datos.supervisores.length === 0
+                      ? <p className="text-xs text-gray-500 text-center py-8">Sin supervisores registrados</p>
+                      : [...datos.supervisores]
+                          .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                          .map((u, i) => (
+                            <FilaUsuario key={u._docId||i} u={u} coleccion="supervisores"
+                              onExportar={exportarSupervisorConPromotoras} />
+                          ))
+                    }
+                  </div>
                 </div>
-                <div className="max-h-[600px] overflow-y-auto">
-                  {datos.supervisores.length === 0
-                    ? <p className="text-xs text-gray-500 text-center py-8">Sin supervisores registrados</p>
-                    : [...datos.supervisores]
-                        .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
-                        .map((u, i) => <FilaUsuario key={u._docId||i} u={u} coleccion="supervisores" />)
-                  }
-                </div>
+                <p className="text-[10px] text-gray-600 text-center">Despliega cada supervisor para descargar su equipo completo (supervisor + promotoras)</p>
               </div>
             )}
 
             {/* ── JEFES ── */}
             {tab === 'jefes' && (
-              <div className="bg-brand-dark rounded-2xl border border-yellow-600/20 overflow-hidden">
-                <div className="px-4 py-3 border-b border-white/5 bg-yellow-900/20">
-                  <p className="text-sm font-bold text-yellow-300">🏆 Jefes Regionales — {datos.jefes.length}</p>
+              <div className="space-y-2">
+                <div className="bg-brand-dark rounded-2xl border border-yellow-600/20 overflow-hidden">
+                  <div className="px-4 py-3 border-b border-white/5 bg-yellow-900/20 flex items-center justify-between gap-2">
+                    <p className="text-sm font-bold text-yellow-300">🏆 Jefes Regionales — {datos.jefes.length}</p>
+                    <button onClick={exportarJefes}
+                      className="flex items-center gap-1 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold px-2.5 py-1.5 rounded-xl hover:bg-green-700/50 transition-all flex-shrink-0">
+                      ⬇️ Excel todos ({datos.jefes.length})
+                    </button>
+                  </div>
+                  <div className="max-h-[600px] overflow-y-auto">
+                    {datos.jefes.length === 0
+                      ? <p className="text-xs text-gray-500 text-center py-8">Sin jefes registrados</p>
+                      : [...datos.jefes]
+                          .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                          .map((u, i) => (
+                            <FilaUsuario key={u._docId||i} u={u} coleccion="jefes"
+                              onExportar={exportarJefeConSuEquipo} />
+                          ))
+                    }
+                  </div>
                 </div>
-                <div className="max-h-[600px] overflow-y-auto">
-                  {datos.jefes.length === 0
-                    ? <p className="text-xs text-gray-500 text-center py-8">Sin jefes registrados</p>
-                    : [...datos.jefes]
-                        .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
-                        .map((u, i) => <FilaUsuario key={u._docId||i} u={u} coleccion="jefes" />)
-                  }
-                </div>
+                <p className="text-[10px] text-gray-600 text-center">Despliega cada jefe para descargar su región completa (jefe + supervisores + promotoras)</p>
               </div>
             )}
 
@@ -523,10 +641,18 @@ export default function AdminDashboard({ onLogout }) {
                   <div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 border border-red-500/30 rounded-2xl px-4 py-4">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">🚨</span>
-                      <div>
+                      <div className="flex-1">
                         <p className="text-base font-black text-white">{totalInactivas} promotoras sin actividad</p>
                         <p className="text-xs text-gray-400 mt-0.5">No entran, no practican o no acumulan puntos</p>
                       </div>
+                      {totalInactivas > 0 && (
+                        <button
+                          onClick={() => exportarInactivas(nuncaEntraron, sinPractica, sinPuntos)}
+                          className="flex-shrink-0 flex items-center gap-1 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold px-2.5 py-2 rounded-xl hover:bg-green-700/50 transition-all"
+                        >
+                          ⬇️ Excel ({totalInactivas})
+                        </button>
+                      )}
                     </div>
                     <div className="grid grid-cols-3 gap-2 mt-3">
                       <div className="bg-black/30 rounded-xl p-2 text-center">
