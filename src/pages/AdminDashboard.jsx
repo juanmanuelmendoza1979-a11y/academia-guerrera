@@ -34,6 +34,7 @@ const TABS = [
   { id: 'promotoras',   icon: '👥', label: 'Promotoras' },
   { id: 'supervisores', icon: '👔', label: 'Supervisores' },
   { id: 'jefes',        icon: '🏆', label: 'Jefes' },
+  { id: 'inactivas',    icon: '🚨', label: 'Sin actividad' },
 ]
 
 export default function AdminDashboard({ onLogout }) {
@@ -464,6 +465,125 @@ export default function AdminDashboard({ onLogout }) {
                 </div>
               </div>
             )}
+
+            {/* ── SIN ACTIVIDAD ── */}
+            {tab === 'inactivas' && (() => {
+              const nuncaEntraron   = datos.guerreras.filter(p => !p.ultimoAccesoFecha)
+              const sinPractica     = datos.guerreras.filter(p => p.ultimoAccesoFecha && (!p.retosCompletados || p.retosCompletados === 0))
+              const sinPuntos       = datos.guerreras.filter(p => p.ultimoAccesoFecha && p.retosCompletados > 0 && (!p.puntos || p.puntos === 0))
+              const totalInactivas  = nuncaEntraron.length + sinPractica.length + sinPuntos.length
+
+              function GrupoInactivas({ titulo, subtitulo, icon, color, borderColor, lista, accion }) {
+                const [expandido, setExpandido] = useState(false)
+                if (lista.length === 0) return null
+                return (
+                  <div className={`bg-brand-dark rounded-2xl border ${borderColor} overflow-hidden`}>
+                    <button
+                      onClick={() => setExpandido(e => !e)}
+                      className="w-full px-4 py-4 flex items-center gap-3 hover:bg-white/5 transition-all text-left"
+                    >
+                      <div className={`w-10 h-10 rounded-xl ${accion} flex items-center justify-center text-xl flex-shrink-0`}>
+                        {icon}
+                      </div>
+                      <div className="flex-1">
+                        <p className={`text-sm font-black ${color}`}>{titulo}</p>
+                        <p className="text-[11px] text-gray-500 mt-0.5">{subtitulo}</p>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <p className={`text-2xl font-black ${color}`}>{lista.length}</p>
+                        <p className="text-[9px] text-gray-600">{expandido ? '▲ ocultar' : '▼ ver lista'}</p>
+                      </div>
+                    </button>
+
+                    {expandido && (
+                      <div className="border-t border-white/5 divide-y divide-white/5 max-h-80 overflow-y-auto">
+                        {lista.sort((a, b) => (a.nombre||'').localeCompare(b.nombre||'')).map((u, i) => (
+                          <div key={u._docId||i} className="px-4 py-3 flex items-center gap-3 hover:bg-white/5 transition-all">
+                            <Avatar seed={u.avatar} size="sm" />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-xs font-bold text-white truncate">{u.nombre}</p>
+                              <p className="text-[10px] text-gray-500 truncate">Sup: {u.supervisor||'—'}</p>
+                            </div>
+                            <div className="text-right flex-shrink-0 space-y-0.5">
+                              <p className="text-[10px] text-yellow-500">⭐ {u.puntos||0} pts</p>
+                              <p className="text-[10px] text-blue-400">🎯 {u.retosCompletados||0} retos</p>
+                              <p className="text-[10px] text-gray-600">🔑 {u.loginCount||0} ingresos</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              }
+
+              return (
+                <div className="space-y-3">
+                  {/* Banner resumen */}
+                  <div className="bg-gradient-to-r from-red-900/40 to-orange-900/30 border border-red-500/30 rounded-2xl px-4 py-4">
+                    <div className="flex items-center gap-3">
+                      <span className="text-3xl">🚨</span>
+                      <div>
+                        <p className="text-base font-black text-white">{totalInactivas} promotoras sin actividad</p>
+                        <p className="text-xs text-gray-400 mt-0.5">No entran, no practican o no acumulan puntos</p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 mt-3">
+                      <div className="bg-black/30 rounded-xl p-2 text-center">
+                        <p className="text-lg font-black text-red-400">{nuncaEntraron.length}</p>
+                        <p className="text-[9px] text-gray-500 leading-tight">Nunca<br/>entraron</p>
+                      </div>
+                      <div className="bg-black/30 rounded-xl p-2 text-center">
+                        <p className="text-lg font-black text-orange-400">{sinPractica.length}</p>
+                        <p className="text-[9px] text-gray-500 leading-tight">Entran pero<br/>no practican</p>
+                      </div>
+                      <div className="bg-black/30 rounded-xl p-2 text-center">
+                        <p className="text-lg font-black text-yellow-600">{sinPuntos.length}</p>
+                        <p className="text-[9px] text-gray-500 leading-tight">Sin puntos<br/>en ranking</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {totalInactivas === 0 && (
+                    <div className="text-center py-12 space-y-2">
+                      <p className="text-4xl">🎉</p>
+                      <p className="text-sm font-bold text-green-400">¡Todas las promotoras tienen actividad!</p>
+                      <p className="text-xs text-gray-500">No hay registros sin uso</p>
+                    </div>
+                  )}
+
+                  <GrupoInactivas
+                    titulo="Nunca ingresaron"
+                    subtitulo="Registradas pero sin ningún acceso a la academia"
+                    icon="🔒"
+                    color="text-red-400"
+                    borderColor="border-red-600/30"
+                    accion="bg-red-700/30"
+                    lista={nuncaEntraron}
+                  />
+
+                  <GrupoInactivas
+                    titulo="Entran pero no practican"
+                    subtitulo="Tienen ingresos pero 0 retos completados"
+                    icon="👀"
+                    color="text-orange-400"
+                    borderColor="border-orange-600/30"
+                    accion="bg-orange-700/30"
+                    lista={sinPractica}
+                  />
+
+                  <GrupoInactivas
+                    titulo="Sin puntos en el ranking"
+                    subtitulo="Practican pero no acumulan puntos"
+                    icon="📉"
+                    color="text-yellow-500"
+                    borderColor="border-yellow-700/30"
+                    accion="bg-yellow-700/20"
+                    lista={sinPuntos}
+                  />
+                </div>
+              )
+            })()}
           </>
         )}
       </div>
