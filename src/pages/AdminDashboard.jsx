@@ -29,6 +29,81 @@ function tiempoDesde(fechaStr) {
   catch { return fechaStr }
 }
 
+// ── Chart helpers ──────────────────────────────────────────────────────────
+
+function DonutChart({ segments, label, sublabel, size = 110 }) {
+  const total = segments.reduce((s, g) => s + g.val, 0)
+  let cum = 0
+  const segs = segments.map(seg => {
+    const pct = total > 0 ? (seg.val / total) * 100 : 0
+    const item = { ...seg, pct, start: cum }
+    cum += pct
+    return item
+  })
+  const gradient = total === 0
+    ? '#1f2937 0% 100%'
+    : segs.filter(s => s.val > 0)
+        .map(s => `${s.color} ${s.start.toFixed(1)}% ${(s.start + s.pct).toFixed(1)}%`)
+        .join(', ')
+  const hole = Math.round(size * 0.58)
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="relative flex items-center justify-center"
+        style={{ width: size, height: size }}>
+        <div className="rounded-full"
+          style={{ width: size, height: size, background: `conic-gradient(${gradient})` }} />
+        <div className="absolute rounded-full bg-brand-dark flex flex-col items-center justify-center"
+          style={{ width: hole, height: hole }}>
+          <p className="text-base font-black text-white leading-none">{label}</p>
+          {sublabel && <p className="text-[8px] text-gray-500 leading-tight text-center px-1">{sublabel}</p>}
+        </div>
+      </div>
+      <div className="w-full space-y-1.5">
+        {segments.map((s, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ background: s.color }} />
+            <p className="text-[10px] text-gray-400 flex-1 truncate leading-tight">{s.label}</p>
+            <p className="text-[10px] font-black text-white">{s.val}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function BarChart({ items, unit = '', gradientClass = 'from-yellow-500 to-orange-500', showSub = false }) {
+  const max = Math.max(...items.map(i => i.val), 1)
+  return (
+    <div className="space-y-2.5">
+      {items.map((item, i) => (
+        <div key={i}>
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              {item.rank && (
+                <span className={`text-[10px] font-black w-5 text-center flex-shrink-0 ${i === 0 ? 'text-yellow-400' : i === 1 ? 'text-gray-300' : i === 2 ? 'text-amber-600' : 'text-gray-600'}`}>
+                  {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`}
+                </span>
+              )}
+              <div className="min-w-0">
+                <p className="text-[11px] font-bold text-white truncate leading-tight">{item.label}</p>
+                {showSub && item.sub && <p className="text-[9px] text-gray-500 truncate">{item.sub}</p>}
+              </div>
+            </div>
+            <p className="text-xs font-black text-white ml-2 flex-shrink-0">{unit}{item.val.toLocaleString()}</p>
+          </div>
+          <div className="w-full bg-brand-medium rounded-full h-1.5">
+            <div
+              className={`h-1.5 rounded-full bg-gradient-to-r ${gradientClass} transition-all duration-500`}
+              style={{ width: `${Math.max((item.val / max) * 100, 2)}%` }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 const TABS = [
   { id: 'resumen',      icon: '📊', label: 'Resumen' },
   { id: 'promotoras',   icon: '👥', label: 'Promotoras' },
@@ -416,6 +491,100 @@ export default function AdminDashboard({ onLogout }) {
                     </button>
                   ))}
                 </div>
+
+                {/* ── GRÁFICOS ── */}
+                {(() => {
+                  const hoyStr = new Date().toDateString()
+
+                  // Donut: Actividad
+                  const activasHoyD   = datos.guerreras.filter(p => p.ultimoAccesoFecha === hoyStr).length
+                  const accedieron    = datos.guerreras.filter(p => p.ultimoAccesoFecha && p.ultimoAccesoFecha !== hoyStr).length
+                  const nuncaEntraron = datos.guerreras.filter(p => !p.ultimoAccesoFecha).length
+
+                  // Donut: Engagement
+                  const conPuntos    = datos.guerreras.filter(p => (p.puntos||0) > 0).length
+                  const conRetos     = datos.guerreras.filter(p => (p.retosCompletados||0) > 0 && (p.puntos||0) === 0).length
+                  const sinNada      = datos.guerreras.filter(p => (p.retosCompletados||0) === 0 && (p.puntos||0) === 0).length
+
+                  // Bars: Top 10 promotoras por puntos
+                  const topPuntos = [...datos.guerreras]
+                    .sort((a, b) => (b.puntos||0) - (a.puntos||0))
+                    .slice(0, 10)
+                    .map((p, i) => ({ label: p.nombre, val: p.puntos||0, sub: `Sup: ${p.supervisor||'—'}`, rank: true }))
+
+                  // Bars: Supervisores por puntos de equipo
+                  const topSups = [...datos.supervisores]
+                    .map(s => {
+                      const equipo      = datos.guerreras.filter(p => p.supervisor === s.nombre)
+                      const totalPuntos = equipo.reduce((acc, p) => acc + (p.puntos||0), 0)
+                      return { label: s.nombre, val: totalPuntos, sub: `${equipo.length} promotoras · Jefe: ${s.jefe||'—'}`, rank: true }
+                    })
+                    .sort((a, b) => b.val - a.val)
+
+                  // Bars: Top 10 por ingresos
+                  const topIngresos = [...datos.guerreras]
+                    .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                    .slice(0, 10)
+                    .map(p => ({ label: p.nombre, val: p.loginCount||0, sub: `Sup: ${p.supervisor||'—'}`, rank: true }))
+
+                  return (
+                    <div className="space-y-4">
+                      <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest">📈 Análisis visual</p>
+
+                      {/* Fila donuts */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-brand-dark border border-white/5 rounded-2xl p-4">
+                          <p className="text-[10px] font-black text-gray-500 uppercase mb-3">Actividad hoy</p>
+                          <DonutChart
+                            label={activasHoyD}
+                            sublabel="activas hoy"
+                            segments={[
+                              { label: 'Activas hoy',    val: activasHoyD,   color: '#22c55e' },
+                              { label: 'Accedieron',     val: accedieron,    color: '#6366f1' },
+                              { label: 'Nunca entraron', val: nuncaEntraron, color: '#ef4444' },
+                            ]}
+                          />
+                        </div>
+                        <div className="bg-brand-dark border border-white/5 rounded-2xl p-4">
+                          <p className="text-[10px] font-black text-gray-500 uppercase mb-3">Engagement</p>
+                          <DonutChart
+                            label={conPuntos}
+                            sublabel="con puntos"
+                            segments={[
+                              { label: 'Con puntos',   val: conPuntos, color: '#f59e0b' },
+                              { label: 'Retos sin pts',val: conRetos,  color: '#8b5cf6' },
+                              { label: 'Sin actividad',val: sinNada,   color: '#374151' },
+                            ]}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Bars: Top promotoras */}
+                      {topPuntos.some(p => p.val > 0) && (
+                        <div className="bg-brand-dark border border-yellow-600/20 rounded-2xl p-4">
+                          <p className="text-xs font-black text-yellow-300 mb-3">🏆 Top promotoras · Puntos</p>
+                          <BarChart items={topPuntos} unit="⭐ " gradientClass="from-yellow-500 to-orange-500" showSub />
+                        </div>
+                      )}
+
+                      {/* Bars: Supervisores */}
+                      {topSups.some(s => s.val > 0) && (
+                        <div className="bg-brand-dark border border-purple-600/20 rounded-2xl p-4">
+                          <p className="text-xs font-black text-purple-300 mb-3">👔 Supervisores · Puntos del equipo</p>
+                          <BarChart items={topSups} unit="⭐ " gradientClass="from-purple-500 to-blue-500" showSub />
+                        </div>
+                      )}
+
+                      {/* Bars: Ingresos */}
+                      {topIngresos.some(p => p.val > 0) && (
+                        <div className="bg-brand-dark border border-red-600/20 rounded-2xl p-4">
+                          <p className="text-xs font-black text-red-300 mb-3">🔑 Más ingresos · Logins</p>
+                          <BarChart items={topIngresos} unit="" gradientClass="from-red-500 to-pink-500" showSub />
+                        </div>
+                      )}
+                    </div>
+                  )
+                })()}
 
                 {/* Top 5 promotoras */}
                 <div className="bg-brand-dark rounded-2xl border border-yellow-600/20 overflow-hidden">
