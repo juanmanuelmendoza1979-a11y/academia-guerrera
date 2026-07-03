@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { obtenerDatosRegion } from '../lib/db'
 import Avatar from '../components/Avatar'
+import { DonutChart, BarChart } from '../components/Charts'
 
 function descargarXLS(filas, nombreArchivo) {
   const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
@@ -686,6 +687,83 @@ export default function JefeDashboard({ session }) {
                   </button>
                 ))}
               </div>
+
+              {/* ── GRÁFICOS REGIÓN ── */}
+              {promotoras.length > 0 && (() => {
+                const hoyStr     = new Date().toDateString()
+                const ayerStr    = new Date(Date.now()-86400000).toDateString()
+                const activasN   = promotoras.filter(p => p.ultimoAccesoFecha === hoyStr).length
+                const ayerN      = promotoras.filter(p => p.ultimoAccesoFecha === ayerStr).length
+                const inactivasN = promotoras.length - activasN - ayerN
+                const conPuntos  = promotoras.filter(p => (p.puntos||0) > 0).length
+                const sinPuntos  = promotoras.length - conPuntos
+
+                const topPuntos = [...promotoras]
+                  .sort((a,b) => (b.puntos||0)-(a.puntos||0)).slice(0,10)
+                  .map(p => ({ label: p.nombre, val: p.puntos||0, sub: `Sup: ${p.supervisor||'—'}`, rank: true }))
+
+                const topSups = misSupes.map(sNombre => {
+                  const equipo = promotoras.filter(p => p.supervisor === sNombre)
+                  return { label: sNombre, val: equipo.reduce((s,p)=>(s+(p.puntos||0)),0), sub: `${equipo.length} promotoras`, rank: true }
+                }).sort((a,b) => b.val - a.val)
+
+                const topIngresos = [...promotoras]
+                  .sort((a,b) => (b.loginCount||0)-(a.loginCount||0)).slice(0,10)
+                  .map(p => ({ label: p.nombre, val: p.loginCount||0, sub: `Sup: ${p.supervisor||'—'}`, rank: true }))
+
+                return (
+                  <div className="space-y-3">
+                    <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest">📈 Análisis visual de la región</p>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-brand-dark border border-white/5 rounded-2xl p-4">
+                        <p className="text-[10px] font-black text-gray-500 uppercase mb-3">Actividad región</p>
+                        <DonutChart
+                          label={activasN}
+                          sublabel="activas hoy"
+                          segments={[
+                            { label: 'Activas hoy', val: activasN,   color: '#22c55e' },
+                            { label: 'Ayer',         val: ayerN,      color: '#6366f1' },
+                            { label: 'Inactivas',    val: inactivasN, color: '#ef4444' },
+                          ]}
+                        />
+                      </div>
+                      <div className="bg-brand-dark border border-white/5 rounded-2xl p-4">
+                        <p className="text-[10px] font-black text-gray-500 uppercase mb-3">Engagement</p>
+                        <DonutChart
+                          label={conPuntos}
+                          sublabel="con puntos"
+                          segments={[
+                            { label: 'Con puntos',    val: conPuntos, color: '#f59e0b' },
+                            { label: 'Sin actividad', val: sinPuntos, color: '#374151' },
+                          ]}
+                        />
+                      </div>
+                    </div>
+
+                    {topPuntos.some(p => p.val > 0) && (
+                      <div className="bg-brand-dark border border-yellow-600/20 rounded-2xl p-4">
+                        <p className="text-xs font-black text-yellow-300 mb-3">🏆 Top promotoras · Puntos</p>
+                        <BarChart items={topPuntos} unit="⭐ " gradientClass="from-yellow-500 to-orange-500" showSub />
+                      </div>
+                    )}
+
+                    {topSups.some(s => s.val > 0) && (
+                      <div className="bg-brand-dark border border-purple-600/20 rounded-2xl p-4">
+                        <p className="text-xs font-black text-purple-300 mb-3">👔 Supervisores · Puntos del equipo</p>
+                        <BarChart items={topSups} unit="⭐ " gradientClass="from-purple-500 to-indigo-500" showSub />
+                      </div>
+                    )}
+
+                    {topIngresos.some(p => p.val > 0) && (
+                      <div className="bg-brand-dark border border-red-600/20 rounded-2xl p-4">
+                        <p className="text-xs font-black text-red-300 mb-3">🔑 Más ingresos · Región</p>
+                        <BarChart items={topIngresos} gradientClass="from-red-500 to-pink-500" showSub />
+                      </div>
+                    )}
+                  </div>
+                )
+              })()}
 
               {/* Lista expandida según stat seleccionada */}
               {statAbierta === 'todas' && (

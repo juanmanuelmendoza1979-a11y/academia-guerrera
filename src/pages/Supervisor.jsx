@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { obtenerPromotorasDeSupervisor } from '../lib/db'
 import Avatar from '../components/Avatar'
+import { DonutChart, BarChart } from '../components/Charts'
 
 const NIVELES = {
   'Inicial':  { color: 'text-gray-400',   bg: 'bg-gray-500/20' },
@@ -222,6 +223,69 @@ export default function Supervisor({ session }) {
                   </button>
                 ))}
               </div>
+
+              {/* ── GRÁFICOS ── */}
+              {promotoras.length > 0 && (() => {
+                const hoyStr     = new Date().toDateString()
+                const activasN   = promotoras.filter(p => p.ultimoAccesoFecha === hoyStr).length
+                const ajerN      = promotoras.filter(p => p.ultimoAccesoFecha === new Date(Date.now()-86400000).toDateString()).length
+                const inactivasN = promotoras.length - activasN - ajerN
+                const conPuntos  = promotoras.filter(p => (p.puntos||0) > 0).length
+                const sinPuntos  = promotoras.length - conPuntos
+
+                const topPuntos = [...promotoras]
+                  .sort((a,b) => (b.puntos||0)-(a.puntos||0)).slice(0,8)
+                  .map(p => ({ label: p.nombre, val: p.puntos||0, rank: true }))
+                const topIngresos = [...promotoras]
+                  .sort((a,b) => (b.loginCount||0)-(a.loginCount||0)).slice(0,8)
+                  .map(p => ({ label: p.nombre, val: p.loginCount||0, rank: true }))
+
+                return (
+                  <div className="space-y-3">
+                    <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest">📈 Análisis visual</p>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-brand-dark border border-white/5 rounded-2xl p-4">
+                        <p className="text-[10px] font-black text-gray-500 uppercase mb-3">Actividad</p>
+                        <DonutChart
+                          label={activasN}
+                          sublabel="activas hoy"
+                          segments={[
+                            { label: 'Activas hoy', val: activasN,   color: '#22c55e' },
+                            { label: 'Ayer',         val: ajerN,      color: '#6366f1' },
+                            { label: 'Inactivas',    val: inactivasN, color: '#ef4444' },
+                          ]}
+                        />
+                      </div>
+                      <div className="bg-brand-dark border border-white/5 rounded-2xl p-4">
+                        <p className="text-[10px] font-black text-gray-500 uppercase mb-3">Engagement</p>
+                        <DonutChart
+                          label={conPuntos}
+                          sublabel="con puntos"
+                          segments={[
+                            { label: 'Con puntos',    val: conPuntos, color: '#f59e0b' },
+                            { label: 'Sin actividad', val: sinPuntos, color: '#374151' },
+                          ]}
+                        />
+                      </div>
+                    </div>
+
+                    {topPuntos.some(p => p.val > 0) && (
+                      <div className="bg-brand-dark border border-yellow-600/20 rounded-2xl p-4">
+                        <p className="text-xs font-black text-yellow-300 mb-3">🏆 Ranking · Puntos</p>
+                        <BarChart items={topPuntos} unit="⭐ " gradientClass="from-yellow-500 to-orange-500" />
+                      </div>
+                    )}
+
+                    {topIngresos.some(p => p.val > 0) && (
+                      <div className="bg-brand-dark border border-purple-600/20 rounded-2xl p-4">
+                        <p className="text-xs font-black text-purple-300 mb-3">🔑 Ingresos · Logins</p>
+                        <BarChart items={topIngresos} gradientClass="from-purple-500 to-blue-500" />
+                      </div>
+                    )}
+                  </div>
+                )
+              })()}
 
               {/* Lista expandida por stat */}
               {statAbierta === 'total' && (
