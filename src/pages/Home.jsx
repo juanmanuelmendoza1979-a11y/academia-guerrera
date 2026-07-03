@@ -1222,7 +1222,7 @@ export default function Home({ userState, onUpdatePoints, onNavigate }) {
 
         {/* TITA — esquina derecha */}
         <img
-          src="/TITA NUEVO UNIFORME.png"
+          src="/tita.png"
           alt="Tita TE APUESTO"
           className="absolute bottom-0 right-0 h-36 sm:h-48 w-auto object-contain pointer-events-none select-none"
         />
