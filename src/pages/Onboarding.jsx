@@ -212,7 +212,11 @@ export default function Onboarding({ onComplete, onVolver }) {
                   {TERRITORIOS_CONFIG.map(({ territorio, grupos }) => (
                     <div key={territorio.numero}>
                       {/* Cabecera de territorio */}
-                      <div className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-2 border ${territorio.badge}`}>
+                      <div className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-2 border ${
+                        territorio.numero === 1
+                          ? 'bg-purple-900/40 border-purple-500/50 text-purple-200'
+                          : 'bg-teal-900/40 border-teal-500/50 text-teal-200'
+                      }`}>
                         <span className="text-sm">{territorio.emoji}</span>
                         <p className="text-xs font-black uppercase tracking-wider">{territorio.etiqueta}</p>
                       </div>
