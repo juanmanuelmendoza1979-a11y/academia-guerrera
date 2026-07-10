@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { obtenerTodosUsuarios, resetearDatosUsuario, eliminarDocumento, cambiarPinAdmin } from '../lib/db'
 import Avatar from '../components/Avatar'
 import { DonutChart, BarChart } from '../components/Charts'
+import { getTerritorioDeJefe, getTerritorioDeSupv } from '../lib/territorios'
 
 function descargarXLS(filas, nombreArchivo) {
   const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
@@ -219,6 +220,11 @@ export default function AdminDashboard({ onLogout }) {
     const [expandido, setExpandido] = useState(false)
     const esGuerrera = coleccion === 'guerreras'
     const activa = u.ultimoAccesoFecha === hoy
+    const territorio = coleccion === 'jefes'
+      ? getTerritorioDeJefe(u.nombre)
+      : coleccion === 'supervisores'
+        ? getTerritorioDeSupv(u.nombre)
+        : null
     return (
       <div className="border-b border-white/5 last:border-0">
         <button onClick={() => setExpandido(e => !e)} className="w-full px-4 py-3 flex items-center gap-3 hover:bg-white/5 transition-all text-left">
@@ -229,7 +235,14 @@ export default function AdminDashboard({ onLogout }) {
               </div>
           }
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-white truncate">{u.nombre}</p>
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <p className="text-sm font-bold text-white truncate">{u.nombre}</p>
+              {territorio && (
+                <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full flex-shrink-0 ${territorio.badge}`}>
+                  {territorio.emoji} T{territorio.numero}
+                </span>
+              )}
+            </div>
             <p className="text-[10px] text-gray-500 truncate">
               {esGuerrera ? `Sup: ${u.supervisor||'—'}` : `${u.correo||'Sin correo'}`}
             </p>
@@ -627,54 +640,138 @@ export default function AdminDashboard({ onLogout }) {
 
             {/* ── SUPERVISORES ── */}
             {tab === 'supervisores' && (
-              <div className="space-y-2">
-                <div className="bg-brand-dark rounded-2xl border border-purple-600/20 overflow-hidden">
-                  <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20 flex items-center justify-between gap-2">
-                    <p className="text-sm font-bold text-purple-300">👔 Supervisores — {datos.supervisores.length}</p>
-                    <button onClick={exportarSupervisores}
-                      className="flex items-center gap-1 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold px-2.5 py-1.5 rounded-xl hover:bg-green-700/50 transition-all flex-shrink-0">
-                      ⬇️ Excel todos ({datos.supervisores.length})
-                    </button>
-                  </div>
-                  <div className="max-h-[600px] overflow-y-auto">
-                    {datos.supervisores.length === 0
-                      ? <p className="text-xs text-gray-500 text-center py-8">Sin supervisores registrados</p>
-                      : [...datos.supervisores]
-                          .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
-                          .map((u, i) => (
-                            <FilaUsuario key={u._docId||i} u={u} coleccion="supervisores"
-                              onExportar={exportarSupervisorConPromotoras} />
-                          ))
-                    }
-                  </div>
-                </div>
+              <div className="space-y-3">
+                <button onClick={exportarSupervisores}
+                  className="w-full flex items-center justify-center gap-1.5 bg-green-700/20 border border-green-600/30 text-green-400 text-xs font-bold py-2.5 rounded-2xl hover:bg-green-700/40 transition-all">
+                  ⬇️ Excel todos los supervisores ({datos.supervisores.length})
+                </button>
+
+                {/* Territorio 1 */}
+                {(() => {
+                  const lista = [...datos.supervisores].filter(s => getTerritorioDeSupv(s.nombre)?.numero === 1).sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                  if (lista.length === 0) return null
+                  return (
+                    <div className="bg-brand-dark rounded-2xl border border-purple-600/30 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20 flex items-center gap-2">
+                        <span className="text-base">🟣</span>
+                        <p className="text-sm font-bold text-purple-300">Territorio 1 — {lista.length} supervisor{lista.length !== 1 ? 'es' : ''}</p>
+                      </div>
+                      <div className="max-h-[500px] overflow-y-auto">
+                        {lista.map((u, i) => (
+                          <FilaUsuario key={u._docId||i} u={u} coleccion="supervisores" onExportar={exportarSupervisorConPromotoras} />
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+
+                {/* Territorio 2 */}
+                {(() => {
+                  const lista = [...datos.supervisores].filter(s => getTerritorioDeSupv(s.nombre)?.numero === 2).sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                  if (lista.length === 0) return null
+                  return (
+                    <div className="bg-brand-dark rounded-2xl border border-teal-500/40 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/5 bg-teal-900/20 flex items-center gap-2">
+                        <span className="text-base">🩵</span>
+                        <p className="text-sm font-bold text-teal-300">Territorio 2 — {lista.length} supervisor{lista.length !== 1 ? 'es' : ''}</p>
+                      </div>
+                      <div className="max-h-[500px] overflow-y-auto">
+                        {lista.map((u, i) => (
+                          <FilaUsuario key={u._docId||i} u={u} coleccion="supervisores" onExportar={exportarSupervisorConPromotoras} />
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+
+                {/* Sin territorio */}
+                {(() => {
+                  const lista = [...datos.supervisores].filter(s => !getTerritorioDeSupv(s.nombre)).sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                  if (lista.length === 0) return null
+                  return (
+                    <div className="bg-brand-dark rounded-2xl border border-purple-600/20 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/5 bg-purple-900/10 flex items-center gap-2">
+                        <span className="text-base">👔</span>
+                        <p className="text-sm font-bold text-purple-300">Sin territorio asignado — {lista.length}</p>
+                      </div>
+                      <div className="max-h-[500px] overflow-y-auto">
+                        {lista.map((u, i) => (
+                          <FilaUsuario key={u._docId||i} u={u} coleccion="supervisores" onExportar={exportarSupervisorConPromotoras} />
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+
                 <p className="text-[10px] text-gray-600 text-center">Despliega cada supervisor para descargar su equipo completo (supervisor + promotoras)</p>
               </div>
             )}
 
             {/* ── JEFES ── */}
             {tab === 'jefes' && (
-              <div className="space-y-2">
-                <div className="bg-brand-dark rounded-2xl border border-yellow-600/20 overflow-hidden">
-                  <div className="px-4 py-3 border-b border-white/5 bg-yellow-900/20 flex items-center justify-between gap-2">
-                    <p className="text-sm font-bold text-yellow-300">🏆 Jefes Regionales — {datos.jefes.length}</p>
-                    <button onClick={exportarJefes}
-                      className="flex items-center gap-1 bg-green-700/30 border border-green-600/40 text-green-400 text-[10px] font-bold px-2.5 py-1.5 rounded-xl hover:bg-green-700/50 transition-all flex-shrink-0">
-                      ⬇️ Excel todos ({datos.jefes.length})
-                    </button>
-                  </div>
-                  <div className="max-h-[600px] overflow-y-auto">
-                    {datos.jefes.length === 0
-                      ? <p className="text-xs text-gray-500 text-center py-8">Sin jefes registrados</p>
-                      : [...datos.jefes]
-                          .sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
-                          .map((u, i) => (
-                            <FilaUsuario key={u._docId||i} u={u} coleccion="jefes"
-                              onExportar={exportarJefeConSuEquipo} />
-                          ))
-                    }
-                  </div>
-                </div>
+              <div className="space-y-3">
+                <button onClick={exportarJefes}
+                  className="w-full flex items-center justify-center gap-1.5 bg-green-700/20 border border-green-600/30 text-green-400 text-xs font-bold py-2.5 rounded-2xl hover:bg-green-700/40 transition-all">
+                  ⬇️ Excel todos los jefes ({datos.jefes.length})
+                </button>
+
+                {/* Territorio 1 */}
+                {(() => {
+                  const lista = [...datos.jefes].filter(j => getTerritorioDeJefe(j.nombre)?.numero === 1).sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                  if (lista.length === 0) return null
+                  return (
+                    <div className="bg-brand-dark rounded-2xl border border-purple-600/30 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/5 bg-purple-900/20 flex items-center gap-2">
+                        <span className="text-base">🟣</span>
+                        <p className="text-sm font-bold text-purple-300">Territorio 1 — {lista.length} jefe{lista.length !== 1 ? 's' : ''}</p>
+                      </div>
+                      <div className="max-h-[500px] overflow-y-auto">
+                        {lista.map((u, i) => (
+                          <FilaUsuario key={u._docId||i} u={u} coleccion="jefes" onExportar={exportarJefeConSuEquipo} />
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+
+                {/* Territorio 2 */}
+                {(() => {
+                  const lista = [...datos.jefes].filter(j => getTerritorioDeJefe(j.nombre)?.numero === 2).sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                  if (lista.length === 0) return null
+                  return (
+                    <div className="bg-brand-dark rounded-2xl border border-teal-500/40 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/5 bg-teal-900/20 flex items-center gap-2">
+                        <span className="text-base">🩵</span>
+                        <p className="text-sm font-bold text-teal-300">Territorio 2 — {lista.length} jefe{lista.length !== 1 ? 's' : ''}</p>
+                      </div>
+                      <div className="max-h-[500px] overflow-y-auto">
+                        {lista.map((u, i) => (
+                          <FilaUsuario key={u._docId||i} u={u} coleccion="jefes" onExportar={exportarJefeConSuEquipo} />
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+
+                {/* Sin territorio (no reconocidos en config) */}
+                {(() => {
+                  const lista = [...datos.jefes].filter(j => !getTerritorioDeJefe(j.nombre)).sort((a, b) => (b.loginCount||0) - (a.loginCount||0))
+                  if (lista.length === 0) return null
+                  return (
+                    <div className="bg-brand-dark rounded-2xl border border-yellow-600/20 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-white/5 bg-yellow-900/10 flex items-center gap-2">
+                        <span className="text-base">🏆</span>
+                        <p className="text-sm font-bold text-yellow-300">Sin territorio asignado — {lista.length}</p>
+                      </div>
+                      <div className="max-h-[500px] overflow-y-auto">
+                        {lista.map((u, i) => (
+                          <FilaUsuario key={u._docId||i} u={u} coleccion="jefes" onExportar={exportarJefeConSuEquipo} />
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })()}
+
                 <p className="text-[10px] text-gray-600 text-center">Despliega cada jefe para descargar su región completa (jefe + supervisores + promotoras)</p>
               </div>
             )}

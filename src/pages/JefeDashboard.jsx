@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { obtenerDatosRegion } from '../lib/db'
 import Avatar from '../components/Avatar'
 import { DonutChart, BarChart } from '../components/Charts'
+import { SUPERVISORES_POR_JEFE, getTerritorioDeJefe } from '../lib/territorios'
 
 function descargarXLS(filas, nombreArchivo) {
   const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
@@ -42,14 +43,6 @@ function formatearFecha(fechaStr) {
   if (!fechaStr) return 'Sin acceso'
   try { return new Date(fechaStr).toLocaleDateString('es-PE', { day:'2-digit', month:'2-digit', year:'numeric' }) }
   catch { return fechaStr }
-}
-
-const SUPERVISORES_POR_JEFE = {
-  'Victor Lazo':     ['Sara Salazar', 'Diana Paz', 'Candy Odar'],
-  'Karem Romero':    ['Estefanny Martinez', 'Lady Zelada', 'Michelle Gomez', 'Zurhama Pisconte'],
-  'Jesus Ynocencio': ['Alina Untama', 'Crisly Cotrina', 'Roxana Vicente', 'Renzo Asensios'],
-  'Tirza Vargasa':   ['Wendy Aguayo', 'Carlos Gallegos', 'Katia Dueñas'],
-  'Ricardo Polo':    ['Luis Bustamante', 'Gonzalo Lopez', 'Carla Huerta', 'Milagros Urbano'],
 }
 
 function tiempoDesde(fechaStr) {
@@ -533,7 +526,8 @@ export default function JefeDashboard({ session }) {
   const [supExpandido, setSupExpandido] = useState(null)
   const [busqueda, setBusqueda] = useState('')
 
-  const misSupes = SUPERVISORES_POR_JEFE[session?.nombre] || []
+  const misSupes  = SUPERVISORES_POR_JEFE[session?.nombre] || []
+  const territorio = getTerritorioDeJefe(session?.nombre)
 
   useEffect(() => {
     if (!misSupes.length) { setLoading(false); return }
@@ -562,8 +556,15 @@ export default function JefeDashboard({ session }) {
     <div className="pb-24 animate-fade-in">
 
       {/* Hero jefe */}
-      <div className="bg-gradient-to-br from-yellow-900/60 to-brand-dark border-b border-yellow-500/20 px-4 py-5">
-        <p className="text-xs font-bold text-yellow-400 uppercase tracking-wider">Jefe Regional</p>
+      <div className={`bg-gradient-to-br ${territorio?.heroGradient ?? 'from-yellow-900/60 to-brand-dark'} border-b ${territorio?.heroBorder ?? 'border-yellow-500/20'} px-4 py-5`}>
+        <div className="flex items-center gap-2 flex-wrap">
+          <p className={`text-xs font-bold ${territorio?.heroAccent ?? 'text-yellow-400'} uppercase tracking-wider`}>Jefe Regional</p>
+          {territorio && (
+            <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${territorio.badge}`}>
+              {territorio.emoji} {territorio.etiqueta}
+            </span>
+          )}
+        </div>
         <h2 className="text-xl font-black text-white mt-0.5">Hola, {session?.nombre?.split(' ')[0]} 👋</h2>
         <p className="text-xs text-gray-400 mt-1">
           {misSupes.length} supervisores · {promotoras.length} promotoras en tu región
