@@ -1,18 +1,13 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { loginSupervisor, buscarSupervisorParaRecuperacion, guardarCodigoRecuperacionSupervisor, actualizarPinSupervisor } from '../lib/db'
+import { SUPERVISORES_POR_JEFE } from '../lib/territorios'
 
 const EJS_SERVICE_ID  = 'service_8cleoof'
 const EJS_TEMPLATE_ID = 'template_mfq3qpf'
 const EJS_PUBLIC_KEY  = 'iuFumzVNHBPlz3lPB'
 
-const SUPERVISORES_LISTA = [
-  'Sara Salazar', 'Diana Paz', 'Candy Odar',
-  'Estefanny Martinez', 'Lady Zelada', 'Michelle Gomez', 'Zurhama Pisconte',
-  'Alina Untama', 'Crisly Cotrina', 'Roxana Vicente', 'Renzo Asensios',
-  'Wendy Aguayo', 'Carlos Gallegos', 'Katia Dueñas',
-  'Luis Bustamante', 'Gonzalo Lopez', 'Carla Huerta', 'Milagros Urbano',
-].sort()
+const SUPERVISORES_LISTA = Object.values(SUPERVISORES_POR_JEFE).flat().sort()
 
 function generarCodigo() {
   return String(Math.floor(100000 + Math.random() * 900000))

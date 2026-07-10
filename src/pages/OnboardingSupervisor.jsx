@@ -1,18 +1,24 @@
 import { useState } from 'react'
 import { crearSupervisor } from '../lib/db'
+import { TERRITORIO_1, TERRITORIO_2 } from '../lib/territorios'
 
-const SUPERVISORES_POR_JEFE = [
-  { jefe: 'Victor Lazo',      supervisores: ['Sara Salazar', 'Diana Paz', 'Candy Odar'] },
-  { jefe: 'Karem Romero',     supervisores: ['Estefanny Martinez', 'Lady Zelada', 'Michelle Gomez', 'Zurhama Pisconte'] },
-  { jefe: 'Jesus Ynocencio',  supervisores: ['Alina Untama', 'Crisly Cotrina', 'Roxana Vicente', 'Renzo Asensios'] },
-  { jefe: 'Tirza Vargasa',    supervisores: ['Wendy Aguayo', 'Carlos Gallegos', 'Katia Dueñas'] },
-  { jefe: 'Ricardo Polo',     supervisores: ['Luis Bustamante', 'Gonzalo Lopez', 'Carla Huerta', 'Milagros Urbano'] },
+const TERRITORIOS_CONFIG = [
+  {
+    territorio: TERRITORIO_1,
+    grupos: Object.entries(TERRITORIO_1.jefes).map(([jefe, supervisores]) => ({ jefe, supervisores })),
+  },
+  {
+    territorio: TERRITORIO_2,
+    grupos: Object.entries(TERRITORIO_2.jefes).map(([jefe, supervisores]) => ({ jefe, supervisores })),
+  },
 ]
 
 // Mapa rápido nombre → jefe
 const JEFE_DE = {}
-SUPERVISORES_POR_JEFE.forEach(({ jefe, supervisores }) => {
-  supervisores.forEach(s => { JEFE_DE[s] = jefe })
+;[...TERRITORIOS_CONFIG].forEach(({ grupos }) => {
+  grupos.forEach(({ jefe, supervisores }) => {
+    supervisores.forEach(s => { JEFE_DE[s] = jefe })
+  })
 })
 
 const PASOS = ['bienvenida', 'nombre', 'pin', 'listo']
@@ -114,27 +120,41 @@ export default function OnboardingSupervisor({ onComplete, onVolver }) {
               <p className="text-sm text-gray-500">Tu jefe se asignará automáticamente</p>
             </div>
 
-            <div className="space-y-3">
-              {SUPERVISORES_POR_JEFE.map(grupo => (
-                <div key={grupo.jefe}>
-                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 px-1">
-                    Jefe: {grupo.jefe}
-                  </p>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {grupo.supervisores.map(sup => (
-                      <button
-                        key={sup}
-                        type="button"
-                        onClick={() => setNombre(sup)}
-                        className={`px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-all border ${
-                          nombre === sup
-                            ? 'bg-purple-600 text-white border-purple-500'
-                            : 'bg-brand-dark text-gray-300 border-white/10 hover:border-purple-500/40'
-                        }`}
-                      >
-                        {nombre === sup && <span className="mr-1">✓</span>}
-                        {sup}
-                      </button>
+            <div className="space-y-4">
+              {TERRITORIOS_CONFIG.map(({ territorio, grupos }) => (
+                <div key={territorio.numero}>
+                  <div className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-2 border ${
+                    territorio.numero === 1
+                      ? 'bg-purple-900/40 border-purple-500/50 text-purple-200'
+                      : 'bg-teal-900/40 border-teal-500/50 text-teal-200'
+                  }`}>
+                    <span className="text-sm">{territorio.emoji}</span>
+                    <p className="text-xs font-black uppercase tracking-wider">{territorio.etiqueta}</p>
+                  </div>
+                  <div className="space-y-2 pl-1">
+                    {grupos.map(grupo => (
+                      <div key={grupo.jefe}>
+                        <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 px-1">
+                          Jefe: {grupo.jefe}
+                        </p>
+                        <div className="grid grid-cols-2 gap-1.5">
+                          {grupo.supervisores.map(sup => (
+                            <button
+                              key={sup}
+                              type="button"
+                              onClick={() => setNombre(sup)}
+                              className={`px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-all border ${
+                                nombre === sup
+                                  ? 'bg-purple-600 text-white border-purple-500'
+                                  : 'bg-brand-dark text-gray-300 border-white/10 hover:border-purple-500/40'
+                              }`}
+                            >
+                              {nombre === sup && <span className="mr-1">✓</span>}
+                              {sup}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
