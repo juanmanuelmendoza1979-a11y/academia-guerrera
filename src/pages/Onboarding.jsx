@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { crearGuerrera } from '../lib/db'
 import { avatarUrl } from '../components/Avatar'
+import { TERRITORIO_1, TERRITORIO_2 } from '../lib/territorios'
 
 const AVATARS = [
   // Fuerza e identidad
@@ -33,12 +34,15 @@ const AVATARS = [
   { seed: 'Diamante',   label: 'Diamante' },
 ]
 
-const SUPERVISORES_POR_JEFE = [
-  { jefe: 'Victor Lazo',      supervisores: ['Sara Salazar', 'Diana Paz', 'Candy Odar'] },
-  { jefe: 'Karem Romero',     supervisores: ['Estefanny Martinez', 'Lady Zelada', 'Michelle Gomez', 'Zurhama Pisconte'] },
-  { jefe: 'Jesus Ynocencio',  supervisores: ['Alina Untama', 'Crisly Cotrina', 'Roxana Vicente', 'Renzo Asensios'] },
-  { jefe: 'Tirza Vargasa',    supervisores: ['Wendy Aguayo', 'Carlos Gallegos', 'Katia Dueñas'] },
-  { jefe: 'Ricardo Polo',     supervisores: ['Luis Bustamante', 'Gonzalo Lopez', 'Carla Huerta', 'Milagros Urbano'] },
+const TERRITORIOS_CONFIG = [
+  {
+    territorio: TERRITORIO_1,
+    grupos: Object.entries(TERRITORIO_1.jefes).map(([jefe, supervisores]) => ({ jefe, supervisores })),
+  },
+  {
+    territorio: TERRITORIO_2,
+    grupos: Object.entries(TERRITORIO_2.jefes).map(([jefe, supervisores]) => ({ jefe, supervisores })),
+  },
 ]
 
 const PASOS = ['bienvenida', 'perfil', 'pin', 'avatar', 'listo']
@@ -203,36 +207,47 @@ export default function Onboarding({ onComplete, onVolver }) {
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-400 mb-1 block uppercase tracking-wide">Tu supervisor</label>
-                <p className="text-xs text-gray-600 mb-2">Selecciona el nombre de la persona que te supervisa directamente</p>
-                <div className="space-y-3">
-                  {SUPERVISORES_POR_JEFE.map(grupo => (
-                    <div key={grupo.jefe}>
-                      <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 px-1">
-                        Jefe: {grupo.jefe}
-                      </p>
-                      <div className="grid grid-cols-2 gap-1.5">
-                        {grupo.supervisores.map(sup => (
-                          <button
-                            key={sup}
-                            type="button"
-                            onClick={() => setSupervisor(sup)}
-                            className={`px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-all border ${
-                              supervisor === sup
-                                ? 'bg-brand-orange text-white border-brand-orange'
-                                : 'bg-brand-dark text-gray-300 border-white/10 hover:border-brand-orange/40'
-                            }`}
-                          >
-                            {supervisor === sup && <span className="mr-1">✓</span>}
-                            {sup}
-                          </button>
+                <p className="text-xs text-gray-600 mb-3">Selecciona el nombre de la persona que te supervisa directamente</p>
+                <div className="space-y-4">
+                  {TERRITORIOS_CONFIG.map(({ territorio, grupos }) => (
+                    <div key={territorio.numero}>
+                      {/* Cabecera de territorio */}
+                      <div className={`flex items-center gap-2 px-3 py-2 rounded-xl mb-2 border ${territorio.badge}`}>
+                        <span className="text-sm">{territorio.emoji}</span>
+                        <p className="text-xs font-black uppercase tracking-wider">{territorio.etiqueta}</p>
+                      </div>
+                      <div className="space-y-2 pl-1">
+                        {grupos.map(grupo => (
+                          <div key={grupo.jefe}>
+                            <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 px-1">
+                              Jefe: {grupo.jefe}
+                            </p>
+                            <div className="grid grid-cols-2 gap-1.5">
+                              {grupo.supervisores.map(sup => (
+                                <button
+                                  key={sup}
+                                  type="button"
+                                  onClick={() => setSupervisor(sup)}
+                                  className={`px-3 py-2.5 rounded-xl text-left text-xs font-semibold transition-all border ${
+                                    supervisor === sup
+                                      ? 'bg-brand-orange text-white border-brand-orange'
+                                      : 'bg-brand-dark text-gray-300 border-white/10 hover:border-brand-orange/40'
+                                  }`}
+                                >
+                                  {supervisor === sup && <span className="mr-1">✓</span>}
+                                  {sup}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
                     </div>
                   ))}
                 </div>
                 {supervisor && (
-                  <div className="mt-2 bg-brand-orange/10 border border-brand-orange/30 rounded-xl px-3 py-2">
-                    <p className="text-xs text-brand-orange font-bold">✓ Supervisora seleccionada: {supervisor}</p>
+                  <div className="mt-3 bg-brand-orange/10 border border-brand-orange/30 rounded-xl px-3 py-2">
+                    <p className="text-xs text-brand-orange font-bold">✓ Supervisor seleccionado: {supervisor}</p>
                   </div>
                 )}
               </div>
