@@ -12,7 +12,7 @@ import Supervisor from './pages/Supervisor'
 import Tips from './pages/Tips'
 import More from './pages/More'
 import BetTools from './pages/BetTools'
-import WorldCup2026 from './pages/WorldCup2026'
+import EventoDelMes from './pages/EventoDelMes'
 import PuntoVenta from './pages/PuntoVenta'
 import Calendario from './pages/Calendario'
 import Onboarding from './pages/Onboarding'
@@ -76,7 +76,7 @@ function computeLevel(points) {
 }
 
 // Bottom nav: páginas prioritarias para móvil
-const NAV_MAIN = ['home', 'calendario', 'worldcup2026', 'puntoventa', 'more']
+const NAV_MAIN = ['home', 'calendario', 'eventomes', 'puntoventa', 'more']
 
 // Sidebar agrupado en bloques lógicos
 const SIDEBAR_BLOCKS = [
@@ -85,7 +85,7 @@ const SIDEBAR_BLOCKS = [
     items: [
       { id: 'home',        icon: '🏠', label: 'Hoy en mi POS' },
       { id: 'calendario',  icon: '📅', label: 'Calendario de Partidos' },
-      { id: 'worldcup2026',icon: '🌍', label: 'Mundial 2026' },
+      { id: 'eventomes',   icon: '📅', label: 'Evento del Mes' },
       { id: 'puntoventa',  icon: '🛒', label: 'Cómo ofrecer en POS' },
     ],
   },
@@ -418,7 +418,7 @@ export default function App() {
           {currentPage === 'tips' && <Tips />}
           {currentPage === 'more' && <More onNavigate={handleNavigate} isSupervisor={isSupervisor} isJefe={isJefe} />}
           {currentPage === 'bettools' && <BetTools onUpdatePoints={handleUpdatePoints} />}
-          {currentPage === 'worldcup2026' && <WorldCup2026 onUpdatePoints={handleUpdatePoints} />}
+          {currentPage === 'eventomes' && <EventoDelMes onUpdatePoints={handleUpdatePoints} />}
           {currentPage === 'puntoventa' && <PuntoVenta onUpdatePoints={handleUpdatePoints} />}
           {currentPage === 'calendario' && <Calendario />}
         </main>

@@ -1386,7 +1386,7 @@ export default function Home({ userState, onUpdatePoints, onNavigate }) {
       <div>
         <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Accesos rápidos</p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          <QuickCard icon="🌍" title="Mundial 2026"       subtitle="Datos Calientes · Trivia"  color="from-yellow-600 to-orange-600"  onClick={() => onNavigate('worldcup2026')} />
+          <QuickCard icon="📅" title="Evento del Mes"      subtitle="Copa Lib · Liga 1 · Trivia" color="from-brand-orange to-red-600"   onClick={() => onNavigate('eventomes')} />
           <QuickCard icon="📚" title="Aprende TE APUESTO" subtitle="Conceptos · Terminal · Turno" color="from-blue-700 to-indigo-700" onClick={() => onNavigate('learn')} />
           <QuickCard icon="🎮" title="Practica Jugando"   subtitle="Gana puntos practicando"   color="from-purple-700 to-pink-700"    onClick={() => onNavigate('games')} />
           <QuickCard icon="🛤️" title="Mi Ruta Guerrera"  subtitle="Tu avance por niveles"     color="from-green-700 to-teal-700"     onClick={() => onNavigate('path')} />
@@ -1396,15 +1396,15 @@ export default function Home({ userState, onUpdatePoints, onNavigate }) {
       {/* ── Módulos destacados ── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
         <button
-          onClick={() => onNavigate('worldcup2026')}
-          className="w-full bg-gradient-to-r from-yellow-700/20 to-orange-700/20 border-2 border-yellow-600/40 rounded-2xl p-4 text-left flex items-center gap-4 hover:border-yellow-500 transition-all"
+          onClick={() => onNavigate('eventomes')}
+          className="w-full bg-gradient-to-r from-brand-orange/20 to-red-700/20 border-2 border-brand-orange/40 rounded-2xl p-4 text-left flex items-center gap-4 hover:border-brand-orange transition-all"
         >
-          <span className="text-3xl">🌍</span>
+          <span className="text-3xl">📅</span>
           <div className="flex-1">
-            <p className="font-black text-white text-sm">Mundial 2026 — Centro Interactivo</p>
-            <p className="text-xs text-gray-400 mt-0.5">Grupos · Calendario · Estadios · Trivia · +13 secciones</p>
+            <p className="font-black text-white text-sm">Evento del Mes — Julio 2026</p>
+            <p className="text-xs text-gray-400 mt-0.5">Copa Lib · Copa Suda · Liga 1 Perú · Trivia</p>
           </div>
-          <span className="text-brand-yellow font-black text-lg">›</span>
+          <span className="text-brand-orange font-black text-lg">›</span>
         </button>
 
         <button

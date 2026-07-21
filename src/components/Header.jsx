@@ -5,7 +5,7 @@ export default function Header({ currentPage, userPoints, userLevel, isSuperviso
     speech: 'Speech Listo',
     learn: 'Aprende TE APUESTO',
     bettools: 'Herramientas TE APUESTO',
-    worldcup2026: 'Mundial 2026',
+    eventomes: 'Evento del Mes',
     glossary: 'Glosario Fácil',
     games: 'Practica Jugando',
     tips: 'Tips de Atención',

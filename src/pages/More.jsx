@@ -12,7 +12,7 @@ const BLOQUES = [
     items: [
       { icon: '📚', label: 'Aprende TE APUESTO',      desc: 'Deportes · Terminal Pro · Plan de turno',             page: 'learn' },
       { icon: '🛠️', label: 'Herramientas TE APUESTO', desc: 'La Yapa · BetBuilder · Cashout · Pago Anticipado',   page: 'bettools', highlight: true },
-      { icon: '🌍', label: 'Mundial 2026',             desc: 'Grupos · Estadios · Datos Calientes · Trivia',        page: 'worldcup2026', highlight: true },
+      { icon: '📅', label: 'Evento del Mes',            desc: 'Copa Libertadores · Copa Suda · Liga 1 · Trivia',     page: 'eventomes',    highlight: true },
       { icon: '🔤', label: 'Glosario Fácil',           desc: 'Busca cualquier término en segundos',                page: 'glossary' },
     ],
   },

@@ -32,12 +32,12 @@ export default function WorldCup({ onUpdatePoints, onNavigate }) {
       {/* Banner → WorldCup2026 */}
       {onNavigate && (
         <button
-          onClick={() => onNavigate('worldcup2026')}
-          className="w-full bg-gradient-to-r from-yellow-700/30 to-brand-orange/30 border-b border-brand-orange/40 px-4 py-2.5 flex items-center justify-between hover:from-yellow-700/40 hover:to-brand-orange/40 transition-all"
+          onClick={() => onNavigate('eventomes')}
+          className="w-full bg-gradient-to-r from-brand-orange/20 to-red-700/30 border-b border-brand-orange/40 px-4 py-2.5 flex items-center justify-between hover:from-brand-orange/30 hover:to-red-700/40 transition-all"
         >
           <div className="flex items-center gap-2">
-            <span className="text-lg">🌍</span>
-            <span className="text-sm font-bold text-brand-orange">Mundial 2026 — Centro Interactivo</span>
+            <span className="text-lg">📅</span>
+            <span className="text-sm font-bold text-brand-orange">Evento del Mes — Julio 2026</span>
           </div>
           <span className="text-xs text-brand-orange font-bold">Ver todo ›</span>
         </button>
