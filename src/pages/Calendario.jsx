@@ -944,6 +944,7 @@ export default function Calendario() {
   const [selectedPartido, setSelected]   = useState(null)              // modal tendencias
   const [selectedModal, setSelectedModal] = useState(null)             // { partido, tipo }
   const [rawCount, setRawCount]         = useState({})                 // total API antes del filtro
+  const [rawLeagues, setRawLeagues]     = useState({})                 // ligas únicas de la API (para debug)
 
   useEffect(() => {
     cargarDia(diaIdx)
@@ -982,8 +983,10 @@ export default function Calendario() {
         return true
       })
 
-      // Guardar total antes del filtro para diagnóstico
+      // Guardar total y ligas únicas antes del filtro para diagnóstico
       setRawCount(prev => ({ ...prev, [fechaLima]: unicos.length }))
+      const ligasUnicas = [...new Set(unicos.map(p => p.strLeague).filter(Boolean))].sort()
+      setRawLeagues(prev => ({ ...prev, [fechaLima]: ligasUnicas }))
 
       // Filtrar solo ligas permitidas y ordenar por hora Lima
       const filtrados = unicos
@@ -1240,16 +1243,30 @@ export default function Calendario() {
           <p className="text-white font-bold">Sin partidos este día</p>
           <p className="text-gray-500 text-sm mt-1">en las ligas autorizadas</p>
           {rawCount[fecha] !== undefined && (
-            <div className="mt-4 mx-auto max-w-xs bg-brand-dark border border-white/10 rounded-xl p-3 text-left">
-              <p className="text-[10px] font-bold text-yellow-400 mb-2">🔍 Diagnóstico API</p>
+            <div className="mt-4 mx-auto max-w-sm bg-brand-dark border border-yellow-500/30 rounded-xl p-3 text-left">
+              <p className="text-[10px] font-bold text-yellow-400 mb-2">🔍 Diagnóstico API — {fecha}</p>
               {rawCount[fecha] === 0 ? (
-                <p className="text-xs text-red-400">⚠️ La API devolvió 0 partidos — posible problema con la clave de API o sin datos para esta fecha.</p>
+                <div>
+                  <p className="text-xs text-red-400 font-bold">⚠️ API devolvió 0 partidos</p>
+                  <p className="text-[10px] text-gray-500 mt-1">La clave de API puede tener un error o no hay datos para esta fecha. Verifica en TheSportsDB.</p>
+                </div>
               ) : (
-                <>
+                <div>
                   <p className="text-xs text-gray-300">📡 API devolvió <span className="text-white font-bold">{rawCount[fecha]}</span> partidos en total</p>
-                  <p className="text-xs text-gray-300 mt-1">🔒 Filtro de ligas autorizadas: <span className="text-brand-orange font-bold">0 pasaron</span></p>
-                  <p className="text-[10px] text-gray-600 mt-2">Los partidos de hoy son de ligas no incluidas en la lista autorizada.</p>
-                </>
+                  <p className="text-xs text-brand-orange mt-1 font-bold">🚫 Ninguno pasó el filtro de ligas autorizadas</p>
+                  {rawLeagues[fecha]?.length > 0 && (
+                    <div className="mt-2">
+                      <p className="text-[10px] text-gray-500 mb-1">Ligas que devuelve la API hoy (no están en el filtro):</p>
+                      <div className="max-h-40 overflow-y-auto space-y-0.5">
+                        {rawLeagues[fecha].map((liga, i) => (
+                          <p key={i} className="text-[10px] font-mono text-yellow-300 bg-black/30 px-2 py-0.5 rounded">
+                            {liga}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           )}
